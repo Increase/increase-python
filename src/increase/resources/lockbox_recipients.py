@@ -239,6 +239,8 @@ class LockboxRecipientsResource(SyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
+              Defaults to `100`.
+
           lockbox_address_id: Filter Lockbox Recipients to those associated with the provided Lockbox Address.
 
           extra_headers: Send extra headers
@@ -487,6 +489,8 @@ class AsyncLockboxRecipientsResource(AsyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+              Defaults to `100`.
 
           lockbox_address_id: Filter Lockbox Recipients to those associated with the provided Lockbox Address.
 

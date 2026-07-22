@@ -105,6 +105,8 @@ class InboundMailItemsResource(SyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
+              Defaults to `100`.
+
           lockbox_address_id: Filter Inbound Mail Items to ones sent to the provided Lockbox Address.
 
           lockbox_recipient_id: Filter Inbound Mail Items to ones sent to the provided Lockbox Recipient.
@@ -272,6 +274,8 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+              Defaults to `100`.
 
           lockbox_address_id: Filter Inbound Mail Items to ones sent to the provided Lockbox Address.
 

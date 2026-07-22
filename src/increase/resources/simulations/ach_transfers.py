@@ -266,7 +266,6 @@ class ACHTransfersResource(SyncAPIResource):
               a return the bank believes was initiated under questionable circumstances.
 
           reason: The reason why the Federal Reserve or destination bank returned this transfer.
-              Defaults to `no_account`.
 
               - `insufficient_fund` - Code R01. Insufficient funds in the receiving account.
                 Sometimes abbreviated to "NSF."
@@ -803,7 +802,6 @@ class AsyncACHTransfersResource(AsyncAPIResource):
               a return the bank believes was initiated under questionable circumstances.
 
           reason: The reason why the Federal Reserve or destination bank returned this transfer.
-              Defaults to `no_account`.
 
               - `insufficient_fund` - Code R01. Insufficient funds in the receiving account.
                 Sometimes abbreviated to "NSF."

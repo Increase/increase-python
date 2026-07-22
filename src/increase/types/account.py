@@ -56,12 +56,13 @@ class Account(BaseModel):
     on the account.
     """
 
-    bank: Literal["core_bank", "first_internet_bank", "grasshopper_bank"]
+    bank: Literal["core_bank", "first_internet_bank", "grasshopper_bank", "increase_bank"]
     """The bank the Account is with.
 
     - `core_bank` - Core Bank
     - `first_internet_bank` - First Internet Bank of Indiana
     - `grasshopper_bank` - Grasshopper Bank
+    - `increase_bank` - Twin City Bank
     """
 
     closed_at: Optional[datetime] = None

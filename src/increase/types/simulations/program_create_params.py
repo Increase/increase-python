@@ -11,12 +11,13 @@ class ProgramCreateParams(TypedDict, total=False):
     name: Required[str]
     """The name of the program being added."""
 
-    bank: Literal["core_bank", "first_internet_bank", "grasshopper_bank"]
+    bank: Literal["core_bank", "first_internet_bank", "grasshopper_bank", "increase_bank"]
     """The bank for the program's accounts, defaults to First Internet Bank.
 
     - `core_bank` - Core Bank
     - `first_internet_bank` - First Internet Bank of Indiana
     - `grasshopper_bank` - Grasshopper Bank
+    - `increase_bank` - Twin City Bank
     """
 
     lending_maximum_extendable_credit: int

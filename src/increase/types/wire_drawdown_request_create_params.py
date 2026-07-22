@@ -80,7 +80,7 @@ class CreditorAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
     postal_code: str
-    """The ZIP code of the address."""
+    """The postal code of the address."""
 
     state: str
     """The address state."""
@@ -106,7 +106,7 @@ class DebtorAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
     postal_code: str
-    """The ZIP code of the address."""
+    """The postal code of the address."""
 
     state: str
     """The address state."""

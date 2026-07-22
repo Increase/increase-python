@@ -104,6 +104,8 @@ class TransactionsResource(SyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
+              Defaults to `100`.
+
           route_id: Filter Transactions for those belonging to the specified route. This could be a
               Card ID or an Account Number ID.
 
@@ -220,6 +222,8 @@ class AsyncTransactionsResource(AsyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+              Defaults to `100`.
 
           route_id: Filter Transactions for those belonging to the specified route. This could be a
               Card ID or an Account Number ID.

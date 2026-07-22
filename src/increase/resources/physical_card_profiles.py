@@ -67,13 +67,17 @@ class PhysicalCardProfilesResource(SyncAPIResource):
         Create a Physical Card Profile
 
         Args:
-          carrier_image_file_id: The identifier of the File containing the physical card's carrier image.
+          carrier_image_file_id: The identifier of the File containing the physical card's carrier image. This
+              must have `purpose: physical_card_carrier` and be a 2550x3300 pixel PNG with a
+              density of 300 dots per inch (DPI).
 
           contact_phone: A phone number the user can contact to receive support for their card.
 
           description: A description you can use to identify the Card Profile.
 
-          front_image_file_id: The identifier of the File containing the physical card's front image.
+          front_image_file_id: The identifier of the File containing the physical card's front image. This must
+              have `purpose: physical_card_front` and be a 2100x1344 pixel PNG with a density
+              of 600 dots per inch (DPI).
 
           program_id: The identifier for the Program that this Physical Card Profile falls under.
 
@@ -179,6 +183,8 @@ class PhysicalCardProfilesResource(SyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+              Defaults to `100`.
 
           extra_headers: Send extra headers
 
@@ -375,13 +381,17 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
         Create a Physical Card Profile
 
         Args:
-          carrier_image_file_id: The identifier of the File containing the physical card's carrier image.
+          carrier_image_file_id: The identifier of the File containing the physical card's carrier image. This
+              must have `purpose: physical_card_carrier` and be a 2550x3300 pixel PNG with a
+              density of 300 dots per inch (DPI).
 
           contact_phone: A phone number the user can contact to receive support for their card.
 
           description: A description you can use to identify the Card Profile.
 
-          front_image_file_id: The identifier of the File containing the physical card's front image.
+          front_image_file_id: The identifier of the File containing the physical card's front image. This must
+              have `purpose: physical_card_front` and be a 2100x1344 pixel PNG with a density
+              of 600 dots per inch (DPI).
 
           program_id: The identifier for the Program that this Physical Card Profile falls under.
 
@@ -487,6 +497,8 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+              Defaults to `100`.
 
           extra_headers: Send extra headers
 

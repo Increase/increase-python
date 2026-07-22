@@ -108,6 +108,8 @@ class DeclinedTransactionsResource(SyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
+              Defaults to `100`.
+
           route_id: Filter Declined Transactions to those belonging to the specified route.
 
           extra_headers: Send extra headers
@@ -227,6 +229,8 @@ class AsyncDeclinedTransactionsResource(AsyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+              Defaults to `100`.
 
           route_id: Filter Declined Transactions to those belonging to the specified route.
 

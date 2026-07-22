@@ -58,7 +58,10 @@ class Address(TypedDict, total=False):
     """The city, district, town, or village of the address."""
 
     country: Required[str]
-    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+
+    Defaults to `US`.
+    """
 
     line1: Required[str]
     """The first line of the address. This is usually the street number and street."""

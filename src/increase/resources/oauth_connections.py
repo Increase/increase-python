@@ -102,6 +102,8 @@ class OAuthConnectionsResource(SyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
+              Defaults to `100`.
+
           oauth_application_id: Filter results to only include OAuth Connections for a specific OAuth
               Application.
 
@@ -214,6 +216,8 @@ class AsyncOAuthConnectionsResource(AsyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+              Defaults to `100`.
 
           oauth_application_id: Filter results to only include OAuth Connections for a specific OAuth
               Application.
