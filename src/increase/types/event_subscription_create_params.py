@@ -111,6 +111,8 @@ class SelectedEventCategory(TypedDict, total=False):
             "inbound_wire_drawdown_request.created",
             "inbound_wire_transfer.created",
             "inbound_wire_transfer.updated",
+            "interest_rate_plan.created",
+            "interest_rate_plan.updated",
             "intrafi_account_enrollment.created",
             "intrafi_account_enrollment.updated",
             "intrafi_exclusion.created",
@@ -266,6 +268,10 @@ class SelectedEventCategory(TypedDict, total=False):
     - `inbound_wire_transfer.created` - Occurs whenever an Inbound Wire Transfer is
       created.
     - `inbound_wire_transfer.updated` - Occurs whenever an Inbound Wire Transfer is
+      updated.
+    - `interest_rate_plan.created` - Occurs whenever an Interest Rate Plan is
+      created.
+    - `interest_rate_plan.updated` - Occurs whenever an Interest Rate Plan is
       updated.
     - `intrafi_account_enrollment.created` - Occurs whenever an IntraFi Account
       Enrollment is created.

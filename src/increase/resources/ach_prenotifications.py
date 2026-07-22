@@ -233,6 +233,8 @@ class ACHPrenotificationsResource(SyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
+              Defaults to `100`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -469,6 +471,8 @@ class AsyncACHPrenotificationsResource(AsyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+              Defaults to `100`.
 
           extra_headers: Send extra headers
 

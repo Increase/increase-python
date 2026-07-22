@@ -72,8 +72,7 @@ class CheckDepositsResource(SyncAPIResource):
               other bank and is a debit to your account. Defaults to the negative of the Check
               Deposit amount.
 
-          reason: The reason for the adjustment. Defaults to `non_conforming_item`, which is often
-              used for a low quality image that the recipient wasn't able to handle.
+          reason: The reason for the adjustment.
 
               - `late_return` - The return was initiated too late and the receiving
                 institution has responded with a Late Return Claim.
@@ -305,8 +304,7 @@ class AsyncCheckDepositsResource(AsyncAPIResource):
               other bank and is a debit to your account. Defaults to the negative of the Check
               Deposit amount.
 
-          reason: The reason for the adjustment. Defaults to `non_conforming_item`, which is often
-              used for a low quality image that the recipient wasn't able to handle.
+          reason: The reason for the adjustment.
 
               - `late_return` - The return was initiated too late and the receiving
                 institution has responded with a Late Return Claim.

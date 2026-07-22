@@ -170,6 +170,8 @@ class PendingTransactionsResource(SyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
+              Defaults to `100`.
+
           route_id: Filter pending transactions to those belonging to the specified Route.
 
           extra_headers: Send extra headers
@@ -402,6 +404,8 @@ class AsyncPendingTransactionsResource(AsyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+              Defaults to `100`.
 
           route_id: Filter pending transactions to those belonging to the specified Route.
 

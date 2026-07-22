@@ -26,6 +26,8 @@ class EventListParams(TypedDict, total=False):
     """Limit the size of the list that is returned.
 
     The default (and maximum) is 100 objects.
+
+    Defaults to `100`.
     """
 
     order_by: OrderBy
@@ -104,6 +106,8 @@ _CategoryReservedKeywords = TypedDict(
                 "inbound_wire_drawdown_request.created",
                 "inbound_wire_transfer.created",
                 "inbound_wire_transfer.updated",
+                "interest_rate_plan.created",
+                "interest_rate_plan.updated",
                 "intrafi_account_enrollment.created",
                 "intrafi_account_enrollment.updated",
                 "intrafi_exclusion.created",
