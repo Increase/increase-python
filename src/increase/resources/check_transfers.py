@@ -348,8 +348,12 @@ class CheckTransfersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
-        """
-        Stop payment on a Check Transfer
+        """Request a stop payment on a Check Transfer.
+
+        This can be done any time before the
+        check is deposited. A stopped check cannot be deposited and the funds held by
+        the transfer's Pending Transaction are released back to the account's available
+        balance.
 
         Args:
           check_transfer_id: The identifier of the Check Transfer.
@@ -710,8 +714,12 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
-        """
-        Stop payment on a Check Transfer
+        """Request a stop payment on a Check Transfer.
+
+        This can be done any time before the
+        check is deposited. A stopped check cannot be deposited and the funds held by
+        the transfer's Pending Transaction are released back to the account's available
+        balance.
 
         Args:
           check_transfer_id: The identifier of the Check Transfer.

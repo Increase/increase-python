@@ -84,10 +84,10 @@ class CreditorAddressUnstructured(TypedDict, total=False):
     """The address line 3."""
 
 
-class CreditorAddress(TypedDict, total=False):
+class CreditorAddress(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """The person or business's address."""
 
-    unstructured: Required[CreditorAddressUnstructured]
+    unstructured: CreditorAddressUnstructured
     """Unstructured address lines."""
 
 
@@ -171,10 +171,10 @@ class DebtorAddressUnstructured(TypedDict, total=False):
     """The address line 3."""
 
 
-class DebtorAddress(TypedDict, total=False):
+class DebtorAddress(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """The person or business's address."""
 
-    unstructured: Required[DebtorAddressUnstructured]
+    unstructured: DebtorAddressUnstructured
     """Unstructured address lines."""
 
 
