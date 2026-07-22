@@ -113,6 +113,8 @@ class InboundWireTransfersResource(SyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
+              Defaults to `100`.
+
           wire_drawdown_request_id: Filter Inbound Wire Transfers to ones belonging to the specified Wire Drawdown
               Request.
 
@@ -295,6 +297,8 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+              Defaults to `100`.
 
           wire_drawdown_request_id: Filter Inbound Wire Transfers to ones belonging to the specified Wire Drawdown
               Request.

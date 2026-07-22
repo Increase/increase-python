@@ -125,10 +125,11 @@ class FilesResource(SyncAPIResource):
               - `digital_wallet_app_icon` - An icon for you app to be rendered inside digital
                 wallet apps. This must be a 100x100 pixel PNG.
               - `physical_card_front` - A card image to be printed on the front of a physical
-                card. This must be a 2100x1344 pixel PNG with no other color but black.
+                card. This must be a 2100x1344 pixel PNG with a density of 600 dots per inch
+                (DPI) and no other color but black.
               - `physical_card_carrier` - An image representing the entirety of the carrier
-                used for a physical card. This must be a 2550x3300 pixel PNG with no other
-                color but black.
+                used for a physical card. This must be a 2550x3300 pixel PNG with a density of
+                300 dots per inch (DPI) and no other color but black.
               - `document_request` - A document requested by Increase.
               - `entity_supplemental_document` - A supplemental document associated an an
                 Entity.
@@ -239,6 +240,8 @@ class FilesResource(SyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+              Defaults to `100`.
 
           extra_headers: Send extra headers
 
@@ -406,10 +409,11 @@ class AsyncFilesResource(AsyncAPIResource):
               - `digital_wallet_app_icon` - An icon for you app to be rendered inside digital
                 wallet apps. This must be a 100x100 pixel PNG.
               - `physical_card_front` - A card image to be printed on the front of a physical
-                card. This must be a 2100x1344 pixel PNG with no other color but black.
+                card. This must be a 2100x1344 pixel PNG with a density of 600 dots per inch
+                (DPI) and no other color but black.
               - `physical_card_carrier` - An image representing the entirety of the carrier
-                used for a physical card. This must be a 2550x3300 pixel PNG with no other
-                color but black.
+                used for a physical card. This must be a 2550x3300 pixel PNG with a density of
+                300 dots per inch (DPI) and no other color but black.
               - `document_request` - A document requested by Increase.
               - `entity_supplemental_document` - A supplemental document associated an an
                 Entity.
@@ -520,6 +524,8 @@ class AsyncFilesResource(AsyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+              Defaults to `100`.
 
           extra_headers: Send extra headers
 

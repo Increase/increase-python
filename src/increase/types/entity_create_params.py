@@ -137,7 +137,10 @@ class CorporationAddress(TypedDict, total=False):
     """The city, district, town, or village of the address."""
 
     country: Required[str]
-    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+
+    Defaults to `US`.
+    """
 
     line1: Required[str]
     """The first line of the address. This is usually the street number and street."""
@@ -165,7 +168,10 @@ class CorporationBeneficialOwnerIndividualAddress(TypedDict, total=False):
     """The city, district, town, or village of the address."""
 
     country: Required[str]
-    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+
+    Defaults to `US`.
+    """
 
     line1: Required[str]
     """The first line of the address. This is usually the street number and street."""
@@ -358,8 +364,6 @@ class CorporationLegalIdentifier(TypedDict, total=False):
     category: Literal["us_employer_identification_number", "other"]
     """The category of the legal identifier.
 
-    If not provided, the default is `us_employer_identification_number`.
-
     - `us_employer_identification_number` - The Employer Identification Number (EIN)
       for the company. The EIN is a 9-digit number assigned by the IRS; submit it as
       nine digits with no dashes or other separators.
@@ -524,7 +528,10 @@ class JointIndividualAddress(TypedDict, total=False):
     """The city, district, town, or village of the address."""
 
     country: Required[str]
-    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+
+    Defaults to `US`.
+    """
 
     line1: Required[str]
     """The first line of the address. This is usually the street number and street."""
@@ -703,7 +710,10 @@ class NaturalPersonAddress(TypedDict, total=False):
     """The city, district, town, or village of the address."""
 
     country: Required[str]
-    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+
+    Defaults to `US`.
+    """
 
     line1: Required[str]
     """The first line of the address. This is usually the street number and street."""
@@ -960,7 +970,10 @@ class TrustTrusteeIndividualAddress(TypedDict, total=False):
     """The city, district, town, or village of the address."""
 
     country: Required[str]
-    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+
+    Defaults to `US`.
+    """
 
     line1: Required[str]
     """The first line of the address. This is usually the street number and street."""
@@ -1149,7 +1162,10 @@ class TrustGrantorAddress(TypedDict, total=False):
     """The city, district, town, or village of the address."""
 
     country: Required[str]
-    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+
+    Defaults to `US`.
+    """
 
     line1: Required[str]
     """The first line of the address. This is usually the street number and street."""

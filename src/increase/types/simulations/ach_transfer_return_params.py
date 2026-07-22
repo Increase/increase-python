@@ -90,8 +90,6 @@ class ACHTransferReturnParams(TypedDict, total=False):
     ]
     """The reason why the Federal Reserve or destination bank returned this transfer.
 
-    Defaults to `no_account`.
-
     - `insufficient_fund` - Code R01. Insufficient funds in the receiving account.
       Sometimes abbreviated to "NSF."
     - `no_account` - Code R03. The account does not exist or the receiving bank was

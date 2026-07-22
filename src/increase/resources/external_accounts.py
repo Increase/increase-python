@@ -77,7 +77,7 @@ class ExternalAccountsResource(SyncAPIResource):
               - `individual` - The External Account is owned by an individual.
               - `unknown` - It's unknown what kind of entity owns the External Account.
 
-          funding: The type of the destination account. Defaults to `checking`.
+          funding: The type of the destination account.
 
               - `checking` - A checking account.
               - `savings` - A savings account.
@@ -259,6 +259,8 @@ class ExternalAccountsResource(SyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
+              Defaults to `100`.
+
           routing_number: Filter External Accounts to those with the specified Routing Number.
 
           extra_headers: Send extra headers
@@ -345,7 +347,7 @@ class AsyncExternalAccountsResource(AsyncAPIResource):
               - `individual` - The External Account is owned by an individual.
               - `unknown` - It's unknown what kind of entity owns the External Account.
 
-          funding: The type of the destination account. Defaults to `checking`.
+          funding: The type of the destination account.
 
               - `checking` - A checking account.
               - `savings` - A savings account.
@@ -526,6 +528,8 @@ class AsyncExternalAccountsResource(AsyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+              Defaults to `100`.
 
           routing_number: Filter External Accounts to those with the specified Routing Number.
 

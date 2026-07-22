@@ -31,7 +31,7 @@ class CreditorAddress(BaseModel):
     """The second line of the address."""
 
     postal_code: Optional[str] = None
-    """The ZIP code of the address."""
+    """The postal code of the address."""
 
     state: Optional[str] = None
     """The address state."""
@@ -57,7 +57,7 @@ class DebtorAddress(BaseModel):
     """The second line of the address."""
 
     postal_code: Optional[str] = None
-    """The ZIP code of the address."""
+    """The postal code of the address."""
 
     state: Optional[str] = None
     """The address state."""

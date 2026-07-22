@@ -39,12 +39,13 @@ class Program(BaseModel):
     id: str
     """The Program identifier."""
 
-    bank: Literal["core_bank", "first_internet_bank", "grasshopper_bank"]
+    bank: Literal["core_bank", "first_internet_bank", "grasshopper_bank", "increase_bank"]
     """The Bank the Program is with.
 
     - `core_bank` - Core Bank
     - `first_internet_bank` - First Internet Bank of Indiana
     - `grasshopper_bank` - Grasshopper Bank
+    - `increase_bank` - Increase Bank
     """
 
     billing_account_id: Optional[str] = None

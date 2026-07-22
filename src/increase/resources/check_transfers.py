@@ -218,6 +218,8 @@ class CheckTransfersResource(SyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
+              Defaults to `100`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -348,8 +350,12 @@ class CheckTransfersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
-        """
-        Stop payment on a Check Transfer
+        """Request a stop payment on a Check Transfer.
+
+        This can be done any time before the
+        check is deposited. A stopped check cannot be deposited and the funds held by
+        the transfer's Pending Transaction are released back to the account's available
+        balance.
 
         Args:
           check_transfer_id: The identifier of the Check Transfer.
@@ -580,6 +586,8 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
+              Defaults to `100`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -710,8 +718,12 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
-        """
-        Stop payment on a Check Transfer
+        """Request a stop payment on a Check Transfer.
+
+        This can be done any time before the
+        check is deposited. A stopped check cannot be deposited and the funds held by
+        the transfer's Pending Transaction are released back to the account's available
+        balance.
 
         Args:
           check_transfer_id: The identifier of the Check Transfer.
