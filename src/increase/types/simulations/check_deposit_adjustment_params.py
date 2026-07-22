@@ -19,9 +19,6 @@ class CheckDepositAdjustmentParams(TypedDict, total=False):
     reason: Literal["late_return", "wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid"]
     """The reason for the adjustment.
 
-    Defaults to `non_conforming_item`, which is often used for a low quality image
-    that the recipient wasn't able to handle.
-
     - `late_return` - The return was initiated too late and the receiving
       institution has responded with a Late Return Claim.
     - `wrong_payee_credit` - The check was deposited to the wrong payee and the

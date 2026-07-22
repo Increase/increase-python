@@ -358,8 +358,6 @@ class CorporationLegalIdentifier(TypedDict, total=False):
     category: Literal["us_employer_identification_number", "other"]
     """The category of the legal identifier.
 
-    If not provided, the default is `us_employer_identification_number`.
-
     - `us_employer_identification_number` - The Employer Identification Number (EIN)
       for the company. The EIN is a 9-digit number assigned by the IRS; submit it as
       nine digits with no dashes or other separators.

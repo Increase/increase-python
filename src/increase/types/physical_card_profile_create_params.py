@@ -9,7 +9,11 @@ __all__ = ["PhysicalCardProfileCreateParams", "FrontText"]
 
 class PhysicalCardProfileCreateParams(TypedDict, total=False):
     carrier_image_file_id: Required[str]
-    """The identifier of the File containing the physical card's carrier image."""
+    """The identifier of the File containing the physical card's carrier image.
+
+    This must have `purpose: physical_card_carrier` and be a 2550x3300 pixel PNG
+    with a density of 300 dots per inch (DPI).
+    """
 
     contact_phone: Required[str]
     """A phone number the user can contact to receive support for their card."""
@@ -18,7 +22,11 @@ class PhysicalCardProfileCreateParams(TypedDict, total=False):
     """A description you can use to identify the Card Profile."""
 
     front_image_file_id: Required[str]
-    """The identifier of the File containing the physical card's front image."""
+    """The identifier of the File containing the physical card's front image.
+
+    This must have `purpose: physical_card_front` and be a 2100x1344 pixel PNG with
+    a density of 600 dots per inch (DPI).
+    """
 
     program_id: Required[str]
     """The identifier for the Program that this Physical Card Profile falls under."""

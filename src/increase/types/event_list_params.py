@@ -104,6 +104,8 @@ _CategoryReservedKeywords = TypedDict(
                 "inbound_wire_drawdown_request.created",
                 "inbound_wire_transfer.created",
                 "inbound_wire_transfer.updated",
+                "interest_rate_plan.created",
+                "interest_rate_plan.updated",
                 "intrafi_account_enrollment.created",
                 "intrafi_account_enrollment.updated",
                 "intrafi_exclusion.created",
