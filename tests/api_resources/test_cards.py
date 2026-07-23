@@ -73,6 +73,11 @@ class TestCards:
                 "state": "x",
                 "line2": "x",
             },
+            cardholder_name={
+                "first": "x",
+                "last": "x",
+                "middle": "x",
+            },
             description="Card for Ian Crease",
             digital_wallet={
                 "digital_card_profile_id": "digital_card_profile_id",
@@ -446,6 +451,11 @@ class TestAsyncCards:
                 "postal_code": "x",
                 "state": "x",
                 "line2": "x",
+            },
+            cardholder_name={
+                "first": "x",
+                "last": "x",
+                "middle": "x",
             },
             description="Card for Ian Crease",
             digital_wallet={
