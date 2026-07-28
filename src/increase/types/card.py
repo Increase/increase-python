@@ -27,6 +27,7 @@ __all__ = [
     "AuthorizationControlsUsageSingleUse",
     "AuthorizationControlsUsageSingleUseSettlementAmount",
     "BillingAddress",
+    "CardholderName",
     "DigitalWallet",
 ]
 
@@ -231,6 +232,22 @@ class BillingAddress(BaseModel):
     """The US state of the billing address."""
 
 
+class CardholderName(BaseModel):
+    """The name of the cardholder.
+
+    Used to respond to Account Name Inquiry requests from acquirers in Card Validations.
+    """
+
+    first: str
+    """The cardholder's first name."""
+
+    last: str
+    """The cardholder's last name."""
+
+    middle: Optional[str] = None
+    """The cardholder's middle name."""
+
+
 class DigitalWallet(BaseModel):
     """
     The contact information used in the two-factor steps for digital wallet card creation. At least one field must be present to complete the digital wallet steps.
@@ -275,6 +292,13 @@ class Card(BaseModel):
 
     bin: str
     """The Bank Identification Number (BIN) of the Card."""
+
+    cardholder_name: Optional[CardholderName] = None
+    """The name of the cardholder.
+
+    Used to respond to Account Name Inquiry requests from acquirers in Card
+    Validations.
+    """
 
     created_at: datetime
     """
