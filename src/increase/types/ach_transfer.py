@@ -686,7 +686,7 @@ class Submission(BaseModel):
     """The timestamp by which any administrative returns are expected to be received
     by.
 
-    This follows the NACHA guidelines for return windows, which are: "In general,
+    This follows the Nacha guidelines for return windows, which are: "In general,
     return entries must be received by the RDFI’s ACH Operator by its deposit
     deadline for the return entry to be made available to the ODFI no later than the
     opening of business on the second banking day following the Settlement Date of
