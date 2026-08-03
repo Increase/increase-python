@@ -58,6 +58,7 @@ class CardsResource(SyncAPIResource):
         account_id: str,
         authorization_controls: card_create_params.AuthorizationControls | Omit = omit,
         billing_address: card_create_params.BillingAddress | Omit = omit,
+        cardholder_name: card_create_params.CardholderName | Omit = omit,
         description: str | Omit = omit,
         digital_wallet: card_create_params.DigitalWallet | Omit = omit,
         entity_id: str | Omit = omit,
@@ -78,6 +79,9 @@ class CardsResource(SyncAPIResource):
           authorization_controls: Controls that restrict how this card can be used.
 
           billing_address: The card's billing address.
+
+          cardholder_name: The name of the cardholder. Used to respond to Account Name Inquiry requests
+              from acquirers in Card Validations.
 
           description: The description you choose to give the card.
 
@@ -107,6 +111,7 @@ class CardsResource(SyncAPIResource):
                     "account_id": account_id,
                     "authorization_controls": authorization_controls,
                     "billing_address": billing_address,
+                    "cardholder_name": cardholder_name,
                     "description": description,
                     "digital_wallet": digital_wallet,
                     "entity_id": entity_id,
@@ -462,6 +467,7 @@ class AsyncCardsResource(AsyncAPIResource):
         account_id: str,
         authorization_controls: card_create_params.AuthorizationControls | Omit = omit,
         billing_address: card_create_params.BillingAddress | Omit = omit,
+        cardholder_name: card_create_params.CardholderName | Omit = omit,
         description: str | Omit = omit,
         digital_wallet: card_create_params.DigitalWallet | Omit = omit,
         entity_id: str | Omit = omit,
@@ -482,6 +488,9 @@ class AsyncCardsResource(AsyncAPIResource):
           authorization_controls: Controls that restrict how this card can be used.
 
           billing_address: The card's billing address.
+
+          cardholder_name: The name of the cardholder. Used to respond to Account Name Inquiry requests
+              from acquirers in Card Validations.
 
           description: The description you choose to give the card.
 
@@ -511,6 +520,7 @@ class AsyncCardsResource(AsyncAPIResource):
                     "account_id": account_id,
                     "authorization_controls": authorization_controls,
                     "billing_address": billing_address,
+                    "cardholder_name": cardholder_name,
                     "description": description,
                     "digital_wallet": digital_wallet,
                     "entity_id": entity_id,
