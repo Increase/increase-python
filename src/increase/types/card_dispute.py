@@ -2727,8 +2727,9 @@ class CardDispute(BaseModel):
     - `lost` - The Card Dispute has been lost and funds previously credited from the
       acceptance have been debited.
     - `won` - The Card Dispute has been won and no further action can be taken.
-    - `rejected` - The Card Dispute has been reviewed and rejected, please review
-      the explanation for more details.
+    - `rejected` - The Card Dispute was rejected before it was submitted to the
+      network, either by Increase or because the user withdrew it. Please review the
+      explanation for more details.
     """
 
     type: Literal["card_dispute"]

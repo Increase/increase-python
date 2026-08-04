@@ -71,7 +71,6 @@ class ACHTransfersResource(SyncAPIResource):
             "internet_initiated",
         ]
         | Omit = omit,
-        transaction_timing: Literal["synchronous", "asynchronous"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -173,12 +172,6 @@ class ACHTransfersResource(SyncAPIResource):
                 non-consumers to debit a consumer’s account. Credits can only be used for
                 consumer to consumer transactions.
 
-          transaction_timing: The timing of the transaction.
-
-              - `synchronous` - A Transaction will be created immediately.
-              - `asynchronous` - A Transaction will be created when the funds settle at the
-                Federal Reserve.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -211,7 +204,6 @@ class ACHTransfersResource(SyncAPIResource):
                     "require_approval": require_approval,
                     "routing_number": routing_number,
                     "standard_entry_class_code": standard_entry_class_code,
-                    "transaction_timing": transaction_timing,
                 },
                 ach_transfer_create_params.ACHTransferCreateParams,
             ),
@@ -461,7 +453,6 @@ class AsyncACHTransfersResource(AsyncAPIResource):
             "internet_initiated",
         ]
         | Omit = omit,
-        transaction_timing: Literal["synchronous", "asynchronous"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -563,12 +554,6 @@ class AsyncACHTransfersResource(AsyncAPIResource):
                 non-consumers to debit a consumer’s account. Credits can only be used for
                 consumer to consumer transactions.
 
-          transaction_timing: The timing of the transaction.
-
-              - `synchronous` - A Transaction will be created immediately.
-              - `asynchronous` - A Transaction will be created when the funds settle at the
-                Federal Reserve.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -601,7 +586,6 @@ class AsyncACHTransfersResource(AsyncAPIResource):
                     "require_approval": require_approval,
                     "routing_number": routing_number,
                     "standard_entry_class_code": standard_entry_class_code,
-                    "transaction_timing": transaction_timing,
                 },
                 ach_transfer_create_params.ACHTransferCreateParams,
             ),
