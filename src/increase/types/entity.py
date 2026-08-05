@@ -520,7 +520,7 @@ class TermsAgreement(BaseModel):
     agreed_at: datetime
     """The timestamp of when the Entity agreed to the terms."""
 
-    ip_address: str
+    ip_address: Optional[str] = None
     """The IP address the Entity accessed reviewed the terms from."""
 
     terms_url: str
