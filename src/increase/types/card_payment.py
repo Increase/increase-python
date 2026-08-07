@@ -1453,6 +1453,15 @@ class ElementCardAuthorization(BaseModel):
     riskiest.
     """
 
+    original_card_payment_id: Optional[str] = None
+    """
+    The ID of the Card Payment containing the original authorization or card
+    validation this transaction references. For a merchant-initiated transaction,
+    this is the Card Payment from when the card was first stored, which is typically
+    where the CVV2 was verified. The reference this is derived from is supplied by
+    the merchant or their acquirer, so it is not guaranteed to be present.
+    """
+
     pending_transaction_id: Optional[str] = None
     """The identifier of the Pending Transaction associated with this Transaction."""
 

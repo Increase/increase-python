@@ -89,7 +89,10 @@ class CheckTransferCreateParams(TypedDict, total=False):
 
 
 class PhysicalCheckMailingAddress(TypedDict, total=False):
-    """Details for where Increase will mail the check."""
+    """Details for where Increase will mail the check.
+
+    When `physical_check_batch_id` is set, the address must match the Physical Check Batch.
+    """
 
     city: Required[str]
     """The city component of the check's destination address."""
@@ -126,9 +129,8 @@ class PhysicalCheckPayer(TypedDict, total=False):
 
 
 class PhysicalCheckReturnAddress(TypedDict, total=False):
-    """The return address to be printed on the check.
-
-    If omitted this will default to an Increase-owned address that will mark checks as delivery failed and shred them.
+    """
+    Details for where the courier will return the check to if it is unable to be delivered. Defaults to an Increase-owned address that will mark checks as delivery failed and shred them.
     """
 
     city: Required[str]
@@ -180,7 +182,11 @@ class PhysicalCheck(TypedDict, total=False, extra_items=object):  # type: ignore
     """
 
     mailing_address: Required[PhysicalCheckMailingAddress]
-    """Details for where Increase will mail the check."""
+    """Details for where Increase will mail the check.
+
+    When `physical_check_batch_id` is set, the address must match the Physical Check
+    Batch.
+    """
 
     memo: Required[str]
     """The descriptor that will be printed on the memo field on the check."""
@@ -214,11 +220,14 @@ class PhysicalCheck(TypedDict, total=False, extra_items=object):  # type: ignore
     note: str
     """The descriptor that will be printed on the letter included with the check."""
 
-    return_address: PhysicalCheckReturnAddress
-    """The return address to be printed on the check.
+    physical_check_batch_id: str
+    """The identifier of the Physical Check Batch to mail this check as a part of."""
 
-    If omitted this will default to an Increase-owned address that will mark checks
-    as delivery failed and shred them.
+    return_address: PhysicalCheckReturnAddress
+    """
+    Details for where the courier will return the check to if it is unable to be
+    delivered. Defaults to an Increase-owned address that will mark checks as
+    delivery failed and shred them.
     """
 
     return_address_name: str

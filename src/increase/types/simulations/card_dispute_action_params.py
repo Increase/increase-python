@@ -11,6 +11,7 @@ __all__ = [
     "VisaAcceptUserSubmission",
     "VisaDeclineUserPrearbitration",
     "VisaReceiveMerchantPrearbitration",
+    "VisaReject",
     "VisaRepresent",
     "VisaRequestFurtherInformation",
     "VisaTimeOutChargeback",
@@ -71,6 +72,16 @@ class VisaReceiveMerchantPrearbitration(TypedDict, total=False):
     """
 
     pass
+
+
+class VisaReject(TypedDict, total=False):
+    """The parameters for rejecting the dispute.
+
+    Required if and only if `action` is `reject`.
+    """
+
+    explanation: Required[str]
+    """The explanation for rejecting the dispute."""
 
 
 class VisaRepresent(TypedDict, total=False):
@@ -140,6 +151,7 @@ class Visa(TypedDict, total=False):
             "accept_user_submission",
             "decline_user_prearbitration",
             "receive_merchant_prearbitration",
+            "reject",
             "represent",
             "request_further_information",
             "time_out_chargeback",
@@ -162,6 +174,8 @@ class Visa(TypedDict, total=False):
     - `receive_merchant_prearbitration` - Simulate the merchant issuing
       pre-arbitration. This will move the dispute to a `user_submission_required`
       state.
+    - `reject` - Simulate the dispute being rejected before it is submitted to the
+      network. This will move the dispute to a `rejected` state.
     - `represent` - Simulate the merchant re-presenting the dispute. This will move
       the dispute to a `user_submission_required` state.
     - `request_further_information` - Simulate further information being requested
@@ -199,6 +213,12 @@ class Visa(TypedDict, total=False):
     """The parameters for receiving the prearbitration.
 
     Required if and only if `action` is `receive_merchant_prearbitration`.
+    """
+
+    reject: VisaReject
+    """The parameters for rejecting the dispute.
+
+    Required if and only if `action` is `reject`.
     """
 
     represent: VisaRepresent

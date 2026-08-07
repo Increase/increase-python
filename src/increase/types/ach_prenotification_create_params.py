@@ -56,7 +56,7 @@ class ACHPrenotificationCreateParams(TypedDict, total=False):
     """Your identifier for the recipient."""
 
     individual_name: str
-    """The name of therecipient.
+    """The name of the recipient.
 
     This value is informational and not verified by the recipient's bank.
     """
