@@ -445,6 +445,46 @@ class TestEntities:
                     "line2": "x",
                 },
                 "name": "x",
+                "trustees": [
+                    {
+                        "structure": "individual",
+                        "individual": {
+                            "address": {
+                                "city": "x",
+                                "country": "x",
+                                "line1": "x",
+                                "line2": "x",
+                                "state": "x",
+                                "zip": "x",
+                            },
+                            "date_of_birth": parse_date("2019-12-27"),
+                            "identification": {
+                                "method": "social_security_number",
+                                "number": "xxxx",
+                                "drivers_license": {
+                                    "expiration_date": parse_date("2019-12-27"),
+                                    "file_id": "file_id",
+                                    "state": "xx",
+                                    "back_file_id": "back_file_id",
+                                },
+                                "other": {
+                                    "country": "x",
+                                    "description": "x",
+                                    "file_id": "file_id",
+                                    "back_file_id": "back_file_id",
+                                    "expiration_date": parse_date("2019-12-27"),
+                                },
+                                "passport": {
+                                    "country": "x",
+                                    "expiration_date": parse_date("2019-12-27"),
+                                    "file_id": "file_id",
+                                },
+                            },
+                            "name": "x",
+                            "confirmed_no_us_tax_id": True,
+                        },
+                    }
+                ],
             },
         )
         assert_matches_type(Entity, entity, path=["response"])
@@ -986,6 +1026,46 @@ class TestAsyncEntities:
                     "line2": "x",
                 },
                 "name": "x",
+                "trustees": [
+                    {
+                        "structure": "individual",
+                        "individual": {
+                            "address": {
+                                "city": "x",
+                                "country": "x",
+                                "line1": "x",
+                                "line2": "x",
+                                "state": "x",
+                                "zip": "x",
+                            },
+                            "date_of_birth": parse_date("2019-12-27"),
+                            "identification": {
+                                "method": "social_security_number",
+                                "number": "xxxx",
+                                "drivers_license": {
+                                    "expiration_date": parse_date("2019-12-27"),
+                                    "file_id": "file_id",
+                                    "state": "xx",
+                                    "back_file_id": "back_file_id",
+                                },
+                                "other": {
+                                    "country": "x",
+                                    "description": "x",
+                                    "file_id": "file_id",
+                                    "back_file_id": "back_file_id",
+                                    "expiration_date": parse_date("2019-12-27"),
+                                },
+                                "passport": {
+                                    "country": "x",
+                                    "expiration_date": parse_date("2019-12-27"),
+                                    "file_id": "file_id",
+                                },
+                            },
+                            "name": "x",
+                            "confirmed_no_us_tax_id": True,
+                        },
+                    }
+                ],
             },
         )
         assert_matches_type(Entity, entity, path=["response"])
