@@ -60,6 +60,7 @@ class TestCheckTransfers:
                 "attachment_file_id": "attachment_file_id",
                 "check_voucher_image_file_id": "check_voucher_image_file_id",
                 "note": "note",
+                "physical_check_batch_id": "physical_check_batch_id",
                 "return_address": {
                     "city": "city",
                     "line1": "line1",
@@ -347,6 +348,7 @@ class TestAsyncCheckTransfers:
                 "attachment_file_id": "attachment_file_id",
                 "check_voucher_image_file_id": "check_voucher_image_file_id",
                 "note": "note",
+                "physical_check_batch_id": "physical_check_batch_id",
                 "return_address": {
                     "city": "city",
                     "line1": "line1",
