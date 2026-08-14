@@ -63,7 +63,6 @@ class TestACHTransfers:
             require_approval=True,
             routing_number="101050001",
             standard_entry_class_code="corporate_credit_or_debit",
-            transaction_timing="synchronous",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
@@ -292,7 +291,6 @@ class TestAsyncACHTransfers:
             require_approval=True,
             routing_number="101050001",
             standard_entry_class_code="corporate_credit_or_debit",
-            transaction_timing="synchronous",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
