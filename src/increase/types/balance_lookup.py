@@ -31,6 +31,24 @@ class Loan(BaseModel):
     due_balance: int
     """The total amount due on the loan."""
 
+    due_fees: Optional[int] = None
+    """The fees on the loan that are due and unpaid."""
+
+    due_interest: Optional[int] = None
+    """The interest on the loan that is due and unpaid."""
+
+    due_principal: Optional[int] = None
+    """The principal on the loan that is due and unpaid."""
+
+    not_due_fees: Optional[int] = None
+    """The fees on the loan that are not yet due."""
+
+    not_due_interest: Optional[int] = None
+    """The interest on the loan that is not yet due."""
+
+    not_due_principal: Optional[int] = None
+    """The principal on the loan that is not yet due."""
+
     past_due_balance: int
     """The amount past due on the loan."""
 
