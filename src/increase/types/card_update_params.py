@@ -235,7 +235,7 @@ class AuthorizationControlsUsage(TypedDict, total=False):
     """
 
 
-class AuthorizationControls(TypedDict, total=False):
+class AuthorizationControls(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """Controls that restrict how this card can be used."""
 
     merchant_acceptor_identifier: AuthorizationControlsMerchantAcceptorIdentifier
