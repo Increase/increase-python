@@ -52,6 +52,7 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
         account_number: str | Omit = omit,
         debtor_name: str | Omit = omit,
         external_account_id: str | Omit = omit,
+        inbound_real_time_payments_request_for_payment_id: str | Omit = omit,
         require_approval: bool | Omit = omit,
         routing_number: str | Omit = omit,
         ultimate_creditor_name: str | Omit = omit,
@@ -85,6 +86,9 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
           external_account_id: The ID of an External Account to initiate a transfer to. If this parameter is
               provided, `account_number` and `routing_number` must be absent.
 
+          inbound_real_time_payments_request_for_payment_id: The ID of an Inbound Real-Time Payments Request for Payment in response to which
+              this transfer is being sent.
+
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
           routing_number: The destination American Bankers' Association (ABA) Routing Transit Number
@@ -117,6 +121,7 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
                     "account_number": account_number,
                     "debtor_name": debtor_name,
                     "external_account_id": external_account_id,
+                    "inbound_real_time_payments_request_for_payment_id": inbound_real_time_payments_request_for_payment_id,
                     "require_approval": require_approval,
                     "routing_number": routing_number,
                     "ultimate_creditor_name": ultimate_creditor_name,
@@ -369,6 +374,7 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
         account_number: str | Omit = omit,
         debtor_name: str | Omit = omit,
         external_account_id: str | Omit = omit,
+        inbound_real_time_payments_request_for_payment_id: str | Omit = omit,
         require_approval: bool | Omit = omit,
         routing_number: str | Omit = omit,
         ultimate_creditor_name: str | Omit = omit,
@@ -402,6 +408,9 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
           external_account_id: The ID of an External Account to initiate a transfer to. If this parameter is
               provided, `account_number` and `routing_number` must be absent.
 
+          inbound_real_time_payments_request_for_payment_id: The ID of an Inbound Real-Time Payments Request for Payment in response to which
+              this transfer is being sent.
+
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
           routing_number: The destination American Bankers' Association (ABA) Routing Transit Number
@@ -434,6 +443,7 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
                     "account_number": account_number,
                     "debtor_name": debtor_name,
                     "external_account_id": external_account_id,
+                    "inbound_real_time_payments_request_for_payment_id": inbound_real_time_payments_request_for_payment_id,
                     "require_approval": require_approval,
                     "routing_number": routing_number,
                     "ultimate_creditor_name": ultimate_creditor_name,
