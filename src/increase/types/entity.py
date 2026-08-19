@@ -45,6 +45,7 @@ __all__ = [
     "ValidationIssueBeneficialOwnerAddress",
     "ValidationIssueBeneficialOwnerIdentity",
     "ValidationIssueEntityAddress",
+    "ValidationIssueEntityIdentity",
     "ValidationIssueEntityTaxIdentifier",
 ]
 
@@ -520,7 +521,7 @@ class TermsAgreement(BaseModel):
     agreed_at: datetime
     """The timestamp of when the Entity agreed to the terms."""
 
-    ip_address: str
+    ip_address: Optional[str] = None
     """The IP address the Entity accessed reviewed the terms from."""
 
     terms_url: str
@@ -811,6 +812,12 @@ class ValidationIssueEntityAddress(BaseModel):
     """
 
 
+class ValidationIssueEntityIdentity(BaseModel):
+    """Details when the issue is with the entity's identity verification."""
+
+    pass
+
+
 class ValidationIssueEntityTaxIdentifier(BaseModel):
     """Details when the issue is with the entity's tax ID."""
 
@@ -825,7 +832,11 @@ class ValidationIssue(BaseModel):
     """Details when the issue is with a beneficial owner's identity verification."""
 
     category: Literal[
-        "entity_tax_identifier", "entity_address", "beneficial_owner_identity", "beneficial_owner_address"
+        "entity_tax_identifier",
+        "entity_address",
+        "entity_identity",
+        "beneficial_owner_identity",
+        "beneficial_owner_address",
     ]
     """The type of issue.
 
@@ -838,6 +849,9 @@ class ValidationIssue(BaseModel):
     - `entity_address` - The entity's address could not be validated. Update the
       address with the
       [update an entity API](/documentation/api/entities#update-an-entity.corporation.address).
+    - `entity_identity` - The entity's identity could not be verified. Update the
+      identification with the
+      [update an entity API](/documentation/api/entities#update-an-entity.natural_person.identification).
     - `beneficial_owner_identity` - A beneficial owner's identity could not be
       verified. Update the identification with the
       [update a beneficial owner API](/documentation/api/beneficial-owners#update-a-beneficial-owner).
@@ -848,6 +862,9 @@ class ValidationIssue(BaseModel):
 
     entity_address: Optional[ValidationIssueEntityAddress] = None
     """Details when the issue is with the entity's address."""
+
+    entity_identity: Optional[ValidationIssueEntityIdentity] = None
+    """Details when the issue is with the entity's identity verification."""
 
     entity_tax_identifier: Optional[ValidationIssueEntityTaxIdentifier] = None
     """Details when the issue is with the entity's tax ID."""

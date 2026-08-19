@@ -12,13 +12,13 @@ __all__ = [
     "WireTransferCreateParams",
     "Creditor",
     "CreditorAddress",
-    "CreditorAddressUnstructured",
+    "CreditorAddressStructured",
     "Remittance",
     "RemittanceTax",
     "RemittanceUnstructured",
     "Debtor",
     "DebtorAddress",
-    "DebtorAddressUnstructured",
+    "DebtorAddressStructured",
 ]
 
 
@@ -71,24 +71,37 @@ class WireTransferCreateParams(TypedDict, total=False):
     """The ID of an Account Number that will be passed to the wire's recipient"""
 
 
-class CreditorAddressUnstructured(TypedDict, total=False):
-    """Unstructured address lines."""
+class CreditorAddressStructured(TypedDict, total=False):
+    """Structured address components. City and country are required."""
 
-    line1: Required[str]
-    """The address line 1."""
+    city: Required[str]
+    """The city, district, town, or village of the address."""
+
+    country: Required[str]
+    """
+    The two-letter
+    [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code for
+    the country of the address.
+    """
+
+    line1: str
+    """The first line of the address."""
 
     line2: str
-    """The address line 2."""
+    """The second line of the address."""
 
-    line3: str
-    """The address line 3."""
+    postal_code: str
+    """The postal code of the address."""
+
+    state: str
+    """The address state."""
 
 
 class CreditorAddress(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """The person or business's address."""
 
-    unstructured: CreditorAddressUnstructured
-    """Unstructured address lines."""
+    structured: CreditorAddressStructured
+    """Structured address components. City and country are required."""
 
 
 class Creditor(TypedDict, total=False):
@@ -158,24 +171,37 @@ class Remittance(TypedDict, total=False):
     """
 
 
-class DebtorAddressUnstructured(TypedDict, total=False):
-    """Unstructured address lines."""
+class DebtorAddressStructured(TypedDict, total=False):
+    """Structured address components. City and country are required."""
 
-    line1: Required[str]
-    """The address line 1."""
+    city: Required[str]
+    """The city, district, town, or village of the address."""
+
+    country: Required[str]
+    """
+    The two-letter
+    [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code for
+    the country of the address.
+    """
+
+    line1: str
+    """The first line of the address."""
 
     line2: str
-    """The address line 2."""
+    """The second line of the address."""
 
-    line3: str
-    """The address line 3."""
+    postal_code: str
+    """The postal code of the address."""
+
+    state: str
+    """The address state."""
 
 
 class DebtorAddress(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """The person or business's address."""
 
-    unstructured: DebtorAddressUnstructured
-    """Unstructured address lines."""
+    structured: DebtorAddressStructured
+    """Structured address components. City and country are required."""
 
 
 class Debtor(TypedDict, total=False):

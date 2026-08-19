@@ -33,6 +33,9 @@ class BeneficialOwnerUpdateParams(TypedDict, total=False):
     Number).
     """
 
+    date_of_birth: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
+    """The person's date of birth in YYYY-MM-DD format."""
+
     identification: Identification
     """A means of verifying the person's identity."""
 

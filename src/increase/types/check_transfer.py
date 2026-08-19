@@ -275,6 +275,9 @@ class PhysicalCheck(BaseModel):
     return address if unspecified.
     """
 
+    physical_check_batch_id: Optional[str] = None
+    """The identifier of the Physical Check Batch that this check is a part of."""
+
     recipient_name: str
     """The name that will be printed on the check."""
 
@@ -556,6 +559,7 @@ class CheckTransfer(BaseModel):
     status: Literal[
         "pending_approval",
         "canceled",
+        "pending_batch_completing",
         "pending_submission",
         "pending_reviewing",
         "requires_attention",
@@ -570,6 +574,8 @@ class CheckTransfer(BaseModel):
 
     - `pending_approval` - The transfer is awaiting approval.
     - `canceled` - The transfer has been canceled.
+    - `pending_batch_completing` - The transfer is waiting for its Physical Check
+      Batch to be completed.
     - `pending_submission` - The transfer is pending submission.
     - `pending_reviewing` - The transfer is pending review by Increase.
     - `requires_attention` - The transfer requires attention from an Increase
