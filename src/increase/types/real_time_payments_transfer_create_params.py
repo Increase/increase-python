@@ -39,6 +39,12 @@ class RealTimePaymentsTransferCreateParams(TypedDict, total=False):
     absent.
     """
 
+    inbound_real_time_payments_request_for_payment_id: str
+    """
+    The ID of an Inbound Real-Time Payments Request for Payment in response to which
+    this transfer is being sent.
+    """
+
     require_approval: bool
     """Whether the transfer requires explicit approval via the dashboard or API."""
 

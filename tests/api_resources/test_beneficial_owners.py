@@ -194,6 +194,7 @@ class TestBeneficialOwners:
                 "zip": "10045",
             },
             confirmed_no_us_tax_id=True,
+            date_of_birth=parse_date("2019-12-27"),
             identification={
                 "method": "social_security_number",
                 "number": "xxxx",
@@ -508,6 +509,7 @@ class TestAsyncBeneficialOwners:
                 "zip": "10045",
             },
             confirmed_no_us_tax_id=True,
+            date_of_birth=parse_date("2019-12-27"),
             identification={
                 "method": "social_security_number",
                 "number": "xxxx",

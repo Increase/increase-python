@@ -24,6 +24,7 @@ __all__ = [
     "AuthorizationControlsUsageSingleUse",
     "AuthorizationControlsUsageSingleUseSettlementAmount",
     "BillingAddress",
+    "CardholderName",
     "DigitalWallet",
 ]
 
@@ -37,6 +38,13 @@ class CardCreateParams(TypedDict, total=False):
 
     billing_address: BillingAddress
     """The card's billing address."""
+
+    cardholder_name: CardholderName
+    """The name of the cardholder.
+
+    Used to respond to Account Name Inquiry requests from acquirers in Card
+    Validations.
+    """
 
     description: str
     """The description you choose to give the card."""
@@ -232,7 +240,7 @@ class AuthorizationControlsUsage(TypedDict, total=False):
     """
 
 
-class AuthorizationControls(TypedDict, total=False):
+class AuthorizationControls(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """Controls that restrict how this card can be used."""
 
     merchant_acceptor_identifier: AuthorizationControlsMerchantAcceptorIdentifier
@@ -274,6 +282,22 @@ class BillingAddress(TypedDict, total=False):
 
     line2: str
     """The second line of the billing address."""
+
+
+class CardholderName(TypedDict, total=False):
+    """The name of the cardholder.
+
+    Used to respond to Account Name Inquiry requests from acquirers in Card Validations.
+    """
+
+    first: Required[str]
+    """The cardholder's first name."""
+
+    last: Required[str]
+    """The cardholder's last name."""
+
+    middle: str
+    """The cardholder's middle name."""
 
 
 class DigitalWallet(TypedDict, total=False):

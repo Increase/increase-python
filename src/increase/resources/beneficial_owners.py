@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Union
+from datetime import date
 from typing_extensions import Literal
 
 import httpx
@@ -152,6 +153,7 @@ class BeneficialOwnersResource(SyncAPIResource):
         *,
         address: beneficial_owner_update_params.Address | Omit = omit,
         confirmed_no_us_tax_id: bool | Omit = omit,
+        date_of_birth: Union[str, date] | Omit = omit,
         identification: beneficial_owner_update_params.Identification | Omit = omit,
         name: str | Omit = omit,
         prongs: List[Literal["ownership", "control"]] | Omit = omit,
@@ -176,6 +178,8 @@ class BeneficialOwnersResource(SyncAPIResource):
               license, or other document if you've confirmed the individual does not have a US
               tax id (either a Social Security Number or Individual Taxpayer Identification
               Number).
+
+          date_of_birth: The person's date of birth in YYYY-MM-DD format.
 
           identification: A means of verifying the person's identity.
 
@@ -209,6 +213,7 @@ class BeneficialOwnersResource(SyncAPIResource):
                 {
                     "address": address,
                     "confirmed_no_us_tax_id": confirmed_no_us_tax_id,
+                    "date_of_birth": date_of_birth,
                     "identification": identification,
                     "name": name,
                     "prongs": prongs,
@@ -462,6 +467,7 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
         *,
         address: beneficial_owner_update_params.Address | Omit = omit,
         confirmed_no_us_tax_id: bool | Omit = omit,
+        date_of_birth: Union[str, date] | Omit = omit,
         identification: beneficial_owner_update_params.Identification | Omit = omit,
         name: str | Omit = omit,
         prongs: List[Literal["ownership", "control"]] | Omit = omit,
@@ -486,6 +492,8 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
               license, or other document if you've confirmed the individual does not have a US
               tax id (either a Social Security Number or Individual Taxpayer Identification
               Number).
+
+          date_of_birth: The person's date of birth in YYYY-MM-DD format.
 
           identification: A means of verifying the person's identity.
 
@@ -519,6 +527,7 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
                 {
                     "address": address,
                     "confirmed_no_us_tax_id": confirmed_no_us_tax_id,
+                    "date_of_birth": date_of_birth,
                     "identification": identification,
                     "name": name,
                     "prongs": prongs,

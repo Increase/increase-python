@@ -107,7 +107,7 @@ class ACHPrenotificationsResource(SyncAPIResource):
 
           individual_id: Your identifier for the recipient.
 
-          individual_name: The name of therecipient. This value is informational and not verified by the
+          individual_name: The name of the recipient. This value is informational and not verified by the
               recipient's bank.
 
           standard_entry_class_code: The
@@ -346,7 +346,7 @@ class AsyncACHPrenotificationsResource(AsyncAPIResource):
 
           individual_id: Your identifier for the recipient.
 
-          individual_name: The name of therecipient. This value is informational and not verified by the
+          individual_name: The name of the recipient. This value is informational and not verified by the
               recipient's bank.
 
           standard_entry_class_code: The
