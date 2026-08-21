@@ -142,6 +142,7 @@ class SelectedEventCategory(TypedDict, total=False):
             "physical_card_profile.updated",
             "physical_check.created",
             "physical_check.updated",
+            "plaid_processor_token.created",
             "checkbook.created",
             "checkbook.updated",
             "program.created",
@@ -314,6 +315,8 @@ class SelectedEventCategory(TypedDict, total=False):
       updated.
     - `physical_check.created` - Occurs whenever a Physical Check is created.
     - `physical_check.updated` - Occurs whenever a Physical Check is updated.
+    - `plaid_processor_token.created` - Occurs whenever a Plaid Processor Token is
+      created.
     - `checkbook.created` - Occurs whenever a Checkbook is created.
     - `checkbook.updated` - Occurs whenever a Checkbook is updated.
     - `program.created` - Occurs whenever a Program is created.
