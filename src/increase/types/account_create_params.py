@@ -49,16 +49,19 @@ class Loan(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg
     credit_limit: Required[int]
     """The maximum amount of money that can be drawn from the Account."""
 
-    grace_period_days: Required[int]
+    grace_period_days: int
     """
     The number of days after the statement date that the Account can be past due
     before being considered delinquent.
     """
 
-    statement_day_of_month: Required[int]
+    maturity_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
+    """The date on which the loan matures."""
+
+    statement_day_of_month: int
     """The day of the month on which the loan statement is generated."""
 
-    statement_payment_type: Required[Literal["balance", "interest_until_maturity"]]
+    statement_payment_type: Literal["balance", "interest_until_maturity"]
     """The type of statement payment for the account.
 
     - `balance` - The borrower must pay the full balance of the loan at the end of
@@ -66,6 +69,3 @@ class Loan(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg
     - `interest_until_maturity` - The borrower must pay the accrued interest at the
       end of the statement period.
     """
-
-    maturity_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
-    """The date on which the loan matures."""
