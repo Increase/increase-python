@@ -39,9 +39,9 @@ class TestAccounts:
             loan={
                 "credit_limit": 0,
                 "grace_period_days": 0,
+                "maturity_date": parse_date("2019-12-27"),
                 "statement_day_of_month": 1,
                 "statement_payment_type": "balance",
-                "maturity_date": parse_date("2019-12-27"),
             },
             program_id="program_i2v2os4mwza1oetokh9i",
         )
@@ -295,9 +295,9 @@ class TestAsyncAccounts:
             loan={
                 "credit_limit": 0,
                 "grace_period_days": 0,
+                "maturity_date": parse_date("2019-12-27"),
                 "statement_day_of_month": 1,
                 "statement_payment_type": "balance",
-                "maturity_date": parse_date("2019-12-27"),
             },
             program_id="program_i2v2os4mwza1oetokh9i",
         )

@@ -137,6 +137,7 @@ _CategoryReservedKeywords = TypedDict(
                 "physical_card_profile.updated",
                 "physical_check.created",
                 "physical_check.updated",
+                "plaid_processor_token.created",
                 "checkbook.created",
                 "checkbook.updated",
                 "program.created",
