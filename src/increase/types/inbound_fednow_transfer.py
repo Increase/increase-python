@@ -117,6 +117,9 @@ class InboundFednowTransfer(BaseModel):
     decline: Optional[Decline] = None
     """If your transfer is declined, this will contain details of the decline."""
 
+    end_to_end_identification: Optional[str] = None
+    """A free-form reference string set by the sender, to help identify the transfer."""
+
     status: Literal["pending_confirming", "timed_out", "confirmed", "declined", "requires_attention"]
     """The lifecycle status of the transfer.
 
@@ -133,6 +136,9 @@ class InboundFednowTransfer(BaseModel):
     The identifier of the Transaction object created when the transfer was
     confirmed.
     """
+
+    transaction_identification: Optional[str] = None
+    """The FedNow network identification of the transfer."""
 
     type: Literal["inbound_fednow_transfer"]
     """A constant representing the object's type.
