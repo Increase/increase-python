@@ -139,7 +139,10 @@ class InboundCheckDepositsResource(SyncAPIResource):
         Args:
           inbound_check_deposit_id: The identifier of the Inbound Check Deposit to adjust.
 
-          amount: The adjustment amount in cents. Defaults to the amount of the Inbound Check
+          amount: The adjustment amount in cents. A positive amount means that the funds are being
+              returned to you by the other bank and is a credit to your account, as happens
+              for a `wrong_payee_credit`. A negative amount is a debit to your account, as
+              happens for a `late_return`. Defaults to the amount of the Inbound Check
               Deposit.
 
           reason: The reason for the adjustment. Defaults to `wrong_payee_credit`.
@@ -308,7 +311,10 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
         Args:
           inbound_check_deposit_id: The identifier of the Inbound Check Deposit to adjust.
 
-          amount: The adjustment amount in cents. Defaults to the amount of the Inbound Check
+          amount: The adjustment amount in cents. A positive amount means that the funds are being
+              returned to you by the other bank and is a credit to your account, as happens
+              for a `wrong_payee_credit`. A negative amount is a debit to your account, as
+              happens for a `late_return`. Defaults to the amount of the Inbound Check
               Deposit.
 
           reason: The reason for the adjustment. Defaults to `wrong_payee_credit`.
