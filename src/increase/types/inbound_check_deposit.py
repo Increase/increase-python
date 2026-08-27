@@ -16,7 +16,10 @@ class Adjustment(BaseModel):
     """The time at which the return adjustment was received."""
 
     amount: int
-    """The amount of the adjustment."""
+    """The amount of the adjustment in USD cents.
+
+    A positive amount is a credit to your account and a negative amount is a debit.
+    """
 
     reason: Literal["late_return", "wrong_payee_credit"]
     """The reason for the adjustment.
