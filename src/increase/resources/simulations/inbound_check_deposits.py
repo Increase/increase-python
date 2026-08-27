@@ -121,8 +121,7 @@ class InboundCheckDepositsResource(SyncAPIResource):
         inbound_check_deposit_id: str,
         *,
         amount: int | Omit = omit,
-        reason: Literal["late_return", "wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid"]
-        | Omit = omit,
+        reason: Literal["late_return", "wrong_payee_credit"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -139,7 +138,10 @@ class InboundCheckDepositsResource(SyncAPIResource):
         Args:
           inbound_check_deposit_id: The identifier of the Inbound Check Deposit to adjust.
 
-          amount: The adjustment amount in cents. Defaults to the amount of the Inbound Check
+          amount: The adjustment amount in cents. A positive amount means that the funds are being
+              returned to you by the other bank and is a credit to your account, as happens
+              for a `wrong_payee_credit`. A negative amount is a debit to your account, as
+              happens for a `late_return`. Defaults to the amount of the Inbound Check
               Deposit.
 
           reason: The reason for the adjustment. Defaults to `wrong_payee_credit`.
@@ -148,12 +150,6 @@ class InboundCheckDepositsResource(SyncAPIResource):
                 institution has responded with a Late Return Claim.
               - `wrong_payee_credit` - The check was deposited to the wrong payee and the
                 depositing institution has reimbursed the funds with a Wrong Payee Credit.
-              - `adjusted_amount` - The check was deposited with a different amount than what
-                was written on the check.
-              - `non_conforming_item` - The recipient was not able to process the check. This
-                usually happens for e.g., low quality images.
-              - `paid` - The check has already been deposited elsewhere and so this is a
-                duplicate.
 
           extra_headers: Send extra headers
 
@@ -290,8 +286,7 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
         inbound_check_deposit_id: str,
         *,
         amount: int | Omit = omit,
-        reason: Literal["late_return", "wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid"]
-        | Omit = omit,
+        reason: Literal["late_return", "wrong_payee_credit"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -308,7 +303,10 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
         Args:
           inbound_check_deposit_id: The identifier of the Inbound Check Deposit to adjust.
 
-          amount: The adjustment amount in cents. Defaults to the amount of the Inbound Check
+          amount: The adjustment amount in cents. A positive amount means that the funds are being
+              returned to you by the other bank and is a credit to your account, as happens
+              for a `wrong_payee_credit`. A negative amount is a debit to your account, as
+              happens for a `late_return`. Defaults to the amount of the Inbound Check
               Deposit.
 
           reason: The reason for the adjustment. Defaults to `wrong_payee_credit`.
@@ -317,12 +315,6 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
                 institution has responded with a Late Return Claim.
               - `wrong_payee_credit` - The check was deposited to the wrong payee and the
                 depositing institution has reimbursed the funds with a Wrong Payee Credit.
-              - `adjusted_amount` - The check was deposited with a different amount than what
-                was written on the check.
-              - `non_conforming_item` - The recipient was not able to process the check. This
-                usually happens for e.g., low quality images.
-              - `paid` - The check has already been deposited elsewhere and so this is a
-                duplicate.
 
           extra_headers: Send extra headers
 

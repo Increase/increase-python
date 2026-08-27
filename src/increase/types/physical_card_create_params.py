@@ -12,7 +12,10 @@ class PhysicalCardCreateParams(TypedDict, total=False):
     """The underlying card representing this physical card."""
 
     cardholder: Required[Cardholder]
-    """Details about the cardholder, as it will appear on the physical card."""
+    """Details about the cardholder, as it will appear on the physical card.
+
+    The combined first name and last name cannot exceed 25 characters.
+    """
 
     shipment: Required[Shipment]
     """The details used to ship this physical card."""
@@ -25,7 +28,10 @@ class PhysicalCardCreateParams(TypedDict, total=False):
 
 
 class Cardholder(TypedDict, total=False):
-    """Details about the cardholder, as it will appear on the physical card."""
+    """Details about the cardholder, as it will appear on the physical card.
+
+    The combined first name and last name cannot exceed 25 characters.
+    """
 
     first_name: Required[str]
     """The cardholder's first name."""
