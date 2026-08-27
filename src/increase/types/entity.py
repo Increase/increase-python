@@ -29,6 +29,11 @@ __all__ = [
     "NaturalPersonAddress",
     "NaturalPersonIdentification",
     "RiskRating",
+    "SoleProprietorship",
+    "SoleProprietorshipAddress",
+    "SoleProprietorshipSoleProprietor",
+    "SoleProprietorshipSoleProprietorAddress",
+    "SoleProprietorshipSoleProprietorIdentification",
     "TermsAgreement",
     "ThirdPartyVerification",
     "Trust",
@@ -517,6 +522,138 @@ class RiskRating(BaseModel):
     """
 
 
+class SoleProprietorshipAddress(BaseModel):
+    """The sole proprietorship's address."""
+
+    city: Optional[str] = None
+    """The city, district, town, or village of the address."""
+
+    country: str
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
+
+    line1: str
+    """The first line of the address."""
+
+    line2: Optional[str] = None
+    """The second line of the address."""
+
+    state: Optional[str] = None
+    """
+    The two-letter United States Postal Service (USPS) abbreviation for the US
+    state, province, or region of the address.
+    """
+
+    zip: Optional[str] = None
+    """The ZIP or postal code of the address."""
+
+
+class SoleProprietorshipSoleProprietorAddress(BaseModel):
+    """The person's address."""
+
+    city: Optional[str] = None
+    """The city, district, town, or village of the address."""
+
+    country: str
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
+
+    line1: str
+    """The first line of the address."""
+
+    line2: Optional[str] = None
+    """The second line of the address."""
+
+    state: Optional[str] = None
+    """
+    The two-letter United States Postal Service (USPS) abbreviation for the US
+    state, province, or region of the address.
+    """
+
+    zip: Optional[str] = None
+    """The ZIP or postal code of the address."""
+
+
+class SoleProprietorshipSoleProprietorIdentification(BaseModel):
+    """A means of verifying the person's identity."""
+
+    method: Literal[
+        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
+    ]
+    """A method that can be used to verify the individual's identity.
+
+    - `social_security_number` - A social security number.
+    - `individual_taxpayer_identification_number` - An individual taxpayer
+      identification number (ITIN).
+    - `passport` - A passport number.
+    - `drivers_license` - A driver's license number.
+    - `other` - Another identifying document.
+    """
+
+    number_last4: str
+    """
+    The last 4 digits of the identification number that can be used to verify the
+    individual's identity.
+    """
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
+
+
+class SoleProprietorshipSoleProprietor(BaseModel):
+    """The individual who operates the sole proprietorship."""
+
+    address: SoleProprietorshipSoleProprietorAddress
+    """The person's address."""
+
+    date_of_birth: date
+    """The person's date of birth in YYYY-MM-DD format."""
+
+    identification: Optional[SoleProprietorshipSoleProprietorIdentification] = None
+    """A means of verifying the person's identity."""
+
+    name: str
+    """The person's legal name."""
+
+
+class SoleProprietorship(BaseModel):
+    """Details of the sole proprietorship entity.
+
+    Will be present if `structure` is equal to `sole_proprietorship`.
+    """
+
+    address: SoleProprietorshipAddress
+    """The sole proprietorship's address."""
+
+    doing_business_as_name: Optional[str] = None
+    """The name under which the sole proprietorship does business."""
+
+    email: Optional[str] = None
+    """An email address for the sole proprietorship."""
+
+    industry_code: Optional[str] = None
+    """
+    The numeric North American Industry Classification System (NAICS) code submitted
+    for the sole proprietorship.
+    """
+
+    sole_proprietor: SoleProprietorshipSoleProprietor
+    """The individual who operates the sole proprietorship."""
+
+    tax_identifier: Optional[str] = None
+    """The Employer Identification Number (EIN) for the sole proprietorship."""
+
+    website: Optional[str] = None
+    """The sole proprietorship's website."""
+
+
 class TermsAgreement(BaseModel):
     agreed_at: datetime
     """The timestamp of when the Entity agreed to the terms."""
@@ -958,6 +1095,12 @@ class Entity(BaseModel):
     such as money laundering.
     """
 
+    sole_proprietorship: Optional[SoleProprietorship] = None
+    """Details of the sole proprietorship entity.
+
+    Will be present if `structure` is equal to `sole_proprietorship`.
+    """
+
     status: Literal["active", "archived", "disabled"]
     """The status of the entity.
 
@@ -968,7 +1111,7 @@ class Entity(BaseModel):
       financial activity.
     """
 
-    structure: Literal["corporation", "natural_person", "joint", "trust", "government_authority"]
+    structure: Literal["corporation", "natural_person", "joint", "trust", "government_authority", "sole_proprietorship"]
     """The entity's legal structure.
 
     - `corporation` - A corporation.
@@ -976,6 +1119,7 @@ class Entity(BaseModel):
     - `joint` - Multiple individual people.
     - `trust` - A trust.
     - `government_authority` - A government authority.
+    - `sole_proprietorship` - A sole proprietorship.
     """
 
     supplemental_documents: List[EntitySupplementalDocument]

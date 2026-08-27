@@ -3628,7 +3628,10 @@ class SourceInboundCheckAdjustment(BaseModel):
     """The ID of the transaction that was adjusted."""
 
     amount: int
-    """The amount of the check adjustment."""
+    """The amount of the check adjustment in USD cents.
+
+    A positive amount is a credit to your account and a negative amount is a debit.
+    """
 
     reason: Literal["late_return", "wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid"]
     """The reason for the adjustment.

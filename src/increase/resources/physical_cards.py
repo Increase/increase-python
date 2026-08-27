@@ -65,7 +65,8 @@ class PhysicalCardsResource(SyncAPIResource):
         Args:
           card_id: The underlying card representing this physical card.
 
-          cardholder: Details about the cardholder, as it will appear on the physical card.
+          cardholder: Details about the cardholder, as it will appear on the physical card. The
+              combined first name and last name cannot exceed 25 characters.
 
           shipment: The details used to ship this physical card.
 
@@ -293,7 +294,8 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
         Args:
           card_id: The underlying card representing this physical card.
 
-          cardholder: Details about the cardholder, as it will appear on the physical card.
+          cardholder: Details about the cardholder, as it will appear on the physical card. The
+              combined first name and last name cannot exceed 25 characters.
 
           shipment: The details used to ship this physical card.
 
