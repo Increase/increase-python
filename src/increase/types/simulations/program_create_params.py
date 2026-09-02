@@ -23,5 +23,11 @@ class ProgramCreateParams(TypedDict, total=False):
     lending_maximum_extendable_credit: int
     """The maximum extendable credit of the program being added."""
 
+    loan_accounts_require_loan_offers: bool
+    """
+    Whether opening a loan Account under this Program requires an accepted Loan
+    Offer. Requires `lending_maximum_extendable_credit`. Defaults to `false`.
+    """
+
     reserve_account_id: str
     """The identifier of the Account the Program should be added to is for."""

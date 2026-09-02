@@ -49,6 +49,7 @@ class ProgramsResource(SyncAPIResource):
         name: str,
         bank: Literal["core_bank", "first_internet_bank", "grasshopper_bank", "increase_bank"] | Omit = omit,
         lending_maximum_extendable_credit: int | Omit = omit,
+        loan_accounts_require_loan_offers: bool | Omit = omit,
         reserve_account_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -77,6 +78,9 @@ class ProgramsResource(SyncAPIResource):
 
           lending_maximum_extendable_credit: The maximum extendable credit of the program being added.
 
+          loan_accounts_require_loan_offers: Whether opening a loan Account under this Program requires an accepted Loan
+              Offer. Requires `lending_maximum_extendable_credit`. Defaults to `false`.
+
           reserve_account_id: The identifier of the Account the Program should be added to is for.
 
           extra_headers: Send extra headers
@@ -96,6 +100,7 @@ class ProgramsResource(SyncAPIResource):
                     "name": name,
                     "bank": bank,
                     "lending_maximum_extendable_credit": lending_maximum_extendable_credit,
+                    "loan_accounts_require_loan_offers": loan_accounts_require_loan_offers,
                     "reserve_account_id": reserve_account_id,
                 },
                 program_create_params.ProgramCreateParams,
@@ -137,6 +142,7 @@ class AsyncProgramsResource(AsyncAPIResource):
         name: str,
         bank: Literal["core_bank", "first_internet_bank", "grasshopper_bank", "increase_bank"] | Omit = omit,
         lending_maximum_extendable_credit: int | Omit = omit,
+        loan_accounts_require_loan_offers: bool | Omit = omit,
         reserve_account_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -165,6 +171,9 @@ class AsyncProgramsResource(AsyncAPIResource):
 
           lending_maximum_extendable_credit: The maximum extendable credit of the program being added.
 
+          loan_accounts_require_loan_offers: Whether opening a loan Account under this Program requires an accepted Loan
+              Offer. Requires `lending_maximum_extendable_credit`. Defaults to `false`.
+
           reserve_account_id: The identifier of the Account the Program should be added to is for.
 
           extra_headers: Send extra headers
@@ -184,6 +193,7 @@ class AsyncProgramsResource(AsyncAPIResource):
                     "name": name,
                     "bank": bank,
                     "lending_maximum_extendable_credit": lending_maximum_extendable_credit,
+                    "loan_accounts_require_loan_offers": loan_accounts_require_loan_offers,
                     "reserve_account_id": reserve_account_id,
                 },
                 program_create_params.ProgramCreateParams,
