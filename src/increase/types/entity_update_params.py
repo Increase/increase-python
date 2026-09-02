@@ -367,8 +367,7 @@ class NaturalPersonIdentification(TypedDict, total=False, extra_items=object):  
     An identification number that can be used to verify the individual's identity,
     such as a social security number. For Social Security Numbers and Individual
     Taxpayer Identification Numbers, submit nine digits with no dashes or other
-    separators. When testing in sandbox, use one of our
-    [sandbox test values](https://increase.com/documentation/sandbox-test-values).
+    separators.
     """
 
     drivers_license: NaturalPersonIdentificationDriversLicense
@@ -619,8 +618,7 @@ class TrustGrantorIdentification(TypedDict, total=False, extra_items=object):  #
     An identification number that can be used to verify the individual's identity,
     such as a social security number. For Social Security Numbers and Individual
     Taxpayer Identification Numbers, submit nine digits with no dashes or other
-    separators. When testing in sandbox, use one of our
-    [sandbox test values](https://increase.com/documentation/sandbox-test-values).
+    separators.
     """
 
     drivers_license: TrustGrantorIdentificationDriversLicense
@@ -796,8 +794,7 @@ class TrustTrusteeIndividualIdentification(TypedDict, total=False, extra_items=o
     An identification number that can be used to verify the individual's identity,
     such as a social security number. For Social Security Numbers and Individual
     Taxpayer Identification Numbers, submit nine digits with no dashes or other
-    separators. When testing in sandbox, use one of our
-    [sandbox test values](https://increase.com/documentation/sandbox-test-values).
+    separators.
     """
 
     drivers_license: TrustTrusteeIndividualIdentificationDriversLicense

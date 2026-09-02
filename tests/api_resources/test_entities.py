@@ -184,6 +184,36 @@ class TestEntities:
                 "rated_at": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "rating": "low",
             },
+            sole_proprietorship={
+                "address": {
+                    "city": "x",
+                    "line1": "x",
+                    "state": "xx",
+                    "zip": "x",
+                    "line2": "x",
+                },
+                "sole_proprietor": {
+                    "address": {
+                        "city": "x",
+                        "country": "x",
+                        "line1": "x",
+                        "line2": "x",
+                        "state": "x",
+                        "zip": "x",
+                    },
+                    "date_of_birth": parse_date("2019-12-27"),
+                    "identification": {
+                        "method": "social_security_number",
+                        "number": "xxxx",
+                    },
+                    "name": "x",
+                },
+                "doing_business_as_name": "x",
+                "email": "dev@stainless.com",
+                "industry_code": "x",
+                "tax_identifier": "x",
+                "website": "website",
+            },
             supplemental_documents=[{"file_id": "file_id"}],
             terms_agreements=[
                 {
@@ -799,6 +829,36 @@ class TestAsyncEntities:
             risk_rating={
                 "rated_at": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "rating": "low",
+            },
+            sole_proprietorship={
+                "address": {
+                    "city": "x",
+                    "line1": "x",
+                    "state": "xx",
+                    "zip": "x",
+                    "line2": "x",
+                },
+                "sole_proprietor": {
+                    "address": {
+                        "city": "x",
+                        "country": "x",
+                        "line1": "x",
+                        "line2": "x",
+                        "state": "x",
+                        "zip": "x",
+                    },
+                    "date_of_birth": parse_date("2019-12-27"),
+                    "identification": {
+                        "method": "social_security_number",
+                        "number": "xxxx",
+                    },
+                    "name": "x",
+                },
+                "doing_business_as_name": "x",
+                "email": "dev@stainless.com",
+                "industry_code": "x",
+                "tax_identifier": "x",
+                "website": "website",
             },
             supplemental_documents=[{"file_id": "file_id"}],
             terms_agreements=[

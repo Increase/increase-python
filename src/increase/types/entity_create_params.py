@@ -37,6 +37,11 @@ __all__ = [
     "NaturalPersonIdentificationOther",
     "NaturalPersonIdentificationPassport",
     "RiskRating",
+    "SoleProprietorship",
+    "SoleProprietorshipAddress",
+    "SoleProprietorshipSoleProprietor",
+    "SoleProprietorshipSoleProprietorAddress",
+    "SoleProprietorshipSoleProprietorIdentification",
     "SupplementalDocument",
     "TermsAgreement",
     "ThirdPartyVerification",
@@ -59,7 +64,9 @@ __all__ = [
 
 
 class EntityCreateParams(TypedDict, total=False):
-    structure: Required[Literal["corporation", "natural_person", "joint", "trust", "government_authority"]]
+    structure: Required[
+        Literal["corporation", "natural_person", "joint", "trust", "government_authority", "sole_proprietorship"]
+    ]
     """The type of Entity to create.
 
     - `corporation` - A corporation.
@@ -67,6 +74,7 @@ class EntityCreateParams(TypedDict, total=False):
     - `joint` - Multiple individual people.
     - `trust` - A trust.
     - `government_authority` - A government authority.
+    - `sole_proprietorship` - A sole proprietorship.
     """
 
     corporation: Corporation
@@ -102,6 +110,12 @@ class EntityCreateParams(TypedDict, total=False):
     """
     An assessment of the entity's potential risk of involvement in financial crimes,
     such as money laundering.
+    """
+
+    sole_proprietorship: SoleProprietorship
+    """Details of the sole proprietorship entity to create.
+
+    Required if `structure` is equal to `sole_proprietorship`.
     """
 
     supplemental_documents: Iterable[SupplementalDocument]
@@ -282,8 +296,7 @@ class CorporationBeneficialOwnerIndividualIdentification(TypedDict, total=False,
     An identification number that can be used to verify the individual's identity,
     such as a social security number. For Social Security Numbers and Individual
     Taxpayer Identification Numbers, submit nine digits with no dashes or other
-    separators. When testing in sandbox, use one of our
-    [sandbox test values](https://increase.com/documentation/sandbox-test-values).
+    separators.
     """
 
     drivers_license: CorporationBeneficialOwnerIndividualIdentificationDriversLicense
@@ -357,8 +370,7 @@ class CorporationLegalIdentifier(TypedDict, total=False):
     """The legal identifier itself.
 
     For US Employer Identification Numbers, submit nine digits with no dashes or
-    other separators. When testing in sandbox, use one of our
-    [sandbox test values](https://increase.com/documentation/sandbox-test-values).
+    other separators.
     """
 
     category: Literal["us_employer_identification_number", "other"]
@@ -642,8 +654,7 @@ class JointIndividualIdentification(TypedDict, total=False, extra_items=object):
     An identification number that can be used to verify the individual's identity,
     such as a social security number. For Social Security Numbers and Individual
     Taxpayer Identification Numbers, submit nine digits with no dashes or other
-    separators. When testing in sandbox, use one of our
-    [sandbox test values](https://increase.com/documentation/sandbox-test-values).
+    separators.
     """
 
     drivers_license: JointIndividualIdentificationDriversLicense
@@ -824,8 +835,7 @@ class NaturalPersonIdentification(TypedDict, total=False, extra_items=object):  
     An identification number that can be used to verify the individual's identity,
     such as a social security number. For Social Security Numbers and Individual
     Taxpayer Identification Numbers, submit nine digits with no dashes or other
-    separators. When testing in sandbox, use one of our
-    [sandbox test values](https://increase.com/documentation/sandbox-test-values).
+    separators.
     """
 
     drivers_license: NaturalPersonIdentificationDriversLicense
@@ -894,6 +904,156 @@ class RiskRating(TypedDict, total=False):
     - `low` - Minimal risk of involvement in financial crime.
     - `medium` - Moderate risk of involvement in financial crime.
     - `high` - Elevated risk of involvement in financial crime.
+    """
+
+
+class SoleProprietorshipAddress(TypedDict, total=False):
+    """The sole proprietorship's business address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
+    city: Required[str]
+    """The city of the address."""
+
+    line1: Required[str]
+    """The first line of the address. This is usually the street number and street."""
+
+    state: Required[str]
+    """
+    The two-letter United States Postal Service (USPS) abbreviation for the state of
+    the address.
+    """
+
+    zip: Required[str]
+    """The ZIP code of the address."""
+
+    line2: str
+    """The second line of the address. This might be the floor or room number."""
+
+
+class SoleProprietorshipSoleProprietorAddress(TypedDict, total=False):
+    """The individual's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
+    city: Required[str]
+    """The city, district, town, or village of the address."""
+
+    country: Required[str]
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+
+    Defaults to `US`.
+    """
+
+    line1: Required[str]
+    """The first line of the address. This is usually the street number and street."""
+
+    line2: str
+    """The second line of the address. This might be the floor or room number."""
+
+    state: str
+    """
+    The two-letter United States Postal Service (USPS) abbreviation for the US
+    state, province, or region of the address. Required in certain countries.
+    """
+
+    zip: str
+    """The ZIP or postal code of the address. Required in certain countries."""
+
+
+class SoleProprietorshipSoleProprietorIdentification(TypedDict, total=False):
+    """A means of verifying the person's identity.
+
+    Sole proprietors must be identified with a `social_security_number` or an `individual_taxpayer_identification_number`.
+    """
+
+    method: Required[Literal["social_security_number", "individual_taxpayer_identification_number"]]
+    """A method that can be used to verify the individual's identity.
+
+    - `social_security_number` - A social security number.
+    - `individual_taxpayer_identification_number` - An individual taxpayer
+      identification number (ITIN).
+    """
+
+    number: Required[str]
+    """
+    An identification number that can be used to verify the individual's identity,
+    such as a social security number. Submit nine digits with no dashes or other
+    separators.
+    """
+
+
+class SoleProprietorshipSoleProprietor(TypedDict, total=False):
+    """The individual who operates the sole proprietorship."""
+
+    address: Required[SoleProprietorshipSoleProprietorAddress]
+    """The individual's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
+    date_of_birth: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
+    """The person's date of birth in YYYY-MM-DD format."""
+
+    identification: Required[SoleProprietorshipSoleProprietorIdentification]
+    """A means of verifying the person's identity.
+
+    Sole proprietors must be identified with a `social_security_number` or an
+    `individual_taxpayer_identification_number`.
+    """
+
+    name: Required[str]
+    """The person's legal name."""
+
+
+class SoleProprietorship(TypedDict, total=False):
+    """Details of the sole proprietorship entity to create.
+
+    Required if `structure` is equal to `sole_proprietorship`.
+    """
+
+    address: Required[SoleProprietorshipAddress]
+    """The sole proprietorship's business address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
+    sole_proprietor: Required[SoleProprietorshipSoleProprietor]
+    """The individual who operates the sole proprietorship."""
+
+    doing_business_as_name: str
+    """
+    The name under which the sole proprietorship does business, if it is different
+    from the name of the sole proprietor.
+    """
+
+    email: str
+    """An email address for the sole proprietorship.
+
+    Not every program requires an email for submitted Entities.
+    """
+
+    industry_code: str
+    """
+    The North American Industry Classification System (NAICS) code for the sole
+    proprietorship's primary line of business. This is a number, like `5132` for
+    `Software Publishers`. A full list of classification codes is available
+    [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
+    """
+
+    tax_identifier: str
+    """
+    The United States Employer Identification Number (EIN) for the sole
+    proprietorship, if the sole proprietor has one. Submit nine digits with no
+    dashes or other separators.
+    """
+
+    website: str
+    """A website for the sole proprietorship.
+
+    Not every program requires a website for submitted Entities.
     """
 
 
@@ -1084,8 +1244,7 @@ class TrustTrusteeIndividualIdentification(TypedDict, total=False, extra_items=o
     An identification number that can be used to verify the individual's identity,
     such as a social security number. For Social Security Numbers and Individual
     Taxpayer Identification Numbers, submit nine digits with no dashes or other
-    separators. When testing in sandbox, use one of our
-    [sandbox test values](https://increase.com/documentation/sandbox-test-values).
+    separators.
     """
 
     drivers_license: TrustTrusteeIndividualIdentificationDriversLicense
@@ -1276,8 +1435,7 @@ class TrustGrantorIdentification(TypedDict, total=False, extra_items=object):  #
     An identification number that can be used to verify the individual's identity,
     such as a social security number. For Social Security Numbers and Individual
     Taxpayer Identification Numbers, submit nine digits with no dashes or other
-    separators. When testing in sandbox, use one of our
-    [sandbox test values](https://increase.com/documentation/sandbox-test-values).
+    separators.
     """
 
     drivers_license: TrustGrantorIdentificationDriversLicense
