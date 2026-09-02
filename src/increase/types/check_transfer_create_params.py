@@ -218,7 +218,11 @@ class PhysicalCheck(TypedDict, total=False, extra_items=object):  # type: ignore
     """
 
     note: str
-    """The descriptor that will be printed on the letter included with the check."""
+    """A few paragraphs of text printed on the letter included with the check.
+
+    It can contain at most 22 lines. Paragraphs will wrap at about 120 characters,
+    but depending on your exact message, it might be slightly more or slightly less.
+    """
 
     physical_check_batch_id: str
     """The identifier of the Physical Check Batch to mail this check as a part of."""
