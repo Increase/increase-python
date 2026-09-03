@@ -1630,7 +1630,8 @@ class VisaUserPrearbitrationCategoryChange(TypedDict, total=False):
             "processing_error",
         ]
     ]
-    """
+    """The category the dispute is being changed to.
+
     - `authorization` - Authorization.
     - `consumer_canceled_merchandise` - Consumer: canceled merchandise.
     - `consumer_canceled_recurring_transaction` - Consumer: canceled recurring

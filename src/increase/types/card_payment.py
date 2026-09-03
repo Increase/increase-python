@@ -828,7 +828,7 @@ class ElementCardAuthorizationAdditionalAmountsVision(BaseModel):
 
 class ElementCardAuthorizationAdditionalAmounts(BaseModel):
     """
-    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
     """
 
     clinic: Optional[ElementCardAuthorizationAdditionalAmountsClinic] = None
@@ -1357,9 +1357,9 @@ class ElementCardAuthorization(BaseModel):
 
     additional_amounts: ElementCardAuthorizationAdditionalAmounts
     """
-    Additional amounts associated with the card authorization, such as ATM
-    surcharges fees. These are usually a subset of the `amount` field and are used
-    to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge
+    fees. These are usually a subset of the `amount` field and are used to provide
+    more detailed information about the transaction.
     """
 
     amount: int
@@ -1398,8 +1398,8 @@ class ElementCardAuthorization(BaseModel):
 
     expires_at: datetime
     """
-    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
-    will expire and the pending transaction will be released.
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which this
+    authorization will expire and the pending transaction will be released.
     """
 
     healthcare: Optional[ElementCardAuthorizationHealthcare] = None
@@ -1783,7 +1783,7 @@ class ElementCardBalanceInquiryAdditionalAmountsVision(BaseModel):
 
 class ElementCardBalanceInquiryAdditionalAmounts(BaseModel):
     """
-    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
     """
 
     clinic: Optional[ElementCardBalanceInquiryAdditionalAmountsClinic] = None
@@ -2282,9 +2282,9 @@ class ElementCardBalanceInquiry(BaseModel):
 
     additional_amounts: ElementCardBalanceInquiryAdditionalAmounts
     """
-    Additional amounts associated with the card authorization, such as ATM
-    surcharges fees. These are usually a subset of the `amount` field and are used
-    to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge
+    fees. These are usually a subset of the `amount` field and are used to provide
+    more detailed information about the transaction.
     """
 
     balance: int
@@ -2572,7 +2572,7 @@ class ElementCardDeclineAdditionalAmountsVision(BaseModel):
 
 class ElementCardDeclineAdditionalAmounts(BaseModel):
     """
-    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
     """
 
     clinic: Optional[ElementCardDeclineAdditionalAmountsClinic] = None
@@ -3082,9 +3082,9 @@ class ElementCardDecline(BaseModel):
 
     additional_amounts: ElementCardDeclineAdditionalAmounts
     """
-    Additional amounts associated with the card authorization, such as ATM
-    surcharges fees. These are usually a subset of the `amount` field and are used
-    to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge
+    fees. These are usually a subset of the `amount` field and are used to provide
+    more detailed information about the transaction.
     """
 
     amount: int
@@ -3524,7 +3524,7 @@ class ElementCardFinancialAdditionalAmountsVision(BaseModel):
 
 class ElementCardFinancialAdditionalAmounts(BaseModel):
     """
-    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
     """
 
     clinic: Optional[ElementCardFinancialAdditionalAmountsClinic] = None
@@ -4034,9 +4034,9 @@ class ElementCardFinancial(BaseModel):
 
     additional_amounts: ElementCardFinancialAdditionalAmounts
     """
-    Additional amounts associated with the card authorization, such as ATM
-    surcharges fees. These are usually a subset of the `amount` field and are used
-    to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge
+    fees. These are usually a subset of the `amount` field and are used to provide
+    more detailed information about the transaction.
     """
 
     amount: int
@@ -4632,7 +4632,7 @@ class ElementCardIncrementAdditionalAmountsVision(BaseModel):
 
 class ElementCardIncrementAdditionalAmounts(BaseModel):
     """
-    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
     """
 
     clinic: Optional[ElementCardIncrementAdditionalAmountsClinic] = None
@@ -4871,9 +4871,9 @@ class ElementCardIncrement(BaseModel):
 
     additional_amounts: ElementCardIncrementAdditionalAmounts
     """
-    Additional amounts associated with the card authorization, such as ATM
-    surcharges fees. These are usually a subset of the `amount` field and are used
-    to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge
+    fees. These are usually a subset of the `amount` field and are used to provide
+    more detailed information about the transaction.
     """
 
     amount: int
@@ -6976,7 +6976,7 @@ class ElementCardValidationAdditionalAmountsVision(BaseModel):
 
 class ElementCardValidationAdditionalAmounts(BaseModel):
     """
-    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
     """
 
     clinic: Optional[ElementCardValidationAdditionalAmountsClinic] = None
@@ -7486,9 +7486,9 @@ class ElementCardValidation(BaseModel):
 
     additional_amounts: ElementCardValidationAdditionalAmounts
     """
-    Additional amounts associated with the card authorization, such as ATM
-    surcharges fees. These are usually a subset of the `amount` field and are used
-    to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge
+    fees. These are usually a subset of the `amount` field and are used to provide
+    more detailed information about the transaction.
     """
 
     card_payment_id: str

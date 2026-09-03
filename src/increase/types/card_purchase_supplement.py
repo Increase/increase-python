@@ -246,6 +246,9 @@ class CardPurchaseSupplement(BaseModel):
     id: str
     """The Card Purchase Supplement identifier."""
 
+    account_id: str
+    """The identifier for the Account the Card Purchase Supplement belongs to."""
+
     card_payment_id: Optional[str] = None
     """The ID of the Card Payment this transaction belongs to."""
 
