@@ -32,7 +32,7 @@ class CardDisputeActionParams(TypedDict, total=False):
     """
 
     visa: Visa
-    """The Visa-specific parameters for the taking action on the dispute.
+    """The Visa-specific parameters for taking action on the dispute.
 
     Required if and only if `network` is `visa`.
     """
@@ -140,7 +140,7 @@ class VisaTimeOutUserPrearbitration(TypedDict, total=False):
 
 
 class Visa(TypedDict, total=False):
-    """The Visa-specific parameters for the taking action on the dispute.
+    """The Visa-specific parameters for taking action on the dispute.
 
     Required if and only if `network` is `visa`.
     """
