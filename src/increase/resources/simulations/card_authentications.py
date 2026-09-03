@@ -92,7 +92,7 @@ class CardAuthenticationsResource(SyncAPIResource):
 
           merchant_country: The country the merchant resides in.
 
-          merchant_name: The name of the merchant
+          merchant_name: The name of the merchant.
 
           purchase_amount: The purchase amount in cents.
 
@@ -306,7 +306,7 @@ class AsyncCardAuthenticationsResource(AsyncAPIResource):
 
           merchant_country: The country the merchant resides in.
 
-          merchant_name: The name of the merchant
+          merchant_name: The name of the merchant.
 
           purchase_amount: The purchase amount in cents.
 

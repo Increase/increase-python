@@ -13,7 +13,7 @@ __all__ = ["InterestPaymentCreateParams"]
 
 class InterestPaymentCreateParams(TypedDict, total=False):
     account_id: Required[str]
-    """The identifier of the Account the Interest Payment should be paid to is for."""
+    """The identifier of the Account the Interest Payment should be paid to."""
 
     amount: Required[int]
     """The interest amount in cents. Must be positive."""

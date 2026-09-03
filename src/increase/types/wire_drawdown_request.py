@@ -84,6 +84,12 @@ class WireDrawdownRequest(BaseModel):
     id: str
     """The Wire drawdown request identifier."""
 
+    account_id: str
+    """
+    The Account to which the debtor—the recipient of this request—is being requested
+    to send funds.
+    """
+
     account_number_id: str
     """
     The Account Number to which the debtor—the recipient of this request—is being
