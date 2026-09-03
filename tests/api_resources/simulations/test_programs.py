@@ -30,6 +30,7 @@ class TestPrograms:
             name="For Benefit Of",
             bank="core_bank",
             lending_maximum_extendable_credit=0,
+            loan_accounts_require_loan_offers=True,
             reserve_account_id="reserve_account_id",
         )
         assert_matches_type(Program, program, path=["response"])
@@ -75,6 +76,7 @@ class TestAsyncPrograms:
             name="For Benefit Of",
             bank="core_bank",
             lending_maximum_extendable_credit=0,
+            loan_accounts_require_loan_offers=True,
             reserve_account_id="reserve_account_id",
         )
         assert_matches_type(Program, program, path=["response"])

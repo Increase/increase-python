@@ -120,6 +120,9 @@ class DigitalWalletToken(BaseModel):
     id: str
     """The Digital Wallet Token identifier."""
 
+    account_id: str
+    """The identifier for the Account this Digital Wallet Token belongs to."""
+
     card_id: str
     """The identifier for the Card this Digital Wallet Token belongs to."""
 
