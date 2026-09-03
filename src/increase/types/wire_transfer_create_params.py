@@ -68,7 +68,7 @@ class WireTransferCreateParams(TypedDict, total=False):
     """
 
     source_account_number_id: str
-    """The ID of an Account Number that will be passed to the wire's recipient"""
+    """The ID of an Account Number that will be passed to the wire's recipient."""
 
 
 class CreditorAddressStructured(TypedDict, total=False):
