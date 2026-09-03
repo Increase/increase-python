@@ -630,7 +630,7 @@ class CardAuthorizationAdditionalAmountsVision(BaseModel):
 
 class CardAuthorizationAdditionalAmounts(BaseModel):
     """
-    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
     """
 
     clinic: Optional[CardAuthorizationAdditionalAmountsClinic] = None
@@ -1076,9 +1076,9 @@ class CardAuthorization(BaseModel):
 
     additional_amounts: CardAuthorizationAdditionalAmounts
     """
-    Additional amounts associated with the card authorization, such as ATM
-    surcharges fees. These are usually a subset of the `amount` field and are used
-    to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge
+    fees. These are usually a subset of the `amount` field and are used to provide
+    more detailed information about the transaction.
     """
 
     approval: Optional[CardAuthorizationApproval] = None
@@ -1463,7 +1463,7 @@ class CardBalanceInquiryAdditionalAmountsVision(BaseModel):
 
 class CardBalanceInquiryAdditionalAmounts(BaseModel):
     """
-    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
     """
 
     clinic: Optional[CardBalanceInquiryAdditionalAmountsClinic] = None
@@ -1820,9 +1820,9 @@ class CardBalanceInquiry(BaseModel):
 
     additional_amounts: CardBalanceInquiryAdditionalAmounts
     """
-    Additional amounts associated with the card authorization, such as ATM
-    surcharges fees. These are usually a subset of the `amount` field and are used
-    to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge
+    fees. These are usually a subset of the `amount` field and are used to provide
+    more detailed information about the transaction.
     """
 
     approval: Optional[CardBalanceInquiryApproval] = None

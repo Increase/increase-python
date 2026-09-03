@@ -155,7 +155,7 @@ class EntityOnboardingSessionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[EntityOnboardingSession]:
         """
-        List Entity Onboarding Session
+        List Entity Onboarding Sessions
 
         Args:
           cursor: Return the page of entries after this one.
@@ -380,7 +380,7 @@ class AsyncEntityOnboardingSessionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[EntityOnboardingSession, AsyncPage[EntityOnboardingSession]]:
         """
-        List Entity Onboarding Session
+        List Entity Onboarding Sessions
 
         Args:
           cursor: Return the page of entries after this one.

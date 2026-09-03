@@ -184,6 +184,36 @@ class TestEntities:
                 "rated_at": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "rating": "low",
             },
+            sole_proprietorship={
+                "address": {
+                    "city": "x",
+                    "line1": "x",
+                    "state": "xx",
+                    "zip": "x",
+                    "line2": "x",
+                },
+                "sole_proprietor": {
+                    "address": {
+                        "city": "x",
+                        "country": "x",
+                        "line1": "x",
+                        "line2": "x",
+                        "state": "x",
+                        "zip": "x",
+                    },
+                    "date_of_birth": parse_date("2019-12-27"),
+                    "identification": {
+                        "method": "social_security_number",
+                        "number": "xxxx",
+                    },
+                    "name": "x",
+                },
+                "doing_business_as_name": "x",
+                "email": "dev@stainless.com",
+                "industry_code": "x",
+                "tax_identifier": "x",
+                "website": "website",
+            },
             supplemental_documents=[{"file_id": "file_id"}],
             terms_agreements=[
                 {
@@ -424,6 +454,51 @@ class TestEntities:
             risk_rating={
                 "rated_at": parse_datetime("2020-01-31T23:59:59Z"),
                 "rating": "low",
+            },
+            sole_proprietorship={
+                "address": {
+                    "city": "x",
+                    "line1": "x",
+                    "state": "xx",
+                    "zip": "x",
+                    "line2": "x",
+                },
+                "email": "dev@stainless.com",
+                "sole_proprietor": {
+                    "address": {
+                        "city": "x",
+                        "country": "x",
+                        "line1": "x",
+                        "line2": "x",
+                        "state": "x",
+                        "zip": "x",
+                    },
+                    "identification": {
+                        "method": "social_security_number",
+                        "number": "xxxx",
+                        "drivers_license": {
+                            "expiration_date": parse_date("2019-12-27"),
+                            "file_id": "file_id",
+                            "state": "xx",
+                            "back_file_id": "back_file_id",
+                        },
+                        "other": {
+                            "country": "x",
+                            "description": "x",
+                            "file_id": "file_id",
+                            "back_file_id": "back_file_id",
+                            "expiration_date": parse_date("2019-12-27"),
+                        },
+                        "passport": {
+                            "country": "x",
+                            "expiration_date": parse_date("2019-12-27"),
+                            "file_id": "file_id",
+                        },
+                    },
+                    "name": "x",
+                },
+                "tax_identifier": "x",
+                "website": "website",
             },
             terms_agreements=[
                 {
@@ -800,6 +875,36 @@ class TestAsyncEntities:
                 "rated_at": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "rating": "low",
             },
+            sole_proprietorship={
+                "address": {
+                    "city": "x",
+                    "line1": "x",
+                    "state": "xx",
+                    "zip": "x",
+                    "line2": "x",
+                },
+                "sole_proprietor": {
+                    "address": {
+                        "city": "x",
+                        "country": "x",
+                        "line1": "x",
+                        "line2": "x",
+                        "state": "x",
+                        "zip": "x",
+                    },
+                    "date_of_birth": parse_date("2019-12-27"),
+                    "identification": {
+                        "method": "social_security_number",
+                        "number": "xxxx",
+                    },
+                    "name": "x",
+                },
+                "doing_business_as_name": "x",
+                "email": "dev@stainless.com",
+                "industry_code": "x",
+                "tax_identifier": "x",
+                "website": "website",
+            },
             supplemental_documents=[{"file_id": "file_id"}],
             terms_agreements=[
                 {
@@ -1040,6 +1145,51 @@ class TestAsyncEntities:
             risk_rating={
                 "rated_at": parse_datetime("2020-01-31T23:59:59Z"),
                 "rating": "low",
+            },
+            sole_proprietorship={
+                "address": {
+                    "city": "x",
+                    "line1": "x",
+                    "state": "xx",
+                    "zip": "x",
+                    "line2": "x",
+                },
+                "email": "dev@stainless.com",
+                "sole_proprietor": {
+                    "address": {
+                        "city": "x",
+                        "country": "x",
+                        "line1": "x",
+                        "line2": "x",
+                        "state": "x",
+                        "zip": "x",
+                    },
+                    "identification": {
+                        "method": "social_security_number",
+                        "number": "xxxx",
+                        "drivers_license": {
+                            "expiration_date": parse_date("2019-12-27"),
+                            "file_id": "file_id",
+                            "state": "xx",
+                            "back_file_id": "back_file_id",
+                        },
+                        "other": {
+                            "country": "x",
+                            "description": "x",
+                            "file_id": "file_id",
+                            "back_file_id": "back_file_id",
+                            "expiration_date": parse_date("2019-12-27"),
+                        },
+                        "passport": {
+                            "country": "x",
+                            "expiration_date": parse_date("2019-12-27"),
+                            "file_id": "file_id",
+                        },
+                    },
+                    "name": "x",
+                },
+                "tax_identifier": "x",
+                "website": "website",
             },
             terms_agreements=[
                 {
