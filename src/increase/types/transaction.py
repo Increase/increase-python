@@ -883,7 +883,7 @@ class SourceCardFinancialAdditionalAmountsVision(BaseModel):
 
 class SourceCardFinancialAdditionalAmounts(BaseModel):
     """
-    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
     """
 
     clinic: Optional[SourceCardFinancialAdditionalAmountsClinic] = None
@@ -1393,9 +1393,9 @@ class SourceCardFinancial(BaseModel):
 
     additional_amounts: SourceCardFinancialAdditionalAmounts
     """
-    Additional amounts associated with the card authorization, such as ATM
-    surcharges fees. These are usually a subset of the `amount` field and are used
-    to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge
+    fees. These are usually a subset of the `amount` field and are used to provide
+    more detailed information about the transaction.
     """
 
     amount: int
@@ -3402,7 +3402,7 @@ class SourceCheckTransferDeposit(BaseModel):
     """
     The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
     bank depositing this check. In some rare cases, this is not transmitted via
-    Check21 and the value will be null.
+    Check 21 and the value will be null.
     """
 
     deposited_at: datetime
@@ -3621,7 +3621,7 @@ class SourceInboundACHTransferReturnIntention(BaseModel):
 class SourceInboundCheckAdjustment(BaseModel):
     """An Inbound Check Adjustment object.
 
-    This field will be present in the JSON response if and only if `category` is equal to `inbound_check_adjustment`. An Inbound Check Adjustment is created when Increase receives an adjustment for a check or return deposited through Check21.
+    This field will be present in the JSON response if and only if `category` is equal to `inbound_check_adjustment`. An Inbound Check Adjustment is created when Increase receives an adjustment for a check or return deposited through Check 21.
     """
 
     adjusted_transaction_id: str
@@ -3884,7 +3884,7 @@ class SourceInboundWireTransfer(BaseModel):
 
     instructing_agent_routing_number: Optional[str] = None
     """
-    The American Banking Association (ABA) routing number of the bank that sent the
+    The American Bankers' Association (ABA) routing number of the bank that sent the
     wire.
     """
 
@@ -4537,7 +4537,8 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_check_adjustment`. An Inbound Check Adjustment is created when
-    Increase receives an adjustment for a check or return deposited through Check21.
+    Increase receives an adjustment for a check or return deposited through
+    Check 21.
     """
 
     inbound_check_deposit_return_intention: Optional[SourceInboundCheckDepositReturnIntention] = None

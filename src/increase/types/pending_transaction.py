@@ -356,7 +356,7 @@ class SourceCardAuthorizationAdditionalAmountsVision(BaseModel):
 
 class SourceCardAuthorizationAdditionalAmounts(BaseModel):
     """
-    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
     """
 
     clinic: Optional[SourceCardAuthorizationAdditionalAmountsClinic] = None
@@ -885,9 +885,9 @@ class SourceCardAuthorization(BaseModel):
 
     additional_amounts: SourceCardAuthorizationAdditionalAmounts
     """
-    Additional amounts associated with the card authorization, such as ATM
-    surcharges fees. These are usually a subset of the `amount` field and are used
-    to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge
+    fees. These are usually a subset of the `amount` field and are used to provide
+    more detailed information about the transaction.
     """
 
     amount: int
@@ -926,8 +926,8 @@ class SourceCardAuthorization(BaseModel):
 
     expires_at: datetime
     """
-    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
-    will expire and the pending transaction will be released.
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which this
+    authorization will expire and the pending transaction will be released.
     """
 
     healthcare: Optional[SourceCardAuthorizationHealthcare] = None
