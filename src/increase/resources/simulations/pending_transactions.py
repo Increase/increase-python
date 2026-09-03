@@ -57,7 +57,7 @@ class PendingTransactionsResource(SyncAPIResource):
         be created as a result of, for example, an ACH debit.
 
         Args:
-          pending_transaction_id: The pending transaction to release. The pending transaction must have a
+          pending_transaction_id: The pending transaction to release. The pending transaction must have an
               `inbound_funds_hold` source.
 
           extra_headers: Send extra headers
@@ -127,7 +127,7 @@ class AsyncPendingTransactionsResource(AsyncAPIResource):
         be created as a result of, for example, an ACH debit.
 
         Args:
-          pending_transaction_id: The pending transaction to release. The pending transaction must have a
+          pending_transaction_id: The pending transaction to release. The pending transaction must have an
               `inbound_funds_hold` source.
 
           extra_headers: Send extra headers

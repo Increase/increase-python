@@ -320,7 +320,7 @@ class SourceCardDeclineAdditionalAmountsVision(BaseModel):
 
 class SourceCardDeclineAdditionalAmounts(BaseModel):
     """
-    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
     """
 
     clinic: Optional[SourceCardDeclineAdditionalAmountsClinic] = None
@@ -830,9 +830,9 @@ class SourceCardDecline(BaseModel):
 
     additional_amounts: SourceCardDeclineAdditionalAmounts
     """
-    Additional amounts associated with the card authorization, such as ATM
-    surcharges fees. These are usually a subset of the `amount` field and are used
-    to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge
+    fees. These are usually a subset of the `amount` field and are used to provide
+    more detailed information about the transaction.
     """
 
     amount: int
@@ -1285,6 +1285,7 @@ class SourceInboundFednowTransferDecline(BaseModel):
         "group_locked",
         "entity_not_active",
         "fednow_not_enabled",
+        "transaction_not_allowed",
     ]
     """Why the transfer was declined.
 
@@ -1295,6 +1296,8 @@ class SourceInboundFednowTransferDecline(BaseModel):
     - `entity_not_active` - The account's entity is not active.
     - `fednow_not_enabled` - Your account is not enabled to receive FedNow
       transfers.
+    - `transaction_not_allowed` - The transaction is not allowed per Increase's
+      terms.
     """
 
     transfer_id: str
