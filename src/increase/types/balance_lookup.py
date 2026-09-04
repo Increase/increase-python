@@ -58,7 +58,7 @@ class Loan(BaseModel):
 
 class BalanceLookup(BaseModel):
     """
-    Represents a request to lookup the balance of an Account at a given point in time.
+    Represents a request to look up the balance of an Account at a given point in time.
     """
 
     account_id: str

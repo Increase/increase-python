@@ -75,6 +75,7 @@ __all__ = [
     "SourceCheckDepositReturn",
     "SourceCheckTransferDeposit",
     "SourceFednowTransferAcknowledgement",
+    "SourceFednowTransferReturn",
     "SourceFeePayment",
     "SourceInboundACHTransfer",
     "SourceInboundACHTransferAddenda",
@@ -883,7 +884,7 @@ class SourceCardFinancialAdditionalAmountsVision(BaseModel):
 
 class SourceCardFinancialAdditionalAmounts(BaseModel):
     """
-    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
     """
 
     clinic: Optional[SourceCardFinancialAdditionalAmountsClinic] = None
@@ -1393,9 +1394,9 @@ class SourceCardFinancial(BaseModel):
 
     additional_amounts: SourceCardFinancialAdditionalAmounts
     """
-    Additional amounts associated with the card authorization, such as ATM
-    surcharges fees. These are usually a subset of the `amount` field and are used
-    to provide more detailed information about the transaction.
+    Additional amounts associated with the card authorization, such as ATM surcharge
+    fees. These are usually a subset of the `amount` field and are used to provide
+    more detailed information about the transaction.
     """
 
     amount: int
@@ -3402,7 +3403,7 @@ class SourceCheckTransferDeposit(BaseModel):
     """
     The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
     bank depositing this check. In some rare cases, this is not transmitted via
-    Check21 and the value will be null.
+    Check 21 and the value will be null.
     """
 
     deposited_at: datetime
@@ -3449,6 +3450,87 @@ class SourceFednowTransferAcknowledgement(BaseModel):
     """A FedNow Transfer Acknowledgement object.
 
     This field will be present in the JSON response if and only if `category` is equal to `fednow_transfer_acknowledgement`. A FedNow Transfer Acknowledgement is created when a FedNow Transfer sent from Increase is acknowledged by the receiving bank.
+    """
+
+    transfer_id: str
+    """The identifier of the FedNow Transfer that led to this Transaction."""
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
+
+
+class SourceFednowTransferReturn(BaseModel):
+    """A FedNow Transfer Return object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `fednow_transfer_return`. A FedNow Transfer Return is created when a FedNow Transfer sent from Increase is returned by the recipient's bank.
+    """
+
+    amount: int
+    """The returned amount in USD cents. This is always a positive number."""
+
+    return_reason_additional_information: Optional[str] = None
+    """Additional information about the return provided by the recipient's bank."""
+
+    return_reason_code: Literal[
+        "account_closed",
+        "account_blocked",
+        "invalid_agent",
+        "invalid_creditor_account_number",
+        "incorrect_account_number",
+        "end_customer_deceased",
+        "transaction_forbidden",
+        "regulatory_reason",
+        "fraud",
+        "duplication",
+        "wrong_amount",
+        "requested_by_customer",
+        "unable_to_apply",
+        "not_specified",
+        "narrative",
+        "other",
+    ]
+    """The reason the transfer was returned as provided by the recipient's bank.
+
+    - `account_closed` - The destination account is closed. Corresponds to the
+      FedNow reason codes `AC04` and `AC07`.
+    - `account_blocked` - The destination account is currently blocked from
+      receiving transactions. Corresponds to the FedNow reason code `AC06`.
+    - `invalid_agent` - The recipient's bank was not a valid agent for this
+      transfer. Corresponds to the FedNow reason codes `AC14` and `AGNT`.
+    - `invalid_creditor_account_number` - The destination account does not exist.
+      Corresponds to the FedNow reason code `AC03`.
+    - `incorrect_account_number` - The destination account number was incorrect.
+      Corresponds to the FedNow reason code `AC01`.
+    - `end_customer_deceased` - The destination account holder is deceased.
+      Corresponds to the FedNow reason code `MD07`.
+    - `transaction_forbidden` - The transfer was not permitted by the recipient's
+      bank. Corresponds to the FedNow reason code `AG01`.
+    - `regulatory_reason` - The transfer was returned for a regulatory reason at the
+      recipient's bank. Corresponds to the FedNow reason code `RR04`.
+    - `fraud` - The transfer was reported as fraudulent. Corresponds to the FedNow
+      reason code `FR01`.
+    - `duplication` - The transfer duplicated another transfer. Corresponds to the
+      FedNow reason codes `AM05` and `DUPL`.
+    - `wrong_amount` - The transfer amount was incorrect. Corresponds to the FedNow
+      reason code `AM09`.
+    - `requested_by_customer` - The transfer was returned at the request of the
+      recipient's customer. Corresponds to the FedNow reason code `CUST`.
+    - `unable_to_apply` - The recipient's bank could not apply the funds.
+      Corresponds to the FedNow reason code `RUTA`.
+    - `not_specified` - The recipient's bank did not specify a reason. Corresponds
+      to the FedNow reason codes `MS02` and `MS03`.
+    - `narrative` - The reason is provided as narrative information in the
+      additional information field. Corresponds to the FedNow reason code `NARR`.
+    - `other` - The transfer was returned for some other reason.
     """
 
     transfer_id: str
@@ -3621,7 +3703,7 @@ class SourceInboundACHTransferReturnIntention(BaseModel):
 class SourceInboundCheckAdjustment(BaseModel):
     """An Inbound Check Adjustment object.
 
-    This field will be present in the JSON response if and only if `category` is equal to `inbound_check_adjustment`. An Inbound Check Adjustment is created when Increase receives an adjustment for a check or return deposited through Check21.
+    This field will be present in the JSON response if and only if `category` is equal to `inbound_check_adjustment`. An Inbound Check Adjustment is created when Increase receives an adjustment for a check or return deposited through Check 21.
     """
 
     adjusted_transaction_id: str
@@ -3884,7 +3966,7 @@ class SourceInboundWireTransfer(BaseModel):
 
     instructing_agent_routing_number: Optional[str] = None
     """
-    The American Banking Association (ABA) routing number of the bank that sent the
+    The American Bankers' Association (ABA) routing number of the bank that sent the
     wire.
     """
 
@@ -4224,6 +4306,7 @@ class Source(BaseModel):
         "check_deposit_acceptance",
         "check_deposit_return",
         "fednow_transfer_acknowledgement",
+        "fednow_transfer_return",
         "check_transfer_deposit",
         "fee_payment",
         "inbound_ach_transfer",
@@ -4282,6 +4365,8 @@ class Source(BaseModel):
       `check_deposit_return` object.
     - `fednow_transfer_acknowledgement` - FedNow Transfer Acknowledgement: details
       will be under the `fednow_transfer_acknowledgement` object.
+    - `fednow_transfer_return` - FedNow Transfer Return: details will be under the
+      `fednow_transfer_return` object.
     - `check_transfer_deposit` - Check Transfer Deposit: details will be under the
       `check_transfer_deposit` object.
     - `fee_payment` - Fee Payment: details will be under the `fee_payment` object.
@@ -4508,6 +4593,14 @@ class Source(BaseModel):
     receiving bank.
     """
 
+    fednow_transfer_return: Optional[SourceFednowTransferReturn] = None
+    """A FedNow Transfer Return object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `fednow_transfer_return`. A FedNow Transfer Return is created when a
+    FedNow Transfer sent from Increase is returned by the recipient's bank.
+    """
+
     fee_payment: Optional[SourceFeePayment] = None
     """A Fee Payment object.
 
@@ -4537,7 +4630,8 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_check_adjustment`. An Inbound Check Adjustment is created when
-    Increase receives an adjustment for a check or return deposited through Check21.
+    Increase receives an adjustment for a check or return deposited through
+    Check 21.
     """
 
     inbound_check_deposit_return_intention: Optional[SourceInboundCheckDepositReturnIntention] = None
