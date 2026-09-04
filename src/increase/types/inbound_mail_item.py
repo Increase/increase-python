@@ -43,6 +43,13 @@ class InboundMailItem(BaseModel):
     id: str
     """The Inbound Mail Item identifier."""
 
+    account_id: Optional[str] = None
+    """The identifier for the Account that checks in this mail item are deposited into.
+
+    For mail items that could not be routed to a Lockbox Recipient, this will be
+    null.
+    """
+
     checks: List[Check]
     """The checks in the mail item."""
 

@@ -182,6 +182,9 @@ class PhysicalCard(BaseModel):
     id: str
     """The physical card identifier."""
 
+    account_id: str
+    """The identifier for the Account this Physical Card belongs to."""
+
     card_id: str
     """The identifier for the Card this Physical Card represents."""
 
