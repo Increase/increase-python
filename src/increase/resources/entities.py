@@ -49,13 +49,16 @@ class EntitiesResource(SyncAPIResource):
     def create(
         self,
         *,
-        structure: Literal["corporation", "natural_person", "joint", "trust", "government_authority"],
+        structure: Literal[
+            "corporation", "natural_person", "joint", "trust", "government_authority", "sole_proprietorship"
+        ],
         corporation: entity_create_params.Corporation | Omit = omit,
         description: str | Omit = omit,
         government_authority: entity_create_params.GovernmentAuthority | Omit = omit,
         joint: entity_create_params.Joint | Omit = omit,
         natural_person: entity_create_params.NaturalPerson | Omit = omit,
         risk_rating: entity_create_params.RiskRating | Omit = omit,
+        sole_proprietorship: entity_create_params.SoleProprietorship | Omit = omit,
         supplemental_documents: Iterable[entity_create_params.SupplementalDocument] | Omit = omit,
         terms_agreements: Iterable[entity_create_params.TermsAgreement] | Omit = omit,
         third_party_verification: entity_create_params.ThirdPartyVerification | Omit = omit,
@@ -79,6 +82,7 @@ class EntitiesResource(SyncAPIResource):
               - `joint` - Multiple individual people.
               - `trust` - A trust.
               - `government_authority` - A government authority.
+              - `sole_proprietorship` - A sole proprietorship.
 
           corporation: Details of the corporation entity to create. Required if `structure` is equal to
               `corporation`.
@@ -98,6 +102,9 @@ class EntitiesResource(SyncAPIResource):
 
           risk_rating: An assessment of the entity's potential risk of involvement in financial crimes,
               such as money laundering.
+
+          sole_proprietorship: Details of the sole proprietorship entity to create. Required if `structure` is
+              equal to `sole_proprietorship`.
 
           supplemental_documents: Additional documentation associated with the entity.
 
@@ -132,6 +139,7 @@ class EntitiesResource(SyncAPIResource):
                     "joint": joint,
                     "natural_person": natural_person,
                     "risk_rating": risk_rating,
+                    "sole_proprietorship": sole_proprietorship,
                     "supplemental_documents": supplemental_documents,
                     "terms_agreements": terms_agreements,
                     "third_party_verification": third_party_verification,
@@ -193,6 +201,7 @@ class EntitiesResource(SyncAPIResource):
         government_authority: entity_update_params.GovernmentAuthority | Omit = omit,
         natural_person: entity_update_params.NaturalPerson | Omit = omit,
         risk_rating: entity_update_params.RiskRating | Omit = omit,
+        sole_proprietorship: entity_update_params.SoleProprietorship | Omit = omit,
         terms_agreements: Iterable[entity_update_params.TermsAgreement] | Omit = omit,
         third_party_verification: entity_update_params.ThirdPartyVerification | Omit = omit,
         trust: entity_update_params.Trust | Omit = omit,
@@ -226,6 +235,9 @@ class EntitiesResource(SyncAPIResource):
           risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
               such as money laundering.
 
+          sole_proprietorship: Details of the sole proprietorship entity to update. If you specify this
+              parameter and the entity is not a sole proprietorship, the request will fail.
+
           terms_agreements: New terms that the Entity agreed to. Not all programs are required to submit
               this data. This will not archive previously submitted terms.
 
@@ -257,6 +269,7 @@ class EntitiesResource(SyncAPIResource):
                     "government_authority": government_authority,
                     "natural_person": natural_person,
                     "risk_rating": risk_rating,
+                    "sole_proprietorship": sole_proprietorship,
                     "terms_agreements": terms_agreements,
                     "third_party_verification": third_party_verification,
                     "trust": trust,
@@ -404,13 +417,16 @@ class AsyncEntitiesResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        structure: Literal["corporation", "natural_person", "joint", "trust", "government_authority"],
+        structure: Literal[
+            "corporation", "natural_person", "joint", "trust", "government_authority", "sole_proprietorship"
+        ],
         corporation: entity_create_params.Corporation | Omit = omit,
         description: str | Omit = omit,
         government_authority: entity_create_params.GovernmentAuthority | Omit = omit,
         joint: entity_create_params.Joint | Omit = omit,
         natural_person: entity_create_params.NaturalPerson | Omit = omit,
         risk_rating: entity_create_params.RiskRating | Omit = omit,
+        sole_proprietorship: entity_create_params.SoleProprietorship | Omit = omit,
         supplemental_documents: Iterable[entity_create_params.SupplementalDocument] | Omit = omit,
         terms_agreements: Iterable[entity_create_params.TermsAgreement] | Omit = omit,
         third_party_verification: entity_create_params.ThirdPartyVerification | Omit = omit,
@@ -434,6 +450,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
               - `joint` - Multiple individual people.
               - `trust` - A trust.
               - `government_authority` - A government authority.
+              - `sole_proprietorship` - A sole proprietorship.
 
           corporation: Details of the corporation entity to create. Required if `structure` is equal to
               `corporation`.
@@ -453,6 +470,9 @@ class AsyncEntitiesResource(AsyncAPIResource):
 
           risk_rating: An assessment of the entity's potential risk of involvement in financial crimes,
               such as money laundering.
+
+          sole_proprietorship: Details of the sole proprietorship entity to create. Required if `structure` is
+              equal to `sole_proprietorship`.
 
           supplemental_documents: Additional documentation associated with the entity.
 
@@ -487,6 +507,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
                     "joint": joint,
                     "natural_person": natural_person,
                     "risk_rating": risk_rating,
+                    "sole_proprietorship": sole_proprietorship,
                     "supplemental_documents": supplemental_documents,
                     "terms_agreements": terms_agreements,
                     "third_party_verification": third_party_verification,
@@ -548,6 +569,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         government_authority: entity_update_params.GovernmentAuthority | Omit = omit,
         natural_person: entity_update_params.NaturalPerson | Omit = omit,
         risk_rating: entity_update_params.RiskRating | Omit = omit,
+        sole_proprietorship: entity_update_params.SoleProprietorship | Omit = omit,
         terms_agreements: Iterable[entity_update_params.TermsAgreement] | Omit = omit,
         third_party_verification: entity_update_params.ThirdPartyVerification | Omit = omit,
         trust: entity_update_params.Trust | Omit = omit,
@@ -581,6 +603,9 @@ class AsyncEntitiesResource(AsyncAPIResource):
           risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
               such as money laundering.
 
+          sole_proprietorship: Details of the sole proprietorship entity to update. If you specify this
+              parameter and the entity is not a sole proprietorship, the request will fail.
+
           terms_agreements: New terms that the Entity agreed to. Not all programs are required to submit
               this data. This will not archive previously submitted terms.
 
@@ -612,6 +637,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
                     "government_authority": government_authority,
                     "natural_person": natural_person,
                     "risk_rating": risk_rating,
+                    "sole_proprietorship": sole_proprietorship,
                     "terms_agreements": terms_agreements,
                     "third_party_verification": third_party_verification,
                     "trust": trust,

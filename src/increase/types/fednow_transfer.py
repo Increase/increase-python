@@ -1,8 +1,10 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+from typing import TYPE_CHECKING, Dict, List, Optional
 from datetime import datetime
 from typing_extensions import Literal
+
+from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
@@ -16,6 +18,7 @@ __all__ = [
     "CreditorAddress",
     "DebtorAddress",
     "Rejection",
+    "Return",
     "Submission",
 ]
 
@@ -172,6 +175,86 @@ class Rejection(BaseModel):
     """
 
 
+class Return(BaseModel):
+    """
+    A FedNow Transfer Return is created when a FedNow Transfer sent from Increase is returned by the recipient's bank.
+    """
+
+    amount: int
+    """The returned amount in USD cents. This is always a positive number."""
+
+    return_reason_additional_information: Optional[str] = None
+    """Additional information about the return provided by the recipient's bank."""
+
+    return_reason_code: Literal[
+        "account_closed",
+        "account_blocked",
+        "invalid_agent",
+        "invalid_creditor_account_number",
+        "incorrect_account_number",
+        "end_customer_deceased",
+        "transaction_forbidden",
+        "regulatory_reason",
+        "fraud",
+        "duplication",
+        "wrong_amount",
+        "requested_by_customer",
+        "unable_to_apply",
+        "not_specified",
+        "narrative",
+        "other",
+    ]
+    """The reason the transfer was returned as provided by the recipient's bank.
+
+    - `account_closed` - The destination account is closed. Corresponds to the
+      FedNow reason codes `AC04` and `AC07`.
+    - `account_blocked` - The destination account is currently blocked from
+      receiving transactions. Corresponds to the FedNow reason code `AC06`.
+    - `invalid_agent` - The recipient's bank was not a valid agent for this
+      transfer. Corresponds to the FedNow reason codes `AC14` and `AGNT`.
+    - `invalid_creditor_account_number` - The destination account does not exist.
+      Corresponds to the FedNow reason code `AC03`.
+    - `incorrect_account_number` - The destination account number was incorrect.
+      Corresponds to the FedNow reason code `AC01`.
+    - `end_customer_deceased` - The destination account holder is deceased.
+      Corresponds to the FedNow reason code `MD07`.
+    - `transaction_forbidden` - The transfer was not permitted by the recipient's
+      bank. Corresponds to the FedNow reason code `AG01`.
+    - `regulatory_reason` - The transfer was returned for a regulatory reason at the
+      recipient's bank. Corresponds to the FedNow reason code `RR04`.
+    - `fraud` - The transfer was reported as fraudulent. Corresponds to the FedNow
+      reason code `FR01`.
+    - `duplication` - The transfer duplicated another transfer. Corresponds to the
+      FedNow reason codes `AM05` and `DUPL`.
+    - `wrong_amount` - The transfer amount was incorrect. Corresponds to the FedNow
+      reason code `AM09`.
+    - `requested_by_customer` - The transfer was returned at the request of the
+      recipient's customer. Corresponds to the FedNow reason code `CUST`.
+    - `unable_to_apply` - The recipient's bank could not apply the funds.
+      Corresponds to the FedNow reason code `RUTA`.
+    - `not_specified` - The recipient's bank did not specify a reason. Corresponds
+      to the FedNow reason codes `MS02` and `MS03`.
+    - `narrative` - The reason is provided as narrative information in the
+      additional information field. Corresponds to the FedNow reason code `NARR`.
+    - `other` - The transfer was returned for some other reason.
+    """
+
+    transfer_id: str
+    """The identifier of the FedNow Transfer that led to this Transaction."""
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
+
+
 class Submission(BaseModel):
     """
     After the transfer is submitted to FedNow, this will contain supplemental details.
@@ -265,6 +348,13 @@ class FednowTransfer(BaseModel):
     this will contain supplemental details.
     """
 
+    returns: List[Return]
+    """
+    If the transfer is returned by the recipient's bank, this will contain details
+    of each return. FedNow allows returning part of a transfer, so a transfer can be
+    returned more than once.
+    """
+
     routing_number: str
     """
     The destination American Bankers' Association (ABA) Routing Transit Number
@@ -278,19 +368,18 @@ class FednowTransfer(BaseModel):
         "pending_submitting",
         "pending_reviewing",
         "canceled",
-        "reviewing_rejected",
         "requires_attention",
         "pending_approval",
         "pending_response",
         "complete",
         "rejected",
+        "returned",
     ]
     """The lifecycle status of the transfer.
 
     - `pending_submitting` - The transfer is queued to be submitted to FedNow.
     - `pending_reviewing` - The transfer is pending review by Increase.
     - `canceled` - The transfer has been canceled.
-    - `reviewing_rejected` - The transfer has been rejected by Increase.
     - `requires_attention` - The transfer requires attention from an Increase
       operator.
     - `pending_approval` - The transfer is pending approval.
@@ -298,6 +387,7 @@ class FednowTransfer(BaseModel):
       from FedNow.
     - `complete` - The transfer has been sent successfully and is complete.
     - `rejected` - The transfer was rejected by the network or the recipient's bank.
+    - `returned` - The transfer was returned by the recipient's bank.
     """
 
     submission: Optional[Submission] = None
