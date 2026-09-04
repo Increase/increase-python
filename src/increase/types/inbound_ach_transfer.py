@@ -505,7 +505,7 @@ class InboundACHTransfer(BaseModel):
 
     originator_routing_number: str
     """
-    The American Banking Association (ABA) routing number of the bank originating
+    The American Bankers' Association (ABA) routing number of the bank originating
     the transfer.
     """
 
