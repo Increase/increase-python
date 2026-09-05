@@ -683,8 +683,7 @@ class Submission(BaseModel):
     """
 
     administrative_returns_expected_by: datetime.datetime
-    """The timestamp by which any administrative returns are expected to be received
-    by.
+    """The timestamp by which any administrative returns are expected to be received.
 
     This follows the Nacha guidelines for return windows, which are: "In general,
     return entries must be received by the RDFI’s ACH Operator by its deposit

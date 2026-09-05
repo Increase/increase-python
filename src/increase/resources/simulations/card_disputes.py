@@ -71,8 +71,8 @@ class CardDisputesResource(SyncAPIResource):
 
               - `visa` - Visa
 
-          visa: The Visa-specific parameters for the taking action on the dispute. Required if
-              and only if `network` is `visa`.
+          visa: The Visa-specific parameters for taking action on the dispute. Required if and
+              only if `network` is `visa`.
 
           extra_headers: Send extra headers
 
@@ -154,8 +154,8 @@ class AsyncCardDisputesResource(AsyncAPIResource):
 
               - `visa` - Visa
 
-          visa: The Visa-specific parameters for the taking action on the dispute. Required if
-              and only if `network` is `visa`.
+          visa: The Visa-specific parameters for taking action on the dispute. Required if and
+              only if `network` is `visa`.
 
           extra_headers: Send extra headers
 

@@ -97,7 +97,7 @@ class InboundWireTransfer(BaseModel):
     """A name set by the sender."""
 
     debtor_routing_number: Optional[str] = None
-    """The American Banking Association (ABA) routing number of the sender."""
+    """The American Bankers' Association (ABA) routing number of the sender."""
 
     description: str
     """An Increase-constructed description of the transfer."""
@@ -114,7 +114,7 @@ class InboundWireTransfer(BaseModel):
 
     instructing_agent_routing_number: Optional[str] = None
     """
-    The American Banking Association (ABA) routing number of the bank that sent the
+    The American Bankers' Association (ABA) routing number of the bank that sent the
     wire.
     """
 

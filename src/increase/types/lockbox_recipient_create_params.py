@@ -23,4 +23,4 @@ class LockboxRecipientCreateParams(TypedDict, total=False):
     """The description you choose for the Lockbox Recipient."""
 
     recipient_name: str
-    """The name of the Lockbox Recipient"""
+    """The name of the Lockbox Recipient."""

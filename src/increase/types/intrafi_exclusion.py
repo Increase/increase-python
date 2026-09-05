@@ -30,7 +30,7 @@ class IntrafiExclusion(BaseModel):
     """The entity for which this institution is excluded."""
 
     excluded_at: Optional[datetime] = None
-    """When this was exclusion was confirmed by IntraFi."""
+    """When this exclusion was confirmed by IntraFi."""
 
     fdic_certificate_number: Optional[str] = None
     """
@@ -57,7 +57,7 @@ class IntrafiExclusion(BaseModel):
     """
 
     submitted_at: Optional[datetime] = None
-    """When this was exclusion was submitted to IntraFi by Increase."""
+    """When this exclusion was submitted to IntraFi by Increase."""
 
     type: Literal["intrafi_exclusion"]
     """A constant representing the object's type.

@@ -370,8 +370,8 @@ class CardsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CardDetails:
         """
-        Sensitive details for a Card include the primary account number, expiry, card
-        verification code, and PIN.
+        Sensitive details for a Card include the primary account number, expiration,
+        card verification code, and PIN.
 
         Args:
           card_id: The identifier of the Card to retrieve details for.
@@ -779,8 +779,8 @@ class AsyncCardsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CardDetails:
         """
-        Sensitive details for a Card include the primary account number, expiry, card
-        verification code, and PIN.
+        Sensitive details for a Card include the primary account number, expiration,
+        card verification code, and PIN.
 
         Args:
           card_id: The identifier of the Card to retrieve details for.

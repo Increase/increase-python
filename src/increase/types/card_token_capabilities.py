@@ -41,7 +41,7 @@ class CardTokenCapabilities(BaseModel):
     """
 
     routes: List[Route]
-    """Each route represent a path e.g., a push transfer can take."""
+    """Each route represents a path e.g., a push transfer can take."""
 
     type: Literal["card_token_capabilities"]
     """A constant representing the object's type.

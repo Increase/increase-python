@@ -66,7 +66,7 @@ class InterestPaymentsResource(SyncAPIResource):
         automatically on the first of each month.
 
         Args:
-          account_id: The identifier of the Account the Interest Payment should be paid to is for.
+          account_id: The identifier of the Account the Interest Payment should be paid to.
 
           amount: The interest amount in cents. Must be positive.
 
@@ -151,7 +151,7 @@ class AsyncInterestPaymentsResource(AsyncAPIResource):
         automatically on the first of each month.
 
         Args:
-          account_id: The identifier of the Account the Interest Payment should be paid to is for.
+          account_id: The identifier of the Account the Interest Payment should be paid to.
 
           amount: The interest amount in cents. Must be positive.
 

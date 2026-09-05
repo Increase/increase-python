@@ -44,7 +44,7 @@ class CardAuthenticationCreateParams(TypedDict, total=False):
     """The country the merchant resides in."""
 
     merchant_name: str
-    """The name of the merchant"""
+    """The name of the merchant."""
 
     purchase_amount: int
     """The purchase amount in cents."""

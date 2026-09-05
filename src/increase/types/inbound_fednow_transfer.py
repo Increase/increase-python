@@ -40,6 +40,7 @@ class Decline(BaseModel):
         "group_locked",
         "entity_not_active",
         "fednow_not_enabled",
+        "transaction_not_allowed",
     ]
     """Why the transfer was declined.
 
@@ -50,6 +51,8 @@ class Decline(BaseModel):
     - `entity_not_active` - The account's entity is not active.
     - `fednow_not_enabled` - Your account is not enabled to receive FedNow
       transfers.
+    - `transaction_not_allowed` - The transaction is not allowed per Increase's
+      terms.
     """
 
     transfer_id: str
