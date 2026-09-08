@@ -19,6 +19,12 @@ class InboundWireDrawdownRequest(BaseModel):
     id: str
     """The Wire drawdown request identifier."""
 
+    account_id: str
+    """
+    The Account from which the recipient of this request is being requested to send
+    funds.
+    """
+
     amount: int
     """The amount being requested in cents."""
 

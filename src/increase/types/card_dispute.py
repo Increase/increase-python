@@ -2661,6 +2661,9 @@ class CardDispute(BaseModel):
     id: str
     """The Card Dispute identifier."""
 
+    account_id: str
+    """The Account that the Card Dispute is associated with."""
+
     amount: int
     """The amount of the dispute."""
 

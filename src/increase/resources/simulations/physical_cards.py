@@ -154,8 +154,8 @@ class PhysicalCardsResource(SyncAPIResource):
     ) -> PhysicalCard:
         """
         This endpoint allows you to simulate advancing the shipment status of a Physical
-        Card, to simulate e.g., that a physical card was attempted shipped but then
-        failed delivery.
+        Card, to simulate e.g., that a physical card was attempted to be shipped but
+        then failed delivery.
 
         Args:
           physical_card_id: The Physical Card you would like to action.
@@ -336,8 +336,8 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
     ) -> PhysicalCard:
         """
         This endpoint allows you to simulate advancing the shipment status of a Physical
-        Card, to simulate e.g., that a physical card was attempted shipped but then
-        failed delivery.
+        Card, to simulate e.g., that a physical card was attempted to be shipped but
+        then failed delivery.
 
         Args:
           physical_card_id: The Physical Card you would like to action.

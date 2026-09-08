@@ -70,7 +70,7 @@ class LockboxRecipientsResource(SyncAPIResource):
 
           description: The description you choose for the Lockbox Recipient.
 
-          recipient_name: The name of the Lockbox Recipient
+          recipient_name: The name of the Lockbox Recipient.
 
           extra_headers: Send extra headers
 
@@ -321,7 +321,7 @@ class AsyncLockboxRecipientsResource(AsyncAPIResource):
 
           description: The description you choose for the Lockbox Recipient.
 
-          recipient_name: The name of the Lockbox Recipient
+          recipient_name: The name of the Lockbox Recipient.
 
           extra_headers: Send extra headers
 

@@ -614,7 +614,7 @@ class CheckTransfer(BaseModel):
 
     After this date, the check transfer will be automatically stopped and deposits
     will not be accepted. For checks printed by Increase, this date is included on
-    the check as its expiry.
+    the check as its expiration.
     """
 
     if TYPE_CHECKING:

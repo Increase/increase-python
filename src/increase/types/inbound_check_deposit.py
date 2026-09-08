@@ -108,7 +108,7 @@ class InboundCheckDeposit(BaseModel):
     """
     The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
     bank depositing this check. In some rare cases, this is not transmitted via
-    Check21 and the value will be null.
+    Check 21 and the value will be null.
     """
 
     check_number: Optional[str] = None

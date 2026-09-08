@@ -112,7 +112,7 @@ class CheckTransfersResource(SyncAPIResource):
           valid_until_date: If provided, the check will be valid on or before this date. After this date,
               the check transfer will be automatically stopped and deposits will not be
               accepted. For checks printed by Increase, this date is included on the check as
-              its expiry.
+              its expiration.
 
           extra_headers: Send extra headers
 
@@ -480,7 +480,7 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
           valid_until_date: If provided, the check will be valid on or before this date. After this date,
               the check transfer will be automatically stopped and deposits will not be
               accepted. For checks printed by Increase, this date is included on the check as
-              its expiry.
+              its expiration.
 
           extra_headers: Send extra headers
 
