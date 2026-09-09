@@ -147,6 +147,9 @@ class DigitalWalletToken(BaseModel):
     dynamic_primary_account_number: Optional[DynamicPrimaryAccountNumber] = None
     """The redacted Dynamic Primary Account Number."""
 
+    primary_account_number_reference_identifier: str
+    """The reference identifier assigned by the card network to the underlying Card."""
+
     status: Literal["active", "inactive", "suspended", "deactivated", "declined"]
     """This indicates if payments can be made with the Digital Wallet Token.
 
@@ -157,6 +160,9 @@ class DigitalWalletToken(BaseModel):
     - `deactivated` - The digital wallet token has been permanently canceled.
     - `declined` - The digital wallet token was declined during provisioning.
     """
+
+    token_reference_identifier: str
+    """The reference identifier assigned by the card network to the token."""
 
     token_requestor: Literal["apple_pay", "google_pay", "samsung_pay", "unknown"]
     """The digital wallet app being used.
