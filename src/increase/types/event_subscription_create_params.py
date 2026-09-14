@@ -162,6 +162,8 @@ class SelectedEventCategory(TypedDict, total=False):
             "swift_transfer.created",
             "swift_transfer.updated",
             "transaction.created",
+            "uk_faster_payment_system_transfer.created",
+            "uk_faster_payment_system_transfer.updated",
             "wire_drawdown_request.created",
             "wire_drawdown_request.updated",
             "wire_transfer.created",
@@ -350,6 +352,10 @@ class SelectedEventCategory(TypedDict, total=False):
     - `swift_transfer.created` - Occurs whenever a Swift Transfer is created.
     - `swift_transfer.updated` - Occurs whenever a Swift Transfer is updated.
     - `transaction.created` - Occurs whenever a Transaction is created.
+    - `uk_faster_payment_system_transfer.created` - Occurs whenever a UK Faster
+      Payment System Transfer is created.
+    - `uk_faster_payment_system_transfer.updated` - Occurs whenever a UK Faster
+      Payment System Transfer is updated.
     - `wire_drawdown_request.created` - Occurs whenever a Wire Drawdown Request is
       created.
     - `wire_drawdown_request.updated` - Occurs whenever a Wire Drawdown Request is
