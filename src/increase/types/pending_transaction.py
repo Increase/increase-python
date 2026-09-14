@@ -46,6 +46,7 @@ __all__ = [
     "SourceOther",
     "SourceRealTimePaymentsTransferInstruction",
     "SourceSwiftTransferInstruction",
+    "SourceUkFasterPaymentSystemTransferInstruction",
     "SourceWireTransferInstruction",
 ]
 
@@ -1333,6 +1334,36 @@ class SourceSwiftTransferInstruction(BaseModel):
         __pydantic_extra__: Dict[str, object]
 
 
+class SourceUkFasterPaymentSystemTransferInstruction(BaseModel):
+    """An UK Faster Payment System Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `uk_faster_payment_system_transfer_instruction`.
+    """
+
+    amount: int
+    """The transfer amount in GBP pence."""
+
+    currency: Literal["GBP"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
+    transfer's currency. This is always `GBP`.
+
+    - `GBP` - GBP
+    """
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
+
+
 class SourceWireTransferInstruction(BaseModel):
     """A Wire Transfer Instruction object.
 
@@ -1391,6 +1422,7 @@ class Source(BaseModel):
         "card_push_transfer_instruction",
         "blockchain_onramp_transfer_instruction",
         "blockchain_offramp_transfer",
+        "uk_faster_payment_system_transfer_instruction",
         "other",
     ]
     """The type of the resource.
@@ -1430,6 +1462,9 @@ class Source(BaseModel):
       `blockchain_onramp_transfer_instruction` object.
     - `blockchain_offramp_transfer` - Blockchain Off-Ramp Transfer: details will be
       under the `blockchain_offramp_transfer` object.
+    - `uk_faster_payment_system_transfer_instruction` - UK Faster Payment System
+      Transfer Instruction: details will be under the
+      `uk_faster_payment_system_transfer_instruction` object.
     - `other` - The Pending Transaction was made for an undocumented or deprecated
       reason.
     """
@@ -1536,6 +1571,13 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `swift_transfer_instruction`.
+    """
+
+    uk_faster_payment_system_transfer_instruction: Optional[SourceUkFasterPaymentSystemTransferInstruction] = None
+    """An UK Faster Payment System Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `uk_faster_payment_system_transfer_instruction`.
     """
 
     user_initiated_hold: Optional[Dict[str, object]] = None

@@ -80,6 +80,7 @@ _CategoryReservedKeywords = TypedDict(
                 "account_revenue_payment",
                 "blockchain_onramp_transfer_intention",
                 "blockchain_offramp_transfer_settlement",
+                "uk_faster_payment_system_transfer_acceptance",
                 "other",
             ]
         ],
