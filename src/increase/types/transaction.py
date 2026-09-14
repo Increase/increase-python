@@ -96,6 +96,7 @@ __all__ = [
     "SourceSampleFunds",
     "SourceSwiftTransferIntention",
     "SourceSwiftTransferReturn",
+    "SourceUkFasterPaymentSystemTransferAcceptance",
     "SourceWireTransferIntention",
 ]
 
@@ -4251,6 +4252,34 @@ class SourceSwiftTransferReturn(BaseModel):
         __pydantic_extra__: Dict[str, object]
 
 
+class SourceUkFasterPaymentSystemTransferAcceptance(BaseModel):
+    """An UK Faster Payment System Transfer Acceptance object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `uk_faster_payment_system_transfer_acceptance`. A UK Faster Payment System Transfer Acceptance is created when a UK Faster Payment System Transfer sent from Increase is accepted by the recipient's bank.
+    """
+
+    accepted_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the recipient's bank accepted the transfer.
+    """
+
+    settlement_amount: int
+    """The transfer amount in USD cents."""
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
+
+
 class SourceWireTransferIntention(BaseModel):
     """A Wire Transfer Intention object.
 
@@ -4329,6 +4358,7 @@ class Source(BaseModel):
         "account_revenue_payment",
         "blockchain_onramp_transfer_intention",
         "blockchain_offramp_transfer_settlement",
+        "uk_faster_payment_system_transfer_acceptance",
         "other",
     ]
     """The type of the resource.
@@ -4416,6 +4446,9 @@ class Source(BaseModel):
     - `blockchain_offramp_transfer_settlement` - Blockchain Off-Ramp Transfer
       Settlement: details will be under the `blockchain_offramp_transfer_settlement`
       object.
+    - `uk_faster_payment_system_transfer_acceptance` - UK Faster Payment System
+      Transfer Acceptance: details will be under the
+      `uk_faster_payment_system_transfer_acceptance` object.
     - `other` - The Transaction was made for an undocumented or deprecated reason.
     """
 
@@ -4739,6 +4772,15 @@ class Source(BaseModel):
     This field will be present in the JSON response if and only if `category` is
     equal to `swift_transfer_return`. A Swift Transfer Return is created when a
     Swift Transfer is returned by the receiving bank.
+    """
+
+    uk_faster_payment_system_transfer_acceptance: Optional[SourceUkFasterPaymentSystemTransferAcceptance] = None
+    """An UK Faster Payment System Transfer Acceptance object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `uk_faster_payment_system_transfer_acceptance`. A UK Faster Payment
+    System Transfer Acceptance is created when a UK Faster Payment System Transfer
+    sent from Increase is accepted by the recipient's bank.
     """
 
     wire_transfer_intention: Optional[SourceWireTransferIntention] = None
