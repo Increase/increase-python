@@ -56,6 +56,8 @@ _CategoryReservedKeywords = TypedDict(
                 "card_push_transfer_instruction",
                 "blockchain_onramp_transfer_instruction",
                 "blockchain_offramp_transfer",
+                "uk_faster_payment_system_transfer_instruction",
+                "sepa_instant_transfer_instruction",
                 "other",
             ]
         ],

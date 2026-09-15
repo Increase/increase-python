@@ -46,10 +46,13 @@ class PhysicalCardCreateParams(TypedDict, total=False):
     """
 
     city: str
-    """The city where the event took place."""
+    """The city where the event took place. Required if postal_code is not provided."""
 
     postal_code: str
-    """The postal code where the event took place."""
+    """The postal code where the event took place.
+
+    Required unless both city and state are provided.
+    """
 
     state: str
-    """The state where the event took place."""
+    """The state where the event took place. Required if postal_code is not provided."""

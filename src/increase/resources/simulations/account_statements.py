@@ -55,7 +55,8 @@ class AccountStatementsResource(SyncAPIResource):
     ) -> AccountStatement:
         """
         Simulates an [Account Statement](#account-statements) being created for an
-        account. In production, Account Statements are generated once per month.
+        account. In production, Account Statements are generated once per month. As in
+        production, the simulated statement covers the previous calendar month.
 
         Args:
           account_id: The identifier of the Account the statement is for.
@@ -120,7 +121,8 @@ class AsyncAccountStatementsResource(AsyncAPIResource):
     ) -> AccountStatement:
         """
         Simulates an [Account Statement](#account-statements) being created for an
-        account. In production, Account Statements are generated once per month.
+        account. In production, Account Statements are generated once per month. As in
+        production, the simulated statement covers the previous calendar month.
 
         Args:
           account_id: The identifier of the Account the statement is for.
