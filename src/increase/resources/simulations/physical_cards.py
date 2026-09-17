@@ -95,11 +95,12 @@ class PhysicalCardsResource(SyncAPIResource):
           carrier_estimated_delivery_at: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time when the
               carrier expects the card to be delivered.
 
-          city: The city where the event took place.
+          city: The city where the event took place. Required if postal_code is not provided.
 
-          postal_code: The postal code where the event took place.
+          postal_code: The postal code where the event took place. Required unless both city and state
+              are provided.
 
-          state: The state where the event took place.
+          state: The state where the event took place. Required if postal_code is not provided.
 
           extra_headers: Send extra headers
 
@@ -277,11 +278,12 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
           carrier_estimated_delivery_at: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time when the
               carrier expects the card to be delivered.
 
-          city: The city where the event took place.
+          city: The city where the event took place. Required if postal_code is not provided.
 
-          postal_code: The postal code where the event took place.
+          postal_code: The postal code where the event took place. Required unless both city and state
+              are provided.
 
-          state: The state where the event took place.
+          state: The state where the event took place. Required if postal_code is not provided.
 
           extra_headers: Send extra headers
 

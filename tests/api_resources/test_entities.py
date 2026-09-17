@@ -229,10 +229,11 @@ class TestEntities:
             trust={
                 "address": {
                     "city": "x",
+                    "country": "x",
                     "line1": "x",
-                    "state": "xx",
-                    "zip": "x",
                     "line2": "x",
+                    "state": "x",
+                    "zip": "x",
                 },
                 "category": "revocable",
                 "name": "x",
@@ -515,10 +516,11 @@ class TestEntities:
             trust={
                 "address": {
                     "city": "x",
+                    "country": "x",
                     "line1": "x",
-                    "state": "xx",
-                    "zip": "x",
                     "line2": "x",
+                    "state": "x",
+                    "zip": "x",
                 },
                 "grantor": {
                     "address": {
@@ -921,10 +923,11 @@ class TestAsyncEntities:
             trust={
                 "address": {
                     "city": "x",
+                    "country": "x",
                     "line1": "x",
-                    "state": "xx",
-                    "zip": "x",
                     "line2": "x",
+                    "state": "x",
+                    "zip": "x",
                 },
                 "category": "revocable",
                 "name": "x",
@@ -1207,10 +1210,11 @@ class TestAsyncEntities:
             trust={
                 "address": {
                     "city": "x",
+                    "country": "x",
                     "line1": "x",
-                    "state": "xx",
-                    "zip": "x",
                     "line2": "x",
+                    "state": "x",
+                    "zip": "x",
                 },
                 "grantor": {
                     "address": {

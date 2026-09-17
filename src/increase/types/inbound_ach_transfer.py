@@ -382,6 +382,9 @@ class Settlement(BaseModel):
 class TransferReturn(BaseModel):
     """If your transfer is returned, this will contain details of the return."""
 
+    raw_reason_code: str
+    """The three character ACH return code, in the range R01 to R85."""
+
     reason: Literal[
         "insufficient_funds",
         "returned_per_odfi_request",
