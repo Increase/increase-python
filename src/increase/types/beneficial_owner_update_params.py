@@ -154,6 +154,7 @@ class Identification(TypedDict, total=False, extra_items=object):  # type: ignor
     method: Required[
         Literal[
             "social_security_number",
+            "social_security_number_last4",
             "individual_taxpayer_identification_number",
             "passport",
             "drivers_license",
@@ -163,6 +164,8 @@ class Identification(TypedDict, total=False, extra_items=object):  # type: ignor
     """A method that can be used to verify the individual's identity.
 
     - `social_security_number` - A social security number.
+    - `social_security_number_last4` - The last four digits of a social security
+      number.
     - `individual_taxpayer_identification_number` - An individual taxpayer
       identification number (ITIN).
     - `passport` - A passport number.
