@@ -34,7 +34,7 @@ class WireDrawdownRequestListParams(TypedDict, total=False):
 _StatusReservedKeywords = TypedDict(
     "_StatusReservedKeywords",
     {
-        "in": List[Literal["pending_submission", "fulfilled", "pending_response", "refused"]],
+        "in": List[Literal["pending_submission", "pending_response", "fulfilled", "refused"]],
     },
     total=False,
 )
