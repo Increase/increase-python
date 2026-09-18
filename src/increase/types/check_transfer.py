@@ -111,8 +111,9 @@ class CreatedBy(BaseModel):
 
 
 class Mailing(BaseModel):
-    """
-    If the check has been mailed by Increase, this will contain details of the shipment.
+    """Once the check has been mailed, this will contain details about the shipment.
+
+    Only available when `fulfillment_method` is equal to `physical_check`.
     """
 
     mailed_at: datetime
@@ -386,7 +387,9 @@ class SubmissionSubmittedAddress(BaseModel):
 
 
 class Submission(BaseModel):
-    """After the transfer is submitted, this will contain supplemental details."""
+    """
+    Once the check has been submitted to our printer, this will contain details about the submission. Only available when `fulfillment_method` is equal to `physical_check`.
+    """
 
     preview_file_id: Optional[str] = None
     """
@@ -527,9 +530,9 @@ class CheckTransfer(BaseModel):
     """
 
     mailing: Optional[Mailing] = None
-    """
-    If the check has been mailed by Increase, this will contain details of the
-    shipment.
+    """Once the check has been mailed, this will contain details about the shipment.
+
+    Only available when `fulfillment_method` is equal to `physical_check`.
     """
 
     pending_transaction_id: Optional[str] = None
@@ -595,7 +598,11 @@ class CheckTransfer(BaseModel):
     """
 
     submission: Optional[Submission] = None
-    """After the transfer is submitted, this will contain supplemental details."""
+    """
+    Once the check has been submitted to our printer, this will contain details
+    about the submission. Only available when `fulfillment_method` is equal to
+    `physical_check`.
+    """
 
     third_party: Optional[ThirdParty] = None
     """Details relating to the custom fulfillment you will perform.
