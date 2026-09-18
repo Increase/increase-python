@@ -109,11 +109,18 @@ class CorporationBeneficialOwnerIndividualIdentification(BaseModel):
     """A means of verifying the person's identity."""
 
     method: Literal[
-        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
+        "social_security_number",
+        "social_security_number_last4",
+        "individual_taxpayer_identification_number",
+        "passport",
+        "drivers_license",
+        "other",
     ]
     """A method that can be used to verify the individual's identity.
 
     - `social_security_number` - A social security number.
+    - `social_security_number_last4` - The last four digits of a social security
+      number.
     - `individual_taxpayer_identification_number` - An individual taxpayer
       identification number (ITIN).
     - `passport` - A passport number.
@@ -365,11 +372,18 @@ class JointIndividualIdentification(BaseModel):
     """A means of verifying the person's identity."""
 
     method: Literal[
-        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
+        "social_security_number",
+        "social_security_number_last4",
+        "individual_taxpayer_identification_number",
+        "passport",
+        "drivers_license",
+        "other",
     ]
     """A method that can be used to verify the individual's identity.
 
     - `social_security_number` - A social security number.
+    - `social_security_number_last4` - The last four digits of a social security
+      number.
     - `individual_taxpayer_identification_number` - An individual taxpayer
       identification number (ITIN).
     - `passport` - A passport number.
@@ -452,11 +466,18 @@ class NaturalPersonIdentification(BaseModel):
     """A means of verifying the person's identity."""
 
     method: Literal[
-        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
+        "social_security_number",
+        "social_security_number_last4",
+        "individual_taxpayer_identification_number",
+        "passport",
+        "drivers_license",
+        "other",
     ]
     """A method that can be used to verify the individual's identity.
 
     - `social_security_number` - A social security number.
+    - `social_security_number_last4` - The last four digits of a social security
+      number.
     - `individual_taxpayer_identification_number` - An individual taxpayer
       identification number (ITIN).
     - `passport` - A passport number.
@@ -576,11 +597,18 @@ class SoleProprietorshipSoleProprietorIdentification(BaseModel):
     """A means of verifying the person's identity."""
 
     method: Literal[
-        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
+        "social_security_number",
+        "social_security_number_last4",
+        "individual_taxpayer_identification_number",
+        "passport",
+        "drivers_license",
+        "other",
     ]
     """A method that can be used to verify the individual's identity.
 
     - `social_security_number` - A social security number.
+    - `social_security_number_last4` - The last four digits of a social security
+      number.
     - `individual_taxpayer_identification_number` - An individual taxpayer
       identification number (ITIN).
     - `passport` - A passport number.
@@ -741,11 +769,18 @@ class TrustGrantorIdentification(BaseModel):
     """A means of verifying the grantor's identity."""
 
     method: Literal[
-        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
+        "social_security_number",
+        "social_security_number_last4",
+        "individual_taxpayer_identification_number",
+        "passport",
+        "drivers_license",
+        "other",
     ]
     """A method that can be used to verify the grantor's identity.
 
     - `social_security_number` - A social security number.
+    - `social_security_number_last4` - The last four digits of a social security
+      number.
     - `individual_taxpayer_identification_number` - An individual taxpayer
       identification number (ITIN).
     - `passport` - A passport number.
@@ -817,11 +852,18 @@ class TrustTrusteeIndividualIdentification(BaseModel):
     """A means of verifying the person's identity."""
 
     method: Literal[
-        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
+        "social_security_number",
+        "social_security_number_last4",
+        "individual_taxpayer_identification_number",
+        "passport",
+        "drivers_license",
+        "other",
     ]
     """A method that can be used to verify the individual's identity.
 
     - `social_security_number` - A social security number.
+    - `social_security_number_last4` - The last four digits of a social security
+      number.
     - `individual_taxpayer_identification_number` - An individual taxpayer
       identification number (ITIN).
     - `passport` - A passport number.
