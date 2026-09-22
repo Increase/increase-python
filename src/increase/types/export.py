@@ -340,50 +340,50 @@ class Export(BaseModel):
     """
 
     category: Literal[
-        "account_statement_ofx",
         "account_statement_bai2",
-        "transaction_csv",
+        "account_statement_ofx",
+        "account_verification_letter",
         "balance_csv",
         "bookkeeping_account_balance_csv",
-        "entity_csv",
-        "vendor_csv",
+        "daily_account_balance_csv",
         "dashboard_table_csv",
-        "account_verification_letter",
-        "funding_instructions",
+        "entity_csv",
+        "fee_csv",
         "form_1099_int",
         "form_1099_misc",
-        "fee_csv",
+        "funding_instructions",
+        "transaction_csv",
+        "vendor_csv",
         "voided_check",
-        "daily_account_balance_csv",
     ]
     """The category of the Export.
 
     We may add additional possible values for this enum over time; your application
     should be able to handle that gracefully.
 
-    - `account_statement_ofx` - Export an Open Financial Exchange (OFX) file of
-      transactions and balances for a given time range and Account.
     - `account_statement_bai2` - Export a BAI2 file of transactions and balances for
       a given date and optional Account.
-    - `transaction_csv` - Export a CSV of all transactions for a given time range.
+    - `account_statement_ofx` - Export an Open Financial Exchange (OFX) file of
+      transactions and balances for a given time range and Account.
+    - `account_verification_letter` - A PDF of an account verification letter.
     - `balance_csv` - Export a CSV of account balances for the dates in a given
       range. (deprecated, use `daily_account_balance_csv` instead)
     - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
       balances for the dates in a given range.
-    - `entity_csv` - Export a CSV of entities with a given status.
-    - `vendor_csv` - Export a CSV of vendors added to the third-party risk
-      management dashboard.
-    - `dashboard_table_csv` - Certain dashboard tables are available as CSV exports.
-      This export cannot be created via the API.
-    - `account_verification_letter` - A PDF of an account verification letter.
-    - `funding_instructions` - A PDF of funding instructions.
-    - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
-    - `form_1099_misc` - A PDF of an Internal Revenue Service Form 1099-MISC.
-    - `fee_csv` - Export a CSV of fees. The time range must not include any fees
-      that are part of an open fee statement.
-    - `voided_check` - A PDF of a voided check.
     - `daily_account_balance_csv` - Export a CSV of daily account balances with
       starting and ending balances for a given date range.
+    - `dashboard_table_csv` - Certain dashboard tables are available as CSV exports.
+      This export cannot be created via the API.
+    - `entity_csv` - Export a CSV of entities with a given status.
+    - `fee_csv` - Export a CSV of fees. The time range must not include any fees
+      that are part of an open fee statement.
+    - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
+    - `form_1099_misc` - A PDF of an Internal Revenue Service Form 1099-MISC.
+    - `funding_instructions` - A PDF of funding instructions.
+    - `transaction_csv` - Export a CSV of all transactions for a given time range.
+    - `vendor_csv` - Export a CSV of vendors added to the third-party risk
+      management dashboard.
+    - `voided_check` - A PDF of a voided check.
     """
 
     created_at: datetime
