@@ -118,6 +118,9 @@ class InboundWireTransfer(BaseModel):
     wire.
     """
 
+    instruction_for_creditor_agent: Optional[str] = None
+    """A free-form instruction for the receiving bank set by the sender."""
+
     instruction_identification: Optional[str] = None
     """The sending bank's identifier for the wire transfer."""
 

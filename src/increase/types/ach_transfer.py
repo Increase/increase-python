@@ -36,7 +36,7 @@ class Acknowledgement(BaseModel):
     After the transfer is acknowledged by FedACH, this will contain supplemental details. The Federal Reserve sends an acknowledgement message for each file that Increase submits.
     """
 
-    acknowledged_at: str
+    acknowledged_at: datetime.datetime
     """
     When the Federal Reserve acknowledged the submitted file containing this
     transfer.
