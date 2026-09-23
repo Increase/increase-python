@@ -49,6 +49,7 @@ __all__ = [
     "ValidationIssue",
     "ValidationIssueBeneficialOwnerAddress",
     "ValidationIssueBeneficialOwnerIdentity",
+    "ValidationIssueBeneficialOwnerTaxIdentifier",
     "ValidationIssueEntityAddress",
     "ValidationIssueEntityIdentity",
     "ValidationIssueEntityTaxIdentifier",
@@ -120,7 +121,7 @@ class CorporationBeneficialOwnerIndividualIdentification(BaseModel):
 
     - `social_security_number` - A social security number.
     - `social_security_number_last4` - The last four digits of a social security
-      number.
+      number. Not all programs can use this method.
     - `individual_taxpayer_identification_number` - An individual taxpayer
       identification number (ITIN).
     - `passport` - A passport number.
@@ -383,7 +384,7 @@ class JointIndividualIdentification(BaseModel):
 
     - `social_security_number` - A social security number.
     - `social_security_number_last4` - The last four digits of a social security
-      number.
+      number. Not all programs can use this method.
     - `individual_taxpayer_identification_number` - An individual taxpayer
       identification number (ITIN).
     - `passport` - A passport number.
@@ -477,7 +478,7 @@ class NaturalPersonIdentification(BaseModel):
 
     - `social_security_number` - A social security number.
     - `social_security_number_last4` - The last four digits of a social security
-      number.
+      number. Not all programs can use this method.
     - `individual_taxpayer_identification_number` - An individual taxpayer
       identification number (ITIN).
     - `passport` - A passport number.
@@ -608,7 +609,7 @@ class SoleProprietorshipSoleProprietorIdentification(BaseModel):
 
     - `social_security_number` - A social security number.
     - `social_security_number_last4` - The last four digits of a social security
-      number.
+      number. Not all programs can use this method.
     - `individual_taxpayer_identification_number` - An individual taxpayer
       identification number (ITIN).
     - `passport` - A passport number.
@@ -780,7 +781,7 @@ class TrustGrantorIdentification(BaseModel):
 
     - `social_security_number` - A social security number.
     - `social_security_number_last4` - The last four digits of a social security
-      number.
+      number. Not all programs can use this method.
     - `individual_taxpayer_identification_number` - An individual taxpayer
       identification number (ITIN).
     - `passport` - A passport number.
@@ -863,7 +864,7 @@ class TrustTrusteeIndividualIdentification(BaseModel):
 
     - `social_security_number` - A social security number.
     - `social_security_number_last4` - The last four digits of a social security
-      number.
+      number. Not all programs can use this method.
     - `individual_taxpayer_identification_number` - An individual taxpayer
       identification number (ITIN).
     - `passport` - A passport number.
@@ -981,6 +982,13 @@ class ValidationIssueBeneficialOwnerIdentity(BaseModel):
     """The ID of the beneficial owner."""
 
 
+class ValidationIssueBeneficialOwnerTaxIdentifier(BaseModel):
+    """Details when the issue is with a beneficial owner's tax identifier."""
+
+    beneficial_owner_id: str
+    """The ID of the beneficial owner."""
+
+
 class ValidationIssueEntityAddress(BaseModel):
     """Details when the issue is with the entity's address."""
 
@@ -1010,12 +1018,16 @@ class ValidationIssue(BaseModel):
     beneficial_owner_identity: Optional[ValidationIssueBeneficialOwnerIdentity] = None
     """Details when the issue is with a beneficial owner's identity verification."""
 
+    beneficial_owner_tax_identifier: Optional[ValidationIssueBeneficialOwnerTaxIdentifier] = None
+    """Details when the issue is with a beneficial owner's tax identifier."""
+
     category: Literal[
         "entity_tax_identifier",
         "entity_address",
         "entity_identity",
         "beneficial_owner_identity",
         "beneficial_owner_address",
+        "beneficial_owner_tax_identifier",
     ]
     """The type of issue.
 
@@ -1036,6 +1048,10 @@ class ValidationIssue(BaseModel):
       [update a beneficial owner API](/documentation/api/beneficial-owners#update-a-beneficial-owner).
     - `beneficial_owner_address` - A beneficial owner's address could not be
       validated. Update the address with the
+      [update a beneficial owner API](/documentation/api/beneficial-owners#update-a-beneficial-owner).
+    - `beneficial_owner_tax_identifier` - A beneficial owner's full tax identifier
+      is required. A non-US person can submit a passport or driver's license. Make
+      changes via the
       [update a beneficial owner API](/documentation/api/beneficial-owners#update-a-beneficial-owner).
     """
 
