@@ -28,6 +28,9 @@ class Decline(BaseModel):
         "webhook_declined",
         "incorrect_card_verification_code",
         "declined_by_token_requestor",
+        "group_locked",
+        "account_closed",
+        "entity_not_active",
     ]
     """The reason the token provisioning was declined.
 
@@ -41,6 +44,9 @@ class Decline(BaseModel):
       the Card Verification Code (CVC) was incorrect.
     - `declined_by_token_requestor` - The tokenization attempt was declined by the
       token requestor.
+    - `group_locked` - The group was locked.
+    - `account_closed` - The account has been closed.
+    - `entity_not_active` - The account's entity was not active.
     """
 
 
@@ -94,7 +100,7 @@ class DynamicPrimaryAccountNumber(BaseModel):
 
 
 class Update(BaseModel):
-    status: Literal["active", "inactive", "suspended", "deactivated", "declined"]
+    status: Literal["active", "inactive", "suspended", "deactivated", "declined", "pending_transitioning"]
     """The status the update changed this Digital Wallet Token to.
 
     - `active` - The digital wallet token is active.
@@ -103,6 +109,8 @@ class Update(BaseModel):
     - `suspended` - The digital wallet token has been temporarily paused.
     - `deactivated` - The digital wallet token has been permanently canceled.
     - `declined` - The digital wallet token was declined during provisioning.
+    - `pending_transitioning` - The digital wallet token is transitioning to a new
+      status and is awaiting confirmation from the card network.
     """
 
     timestamp: datetime
@@ -150,7 +158,7 @@ class DigitalWalletToken(BaseModel):
     primary_account_number_reference_identifier: str
     """The reference identifier assigned by the card network to the underlying Card."""
 
-    status: Literal["active", "inactive", "suspended", "deactivated", "declined"]
+    status: Literal["active", "inactive", "suspended", "deactivated", "declined", "pending_transitioning"]
     """This indicates if payments can be made with the Digital Wallet Token.
 
     - `active` - The digital wallet token is active.
@@ -159,6 +167,8 @@ class DigitalWalletToken(BaseModel):
     - `suspended` - The digital wallet token has been temporarily paused.
     - `deactivated` - The digital wallet token has been permanently canceled.
     - `declined` - The digital wallet token was declined during provisioning.
+    - `pending_transitioning` - The digital wallet token is transitioning to a new
+      status and is awaiting confirmation from the card network.
     """
 
     token_reference_identifier: str
