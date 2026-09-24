@@ -3247,6 +3247,7 @@ class ElementCardDecline(BaseModel):
             "exceeds_approval_limit",
             "card_temporarily_disabled",
             "suspected_fraud",
+            "additional_customer_authentication_required",
             "other",
         ]
     ] = None
@@ -3264,6 +3265,8 @@ class ElementCardDecline(BaseModel):
       yet activated. The merchant may attempt to process the transaction again.
     - `suspected_fraud` - The transaction is suspected to be fraudulent. The
       merchant may attempt to process the transaction again.
+    - `additional_customer_authentication_required` - Additional customer
+      authentication is required to complete the transaction, such as 3DS.
     - `other` - The transaction was declined for another reason. The merchant may
       attempt to process the transaction again. This should be used sparingly.
     """
