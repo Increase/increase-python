@@ -150,7 +150,7 @@ class TestExports:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         export = client.exports.list(
-            category="account_statement_ofx",
+            category="account_statement_bai2",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -321,7 +321,7 @@ class TestAsyncExports:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         export = await async_client.exports.list(
-            category="account_statement_ofx",
+            category="account_statement_bai2",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
