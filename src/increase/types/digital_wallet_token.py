@@ -174,12 +174,13 @@ class DigitalWalletToken(BaseModel):
     token_reference_identifier: str
     """The reference identifier assigned by the card network to the token."""
 
-    token_requestor: Literal["apple_pay", "google_pay", "samsung_pay", "unknown"]
+    token_requestor: Literal["apple_pay", "google_pay", "samsung_pay", "garmin_pay", "unknown"]
     """The digital wallet app being used.
 
     - `apple_pay` - Apple Pay
     - `google_pay` - Google Pay
     - `samsung_pay` - Samsung Pay
+    - `garmin_pay` - Garmin Pay
     - `unknown` - Unknown
     """
 
