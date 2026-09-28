@@ -2634,6 +2634,13 @@ class SourceCardRefund(BaseModel):
     merchant_state: Optional[str] = None
     """The state the merchant resides in."""
 
+    network: Literal["visa", "pulse"]
+    """The card network on which this transaction was processed.
+
+    - `visa` - Visa
+    - `pulse` - Pulse
+    """
+
     network_identifiers: SourceCardRefundNetworkIdentifiers
     """Network-specific identifiers for this refund."""
 
