@@ -28,6 +28,7 @@ from ..types.card import Card
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.card_details import CardDetails
 from ..types.card_iframe_url import CardIframeURL
+from ..types.card_details_token import CardDetailsToken
 
 __all__ = ["CardsResource", "AsyncCardsResource"]
 
@@ -356,6 +357,51 @@ class CardsResource(SyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=CardIframeURL,
+        )
+
+    def create_details_token(
+        self,
+        card_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> CardDetailsToken:
+        """
+        Create a short-lived token that authorizes
+        [Card Elements](/documentation/card-elements) to render the details of a Card in
+        your frontend. Mint the token on your server and pass it to the browser; the
+        token is valid for one hour and is scoped to a single Card.
+
+        Args:
+          card_id: The identifier of the Card to mint a details token for.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not card_id:
+            raise ValueError(f"Expected a non-empty value for `card_id` but received {card_id!r}")
+        return self._post(
+            path_template("/cards/{card_id}/create_details_token", card_id=card_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardDetailsToken,
         )
 
     def details(
@@ -767,6 +813,51 @@ class AsyncCardsResource(AsyncAPIResource):
             cast_to=CardIframeURL,
         )
 
+    async def create_details_token(
+        self,
+        card_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> CardDetailsToken:
+        """
+        Create a short-lived token that authorizes
+        [Card Elements](/documentation/card-elements) to render the details of a Card in
+        your frontend. Mint the token on your server and pass it to the browser; the
+        token is valid for one hour and is scoped to a single Card.
+
+        Args:
+          card_id: The identifier of the Card to mint a details token for.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not card_id:
+            raise ValueError(f"Expected a non-empty value for `card_id` but received {card_id!r}")
+        return await self._post(
+            path_template("/cards/{card_id}/create_details_token", card_id=card_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardDetailsToken,
+        )
+
     async def details(
         self,
         card_id: str,
@@ -869,6 +960,9 @@ class CardsResourceWithRawResponse:
         self.create_details_iframe = to_raw_response_wrapper(
             cards.create_details_iframe,
         )
+        self.create_details_token = to_raw_response_wrapper(
+            cards.create_details_token,
+        )
         self.details = to_raw_response_wrapper(
             cards.details,
         )
@@ -895,6 +989,9 @@ class AsyncCardsResourceWithRawResponse:
         )
         self.create_details_iframe = async_to_raw_response_wrapper(
             cards.create_details_iframe,
+        )
+        self.create_details_token = async_to_raw_response_wrapper(
+            cards.create_details_token,
         )
         self.details = async_to_raw_response_wrapper(
             cards.details,
@@ -923,6 +1020,9 @@ class CardsResourceWithStreamingResponse:
         self.create_details_iframe = to_streamed_response_wrapper(
             cards.create_details_iframe,
         )
+        self.create_details_token = to_streamed_response_wrapper(
+            cards.create_details_token,
+        )
         self.details = to_streamed_response_wrapper(
             cards.details,
         )
@@ -949,6 +1049,9 @@ class AsyncCardsResourceWithStreamingResponse:
         )
         self.create_details_iframe = async_to_streamed_response_wrapper(
             cards.create_details_iframe,
+        )
+        self.create_details_token = async_to_streamed_response_wrapper(
+            cards.create_details_token,
         )
         self.details = async_to_streamed_response_wrapper(
             cards.details,

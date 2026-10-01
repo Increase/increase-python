@@ -80,6 +80,7 @@ if TYPE_CHECKING:
         inbound_check_deposits,
         inbound_wire_transfers,
         physical_card_profiles,
+        physical_check_batches,
         supplemental_documents,
         wire_drawdown_requests,
         inbound_fednow_transfers,
@@ -87,8 +88,11 @@ if TYPE_CHECKING:
         entity_onboarding_sessions,
         intrafi_account_enrollments,
         real_time_payments_transfers,
+        digital_wallet_token_requests,
         inbound_wire_drawdown_requests,
         inbound_real_time_payments_transfers,
+        real_time_payments_requests_for_payment,
+        inbound_real_time_payments_requests_for_payment,
     )
     from .resources.cards import CardsResource, AsyncCardsResource
     from .resources.files import FilesResource, AsyncFilesResource
@@ -137,6 +141,7 @@ if TYPE_CHECKING:
     from .resources.inbound_check_deposits import InboundCheckDepositsResource, AsyncInboundCheckDepositsResource
     from .resources.inbound_wire_transfers import InboundWireTransfersResource, AsyncInboundWireTransfersResource
     from .resources.physical_card_profiles import PhysicalCardProfilesResource, AsyncPhysicalCardProfilesResource
+    from .resources.physical_check_batches import PhysicalCheckBatchesResource, AsyncPhysicalCheckBatchesResource
     from .resources.supplemental_documents import SupplementalDocumentsResource, AsyncSupplementalDocumentsResource
     from .resources.wire_drawdown_requests import WireDrawdownRequestsResource, AsyncWireDrawdownRequestsResource
     from .resources.simulations.simulations import SimulationsResource, AsyncSimulationsResource
@@ -157,6 +162,10 @@ if TYPE_CHECKING:
         RealTimePaymentsTransfersResource,
         AsyncRealTimePaymentsTransfersResource,
     )
+    from .resources.digital_wallet_token_requests import (
+        DigitalWalletTokenRequestsResource,
+        AsyncDigitalWalletTokenRequestsResource,
+    )
     from .resources.inbound_wire_drawdown_requests import (
         InboundWireDrawdownRequestsResource,
         AsyncInboundWireDrawdownRequestsResource,
@@ -164,6 +173,14 @@ if TYPE_CHECKING:
     from .resources.inbound_real_time_payments_transfers import (
         InboundRealTimePaymentsTransfersResource,
         AsyncInboundRealTimePaymentsTransfersResource,
+    )
+    from .resources.real_time_payments_requests_for_payment import (
+        RealTimePaymentsRequestsForPaymentResource,
+        AsyncRealTimePaymentsRequestsForPaymentResource,
+    )
+    from .resources.inbound_real_time_payments_requests_for_payment import (
+        InboundRealTimePaymentsRequestsForPaymentResource,
+        AsyncInboundRealTimePaymentsRequestsForPaymentResource,
     )
 
 __all__ = [
@@ -349,6 +366,12 @@ class Increase(SyncAPIClient):
         return DigitalWalletTokensResource(self)
 
     @cached_property
+    def digital_wallet_token_requests(self) -> DigitalWalletTokenRequestsResource:
+        from .resources.digital_wallet_token_requests import DigitalWalletTokenRequestsResource
+
+        return DigitalWalletTokenRequestsResource(self)
+
+    @cached_property
     def transactions(self) -> TransactionsResource:
         from .resources.transactions import TransactionsResource
 
@@ -431,6 +454,20 @@ class Increase(SyncAPIClient):
         from .resources.inbound_real_time_payments_transfers import InboundRealTimePaymentsTransfersResource
 
         return InboundRealTimePaymentsTransfersResource(self)
+
+    @cached_property
+    def real_time_payments_requests_for_payment(self) -> RealTimePaymentsRequestsForPaymentResource:
+        from .resources.real_time_payments_requests_for_payment import RealTimePaymentsRequestsForPaymentResource
+
+        return RealTimePaymentsRequestsForPaymentResource(self)
+
+    @cached_property
+    def inbound_real_time_payments_requests_for_payment(self) -> InboundRealTimePaymentsRequestsForPaymentResource:
+        from .resources.inbound_real_time_payments_requests_for_payment import (
+            InboundRealTimePaymentsRequestsForPaymentResource,
+        )
+
+        return InboundRealTimePaymentsRequestsForPaymentResource(self)
 
     @cached_property
     def fednow_transfers(self) -> FednowTransfersResource:
@@ -617,6 +654,12 @@ class Increase(SyncAPIClient):
         from .resources.card_validations import CardValidationsResource
 
         return CardValidationsResource(self)
+
+    @cached_property
+    def physical_check_batches(self) -> PhysicalCheckBatchesResource:
+        from .resources.physical_check_batches import PhysicalCheckBatchesResource
+
+        return PhysicalCheckBatchesResource(self)
 
     @cached_property
     def simulations(self) -> SimulationsResource:
@@ -950,6 +993,12 @@ class AsyncIncrease(AsyncAPIClient):
         return AsyncDigitalWalletTokensResource(self)
 
     @cached_property
+    def digital_wallet_token_requests(self) -> AsyncDigitalWalletTokenRequestsResource:
+        from .resources.digital_wallet_token_requests import AsyncDigitalWalletTokenRequestsResource
+
+        return AsyncDigitalWalletTokenRequestsResource(self)
+
+    @cached_property
     def transactions(self) -> AsyncTransactionsResource:
         from .resources.transactions import AsyncTransactionsResource
 
@@ -1032,6 +1081,20 @@ class AsyncIncrease(AsyncAPIClient):
         from .resources.inbound_real_time_payments_transfers import AsyncInboundRealTimePaymentsTransfersResource
 
         return AsyncInboundRealTimePaymentsTransfersResource(self)
+
+    @cached_property
+    def real_time_payments_requests_for_payment(self) -> AsyncRealTimePaymentsRequestsForPaymentResource:
+        from .resources.real_time_payments_requests_for_payment import AsyncRealTimePaymentsRequestsForPaymentResource
+
+        return AsyncRealTimePaymentsRequestsForPaymentResource(self)
+
+    @cached_property
+    def inbound_real_time_payments_requests_for_payment(self) -> AsyncInboundRealTimePaymentsRequestsForPaymentResource:
+        from .resources.inbound_real_time_payments_requests_for_payment import (
+            AsyncInboundRealTimePaymentsRequestsForPaymentResource,
+        )
+
+        return AsyncInboundRealTimePaymentsRequestsForPaymentResource(self)
 
     @cached_property
     def fednow_transfers(self) -> AsyncFednowTransfersResource:
@@ -1218,6 +1281,12 @@ class AsyncIncrease(AsyncAPIClient):
         from .resources.card_validations import AsyncCardValidationsResource
 
         return AsyncCardValidationsResource(self)
+
+    @cached_property
+    def physical_check_batches(self) -> AsyncPhysicalCheckBatchesResource:
+        from .resources.physical_check_batches import AsyncPhysicalCheckBatchesResource
+
+        return AsyncPhysicalCheckBatchesResource(self)
 
     @cached_property
     def simulations(self) -> AsyncSimulationsResource:
@@ -1459,6 +1528,14 @@ class IncreaseWithRawResponse:
         return DigitalWalletTokensResourceWithRawResponse(self._client.digital_wallet_tokens)
 
     @cached_property
+    def digital_wallet_token_requests(
+        self,
+    ) -> digital_wallet_token_requests.DigitalWalletTokenRequestsResourceWithRawResponse:
+        from .resources.digital_wallet_token_requests import DigitalWalletTokenRequestsResourceWithRawResponse
+
+        return DigitalWalletTokenRequestsResourceWithRawResponse(self._client.digital_wallet_token_requests)
+
+    @cached_property
     def transactions(self) -> transactions.TransactionsResourceWithRawResponse:
         from .resources.transactions import TransactionsResourceWithRawResponse
 
@@ -1550,6 +1627,32 @@ class IncreaseWithRawResponse:
 
         return InboundRealTimePaymentsTransfersResourceWithRawResponse(
             self._client.inbound_real_time_payments_transfers
+        )
+
+    @cached_property
+    def real_time_payments_requests_for_payment(
+        self,
+    ) -> real_time_payments_requests_for_payment.RealTimePaymentsRequestsForPaymentResourceWithRawResponse:
+        from .resources.real_time_payments_requests_for_payment import (
+            RealTimePaymentsRequestsForPaymentResourceWithRawResponse,
+        )
+
+        return RealTimePaymentsRequestsForPaymentResourceWithRawResponse(
+            self._client.real_time_payments_requests_for_payment
+        )
+
+    @cached_property
+    def inbound_real_time_payments_requests_for_payment(
+        self,
+    ) -> (
+        inbound_real_time_payments_requests_for_payment.InboundRealTimePaymentsRequestsForPaymentResourceWithRawResponse
+    ):
+        from .resources.inbound_real_time_payments_requests_for_payment import (
+            InboundRealTimePaymentsRequestsForPaymentResourceWithRawResponse,
+        )
+
+        return InboundRealTimePaymentsRequestsForPaymentResourceWithRawResponse(
+            self._client.inbound_real_time_payments_requests_for_payment
         )
 
     @cached_property
@@ -1741,6 +1844,12 @@ class IncreaseWithRawResponse:
         return CardValidationsResourceWithRawResponse(self._client.card_validations)
 
     @cached_property
+    def physical_check_batches(self) -> physical_check_batches.PhysicalCheckBatchesResourceWithRawResponse:
+        from .resources.physical_check_batches import PhysicalCheckBatchesResourceWithRawResponse
+
+        return PhysicalCheckBatchesResourceWithRawResponse(self._client.physical_check_batches)
+
+    @cached_property
     def simulations(self) -> simulations.SimulationsResourceWithRawResponse:
         from .resources.simulations import SimulationsResourceWithRawResponse
 
@@ -1820,6 +1929,14 @@ class AsyncIncreaseWithRawResponse:
         from .resources.digital_wallet_tokens import AsyncDigitalWalletTokensResourceWithRawResponse
 
         return AsyncDigitalWalletTokensResourceWithRawResponse(self._client.digital_wallet_tokens)
+
+    @cached_property
+    def digital_wallet_token_requests(
+        self,
+    ) -> digital_wallet_token_requests.AsyncDigitalWalletTokenRequestsResourceWithRawResponse:
+        from .resources.digital_wallet_token_requests import AsyncDigitalWalletTokenRequestsResourceWithRawResponse
+
+        return AsyncDigitalWalletTokenRequestsResourceWithRawResponse(self._client.digital_wallet_token_requests)
 
     @cached_property
     def transactions(self) -> transactions.AsyncTransactionsResourceWithRawResponse:
@@ -1913,6 +2030,30 @@ class AsyncIncreaseWithRawResponse:
 
         return AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse(
             self._client.inbound_real_time_payments_transfers
+        )
+
+    @cached_property
+    def real_time_payments_requests_for_payment(
+        self,
+    ) -> real_time_payments_requests_for_payment.AsyncRealTimePaymentsRequestsForPaymentResourceWithRawResponse:
+        from .resources.real_time_payments_requests_for_payment import (
+            AsyncRealTimePaymentsRequestsForPaymentResourceWithRawResponse,
+        )
+
+        return AsyncRealTimePaymentsRequestsForPaymentResourceWithRawResponse(
+            self._client.real_time_payments_requests_for_payment
+        )
+
+    @cached_property
+    def inbound_real_time_payments_requests_for_payment(
+        self,
+    ) -> inbound_real_time_payments_requests_for_payment.AsyncInboundRealTimePaymentsRequestsForPaymentResourceWithRawResponse:
+        from .resources.inbound_real_time_payments_requests_for_payment import (
+            AsyncInboundRealTimePaymentsRequestsForPaymentResourceWithRawResponse,
+        )
+
+        return AsyncInboundRealTimePaymentsRequestsForPaymentResourceWithRawResponse(
+            self._client.inbound_real_time_payments_requests_for_payment
         )
 
     @cached_property
@@ -2106,6 +2247,12 @@ class AsyncIncreaseWithRawResponse:
         return AsyncCardValidationsResourceWithRawResponse(self._client.card_validations)
 
     @cached_property
+    def physical_check_batches(self) -> physical_check_batches.AsyncPhysicalCheckBatchesResourceWithRawResponse:
+        from .resources.physical_check_batches import AsyncPhysicalCheckBatchesResourceWithRawResponse
+
+        return AsyncPhysicalCheckBatchesResourceWithRawResponse(self._client.physical_check_batches)
+
+    @cached_property
     def simulations(self) -> simulations.AsyncSimulationsResourceWithRawResponse:
         from .resources.simulations import AsyncSimulationsResourceWithRawResponse
 
@@ -2185,6 +2332,14 @@ class IncreaseWithStreamedResponse:
         from .resources.digital_wallet_tokens import DigitalWalletTokensResourceWithStreamingResponse
 
         return DigitalWalletTokensResourceWithStreamingResponse(self._client.digital_wallet_tokens)
+
+    @cached_property
+    def digital_wallet_token_requests(
+        self,
+    ) -> digital_wallet_token_requests.DigitalWalletTokenRequestsResourceWithStreamingResponse:
+        from .resources.digital_wallet_token_requests import DigitalWalletTokenRequestsResourceWithStreamingResponse
+
+        return DigitalWalletTokenRequestsResourceWithStreamingResponse(self._client.digital_wallet_token_requests)
 
     @cached_property
     def transactions(self) -> transactions.TransactionsResourceWithStreamingResponse:
@@ -2278,6 +2433,30 @@ class IncreaseWithStreamedResponse:
 
         return InboundRealTimePaymentsTransfersResourceWithStreamingResponse(
             self._client.inbound_real_time_payments_transfers
+        )
+
+    @cached_property
+    def real_time_payments_requests_for_payment(
+        self,
+    ) -> real_time_payments_requests_for_payment.RealTimePaymentsRequestsForPaymentResourceWithStreamingResponse:
+        from .resources.real_time_payments_requests_for_payment import (
+            RealTimePaymentsRequestsForPaymentResourceWithStreamingResponse,
+        )
+
+        return RealTimePaymentsRequestsForPaymentResourceWithStreamingResponse(
+            self._client.real_time_payments_requests_for_payment
+        )
+
+    @cached_property
+    def inbound_real_time_payments_requests_for_payment(
+        self,
+    ) -> inbound_real_time_payments_requests_for_payment.InboundRealTimePaymentsRequestsForPaymentResourceWithStreamingResponse:
+        from .resources.inbound_real_time_payments_requests_for_payment import (
+            InboundRealTimePaymentsRequestsForPaymentResourceWithStreamingResponse,
+        )
+
+        return InboundRealTimePaymentsRequestsForPaymentResourceWithStreamingResponse(
+            self._client.inbound_real_time_payments_requests_for_payment
         )
 
     @cached_property
@@ -2471,6 +2650,12 @@ class IncreaseWithStreamedResponse:
         return CardValidationsResourceWithStreamingResponse(self._client.card_validations)
 
     @cached_property
+    def physical_check_batches(self) -> physical_check_batches.PhysicalCheckBatchesResourceWithStreamingResponse:
+        from .resources.physical_check_batches import PhysicalCheckBatchesResourceWithStreamingResponse
+
+        return PhysicalCheckBatchesResourceWithStreamingResponse(self._client.physical_check_batches)
+
+    @cached_property
     def simulations(self) -> simulations.SimulationsResourceWithStreamingResponse:
         from .resources.simulations import SimulationsResourceWithStreamingResponse
 
@@ -2550,6 +2735,16 @@ class AsyncIncreaseWithStreamedResponse:
         from .resources.digital_wallet_tokens import AsyncDigitalWalletTokensResourceWithStreamingResponse
 
         return AsyncDigitalWalletTokensResourceWithStreamingResponse(self._client.digital_wallet_tokens)
+
+    @cached_property
+    def digital_wallet_token_requests(
+        self,
+    ) -> digital_wallet_token_requests.AsyncDigitalWalletTokenRequestsResourceWithStreamingResponse:
+        from .resources.digital_wallet_token_requests import (
+            AsyncDigitalWalletTokenRequestsResourceWithStreamingResponse,
+        )
+
+        return AsyncDigitalWalletTokenRequestsResourceWithStreamingResponse(self._client.digital_wallet_token_requests)
 
     @cached_property
     def transactions(self) -> transactions.AsyncTransactionsResourceWithStreamingResponse:
@@ -2647,6 +2842,30 @@ class AsyncIncreaseWithStreamedResponse:
 
         return AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse(
             self._client.inbound_real_time_payments_transfers
+        )
+
+    @cached_property
+    def real_time_payments_requests_for_payment(
+        self,
+    ) -> real_time_payments_requests_for_payment.AsyncRealTimePaymentsRequestsForPaymentResourceWithStreamingResponse:
+        from .resources.real_time_payments_requests_for_payment import (
+            AsyncRealTimePaymentsRequestsForPaymentResourceWithStreamingResponse,
+        )
+
+        return AsyncRealTimePaymentsRequestsForPaymentResourceWithStreamingResponse(
+            self._client.real_time_payments_requests_for_payment
+        )
+
+    @cached_property
+    def inbound_real_time_payments_requests_for_payment(
+        self,
+    ) -> inbound_real_time_payments_requests_for_payment.AsyncInboundRealTimePaymentsRequestsForPaymentResourceWithStreamingResponse:
+        from .resources.inbound_real_time_payments_requests_for_payment import (
+            AsyncInboundRealTimePaymentsRequestsForPaymentResourceWithStreamingResponse,
+        )
+
+        return AsyncInboundRealTimePaymentsRequestsForPaymentResourceWithStreamingResponse(
+            self._client.inbound_real_time_payments_requests_for_payment
         )
 
     @cached_property
@@ -2840,6 +3059,12 @@ class AsyncIncreaseWithStreamedResponse:
         from .resources.card_validations import AsyncCardValidationsResourceWithStreamingResponse
 
         return AsyncCardValidationsResourceWithStreamingResponse(self._client.card_validations)
+
+    @cached_property
+    def physical_check_batches(self) -> physical_check_batches.AsyncPhysicalCheckBatchesResourceWithStreamingResponse:
+        from .resources.physical_check_batches import AsyncPhysicalCheckBatchesResourceWithStreamingResponse
+
+        return AsyncPhysicalCheckBatchesResourceWithStreamingResponse(self._client.physical_check_batches)
 
     @cached_property
     def simulations(self) -> simulations.AsyncSimulationsResourceWithStreamingResponse:

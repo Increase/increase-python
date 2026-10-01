@@ -13,6 +13,7 @@ from increase.types import (
     Card,
     CardDetails,
     CardIframeURL,
+    CardDetailsToken,
 )
 from increase._utils import parse_datetime
 from increase.pagination import SyncPage, AsyncPage
@@ -318,6 +319,42 @@ class TestCards:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
             client.cards.with_raw_response.create_details_iframe(
                 card_id="",
+            )
+
+    @parametrize
+    def test_method_create_details_token(self, client: Increase) -> None:
+        card = client.cards.create_details_token(
+            "card_oubs0hwk5rn6knuecxg2",
+        )
+        assert_matches_type(CardDetailsToken, card, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_details_token(self, client: Increase) -> None:
+        response = client.cards.with_raw_response.create_details_token(
+            "card_oubs0hwk5rn6knuecxg2",
+        )
+
+        assert response.is_closed is True
+        card = response.parse()
+        assert_matches_type(CardDetailsToken, card, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_details_token(self, client: Increase) -> None:
+        with client.cards.with_streaming_response.create_details_token(
+            "card_oubs0hwk5rn6knuecxg2",
+        ) as response:
+            assert not response.is_closed
+
+            card = response.parse()
+            assert_matches_type(CardDetailsToken, card, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_create_details_token(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
+            client.cards.with_raw_response.create_details_token(
+                "",
             )
 
     @parametrize
@@ -697,6 +734,42 @@ class TestAsyncCards:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
             await async_client.cards.with_raw_response.create_details_iframe(
                 card_id="",
+            )
+
+    @parametrize
+    async def test_method_create_details_token(self, async_client: AsyncIncrease) -> None:
+        card = await async_client.cards.create_details_token(
+            "card_oubs0hwk5rn6knuecxg2",
+        )
+        assert_matches_type(CardDetailsToken, card, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_details_token(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.cards.with_raw_response.create_details_token(
+            "card_oubs0hwk5rn6knuecxg2",
+        )
+
+        assert response.is_closed is True
+        card = await response.parse()
+        assert_matches_type(CardDetailsToken, card, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_details_token(self, async_client: AsyncIncrease) -> None:
+        async with async_client.cards.with_streaming_response.create_details_token(
+            "card_oubs0hwk5rn6knuecxg2",
+        ) as response:
+            assert not response.is_closed
+
+            card = await response.parse()
+            assert_matches_type(CardDetailsToken, card, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_create_details_token(self, async_client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
+            await async_client.cards.with_raw_response.create_details_token(
+                "",
             )
 
     @parametrize

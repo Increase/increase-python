@@ -1942,12 +1942,13 @@ class DigitalWalletAuthentication(BaseModel):
     - `email` - Send one-time passcodes over email.
     """
 
-    digital_wallet: Literal["apple_pay", "google_pay", "samsung_pay", "unknown"]
+    digital_wallet: Literal["apple_pay", "google_pay", "samsung_pay", "garmin_pay", "unknown"]
     """The digital wallet app being used.
 
     - `apple_pay` - Apple Pay
     - `google_pay` - Google Pay
     - `samsung_pay` - Samsung Pay
+    - `garmin_pay` - Garmin Pay
     - `unknown` - Unknown
     """
 
@@ -1998,12 +1999,13 @@ class DigitalWalletToken(BaseModel):
     device: DigitalWalletTokenDevice
     """Device that is being used to provision the digital wallet token."""
 
-    digital_wallet: Literal["apple_pay", "google_pay", "samsung_pay", "unknown"]
+    digital_wallet: Literal["apple_pay", "google_pay", "samsung_pay", "garmin_pay", "unknown"]
     """The digital wallet app being used.
 
     - `apple_pay` - Apple Pay
     - `google_pay` - Google Pay
     - `samsung_pay` - Samsung Pay
+    - `garmin_pay` - Garmin Pay
     - `unknown` - Unknown
     """
 

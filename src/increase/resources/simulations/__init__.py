@@ -120,6 +120,14 @@ from .card_settlements import (
     CardSettlementsResourceWithStreamingResponse,
     AsyncCardSettlementsResourceWithStreamingResponse,
 )
+from .fednow_transfers import (
+    FednowTransfersResource,
+    AsyncFednowTransfersResource,
+    FednowTransfersResourceWithRawResponse,
+    AsyncFednowTransfersResourceWithRawResponse,
+    FednowTransfersResourceWithStreamingResponse,
+    AsyncFednowTransfersResourceWithStreamingResponse,
+)
 from .interest_payments import (
     InterestPaymentsResource,
     AsyncInterestPaymentsResource,
@@ -446,6 +454,12 @@ __all__ = [
     "AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse",
     "InboundRealTimePaymentsTransfersResourceWithStreamingResponse",
     "AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse",
+    "FednowTransfersResource",
+    "AsyncFednowTransfersResource",
+    "FednowTransfersResourceWithRawResponse",
+    "AsyncFednowTransfersResourceWithRawResponse",
+    "FednowTransfersResourceWithStreamingResponse",
+    "AsyncFednowTransfersResourceWithStreamingResponse",
     "InboundFednowTransfersResource",
     "AsyncInboundFednowTransfersResource",
     "InboundFednowTransfersResourceWithRawResponse",

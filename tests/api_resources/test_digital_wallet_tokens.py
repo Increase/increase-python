@@ -95,6 +95,48 @@ class TestDigitalWalletTokens:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_transition(self, client: Increase) -> None:
+        digital_wallet_token = client.digital_wallet_tokens.transition(
+            digital_wallet_token_id="digital_wallet_token_izi62go3h51p369jrie0",
+            status="suspended",
+        )
+        assert_matches_type(DigitalWalletToken, digital_wallet_token, path=["response"])
+
+    @parametrize
+    def test_raw_response_transition(self, client: Increase) -> None:
+        response = client.digital_wallet_tokens.with_raw_response.transition(
+            digital_wallet_token_id="digital_wallet_token_izi62go3h51p369jrie0",
+            status="suspended",
+        )
+
+        assert response.is_closed is True
+        digital_wallet_token = response.parse()
+        assert_matches_type(DigitalWalletToken, digital_wallet_token, path=["response"])
+
+    @parametrize
+    def test_streaming_response_transition(self, client: Increase) -> None:
+        with client.digital_wallet_tokens.with_streaming_response.transition(
+            digital_wallet_token_id="digital_wallet_token_izi62go3h51p369jrie0",
+            status="suspended",
+        ) as response:
+            assert not response.is_closed
+
+            digital_wallet_token = response.parse()
+            assert_matches_type(DigitalWalletToken, digital_wallet_token, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_transition(self, client: Increase) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `digital_wallet_token_id` but received ''"
+        ):
+            client.digital_wallet_tokens.with_raw_response.transition(
+                digital_wallet_token_id="",
+                status="suspended",
+            )
+
 
 class TestAsyncDigitalWalletTokens:
     parametrize = pytest.mark.parametrize(
@@ -176,3 +218,45 @@ class TestAsyncDigitalWalletTokens:
             assert_matches_type(AsyncPage[DigitalWalletToken], digital_wallet_token, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_transition(self, async_client: AsyncIncrease) -> None:
+        digital_wallet_token = await async_client.digital_wallet_tokens.transition(
+            digital_wallet_token_id="digital_wallet_token_izi62go3h51p369jrie0",
+            status="suspended",
+        )
+        assert_matches_type(DigitalWalletToken, digital_wallet_token, path=["response"])
+
+    @parametrize
+    async def test_raw_response_transition(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.digital_wallet_tokens.with_raw_response.transition(
+            digital_wallet_token_id="digital_wallet_token_izi62go3h51p369jrie0",
+            status="suspended",
+        )
+
+        assert response.is_closed is True
+        digital_wallet_token = await response.parse()
+        assert_matches_type(DigitalWalletToken, digital_wallet_token, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_transition(self, async_client: AsyncIncrease) -> None:
+        async with async_client.digital_wallet_tokens.with_streaming_response.transition(
+            digital_wallet_token_id="digital_wallet_token_izi62go3h51p369jrie0",
+            status="suspended",
+        ) as response:
+            assert not response.is_closed
+
+            digital_wallet_token = await response.parse()
+            assert_matches_type(DigitalWalletToken, digital_wallet_token, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_transition(self, async_client: AsyncIncrease) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `digital_wallet_token_id` but received ''"
+        ):
+            await async_client.digital_wallet_tokens.with_raw_response.transition(
+                digital_wallet_token_id="",
+                status="suspended",
+            )
