@@ -51,7 +51,7 @@ Methods:
 Types:
 
 ```python
-from increase.types import Card, CardDetails, CardIframeURL
+from increase.types import Card, CardDetails, CardDetailsToken, CardIframeURL
 ```
 
 Methods:
@@ -61,6 +61,7 @@ Methods:
 - <code title="patch /cards/{card_id}">client.cards.<a href="./src/increase/resources/cards.py">update</a>(card_id, \*\*<a href="src/increase/types/card_update_params.py">params</a>) -> <a href="./src/increase/types/card.py">Card</a></code>
 - <code title="get /cards">client.cards.<a href="./src/increase/resources/cards.py">list</a>(\*\*<a href="src/increase/types/card_list_params.py">params</a>) -> <a href="./src/increase/types/card.py">SyncPage[Card]</a></code>
 - <code title="post /cards/{card_id}/create_details_iframe">client.cards.<a href="./src/increase/resources/cards.py">create_details_iframe</a>(card_id, \*\*<a href="src/increase/types/card_create_details_iframe_params.py">params</a>) -> <a href="./src/increase/types/card_iframe_url.py">CardIframeURL</a></code>
+- <code title="post /cards/{card_id}/create_details_token">client.cards.<a href="./src/increase/resources/cards.py">create_details_token</a>(card_id) -> <a href="./src/increase/types/card_details_token.py">CardDetailsToken</a></code>
 - <code title="get /cards/{card_id}/details">client.cards.<a href="./src/increase/resources/cards.py">details</a>(card_id) -> <a href="./src/increase/types/card_details.py">CardDetails</a></code>
 - <code title="post /cards/{card_id}/update_pin">client.cards.<a href="./src/increase/resources/cards.py">update_pin</a>(card_id, \*\*<a href="src/increase/types/card_update_pin_params.py">params</a>) -> <a href="./src/increase/types/card_details.py">CardDetails</a></code>
 
@@ -165,6 +166,20 @@ Methods:
 
 - <code title="get /digital_wallet_tokens/{digital_wallet_token_id}">client.digital_wallet_tokens.<a href="./src/increase/resources/digital_wallet_tokens.py">retrieve</a>(digital_wallet_token_id) -> <a href="./src/increase/types/digital_wallet_token.py">DigitalWalletToken</a></code>
 - <code title="get /digital_wallet_tokens">client.digital_wallet_tokens.<a href="./src/increase/resources/digital_wallet_tokens.py">list</a>(\*\*<a href="src/increase/types/digital_wallet_token_list_params.py">params</a>) -> <a href="./src/increase/types/digital_wallet_token.py">SyncPage[DigitalWalletToken]</a></code>
+- <code title="post /digital_wallet_tokens/{digital_wallet_token_id}/transition">client.digital_wallet_tokens.<a href="./src/increase/resources/digital_wallet_tokens.py">transition</a>(digital_wallet_token_id, \*\*<a href="src/increase/types/digital_wallet_token_transition_params.py">params</a>) -> <a href="./src/increase/types/digital_wallet_token.py">DigitalWalletToken</a></code>
+
+# DigitalWalletTokenRequests
+
+Types:
+
+```python
+from increase.types import DigitalWalletTokenRequest
+```
+
+Methods:
+
+- <code title="get /digital_wallet_token_requests/{digital_wallet_token_request_id}">client.digital_wallet_token_requests.<a href="./src/increase/resources/digital_wallet_token_requests.py">retrieve</a>(digital_wallet_token_request_id) -> <a href="./src/increase/types/digital_wallet_token_request.py">DigitalWalletTokenRequest</a></code>
+- <code title="get /digital_wallet_token_requests">client.digital_wallet_token_requests.<a href="./src/increase/resources/digital_wallet_token_requests.py">list</a>(\*\*<a href="src/increase/types/digital_wallet_token_request_list_params.py">params</a>) -> <a href="./src/increase/types/digital_wallet_token_request.py">SyncPage[DigitalWalletTokenRequest]</a></code>
 
 # Transactions
 
@@ -370,6 +385,34 @@ Methods:
 
 - <code title="get /inbound_real_time_payments_transfers/{inbound_real_time_payments_transfer_id}">client.inbound_real_time_payments_transfers.<a href="./src/increase/resources/inbound_real_time_payments_transfers.py">retrieve</a>(inbound_real_time_payments_transfer_id) -> <a href="./src/increase/types/inbound_real_time_payments_transfer.py">InboundRealTimePaymentsTransfer</a></code>
 - <code title="get /inbound_real_time_payments_transfers">client.inbound_real_time_payments_transfers.<a href="./src/increase/resources/inbound_real_time_payments_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_real_time_payments_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_real_time_payments_transfer.py">SyncPage[InboundRealTimePaymentsTransfer]</a></code>
+
+# RealTimePaymentsRequestsForPayment
+
+Types:
+
+```python
+from increase.types import RealTimePaymentsRequestForPayment
+```
+
+Methods:
+
+- <code title="post /real_time_payments_requests_for_payment">client.real_time_payments_requests_for_payment.<a href="./src/increase/resources/real_time_payments_requests_for_payment.py">create</a>(\*\*<a href="src/increase/types/real_time_payments_requests_for_payment_create_params.py">params</a>) -> <a href="./src/increase/types/real_time_payments_request_for_payment.py">RealTimePaymentsRequestForPayment</a></code>
+- <code title="get /real_time_payments_requests_for_payment/{real_time_payments_request_for_payment_id}">client.real_time_payments_requests_for_payment.<a href="./src/increase/resources/real_time_payments_requests_for_payment.py">retrieve</a>(real_time_payments_request_for_payment_id) -> <a href="./src/increase/types/real_time_payments_request_for_payment.py">RealTimePaymentsRequestForPayment</a></code>
+- <code title="get /real_time_payments_requests_for_payment">client.real_time_payments_requests_for_payment.<a href="./src/increase/resources/real_time_payments_requests_for_payment.py">list</a>(\*\*<a href="src/increase/types/real_time_payments_requests_for_payment_list_params.py">params</a>) -> <a href="./src/increase/types/real_time_payments_request_for_payment.py">SyncPage[RealTimePaymentsRequestForPayment]</a></code>
+- <code title="post /real_time_payments_requests_for_payment/{real_time_payments_request_for_payment_id}/cancel">client.real_time_payments_requests_for_payment.<a href="./src/increase/resources/real_time_payments_requests_for_payment.py">cancel</a>(real_time_payments_request_for_payment_id, \*\*<a href="src/increase/types/real_time_payments_requests_for_payment_cancel_params.py">params</a>) -> <a href="./src/increase/types/real_time_payments_request_for_payment.py">RealTimePaymentsRequestForPayment</a></code>
+
+# InboundRealTimePaymentsRequestsForPayment
+
+Types:
+
+```python
+from increase.types import InboundRealTimePaymentsRequestForPayment
+```
+
+Methods:
+
+- <code title="get /inbound_real_time_payments_requests_for_payment/{inbound_real_time_payments_request_for_payment_id}">client.inbound_real_time_payments_requests_for_payment.<a href="./src/increase/resources/inbound_real_time_payments_requests_for_payment.py">retrieve</a>(inbound_real_time_payments_request_for_payment_id) -> <a href="./src/increase/types/inbound_real_time_payments_request_for_payment.py">InboundRealTimePaymentsRequestForPayment</a></code>
+- <code title="get /inbound_real_time_payments_requests_for_payment">client.inbound_real_time_payments_requests_for_payment.<a href="./src/increase/resources/inbound_real_time_payments_requests_for_payment.py">list</a>(\*\*<a href="src/increase/types/inbound_real_time_payments_requests_for_payment_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_real_time_payments_request_for_payment.py">SyncPage[InboundRealTimePaymentsRequestForPayment]</a></code>
 
 # FednowTransfers
 
@@ -805,6 +848,20 @@ Methods:
 - <code title="get /card_validations/{card_validation_id}">client.card_validations.<a href="./src/increase/resources/card_validations.py">retrieve</a>(card_validation_id) -> <a href="./src/increase/types/card_validation.py">CardValidation</a></code>
 - <code title="get /card_validations">client.card_validations.<a href="./src/increase/resources/card_validations.py">list</a>(\*\*<a href="src/increase/types/card_validation_list_params.py">params</a>) -> <a href="./src/increase/types/card_validation.py">SyncPage[CardValidation]</a></code>
 
+# PhysicalCheckBatches
+
+Types:
+
+```python
+from increase.types import PhysicalCheckBatch
+```
+
+Methods:
+
+- <code title="post /physical_check_batches">client.physical_check_batches.<a href="./src/increase/resources/physical_check_batches.py">create</a>(\*\*<a href="src/increase/types/physical_check_batch_create_params.py">params</a>) -> <a href="./src/increase/types/physical_check_batch.py">PhysicalCheckBatch</a></code>
+- <code title="post /physical_check_batches/{physical_check_batch_id}/cancel">client.physical_check_batches.<a href="./src/increase/resources/physical_check_batches.py">cancel</a>(physical_check_batch_id) -> <a href="./src/increase/types/physical_check_batch.py">PhysicalCheckBatch</a></code>
+- <code title="post /physical_check_batches/{physical_check_batch_id}/complete">client.physical_check_batches.<a href="./src/increase/resources/physical_check_batches.py">complete</a>(physical_check_batch_id) -> <a href="./src/increase/types/physical_check_batch.py">PhysicalCheckBatch</a></code>
+
 # Simulations
 
 ## InterestPayments
@@ -971,6 +1028,7 @@ Methods:
 Methods:
 
 - <code title="post /simulations/inbound_check_deposits">client.simulations.inbound_check_deposits.<a href="./src/increase/resources/simulations/inbound_check_deposits.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_check_deposit_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
+- <code title="post /simulations/inbound_check_deposits/{inbound_check_deposit_id}/accept">client.simulations.inbound_check_deposits.<a href="./src/increase/resources/simulations/inbound_check_deposits.py">accept</a>(inbound_check_deposit_id) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
 - <code title="post /simulations/inbound_check_deposits/{inbound_check_deposit_id}/adjustment">client.simulations.inbound_check_deposits.<a href="./src/increase/resources/simulations/inbound_check_deposits.py">adjustment</a>(inbound_check_deposit_id, \*\*<a href="src/increase/types/simulations/inbound_check_deposit_adjustment_params.py">params</a>) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
 
 ## RealTimePaymentsTransfers
@@ -984,6 +1042,12 @@ Methods:
 Methods:
 
 - <code title="post /simulations/inbound_real_time_payments_transfers">client.simulations.inbound_real_time_payments_transfers.<a href="./src/increase/resources/simulations/inbound_real_time_payments_transfers.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_real_time_payments_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_real_time_payments_transfer.py">InboundRealTimePaymentsTransfer</a></code>
+
+## FednowTransfers
+
+Methods:
+
+- <code title="post /simulations/fednow_transfers/{fednow_transfer_id}/complete">client.simulations.fednow_transfers.<a href="./src/increase/resources/simulations/fednow_transfers.py">complete</a>(fednow_transfer_id, \*\*<a href="src/increase/types/simulations/fednow_transfer_complete_params.py">params</a>) -> <a href="./src/increase/types/fednow_transfer.py">FednowTransfer</a></code>
 
 ## InboundFednowTransfers
 

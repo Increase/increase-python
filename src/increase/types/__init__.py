@@ -42,6 +42,7 @@ from .intrafi_exclusion import IntrafiExclusion as IntrafiExclusion
 from .lockbox_recipient import LockboxRecipient as LockboxRecipient
 from .oauth_application import OAuthApplication as OAuthApplication
 from .card_create_params import CardCreateParams as CardCreateParams
+from .card_details_token import CardDetailsToken as CardDetailsToken
 from .card_push_transfer import CardPushTransfer as CardPushTransfer
 from .card_update_params import CardUpdateParams as CardUpdateParams
 from .entity_list_params import EntityListParams as EntityListParams
@@ -60,6 +61,7 @@ from .entity_create_params import EntityCreateParams as EntityCreateParams
 from .entity_update_params import EntityUpdateParams as EntityUpdateParams
 from .export_create_params import ExportCreateParams as ExportCreateParams
 from .inbound_ach_transfer import InboundACHTransfer as InboundACHTransfer
+from .physical_check_batch import PhysicalCheckBatch as PhysicalCheckBatch
 from .unwrap_webhook_event import UnwrapWebhookEvent as UnwrapWebhookEvent
 from .account_create_params import AccountCreateParams as AccountCreateParams
 from .account_update_params import AccountUpdateParams as AccountUpdateParams
@@ -105,6 +107,7 @@ from .account_transfer_list_params import AccountTransferListParams as AccountTr
 from .beneficial_owner_list_params import BeneficialOwnerListParams as BeneficialOwnerListParams
 from .card_dispute_withdraw_params import CardDisputeWithdrawParams as CardDisputeWithdrawParams
 from .check_transfer_create_params import CheckTransferCreateParams as CheckTransferCreateParams
+from .digital_wallet_token_request import DigitalWalletTokenRequest as DigitalWalletTokenRequest
 from .entity_supplemental_document import EntitySupplementalDocument as EntitySupplementalDocument
 from .external_account_list_params import ExternalAccountListParams as ExternalAccountListParams
 from .oauth_connection_list_params import OAuthConnectionListParams as OAuthConnectionListParams
@@ -153,6 +156,7 @@ from .wire_drawdown_request_list_params import WireDrawdownRequestListParams as 
 from .check_transfer_stop_payment_params import CheckTransferStopPaymentParams as CheckTransferStopPaymentParams
 from .digital_card_profile_create_params import DigitalCardProfileCreateParams as DigitalCardProfileCreateParams
 from .physical_card_profile_clone_params import PhysicalCardProfileCloneParams as PhysicalCardProfileCloneParams
+from .physical_check_batch_create_params import PhysicalCheckBatchCreateParams as PhysicalCheckBatchCreateParams
 from .inbound_ach_transfer_decline_params import InboundACHTransferDeclineParams as InboundACHTransferDeclineParams
 from .inbound_check_deposit_return_params import InboundCheckDepositReturnParams as InboundCheckDepositReturnParams
 from .inbound_fednow_transfer_list_params import InboundFednowTransferListParams as InboundFednowTransferListParams
@@ -165,14 +169,23 @@ from .inbound_wire_transfer_reverse_params import InboundWireTransferReversePara
 from .entity_onboarding_session_list_params import (
     EntityOnboardingSessionListParams as EntityOnboardingSessionListParams,
 )
+from .digital_wallet_token_transition_params import (
+    DigitalWalletTokenTransitionParams as DigitalWalletTokenTransitionParams,
+)
 from .intrafi_account_enrollment_list_params import (
     IntrafiAccountEnrollmentListParams as IntrafiAccountEnrollmentListParams,
+)
+from .real_time_payments_request_for_payment import (
+    RealTimePaymentsRequestForPayment as RealTimePaymentsRequestForPayment,
 )
 from .entity_onboarding_session_create_params import (
     EntityOnboardingSessionCreateParams as EntityOnboardingSessionCreateParams,
 )
 from .real_time_payments_transfer_list_params import (
     RealTimePaymentsTransferListParams as RealTimePaymentsTransferListParams,
+)
+from .digital_wallet_token_request_list_params import (
+    DigitalWalletTokenRequestListParams as DigitalWalletTokenRequestListParams,
 )
 from .intrafi_account_enrollment_create_params import (
     IntrafiAccountEnrollmentCreateParams as IntrafiAccountEnrollmentCreateParams,
@@ -189,9 +202,24 @@ from .card_dispute_submit_user_submission_params import (
 from .inbound_ach_transfer_transfer_return_params import (
     InboundACHTransferTransferReturnParams as InboundACHTransferTransferReturnParams,
 )
+from .inbound_real_time_payments_request_for_payment import (
+    InboundRealTimePaymentsRequestForPayment as InboundRealTimePaymentsRequestForPayment,
+)
 from .inbound_real_time_payments_transfer_list_params import (
     InboundRealTimePaymentsTransferListParams as InboundRealTimePaymentsTransferListParams,
 )
+from .real_time_payments_requests_for_payment_list_params import (
+    RealTimePaymentsRequestsForPaymentListParams as RealTimePaymentsRequestsForPaymentListParams,
+)
+from .real_time_payments_requests_for_payment_cancel_params import (
+    RealTimePaymentsRequestsForPaymentCancelParams as RealTimePaymentsRequestsForPaymentCancelParams,
+)
+from .real_time_payments_requests_for_payment_create_params import (
+    RealTimePaymentsRequestsForPaymentCreateParams as RealTimePaymentsRequestsForPaymentCreateParams,
+)
 from .inbound_ach_transfer_create_notification_of_change_params import (
     InboundACHTransferCreateNotificationOfChangeParams as InboundACHTransferCreateNotificationOfChangeParams,
+)
+from .inbound_real_time_payments_requests_for_payment_list_params import (
+    InboundRealTimePaymentsRequestsForPaymentListParams as InboundRealTimePaymentsRequestsForPaymentListParams,
 )

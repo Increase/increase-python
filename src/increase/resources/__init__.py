@@ -384,6 +384,14 @@ from .physical_card_profiles import (
     PhysicalCardProfilesResourceWithStreamingResponse,
     AsyncPhysicalCardProfilesResourceWithStreamingResponse,
 )
+from .physical_check_batches import (
+    PhysicalCheckBatchesResource,
+    AsyncPhysicalCheckBatchesResource,
+    PhysicalCheckBatchesResourceWithRawResponse,
+    AsyncPhysicalCheckBatchesResourceWithRawResponse,
+    PhysicalCheckBatchesResourceWithStreamingResponse,
+    AsyncPhysicalCheckBatchesResourceWithStreamingResponse,
+)
 from .supplemental_documents import (
     SupplementalDocumentsResource,
     AsyncSupplementalDocumentsResource,
@@ -440,6 +448,14 @@ from .real_time_payments_transfers import (
     RealTimePaymentsTransfersResourceWithStreamingResponse,
     AsyncRealTimePaymentsTransfersResourceWithStreamingResponse,
 )
+from .digital_wallet_token_requests import (
+    DigitalWalletTokenRequestsResource,
+    AsyncDigitalWalletTokenRequestsResource,
+    DigitalWalletTokenRequestsResourceWithRawResponse,
+    AsyncDigitalWalletTokenRequestsResourceWithRawResponse,
+    DigitalWalletTokenRequestsResourceWithStreamingResponse,
+    AsyncDigitalWalletTokenRequestsResourceWithStreamingResponse,
+)
 from .inbound_wire_drawdown_requests import (
     InboundWireDrawdownRequestsResource,
     AsyncInboundWireDrawdownRequestsResource,
@@ -455,6 +471,22 @@ from .inbound_real_time_payments_transfers import (
     AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse,
     InboundRealTimePaymentsTransfersResourceWithStreamingResponse,
     AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse,
+)
+from .real_time_payments_requests_for_payment import (
+    RealTimePaymentsRequestsForPaymentResource,
+    AsyncRealTimePaymentsRequestsForPaymentResource,
+    RealTimePaymentsRequestsForPaymentResourceWithRawResponse,
+    AsyncRealTimePaymentsRequestsForPaymentResourceWithRawResponse,
+    RealTimePaymentsRequestsForPaymentResourceWithStreamingResponse,
+    AsyncRealTimePaymentsRequestsForPaymentResourceWithStreamingResponse,
+)
+from .inbound_real_time_payments_requests_for_payment import (
+    InboundRealTimePaymentsRequestsForPaymentResource,
+    AsyncInboundRealTimePaymentsRequestsForPaymentResource,
+    InboundRealTimePaymentsRequestsForPaymentResourceWithRawResponse,
+    AsyncInboundRealTimePaymentsRequestsForPaymentResourceWithRawResponse,
+    InboundRealTimePaymentsRequestsForPaymentResourceWithStreamingResponse,
+    AsyncInboundRealTimePaymentsRequestsForPaymentResourceWithStreamingResponse,
 )
 
 __all__ = [
@@ -524,6 +556,12 @@ __all__ = [
     "AsyncDigitalWalletTokensResourceWithRawResponse",
     "DigitalWalletTokensResourceWithStreamingResponse",
     "AsyncDigitalWalletTokensResourceWithStreamingResponse",
+    "DigitalWalletTokenRequestsResource",
+    "AsyncDigitalWalletTokenRequestsResource",
+    "DigitalWalletTokenRequestsResourceWithRawResponse",
+    "AsyncDigitalWalletTokenRequestsResourceWithRawResponse",
+    "DigitalWalletTokenRequestsResourceWithStreamingResponse",
+    "AsyncDigitalWalletTokenRequestsResourceWithStreamingResponse",
     "TransactionsResource",
     "AsyncTransactionsResource",
     "TransactionsResourceWithRawResponse",
@@ -608,6 +646,18 @@ __all__ = [
     "AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse",
     "InboundRealTimePaymentsTransfersResourceWithStreamingResponse",
     "AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse",
+    "RealTimePaymentsRequestsForPaymentResource",
+    "AsyncRealTimePaymentsRequestsForPaymentResource",
+    "RealTimePaymentsRequestsForPaymentResourceWithRawResponse",
+    "AsyncRealTimePaymentsRequestsForPaymentResourceWithRawResponse",
+    "RealTimePaymentsRequestsForPaymentResourceWithStreamingResponse",
+    "AsyncRealTimePaymentsRequestsForPaymentResourceWithStreamingResponse",
+    "InboundRealTimePaymentsRequestsForPaymentResource",
+    "AsyncInboundRealTimePaymentsRequestsForPaymentResource",
+    "InboundRealTimePaymentsRequestsForPaymentResourceWithRawResponse",
+    "AsyncInboundRealTimePaymentsRequestsForPaymentResourceWithRawResponse",
+    "InboundRealTimePaymentsRequestsForPaymentResourceWithStreamingResponse",
+    "AsyncInboundRealTimePaymentsRequestsForPaymentResourceWithStreamingResponse",
     "FednowTransfersResource",
     "AsyncFednowTransfersResource",
     "FednowTransfersResourceWithRawResponse",
@@ -794,6 +844,12 @@ __all__ = [
     "AsyncCardValidationsResourceWithRawResponse",
     "CardValidationsResourceWithStreamingResponse",
     "AsyncCardValidationsResourceWithStreamingResponse",
+    "PhysicalCheckBatchesResource",
+    "AsyncPhysicalCheckBatchesResource",
+    "PhysicalCheckBatchesResourceWithRawResponse",
+    "AsyncPhysicalCheckBatchesResourceWithRawResponse",
+    "PhysicalCheckBatchesResourceWithStreamingResponse",
+    "AsyncPhysicalCheckBatchesResourceWithStreamingResponse",
     "SimulationsResource",
     "AsyncSimulationsResource",
     "SimulationsResourceWithRawResponse",

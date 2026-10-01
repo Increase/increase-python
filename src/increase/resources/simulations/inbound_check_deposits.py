@@ -116,6 +116,55 @@ class InboundCheckDepositsResource(SyncAPIResource):
             cast_to=InboundCheckDeposit,
         )
 
+    def accept(
+        self,
+        inbound_check_deposit_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> InboundCheckDeposit:
+        """
+        Simulates the acceptance of an [Inbound Check Deposit](#inbound-check-deposits),
+        creating a Transaction as a result. The Inbound Check Deposit must first have a
+        `status` of `pending`.
+
+        Args:
+          inbound_check_deposit_id: The identifier of the Inbound Check Deposit you wish to accept.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not inbound_check_deposit_id:
+            raise ValueError(
+                f"Expected a non-empty value for `inbound_check_deposit_id` but received {inbound_check_deposit_id!r}"
+            )
+        return self._post(
+            path_template(
+                "/simulations/inbound_check_deposits/{inbound_check_deposit_id}/accept",
+                inbound_check_deposit_id=inbound_check_deposit_id,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=InboundCheckDeposit,
+        )
+
     def adjustment(
         self,
         inbound_check_deposit_id: str,
@@ -281,6 +330,55 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
             cast_to=InboundCheckDeposit,
         )
 
+    async def accept(
+        self,
+        inbound_check_deposit_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> InboundCheckDeposit:
+        """
+        Simulates the acceptance of an [Inbound Check Deposit](#inbound-check-deposits),
+        creating a Transaction as a result. The Inbound Check Deposit must first have a
+        `status` of `pending`.
+
+        Args:
+          inbound_check_deposit_id: The identifier of the Inbound Check Deposit you wish to accept.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not inbound_check_deposit_id:
+            raise ValueError(
+                f"Expected a non-empty value for `inbound_check_deposit_id` but received {inbound_check_deposit_id!r}"
+            )
+        return await self._post(
+            path_template(
+                "/simulations/inbound_check_deposits/{inbound_check_deposit_id}/accept",
+                inbound_check_deposit_id=inbound_check_deposit_id,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=InboundCheckDeposit,
+        )
+
     async def adjustment(
         self,
         inbound_check_deposit_id: str,
@@ -360,6 +458,9 @@ class InboundCheckDepositsResourceWithRawResponse:
         self.create = to_raw_response_wrapper(
             inbound_check_deposits.create,
         )
+        self.accept = to_raw_response_wrapper(
+            inbound_check_deposits.accept,
+        )
         self.adjustment = to_raw_response_wrapper(
             inbound_check_deposits.adjustment,
         )
@@ -371,6 +472,9 @@ class AsyncInboundCheckDepositsResourceWithRawResponse:
 
         self.create = async_to_raw_response_wrapper(
             inbound_check_deposits.create,
+        )
+        self.accept = async_to_raw_response_wrapper(
+            inbound_check_deposits.accept,
         )
         self.adjustment = async_to_raw_response_wrapper(
             inbound_check_deposits.adjustment,
@@ -384,6 +488,9 @@ class InboundCheckDepositsResourceWithStreamingResponse:
         self.create = to_streamed_response_wrapper(
             inbound_check_deposits.create,
         )
+        self.accept = to_streamed_response_wrapper(
+            inbound_check_deposits.accept,
+        )
         self.adjustment = to_streamed_response_wrapper(
             inbound_check_deposits.adjustment,
         )
@@ -395,6 +502,9 @@ class AsyncInboundCheckDepositsResourceWithStreamingResponse:
 
         self.create = async_to_streamed_response_wrapper(
             inbound_check_deposits.create,
+        )
+        self.accept = async_to_streamed_response_wrapper(
+            inbound_check_deposits.accept,
         )
         self.adjustment = async_to_streamed_response_wrapper(
             inbound_check_deposits.adjustment,
