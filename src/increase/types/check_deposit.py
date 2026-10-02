@@ -86,9 +86,11 @@ class DepositAdjustment(BaseModel):
     amount: int
     """The amount of the adjustment."""
 
-    reason: Literal["adjusted_amount", "non_conforming_item", "paid"]
+    reason: Literal["wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid"]
     """The reason for the adjustment.
 
+    - `wrong_payee_credit` - The check was deposited to the wrong payee and the
+      depositing institution has reimbursed the funds with a Wrong Payee Credit.
     - `adjusted_amount` - The check was deposited with a different amount than what
       was written on the check.
     - `non_conforming_item` - The recipient was not able to process the check. This

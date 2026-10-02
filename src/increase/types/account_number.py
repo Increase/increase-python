@@ -21,7 +21,8 @@ class InboundACH(BaseModel):
     Number is not active.
 
     - `allowed` - ACH Debits are allowed.
-    - `blocked` - ACH Debits are blocked.
+    - `blocked` - ACH Debits are blocked. Received debits will be declined and
+      returned with code `R20` (non-transaction account).
     """
 
 
