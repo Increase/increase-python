@@ -76,6 +76,7 @@ _CategoryReservedKeywords = TypedDict(
                 "digital_card_profile.updated",
                 "digital_wallet_token.created",
                 "digital_wallet_token.updated",
+                "digital_wallet_token_request.created",
                 "entity.created",
                 "entity.updated",
                 "event_subscription.created",
