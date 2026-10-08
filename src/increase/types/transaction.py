@@ -4394,7 +4394,9 @@ class SourceInboundCheckAdjustment(BaseModel):
     A positive amount is a credit to your account and a negative amount is a debit.
     """
 
-    reason: Literal["late_return", "wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid"]
+    reason: Literal[
+        "late_return", "wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid", "duplicate_entry"
+    ]
     """The reason for the adjustment.
 
     - `late_return` - The return was initiated too late and the receiving
@@ -4407,6 +4409,8 @@ class SourceInboundCheckAdjustment(BaseModel):
       usually happens for e.g., low quality images.
     - `paid` - The check has already been deposited elsewhere and so this is a
       duplicate.
+    - `duplicate_entry` - A previous adjustment for the check was applied twice and
+      the duplicate has been reversed.
     """
 
     if TYPE_CHECKING:
