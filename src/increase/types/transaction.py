@@ -2408,7 +2408,14 @@ class SourceCardRefundPurchaseDetails(BaseModel):
     """An identifier from the merchant for the purchase to the issuer and cardholder."""
 
     purchase_identifier_format: Optional[
-        Literal["free_text", "order_number", "rental_agreement_number", "hotel_folio_number", "invoice_number"]
+        Literal[
+            "free_text",
+            "order_number",
+            "rental_agreement_number",
+            "hotel_folio_number",
+            "invoice_number",
+            "visa_recurrent_reference_identifier",
+        ]
     ] = None
     """The format of the purchase identifier.
 
@@ -2417,6 +2424,7 @@ class SourceCardRefundPurchaseDetails(BaseModel):
     - `rental_agreement_number` - Rental agreement number
     - `hotel_folio_number` - Hotel folio number
     - `invoice_number` - Invoice number
+    - `visa_recurrent_reference_identifier` - Visa Recurrent reference identifier
     """
 
     travel: Optional[SourceCardRefundPurchaseDetailsTravel] = None
@@ -3532,7 +3540,14 @@ class SourceCardSettlementPurchaseDetails(BaseModel):
     """An identifier from the merchant for the purchase to the issuer and cardholder."""
 
     purchase_identifier_format: Optional[
-        Literal["free_text", "order_number", "rental_agreement_number", "hotel_folio_number", "invoice_number"]
+        Literal[
+            "free_text",
+            "order_number",
+            "rental_agreement_number",
+            "hotel_folio_number",
+            "invoice_number",
+            "visa_recurrent_reference_identifier",
+        ]
     ] = None
     """The format of the purchase identifier.
 
@@ -3541,6 +3556,7 @@ class SourceCardSettlementPurchaseDetails(BaseModel):
     - `rental_agreement_number` - Rental agreement number
     - `hotel_folio_number` - Hotel folio number
     - `invoice_number` - Invoice number
+    - `visa_recurrent_reference_identifier` - Visa Recurrent reference identifier
     """
 
     travel: Optional[SourceCardSettlementPurchaseDetailsTravel] = None
@@ -4394,7 +4410,9 @@ class SourceInboundCheckAdjustment(BaseModel):
     A positive amount is a credit to your account and a negative amount is a debit.
     """
 
-    reason: Literal["late_return", "wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid"]
+    reason: Literal[
+        "late_return", "wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid", "duplicate_entry"
+    ]
     """The reason for the adjustment.
 
     - `late_return` - The return was initiated too late and the receiving
@@ -4407,6 +4425,8 @@ class SourceInboundCheckAdjustment(BaseModel):
       usually happens for e.g., low quality images.
     - `paid` - The check has already been deposited elsewhere and so this is a
       duplicate.
+    - `duplicate_entry` - A previous adjustment for the check was applied twice and
+      the duplicate has been reversed.
     """
 
     if TYPE_CHECKING:

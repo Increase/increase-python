@@ -217,7 +217,8 @@ class ElementCardAuthenticationChallenge(BaseModel):
 
     - `text_message` - The one-time code was sent via text message.
     - `email` - The one-time code was sent via email.
-    - `none_available` - The one-time code was not successfully delivered.
+    - `none_available` - The one-time code could not be delivered because the card
+      has no phone number or email on file.
     """
 
     verification_value: Optional[str] = None
@@ -5770,7 +5771,14 @@ class ElementCardRefundPurchaseDetails(BaseModel):
     """An identifier from the merchant for the purchase to the issuer and cardholder."""
 
     purchase_identifier_format: Optional[
-        Literal["free_text", "order_number", "rental_agreement_number", "hotel_folio_number", "invoice_number"]
+        Literal[
+            "free_text",
+            "order_number",
+            "rental_agreement_number",
+            "hotel_folio_number",
+            "invoice_number",
+            "visa_recurrent_reference_identifier",
+        ]
     ] = None
     """The format of the purchase identifier.
 
@@ -5779,6 +5787,7 @@ class ElementCardRefundPurchaseDetails(BaseModel):
     - `rental_agreement_number` - Rental agreement number
     - `hotel_folio_number` - Hotel folio number
     - `invoice_number` - Invoice number
+    - `visa_recurrent_reference_identifier` - Visa Recurrent reference identifier
     """
 
     travel: Optional[ElementCardRefundPurchaseDetailsTravel] = None
@@ -7171,7 +7180,14 @@ class ElementCardSettlementPurchaseDetails(BaseModel):
     """An identifier from the merchant for the purchase to the issuer and cardholder."""
 
     purchase_identifier_format: Optional[
-        Literal["free_text", "order_number", "rental_agreement_number", "hotel_folio_number", "invoice_number"]
+        Literal[
+            "free_text",
+            "order_number",
+            "rental_agreement_number",
+            "hotel_folio_number",
+            "invoice_number",
+            "visa_recurrent_reference_identifier",
+        ]
     ] = None
     """The format of the purchase identifier.
 
@@ -7180,6 +7196,7 @@ class ElementCardSettlementPurchaseDetails(BaseModel):
     - `rental_agreement_number` - Rental agreement number
     - `hotel_folio_number` - Hotel folio number
     - `invoice_number` - Invoice number
+    - `visa_recurrent_reference_identifier` - Visa Recurrent reference identifier
     """
 
     travel: Optional[ElementCardSettlementPurchaseDetailsTravel] = None
