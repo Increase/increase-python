@@ -170,7 +170,7 @@ class InboundCheckDepositsResource(SyncAPIResource):
         inbound_check_deposit_id: str,
         *,
         amount: int | Omit = omit,
-        reason: Literal["late_return", "wrong_payee_credit"] | Omit = omit,
+        reason: Literal["late_return", "wrong_payee_credit", "duplicate_entry"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -199,6 +199,8 @@ class InboundCheckDepositsResource(SyncAPIResource):
                 institution has responded with a Late Return Claim.
               - `wrong_payee_credit` - The check was deposited to the wrong payee and the
                 depositing institution has reimbursed the funds with a Wrong Payee Credit.
+              - `duplicate_entry` - A previous adjustment for the check was applied twice and
+                the duplicate has been reversed.
 
           extra_headers: Send extra headers
 
@@ -384,7 +386,7 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
         inbound_check_deposit_id: str,
         *,
         amount: int | Omit = omit,
-        reason: Literal["late_return", "wrong_payee_credit"] | Omit = omit,
+        reason: Literal["late_return", "wrong_payee_credit", "duplicate_entry"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -413,6 +415,8 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
                 institution has responded with a Late Return Claim.
               - `wrong_payee_credit` - The check was deposited to the wrong payee and the
                 depositing institution has reimbursed the funds with a Wrong Payee Credit.
+              - `duplicate_entry` - A previous adjustment for the check was applied twice and
+                the duplicate has been reversed.
 
           extra_headers: Send extra headers
 

@@ -21,13 +21,15 @@ class Adjustment(BaseModel):
     A positive amount is a credit to your account and a negative amount is a debit.
     """
 
-    reason: Literal["late_return", "wrong_payee_credit"]
+    reason: Literal["late_return", "wrong_payee_credit", "duplicate_entry"]
     """The reason for the adjustment.
 
     - `late_return` - The return was initiated too late and the receiving
       institution has responded with a Late Return Claim.
     - `wrong_payee_credit` - The check was deposited to the wrong payee and the
       depositing institution has reimbursed the funds with a Wrong Payee Credit.
+    - `duplicate_entry` - A previous adjustment for the check was applied twice and
+      the duplicate has been reversed.
     """
 
     transaction_id: str
