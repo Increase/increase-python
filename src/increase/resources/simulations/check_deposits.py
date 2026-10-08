@@ -48,7 +48,9 @@ class CheckDepositsResource(SyncAPIResource):
         check_deposit_id: str,
         *,
         amount: int | Omit = omit,
-        reason: Literal["late_return", "wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid"]
+        reason: Literal[
+            "late_return", "wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid", "duplicate_entry"
+        ]
         | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -84,6 +86,8 @@ class CheckDepositsResource(SyncAPIResource):
                 usually happens for e.g., low quality images.
               - `paid` - The check has already been deposited elsewhere and so this is a
                 duplicate.
+              - `duplicate_entry` - A previous adjustment for the check was applied twice and
+                the duplicate has been reversed.
 
           extra_headers: Send extra headers
 
@@ -280,7 +284,9 @@ class AsyncCheckDepositsResource(AsyncAPIResource):
         check_deposit_id: str,
         *,
         amount: int | Omit = omit,
-        reason: Literal["late_return", "wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid"]
+        reason: Literal[
+            "late_return", "wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid", "duplicate_entry"
+        ]
         | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -316,6 +322,8 @@ class AsyncCheckDepositsResource(AsyncAPIResource):
                 usually happens for e.g., low quality images.
               - `paid` - The check has already been deposited elsewhere and so this is a
                 duplicate.
+              - `duplicate_entry` - A previous adjustment for the check was applied twice and
+                the duplicate has been reversed.
 
           extra_headers: Send extra headers
 

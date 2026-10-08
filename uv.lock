@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = ">=3.9"
 resolution-markers = [
     "python_full_version >= '3.14' and extra != 'group-8-increase-pydantic-v1' and extra == 'group-8-increase-pydantic-v2'",
@@ -503,7 +503,7 @@ wheels = [
 
 [[package]]
 name = "increase"
-version = "0.547.0"
+version = "0.548.0"
 source = { editable = "." }
 dependencies = [
     { name = "anyio" },

@@ -25,7 +25,7 @@ class EventListParams(TypedDict, total=False):
     limit: int
     """Limit the size of the list that is returned.
 
-    The default (and maximum) is 100 objects.
+    The default is 100 objects and the maximum is 1,000.
 
     Defaults to `100`.
     """
@@ -76,6 +76,7 @@ _CategoryReservedKeywords = TypedDict(
                 "digital_card_profile.updated",
                 "digital_wallet_token.created",
                 "digital_wallet_token.updated",
+                "digital_wallet_token_request.created",
                 "entity.created",
                 "entity.updated",
                 "event_subscription.created",
