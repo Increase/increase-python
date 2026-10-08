@@ -1182,6 +1182,7 @@ class SourceCardFinancialSchemeFee(BaseModel):
         "visa_community_growth_acceleration_program",
         "visa_processing_guarantee_commercial_credit",
         "pulse_switch_fee",
+        "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
 
@@ -1271,6 +1272,8 @@ class SourceCardFinancialSchemeFee(BaseModel):
       for Commercial Credit cards.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+      Pulse network for processing tokenized transactions on its network.
     """
 
     fixed_component: Optional[str] = None
@@ -2408,7 +2411,14 @@ class SourceCardRefundPurchaseDetails(BaseModel):
     """An identifier from the merchant for the purchase to the issuer and cardholder."""
 
     purchase_identifier_format: Optional[
-        Literal["free_text", "order_number", "rental_agreement_number", "hotel_folio_number", "invoice_number"]
+        Literal[
+            "free_text",
+            "order_number",
+            "rental_agreement_number",
+            "hotel_folio_number",
+            "invoice_number",
+            "visa_recurrent_reference_identifier",
+        ]
     ] = None
     """The format of the purchase identifier.
 
@@ -2417,6 +2427,7 @@ class SourceCardRefundPurchaseDetails(BaseModel):
     - `rental_agreement_number` - Rental agreement number
     - `hotel_folio_number` - Hotel folio number
     - `invoice_number` - Invoice number
+    - `visa_recurrent_reference_identifier` - Visa Recurrent reference identifier
     """
 
     travel: Optional[SourceCardRefundPurchaseDetailsTravel] = None
@@ -2471,6 +2482,7 @@ class SourceCardRefundSchemeFee(BaseModel):
         "visa_community_growth_acceleration_program",
         "visa_processing_guarantee_commercial_credit",
         "pulse_switch_fee",
+        "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
 
@@ -2560,6 +2572,8 @@ class SourceCardRefundSchemeFee(BaseModel):
       for Commercial Credit cards.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+      Pulse network for processing tokenized transactions on its network.
     """
 
     fixed_component: Optional[str] = None
@@ -3532,7 +3546,14 @@ class SourceCardSettlementPurchaseDetails(BaseModel):
     """An identifier from the merchant for the purchase to the issuer and cardholder."""
 
     purchase_identifier_format: Optional[
-        Literal["free_text", "order_number", "rental_agreement_number", "hotel_folio_number", "invoice_number"]
+        Literal[
+            "free_text",
+            "order_number",
+            "rental_agreement_number",
+            "hotel_folio_number",
+            "invoice_number",
+            "visa_recurrent_reference_identifier",
+        ]
     ] = None
     """The format of the purchase identifier.
 
@@ -3541,6 +3562,7 @@ class SourceCardSettlementPurchaseDetails(BaseModel):
     - `rental_agreement_number` - Rental agreement number
     - `hotel_folio_number` - Hotel folio number
     - `invoice_number` - Invoice number
+    - `visa_recurrent_reference_identifier` - Visa Recurrent reference identifier
     """
 
     travel: Optional[SourceCardSettlementPurchaseDetailsTravel] = None
@@ -3595,6 +3617,7 @@ class SourceCardSettlementSchemeFee(BaseModel):
         "visa_community_growth_acceleration_program",
         "visa_processing_guarantee_commercial_credit",
         "pulse_switch_fee",
+        "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
 
@@ -3684,6 +3707,8 @@ class SourceCardSettlementSchemeFee(BaseModel):
       for Commercial Credit cards.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+      Pulse network for processing tokenized transactions on its network.
     """
 
     fixed_component: Optional[str] = None
@@ -4394,7 +4419,9 @@ class SourceInboundCheckAdjustment(BaseModel):
     A positive amount is a credit to your account and a negative amount is a debit.
     """
 
-    reason: Literal["late_return", "wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid"]
+    reason: Literal[
+        "late_return", "wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid", "duplicate_entry"
+    ]
     """The reason for the adjustment.
 
     - `late_return` - The return was initiated too late and the receiving
@@ -4407,6 +4434,8 @@ class SourceInboundCheckAdjustment(BaseModel):
       usually happens for e.g., low quality images.
     - `paid` - The check has already been deposited elsewhere and so this is a
       duplicate.
+    - `duplicate_entry` - A previous adjustment for the check was applied twice and
+      the duplicate has been reversed.
     """
 
     if TYPE_CHECKING:
