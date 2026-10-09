@@ -44,6 +44,12 @@ class DigitalCardProfile(BaseModel):
     contact_email: Optional[str] = None
     """An email address the user can contact to receive support for their card."""
 
+    contact_name: str
+    """
+    The name of your company or card program, shown to the user as who to contact
+    for support with their card.
+    """
+
     contact_phone: Optional[str] = None
     """A phone number the user can contact to receive support for their card."""
 
@@ -66,9 +72,6 @@ class DigitalCardProfile(BaseModel):
     only processed once. Learn more about
     [idempotency](https://increase.com/documentation/idempotency-keys).
     """
-
-    issuer_name: str
-    """A user-facing description for whoever is issuing the card."""
 
     status: Literal["pending", "rejected", "active", "archived"]
     """The status of the Card Profile.
