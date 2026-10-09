@@ -671,6 +671,7 @@ class SourceCardAuthorizationSchemeFee(BaseModel):
         "visa_community_growth_acceleration_program",
         "visa_processing_guarantee_commercial_credit",
         "pulse_switch_fee",
+        "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
 
@@ -760,6 +761,8 @@ class SourceCardAuthorizationSchemeFee(BaseModel):
       for Commercial Credit cards.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+      Pulse network for processing tokenized transactions on its network.
     """
 
     fixed_component: Optional[str] = None
@@ -1664,9 +1667,9 @@ class PendingTransaction(BaseModel):
     """The Pending Transaction amount in the minor unit of its currency.
 
     For dollars, for example, this is cents. For a card authorization this is the
-    amount still held: it decreases when the merchant reverses part of the
-    authorization. The amount that settled is available on the resulting Transaction
-    and on the Card Payment's `state.settled_amount`.
+    amount still held: it decreases when the merchant reverses or partially settles
+    the authorization. The amount that settled is available on the resulting
+    Transaction and on the Card Payment's `state.settled_amount`.
     """
 
     completed_at: Optional[datetime] = None
