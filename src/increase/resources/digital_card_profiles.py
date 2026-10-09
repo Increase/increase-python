@@ -53,8 +53,8 @@ class DigitalCardProfilesResource(SyncAPIResource):
         background_image_file_id: str,
         card_description: str,
         description: str,
-        issuer_name: str,
         contact_email: str | Omit = omit,
+        contact_name: str | Omit = omit,
         contact_phone: str | Omit = omit,
         contact_website: str | Omit = omit,
         text_color: digital_card_profile_create_params.TextColor | Omit = omit,
@@ -78,9 +78,10 @@ class DigitalCardProfilesResource(SyncAPIResource):
 
           description: A description you can use to identify the Card Profile.
 
-          issuer_name: A user-facing description for whoever is issuing the card.
-
           contact_email: An email address the user can contact to receive support for their card.
+
+          contact_name: The name of your company or card program, shown to the user as who to contact
+              for support with their card.
 
           contact_phone: A phone number the user can contact to receive support for their card.
 
@@ -106,8 +107,8 @@ class DigitalCardProfilesResource(SyncAPIResource):
                     "background_image_file_id": background_image_file_id,
                     "card_description": card_description,
                     "description": description,
-                    "issuer_name": issuer_name,
                     "contact_email": contact_email,
+                    "contact_name": contact_name,
                     "contact_phone": contact_phone,
                     "contact_website": contact_website,
                     "text_color": text_color,
@@ -385,8 +386,8 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
         background_image_file_id: str,
         card_description: str,
         description: str,
-        issuer_name: str,
         contact_email: str | Omit = omit,
+        contact_name: str | Omit = omit,
         contact_phone: str | Omit = omit,
         contact_website: str | Omit = omit,
         text_color: digital_card_profile_create_params.TextColor | Omit = omit,
@@ -410,9 +411,10 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
 
           description: A description you can use to identify the Card Profile.
 
-          issuer_name: A user-facing description for whoever is issuing the card.
-
           contact_email: An email address the user can contact to receive support for their card.
+
+          contact_name: The name of your company or card program, shown to the user as who to contact
+              for support with their card.
 
           contact_phone: A phone number the user can contact to receive support for their card.
 
@@ -438,8 +440,8 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
                     "background_image_file_id": background_image_file_id,
                     "card_description": card_description,
                     "description": description,
-                    "issuer_name": issuer_name,
                     "contact_email": contact_email,
+                    "contact_name": contact_name,
                     "contact_phone": contact_phone,
                     "contact_website": contact_website,
                     "text_color": text_color,
