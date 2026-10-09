@@ -20,6 +20,12 @@ class DigitalCardProfileCloneParams(TypedDict, total=False):
     contact_email: str
     """An email address the user can contact to receive support for their card."""
 
+    contact_name: str
+    """
+    The name of your company or card program, shown to the user as who to contact
+    for support with their card.
+    """
+
     contact_phone: str
     """A phone number the user can contact to receive support for their card."""
 
@@ -28,9 +34,6 @@ class DigitalCardProfileCloneParams(TypedDict, total=False):
 
     description: str
     """A description you can use to identify the Card Profile."""
-
-    issuer_name: str
-    """A user-facing description for whoever is issuing the card."""
 
     text_color: TextColor
     """The Card's text color, specified as an RGB triple. The default is white."""
