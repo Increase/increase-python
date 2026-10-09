@@ -25,9 +25,8 @@ class TestDigitalCardProfiles:
         digital_card_profile = client.digital_card_profiles.create(
             app_icon_file_id="file_8zxqkwlh43wo144u8yec",
             background_image_file_id="file_1ai913suu1zfn1pdetru",
-            card_description="MyBank Signature Card",
+            card_description="National Phonograph Card",
             description="My Card Profile",
-            issuer_name="MyBank",
         )
         assert_matches_type(DigitalCardProfile, digital_card_profile, path=["response"])
 
@@ -36,10 +35,10 @@ class TestDigitalCardProfiles:
         digital_card_profile = client.digital_card_profiles.create(
             app_icon_file_id="file_8zxqkwlh43wo144u8yec",
             background_image_file_id="file_1ai913suu1zfn1pdetru",
-            card_description="MyBank Signature Card",
+            card_description="National Phonograph Card",
             description="My Card Profile",
-            issuer_name="MyBank",
             contact_email="user@example.com",
+            contact_name="National Phonograph Company",
             contact_phone="+18885551212",
             contact_website="https://example.com",
             text_color={
@@ -55,9 +54,8 @@ class TestDigitalCardProfiles:
         response = client.digital_card_profiles.with_raw_response.create(
             app_icon_file_id="file_8zxqkwlh43wo144u8yec",
             background_image_file_id="file_1ai913suu1zfn1pdetru",
-            card_description="MyBank Signature Card",
+            card_description="National Phonograph Card",
             description="My Card Profile",
-            issuer_name="MyBank",
         )
 
         assert response.is_closed is True
@@ -69,9 +67,8 @@ class TestDigitalCardProfiles:
         with client.digital_card_profiles.with_streaming_response.create(
             app_icon_file_id="file_8zxqkwlh43wo144u8yec",
             background_image_file_id="file_1ai913suu1zfn1pdetru",
-            card_description="MyBank Signature Card",
+            card_description="National Phonograph Card",
             description="My Card Profile",
-            issuer_name="MyBank",
         ) as response:
             assert not response.is_closed
 
@@ -204,10 +201,10 @@ class TestDigitalCardProfiles:
             background_image_file_id="file_1ai913suu1zfn1pdetru",
             card_description="x",
             contact_email="dev@stainless.com",
+            contact_name="x",
             contact_phone="x",
             contact_website="contact_website",
             description="x",
-            issuer_name="x",
             text_color={
                 "blue": 0,
                 "green": 0,
@@ -258,9 +255,8 @@ class TestAsyncDigitalCardProfiles:
         digital_card_profile = await async_client.digital_card_profiles.create(
             app_icon_file_id="file_8zxqkwlh43wo144u8yec",
             background_image_file_id="file_1ai913suu1zfn1pdetru",
-            card_description="MyBank Signature Card",
+            card_description="National Phonograph Card",
             description="My Card Profile",
-            issuer_name="MyBank",
         )
         assert_matches_type(DigitalCardProfile, digital_card_profile, path=["response"])
 
@@ -269,10 +265,10 @@ class TestAsyncDigitalCardProfiles:
         digital_card_profile = await async_client.digital_card_profiles.create(
             app_icon_file_id="file_8zxqkwlh43wo144u8yec",
             background_image_file_id="file_1ai913suu1zfn1pdetru",
-            card_description="MyBank Signature Card",
+            card_description="National Phonograph Card",
             description="My Card Profile",
-            issuer_name="MyBank",
             contact_email="user@example.com",
+            contact_name="National Phonograph Company",
             contact_phone="+18885551212",
             contact_website="https://example.com",
             text_color={
@@ -288,9 +284,8 @@ class TestAsyncDigitalCardProfiles:
         response = await async_client.digital_card_profiles.with_raw_response.create(
             app_icon_file_id="file_8zxqkwlh43wo144u8yec",
             background_image_file_id="file_1ai913suu1zfn1pdetru",
-            card_description="MyBank Signature Card",
+            card_description="National Phonograph Card",
             description="My Card Profile",
-            issuer_name="MyBank",
         )
 
         assert response.is_closed is True
@@ -302,9 +297,8 @@ class TestAsyncDigitalCardProfiles:
         async with async_client.digital_card_profiles.with_streaming_response.create(
             app_icon_file_id="file_8zxqkwlh43wo144u8yec",
             background_image_file_id="file_1ai913suu1zfn1pdetru",
-            card_description="MyBank Signature Card",
+            card_description="National Phonograph Card",
             description="My Card Profile",
-            issuer_name="MyBank",
         ) as response:
             assert not response.is_closed
 
@@ -437,10 +431,10 @@ class TestAsyncDigitalCardProfiles:
             background_image_file_id="file_1ai913suu1zfn1pdetru",
             card_description="x",
             contact_email="dev@stainless.com",
+            contact_name="x",
             contact_phone="x",
             contact_website="contact_website",
             description="x",
-            issuer_name="x",
             text_color={
                 "blue": 0,
                 "green": 0,
