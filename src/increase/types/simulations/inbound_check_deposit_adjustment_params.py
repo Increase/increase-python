@@ -17,11 +17,13 @@ class InboundCheckDepositAdjustmentParams(TypedDict, total=False):
     Defaults to the amount of the Inbound Check Deposit.
     """
 
-    reason: Literal["late_return", "wrong_payee_credit"]
+    reason: Literal["late_return", "wrong_payee_credit", "duplicate_entry"]
     """The reason for the adjustment. Defaults to `wrong_payee_credit`.
 
     - `late_return` - The return was initiated too late and the receiving
       institution has responded with a Late Return Claim.
     - `wrong_payee_credit` - The check was deposited to the wrong payee and the
       depositing institution has reimbursed the funds with a Wrong Payee Credit.
+    - `duplicate_entry` - A previous adjustment for the check was applied twice and
+      the duplicate has been reversed.
     """

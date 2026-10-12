@@ -107,8 +107,8 @@ class EventsResource(SyncAPIResource):
 
           cursor: Return the page of entries after this one.
 
-          limit: Limit the size of the list that is returned. The default (and maximum) is 100
-              objects.
+          limit: Limit the size of the list that is returned. The default is 100 objects and the
+              maximum is 1,000.
 
               Defaults to `100`.
 
@@ -250,8 +250,8 @@ class AsyncEventsResource(AsyncAPIResource):
 
           cursor: Return the page of entries after this one.
 
-          limit: Limit the size of the list that is returned. The default (and maximum) is 100
-              objects.
+          limit: Limit the size of the list that is returned. The default is 100 objects and the
+              maximum is 1,000.
 
               Defaults to `100`.
 
