@@ -44,7 +44,7 @@ class AccountStatementBai2(BaseModel):
     """Filter results by Account."""
 
     effective_date: Optional[date] = None
-    """The date for which to retrieve the balance."""
+    """The UTC date for which to retrieve the balance."""
 
     program_id: Optional[str] = None
     """Filter results by Program."""
@@ -83,7 +83,7 @@ class AccountVerificationLetter(BaseModel):
     """The Account Number to create a letter for."""
 
     balance_date: Optional[date] = None
-    """The date of the balance to include in the letter."""
+    """The UTC date of the balance to include in the letter."""
 
 
 class BalanceCsvCreatedAt(BaseModel):
@@ -119,10 +119,10 @@ class BookkeepingAccountBalanceCsv(BaseModel):
     """Filter results by Bookkeeping Account."""
 
     on_or_after_date: Optional[date] = None
-    """Filter balances to those on or after this date."""
+    """Filter balances to those on or after this UTC date."""
 
     on_or_before_date: Optional[date] = None
-    """Filter balances to those on or before this date."""
+    """Filter balances to those on or before this UTC date."""
 
 
 class DailyAccountBalanceCsv(BaseModel):
@@ -135,10 +135,10 @@ class DailyAccountBalanceCsv(BaseModel):
     """Filter results by Account."""
 
     on_or_after_date: Optional[date] = None
-    """Filter balances on or after this date."""
+    """Filter balances on or after this UTC date."""
 
     on_or_before_date: Optional[date] = None
-    """Filter balances on or before this date."""
+    """Filter balances on or before this UTC date."""
 
 
 class DashboardTableCsv(BaseModel):
