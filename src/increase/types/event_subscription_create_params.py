@@ -81,6 +81,7 @@ class SelectedEventCategory(TypedDict, total=False):
             "digital_card_profile.updated",
             "digital_wallet_token.created",
             "digital_wallet_token.updated",
+            "digital_wallet_token_request.created",
             "entity.created",
             "entity.updated",
             "event_subscription.created",
@@ -229,6 +230,8 @@ class SelectedEventCategory(TypedDict, total=False):
       created.
     - `digital_wallet_token.updated` - Occurs whenever a Digital Wallet Token is
       updated.
+    - `digital_wallet_token_request.created` - Occurs whenever a Digital Wallet
+      Token Request is created.
     - `entity.created` - Occurs whenever an Entity is created.
     - `entity.updated` - Occurs whenever an Entity is updated.
     - `event_subscription.created` - Occurs whenever an Event Subscription is

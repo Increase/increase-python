@@ -40,6 +40,9 @@ class ShipmentAddress(BaseModel):
     name: str
     """The name of the recipient."""
 
+    phone_number: Optional[str] = None
+    """The phone number of the recipient."""
+
     postal_code: str
     """The postal code of the shipping address."""
 
