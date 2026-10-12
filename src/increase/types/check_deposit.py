@@ -86,7 +86,7 @@ class DepositAdjustment(BaseModel):
     amount: int
     """The amount of the adjustment."""
 
-    reason: Literal["wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid"]
+    reason: Literal["wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid", "duplicate_entry"]
     """The reason for the adjustment.
 
     - `wrong_payee_credit` - The check was deposited to the wrong payee and the
@@ -97,6 +97,8 @@ class DepositAdjustment(BaseModel):
       usually happens for e.g., low quality images.
     - `paid` - The check has already been deposited elsewhere and so this is a
       duplicate.
+    - `duplicate_entry` - A previous adjustment for the check was applied twice and
+      the duplicate has been reversed.
     """
 
     transaction_id: str

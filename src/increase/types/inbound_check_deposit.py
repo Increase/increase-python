@@ -21,13 +21,15 @@ class Adjustment(BaseModel):
     A positive amount is a credit to your account and a negative amount is a debit.
     """
 
-    reason: Literal["late_return", "wrong_payee_credit"]
+    reason: Literal["late_return", "wrong_payee_credit", "duplicate_entry"]
     """The reason for the adjustment.
 
     - `late_return` - The return was initiated too late and the receiving
       institution has responded with a Late Return Claim.
     - `wrong_payee_credit` - The check was deposited to the wrong payee and the
       depositing institution has reimbursed the funds with a Wrong Payee Credit.
+    - `duplicate_entry` - A previous adjustment for the check was applied twice and
+      the duplicate has been reversed.
     """
 
     transaction_id: str
@@ -101,7 +103,7 @@ class InboundCheckDeposit(BaseModel):
     actioned by then.
     """
 
-    back_image_file_id: Optional[str] = None
+    back_image_file_id: str
     """The ID for the File containing the image of the back of the check."""
 
     bank_of_first_deposit_routing_number: Optional[str] = None
@@ -151,7 +153,7 @@ class InboundCheckDeposit(BaseModel):
     return.
     """
 
-    front_image_file_id: Optional[str] = None
+    front_image_file_id: str
     """The ID for the File containing the image of the front of the check."""
 
     payee_name_analysis: Literal["name_matches", "does_not_match", "not_evaluated"]

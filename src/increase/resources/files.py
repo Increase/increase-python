@@ -121,7 +121,8 @@ class FilesResource(SyncAPIResource):
               - `other` - A file purpose not covered by any of the other cases.
               - `trust_formation_document` - A legal document forming a trust.
               - `digital_wallet_artwork` - A card image to be rendered inside digital wallet
-                apps. This must be a 1536x969 pixel PNG.
+                apps. This must be a 1536x969 pixel PNG with the Visa Brand Mark sized and
+                placed as in the digital card template.
               - `digital_wallet_app_icon` - An icon for you app to be rendered inside digital
                 wallet apps. This must be a 100x100 pixel PNG.
               - `physical_card_front` - A card image to be printed on the front of a physical
@@ -405,7 +406,8 @@ class AsyncFilesResource(AsyncAPIResource):
               - `other` - A file purpose not covered by any of the other cases.
               - `trust_formation_document` - A legal document forming a trust.
               - `digital_wallet_artwork` - A card image to be rendered inside digital wallet
-                apps. This must be a 1536x969 pixel PNG.
+                apps. This must be a 1536x969 pixel PNG with the Visa Brand Mark sized and
+                placed as in the digital card template.
               - `digital_wallet_app_icon` - An icon for you app to be rendered inside digital
                 wallet apps. This must be a 100x100 pixel PNG.
               - `physical_card_front` - A card image to be printed on the front of a physical

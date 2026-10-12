@@ -217,7 +217,8 @@ class ElementCardAuthenticationChallenge(BaseModel):
 
     - `text_message` - The one-time code was sent via text message.
     - `email` - The one-time code was sent via email.
-    - `none_available` - The one-time code was not successfully delivered.
+    - `none_available` - The one-time code could not be delivered because the card
+      has no phone number or email on file.
     """
 
     verification_value: Optional[str] = None
@@ -1143,6 +1144,7 @@ class ElementCardAuthorizationSchemeFee(BaseModel):
         "visa_community_growth_acceleration_program",
         "visa_processing_guarantee_commercial_credit",
         "pulse_switch_fee",
+        "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
 
@@ -1232,6 +1234,8 @@ class ElementCardAuthorizationSchemeFee(BaseModel):
       for Commercial Credit cards.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+      Pulse network for processing tokenized transactions on its network.
     """
 
     fixed_component: Optional[str] = None
@@ -2079,6 +2083,7 @@ class ElementCardBalanceInquirySchemeFee(BaseModel):
         "visa_community_growth_acceleration_program",
         "visa_processing_guarantee_commercial_credit",
         "pulse_switch_fee",
+        "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
 
@@ -2168,6 +2173,8 @@ class ElementCardBalanceInquirySchemeFee(BaseModel):
       for Commercial Credit cards.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+      Pulse network for processing tokenized transactions on its network.
     """
 
     fixed_component: Optional[str] = None
@@ -2868,6 +2875,7 @@ class ElementCardDeclineSchemeFee(BaseModel):
         "visa_community_growth_acceleration_program",
         "visa_processing_guarantee_commercial_credit",
         "pulse_switch_fee",
+        "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
 
@@ -2957,6 +2965,8 @@ class ElementCardDeclineSchemeFee(BaseModel):
       for Commercial Credit cards.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+      Pulse network for processing tokenized transactions on its network.
     """
 
     fixed_component: Optional[str] = None
@@ -3823,6 +3833,7 @@ class ElementCardFinancialSchemeFee(BaseModel):
         "visa_community_growth_acceleration_program",
         "visa_processing_guarantee_commercial_credit",
         "pulse_switch_fee",
+        "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
 
@@ -3912,6 +3923,8 @@ class ElementCardFinancialSchemeFee(BaseModel):
       for Commercial Credit cards.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+      Pulse network for processing tokenized transactions on its network.
     """
 
     fixed_component: Optional[str] = None
@@ -4295,6 +4308,7 @@ class ElementCardFuelConfirmationSchemeFee(BaseModel):
         "visa_community_growth_acceleration_program",
         "visa_processing_guarantee_commercial_credit",
         "pulse_switch_fee",
+        "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
 
@@ -4384,6 +4398,8 @@ class ElementCardFuelConfirmationSchemeFee(BaseModel):
       for Commercial Credit cards.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+      Pulse network for processing tokenized transactions on its network.
     """
 
     fixed_component: Optional[str] = None
@@ -4750,6 +4766,7 @@ class ElementCardIncrementSchemeFee(BaseModel):
         "visa_community_growth_acceleration_program",
         "visa_processing_guarantee_commercial_credit",
         "pulse_switch_fee",
+        "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
 
@@ -4839,6 +4856,8 @@ class ElementCardIncrementSchemeFee(BaseModel):
       for Commercial Credit cards.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+      Pulse network for processing tokenized transactions on its network.
     """
 
     fixed_component: Optional[str] = None
@@ -5770,7 +5789,14 @@ class ElementCardRefundPurchaseDetails(BaseModel):
     """An identifier from the merchant for the purchase to the issuer and cardholder."""
 
     purchase_identifier_format: Optional[
-        Literal["free_text", "order_number", "rental_agreement_number", "hotel_folio_number", "invoice_number"]
+        Literal[
+            "free_text",
+            "order_number",
+            "rental_agreement_number",
+            "hotel_folio_number",
+            "invoice_number",
+            "visa_recurrent_reference_identifier",
+        ]
     ] = None
     """The format of the purchase identifier.
 
@@ -5779,6 +5805,7 @@ class ElementCardRefundPurchaseDetails(BaseModel):
     - `rental_agreement_number` - Rental agreement number
     - `hotel_folio_number` - Hotel folio number
     - `invoice_number` - Invoice number
+    - `visa_recurrent_reference_identifier` - Visa Recurrent reference identifier
     """
 
     travel: Optional[ElementCardRefundPurchaseDetailsTravel] = None
@@ -5833,6 +5860,7 @@ class ElementCardRefundSchemeFee(BaseModel):
         "visa_community_growth_acceleration_program",
         "visa_processing_guarantee_commercial_credit",
         "pulse_switch_fee",
+        "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
 
@@ -5922,6 +5950,8 @@ class ElementCardRefundSchemeFee(BaseModel):
       for Commercial Credit cards.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+      Pulse network for processing tokenized transactions on its network.
     """
 
     fixed_component: Optional[str] = None
@@ -6123,6 +6153,7 @@ class ElementCardReversalSchemeFee(BaseModel):
         "visa_community_growth_acceleration_program",
         "visa_processing_guarantee_commercial_credit",
         "pulse_switch_fee",
+        "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
 
@@ -6212,6 +6243,8 @@ class ElementCardReversalSchemeFee(BaseModel):
       for Commercial Credit cards.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+      Pulse network for processing tokenized transactions on its network.
     """
 
     fixed_component: Optional[str] = None
@@ -7171,7 +7204,14 @@ class ElementCardSettlementPurchaseDetails(BaseModel):
     """An identifier from the merchant for the purchase to the issuer and cardholder."""
 
     purchase_identifier_format: Optional[
-        Literal["free_text", "order_number", "rental_agreement_number", "hotel_folio_number", "invoice_number"]
+        Literal[
+            "free_text",
+            "order_number",
+            "rental_agreement_number",
+            "hotel_folio_number",
+            "invoice_number",
+            "visa_recurrent_reference_identifier",
+        ]
     ] = None
     """The format of the purchase identifier.
 
@@ -7180,6 +7220,7 @@ class ElementCardSettlementPurchaseDetails(BaseModel):
     - `rental_agreement_number` - Rental agreement number
     - `hotel_folio_number` - Hotel folio number
     - `invoice_number` - Invoice number
+    - `visa_recurrent_reference_identifier` - Visa Recurrent reference identifier
     """
 
     travel: Optional[ElementCardSettlementPurchaseDetailsTravel] = None
@@ -7234,6 +7275,7 @@ class ElementCardSettlementSchemeFee(BaseModel):
         "visa_community_growth_acceleration_program",
         "visa_processing_guarantee_commercial_credit",
         "pulse_switch_fee",
+        "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
 
@@ -7323,6 +7365,8 @@ class ElementCardSettlementSchemeFee(BaseModel):
       for Commercial Credit cards.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+      Pulse network for processing tokenized transactions on its network.
     """
 
     fixed_component: Optional[str] = None
@@ -7950,6 +7994,7 @@ class ElementCardValidationSchemeFee(BaseModel):
         "visa_community_growth_acceleration_program",
         "visa_processing_guarantee_commercial_credit",
         "pulse_switch_fee",
+        "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
 
@@ -8039,6 +8084,8 @@ class ElementCardValidationSchemeFee(BaseModel):
       for Commercial Credit cards.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+      Pulse network for processing tokenized transactions on its network.
     """
 
     fixed_component: Optional[str] = None
