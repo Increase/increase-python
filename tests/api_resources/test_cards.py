@@ -394,6 +394,42 @@ class TestCards:
             )
 
     @parametrize
+    def test_method_renew(self, client: Increase) -> None:
+        card = client.cards.renew(
+            "card_oubs0hwk5rn6knuecxg2",
+        )
+        assert_matches_type(Card, card, path=["response"])
+
+    @parametrize
+    def test_raw_response_renew(self, client: Increase) -> None:
+        response = client.cards.with_raw_response.renew(
+            "card_oubs0hwk5rn6knuecxg2",
+        )
+
+        assert response.is_closed is True
+        card = response.parse()
+        assert_matches_type(Card, card, path=["response"])
+
+    @parametrize
+    def test_streaming_response_renew(self, client: Increase) -> None:
+        with client.cards.with_streaming_response.renew(
+            "card_oubs0hwk5rn6knuecxg2",
+        ) as response:
+            assert not response.is_closed
+
+            card = response.parse()
+            assert_matches_type(Card, card, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_renew(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
+            client.cards.with_raw_response.renew(
+                "",
+            )
+
+    @parametrize
     def test_method_update_pin(self, client: Increase) -> None:
         card = client.cards.update_pin(
             card_id="card_oubs0hwk5rn6knuecxg2",
@@ -805,6 +841,42 @@ class TestAsyncCards:
     async def test_path_params_details(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
             await async_client.cards.with_raw_response.details(
+                "",
+            )
+
+    @parametrize
+    async def test_method_renew(self, async_client: AsyncIncrease) -> None:
+        card = await async_client.cards.renew(
+            "card_oubs0hwk5rn6knuecxg2",
+        )
+        assert_matches_type(Card, card, path=["response"])
+
+    @parametrize
+    async def test_raw_response_renew(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.cards.with_raw_response.renew(
+            "card_oubs0hwk5rn6knuecxg2",
+        )
+
+        assert response.is_closed is True
+        card = await response.parse()
+        assert_matches_type(Card, card, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_renew(self, async_client: AsyncIncrease) -> None:
+        async with async_client.cards.with_streaming_response.renew(
+            "card_oubs0hwk5rn6knuecxg2",
+        ) as response:
+            assert not response.is_closed
+
+            card = await response.parse()
+            assert_matches_type(Card, card, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_renew(self, async_client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
+            await async_client.cards.with_raw_response.renew(
                 "",
             )
 
