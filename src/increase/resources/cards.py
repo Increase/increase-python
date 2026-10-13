@@ -440,6 +440,53 @@ class CardsResource(SyncAPIResource):
             cast_to=CardDetails,
         )
 
+    def renew(
+        self,
+        card_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> Card:
+        """Renew a Card in place.
+
+        The Card keeps its identifier, card number, PIN, and
+        Physical Cards, and receives a new expiration date in the current month four
+        years from now along with a new verification code, which the Card's details will
+        return afterwards. Physical Cards that have already shipped keep working until
+        they are canceled.
+
+        Args:
+          card_id: The identifier of the Card to renew.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not card_id:
+            raise ValueError(f"Expected a non-empty value for `card_id` but received {card_id!r}")
+        return self._post(
+            path_template("/cards/{card_id}/renew", card_id=card_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Card,
+        )
+
     def update_pin(
         self,
         card_id: str,
@@ -894,6 +941,53 @@ class AsyncCardsResource(AsyncAPIResource):
             cast_to=CardDetails,
         )
 
+    async def renew(
+        self,
+        card_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> Card:
+        """Renew a Card in place.
+
+        The Card keeps its identifier, card number, PIN, and
+        Physical Cards, and receives a new expiration date in the current month four
+        years from now along with a new verification code, which the Card's details will
+        return afterwards. Physical Cards that have already shipped keep working until
+        they are canceled.
+
+        Args:
+          card_id: The identifier of the Card to renew.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not card_id:
+            raise ValueError(f"Expected a non-empty value for `card_id` but received {card_id!r}")
+        return await self._post(
+            path_template("/cards/{card_id}/renew", card_id=card_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Card,
+        )
+
     async def update_pin(
         self,
         card_id: str,
@@ -966,6 +1060,9 @@ class CardsResourceWithRawResponse:
         self.details = to_raw_response_wrapper(
             cards.details,
         )
+        self.renew = to_raw_response_wrapper(
+            cards.renew,
+        )
         self.update_pin = to_raw_response_wrapper(
             cards.update_pin,
         )
@@ -995,6 +1092,9 @@ class AsyncCardsResourceWithRawResponse:
         )
         self.details = async_to_raw_response_wrapper(
             cards.details,
+        )
+        self.renew = async_to_raw_response_wrapper(
+            cards.renew,
         )
         self.update_pin = async_to_raw_response_wrapper(
             cards.update_pin,
@@ -1026,6 +1126,9 @@ class CardsResourceWithStreamingResponse:
         self.details = to_streamed_response_wrapper(
             cards.details,
         )
+        self.renew = to_streamed_response_wrapper(
+            cards.renew,
+        )
         self.update_pin = to_streamed_response_wrapper(
             cards.update_pin,
         )
@@ -1055,6 +1158,9 @@ class AsyncCardsResourceWithStreamingResponse:
         )
         self.details = async_to_streamed_response_wrapper(
             cards.details,
+        )
+        self.renew = async_to_streamed_response_wrapper(
+            cards.renew,
         )
         self.update_pin = async_to_streamed_response_wrapper(
             cards.update_pin,

@@ -123,6 +123,9 @@ class InboundFednowTransfer(BaseModel):
     end_to_end_identification: Optional[str] = None
     """A free-form reference string set by the sender, to help identify the transfer."""
 
+    message_identification: str
+    """The FedNow network identification of the transfer."""
+
     status: Literal["pending_confirming", "timed_out", "confirmed", "declined", "requires_attention"]
     """The lifecycle status of the transfer.
 
@@ -141,7 +144,7 @@ class InboundFednowTransfer(BaseModel):
     """
 
     transaction_identification: Optional[str] = None
-    """The FedNow network identification of the transfer."""
+    """An optional identifier for the transfer set by the sending bank."""
 
     type: Literal["inbound_fednow_transfer"]
     """A constant representing the object's type.

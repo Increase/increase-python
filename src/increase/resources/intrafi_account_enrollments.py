@@ -56,7 +56,7 @@ class IntrafiAccountEnrollmentsResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> IntrafiAccountEnrollment:
         """
-        Enroll an account in the IntraFi deposit sweep network
+        Enroll an Account in the IntraFi deposit sweep network
 
         Args:
           account_id: The identifier for the account to be added to IntraFi.
@@ -208,7 +208,7 @@ class IntrafiAccountEnrollmentsResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> IntrafiAccountEnrollment:
         """
-        Unenroll an account from IntraFi
+        Unenroll an Account from IntraFi
 
         Args:
           intrafi_account_enrollment_id: The Identifier of the IntraFi Account Enrollment to remove from IntraFi.
@@ -277,7 +277,7 @@ class AsyncIntrafiAccountEnrollmentsResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> IntrafiAccountEnrollment:
         """
-        Enroll an account in the IntraFi deposit sweep network
+        Enroll an Account in the IntraFi deposit sweep network
 
         Args:
           account_id: The identifier for the account to be added to IntraFi.
@@ -429,7 +429,7 @@ class AsyncIntrafiAccountEnrollmentsResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> IntrafiAccountEnrollment:
         """
-        Unenroll an account from IntraFi
+        Unenroll an Account from IntraFi
 
         Args:
           intrafi_account_enrollment_id: The Identifier of the IntraFi Account Enrollment to remove from IntraFi.

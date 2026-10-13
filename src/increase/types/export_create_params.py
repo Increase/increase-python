@@ -145,11 +145,11 @@ class AccountStatementBai2(TypedDict, total=False):
     """
 
     effective_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
-    """The date to create a BAI2 report for.
+    """The UTC date to create a BAI2 report for.
 
-    If not provided, the current date will be used. The timezone is UTC. If the
-    current date is used, the report will include intraday balances, otherwise it
-    will include end-of-day balances for the provided date.
+    If not provided, the current date will be used. If the current date is used, the
+    report will include intraday balances, otherwise it will include end-of-day
+    balances for the provided date.
     """
 
     program_id: str
@@ -192,7 +192,10 @@ class AccountVerificationLetter(TypedDict, total=False):
     """The Account Number to create a letter for."""
 
     balance_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
-    """The date of the balance to include in the letter. Defaults to the current date."""
+    """The UTC date of the balance to include in the letter.
+
+    Defaults to the current date.
+    """
 
 
 class BookkeepingAccountBalanceCsv(TypedDict, total=False):
@@ -208,10 +211,10 @@ class BookkeepingAccountBalanceCsv(TypedDict, total=False):
     """
 
     on_or_after_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
-    """Filter exported Balances to those on or after this date."""
+    """Filter exported Balances to those on or after this UTC date."""
 
     on_or_before_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
-    """Filter exported Balances to those on or before this date."""
+    """Filter exported Balances to those on or before this UTC date."""
 
 
 class DailyAccountBalanceCsv(TypedDict, total=False):
@@ -224,10 +227,10 @@ class DailyAccountBalanceCsv(TypedDict, total=False):
     """Filter exported Balances to the specified Account."""
 
     on_or_after_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
-    """Filter exported Balances to those on or after this date."""
+    """Filter exported Balances to those on or after this UTC date."""
 
     on_or_before_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
-    """Filter exported Balances to those on or before this date."""
+    """Filter exported Balances to those on or before this UTC date."""
 
 
 class EntityCsv(TypedDict, total=False):

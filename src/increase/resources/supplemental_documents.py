@@ -56,7 +56,7 @@ class SupplementalDocumentsResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> EntitySupplementalDocument:
         """
-        Create a supplemental document for an Entity
+        Create a Supplemental Document
 
         Args:
           entity_id: The identifier of the Entity to associate with the supplemental document.
@@ -107,7 +107,7 @@ class SupplementalDocumentsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[EntitySupplementalDocument]:
         """
-        List Entity Supplemental Document Submissions
+        List Supplemental Documents
 
         Args:
           entity_id: The identifier of the Entity to list supplemental documents for.
@@ -188,7 +188,7 @@ class AsyncSupplementalDocumentsResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> EntitySupplementalDocument:
         """
-        Create a supplemental document for an Entity
+        Create a Supplemental Document
 
         Args:
           entity_id: The identifier of the Entity to associate with the supplemental document.
@@ -239,7 +239,7 @@ class AsyncSupplementalDocumentsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[EntitySupplementalDocument, AsyncPage[EntitySupplementalDocument]]:
         """
-        List Entity Supplemental Document Submissions
+        List Supplemental Documents
 
         Args:
           entity_id: The identifier of the Entity to list supplemental documents for.

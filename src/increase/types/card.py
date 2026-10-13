@@ -29,6 +29,7 @@ __all__ = [
     "BillingAddress",
     "CardholderName",
     "DigitalWallet",
+    "Renewal",
 ]
 
 
@@ -284,6 +285,23 @@ class DigitalWallet(BaseModel):
     """
 
 
+class Renewal(BaseModel):
+    expiration_month: int
+    """
+    The month the Card expired in before this renewal, in M format (e.g., August is
+    8).
+    """
+
+    expiration_year: int
+    """The year the Card expired in before this renewal, in YYYY format (e.g., 2025)."""
+
+    renewed_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the Card was renewed.
+    """
+
+
 class Card(BaseModel):
     """Cards may operate on credit, debit, or prepaid BINs.
 
@@ -347,6 +365,12 @@ class Card(BaseModel):
 
     last4: str
     """The last 4 digits of the Card's Primary Account Number."""
+
+    renewals: List[Renewal]
+    """Completed renewals of this Card, sorted by `renewed_at` in ascending order.
+
+    Each renewal records the expiration date the Card had before it was renewed.
+    """
 
     status: Literal["active", "disabled", "canceled"]
     """This indicates if payments can be made with the card.
