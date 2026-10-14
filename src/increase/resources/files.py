@@ -189,8 +189,11 @@ class FilesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> File:
-        """
-        Retrieve a File
+        """Fetch metadata about a File, like its `purpose` and MIME type.
+
+        To access the
+        content, use the [Get File contents](/documentation/api/files#get-file-contents)
+        API.
 
         Args:
           file_id: The identifier of the File.
@@ -474,8 +477,11 @@ class AsyncFilesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> File:
-        """
-        Retrieve a File
+        """Fetch metadata about a File, like its `purpose` and MIME type.
+
+        To access the
+        content, use the [Get File contents](/documentation/api/files#get-file-contents)
+        API.
 
         Args:
           file_id: The identifier of the File.
