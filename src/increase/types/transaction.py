@@ -616,9 +616,11 @@ class SourceCardDisputeFinancialVisa(BaseModel):
 
     event_type: Literal[
         "chargeback_submitted",
+        "merchant_prearbitration_accepted",
         "merchant_prearbitration_decline_submitted",
         "merchant_prearbitration_received",
         "represented",
+        "user_prearbitration_accepted",
         "user_prearbitration_decline_received",
         "user_prearbitration_submitted",
         "user_withdrawal_submitted",
@@ -626,11 +628,15 @@ class SourceCardDisputeFinancialVisa(BaseModel):
     """The type of card dispute financial event.
 
     - `chargeback_submitted` - The user's chargeback was submitted.
+    - `merchant_prearbitration_accepted` - The merchant's pre-arbitration submission
+      was accepted by the user or not responded to in time.
     - `merchant_prearbitration_decline_submitted` - The user declined the merchant's
       pre-arbitration submission.
     - `merchant_prearbitration_received` - The merchant's pre-arbitration submission
       was received.
     - `represented` - The transaction was re-presented by the merchant.
+    - `user_prearbitration_accepted` - The user's pre-arbitration was accepted by
+      the merchant or not responded to in time.
     - `user_prearbitration_decline_received` - The user's pre-arbitration was
       declined by the merchant.
     - `user_prearbitration_submitted` - The user's pre-arbitration was submitted.
