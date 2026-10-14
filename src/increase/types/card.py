@@ -29,6 +29,8 @@ __all__ = [
     "BillingAddress",
     "CardholderName",
     "DigitalWallet",
+    "Renewal",
+    "ReplacementFor",
 ]
 
 
@@ -284,6 +286,46 @@ class DigitalWallet(BaseModel):
     """
 
 
+class Renewal(BaseModel):
+    previous_expiration_month: int
+    """
+    The month the Card expired in before this renewal, in M format (e.g., August is
+    8).
+    """
+
+    previous_expiration_year: int
+    """The year the Card expired in before this renewal, in YYYY format (e.g., 2025)."""
+
+    renewed_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the Card was renewed.
+    """
+
+
+class ReplacementFor(BaseModel):
+    """Details about the Card this Card replaces, if it was created as a replacement."""
+
+    card_id: str
+    """The identifier of the replaced Card."""
+
+    reason: Literal["expiring", "lost", "stolen", "fraud"]
+    """Why the Card was replaced.
+
+    Only `expiring` notifies merchants that have the replaced Card on file of the
+    new Card.
+
+    - `expiring` - The replaced card is expiring. Merchants with the replaced card
+      on file will be notified of the new card.
+    - `lost` - The replaced card was lost. Merchants will not be notified of the new
+      card.
+    - `stolen` - The replaced card was stolen. Merchants will not be notified of the
+      new card.
+    - `fraud` - The replaced card was used fraudulently. Merchants will not be
+      notified of the new card.
+    """
+
+
 class Card(BaseModel):
     """Cards may operate on credit, debit, or prepaid BINs.
 
@@ -347,6 +389,15 @@ class Card(BaseModel):
 
     last4: str
     """The last 4 digits of the Card's Primary Account Number."""
+
+    renewals: List[Renewal]
+    """Completed renewals of this Card, sorted by `renewed_at` in ascending order.
+
+    Each renewal records the expiration date the Card had before it was renewed.
+    """
+
+    replacement_for: Optional[ReplacementFor] = None
+    """Details about the Card this Card replaces, if it was created as a replacement."""
 
     status: Literal["active", "disabled", "canceled"]
     """This indicates if payments can be made with the card.
