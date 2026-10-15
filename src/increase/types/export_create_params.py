@@ -270,7 +270,7 @@ class FeeCsvCreatedAt(TypedDict, total=False):
     """
 
 
-class FeeCsv(TypedDict, total=False):
+class FeeCsv(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """Options for the created export. Required if `category` is equal to `fee_csv`."""
 
     created_at: FeeCsvCreatedAt
