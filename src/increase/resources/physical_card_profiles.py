@@ -129,7 +129,7 @@ class PhysicalCardProfilesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhysicalCardProfile:
         """
-        Retrieve a Card Profile
+        Retrieve a Physical Card Profile
 
         Args:
           physical_card_profile_id: The identifier of the Card Profile.
@@ -443,7 +443,7 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhysicalCardProfile:
         """
-        Retrieve a Card Profile
+        Retrieve a Physical Card Profile
 
         Args:
           physical_card_profile_id: The identifier of the Card Profile.

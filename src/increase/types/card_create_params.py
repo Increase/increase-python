@@ -26,6 +26,7 @@ __all__ = [
     "BillingAddress",
     "CardholderName",
     "DigitalWallet",
+    "ReplacementFor",
 ]
 
 
@@ -63,6 +64,13 @@ class CardCreateParams(TypedDict, total=False):
 
     You only need to supply this in rare situations when the card is not for the
     Account holder.
+    """
+
+    replacement_for: ReplacementFor
+    """Details about the Card this Card replaces.
+
+    Supply this when issuing a new Card to take over from an existing one. The
+    replaced Card is not canceled.
     """
 
 
@@ -318,4 +326,32 @@ class DigitalWallet(TypedDict, total=False):
     """
     A phone number that can be used to contact and verify the cardholder via
     one-time passcode over SMS.
+    """
+
+
+class ReplacementFor(TypedDict, total=False):
+    """Details about the Card this Card replaces.
+
+    Supply this when issuing a new Card to take over from an existing one. The replaced Card is not canceled.
+    """
+
+    card_id: Required[str]
+    """The identifier of the Card being replaced."""
+
+    reason: Required[Literal["expiring", "lost", "stolen", "fraud"]]
+    """Why the Card is being replaced.
+
+    Only `expiring` notifies merchants that have the replaced Card on file of the
+    new Card and moves Digital Wallet Tokens on the replaced Card that have not been
+    deactivated to the new Card.
+
+    - `expiring` - The replaced card is expiring. Merchants with the replaced card
+      on file will be notified of the new card, and its digital wallet tokens that
+      have not been deactivated will move to the new card.
+    - `lost` - The replaced card was lost. Merchants will not be notified of the new
+      card.
+    - `stolen` - The replaced card was stolen. Merchants will not be notified of the
+      new card.
+    - `fraud` - The replaced card was used fraudulently. Merchants will not be
+      notified of the new card.
     """
