@@ -200,6 +200,18 @@ class PhysicalCard(BaseModel):
     the Physical Card was created.
     """
 
+    expiration_month: int
+    """
+    The month printed on the Physical Card as its expiration, in M format (e.g.,
+    August is 8). This stays the same when the Card is renewed.
+    """
+
+    expiration_year: int
+    """
+    The year printed on the Physical Card as its expiration, in YYYY format (e.g.,
+    2025). This stays the same when the Card is renewed.
+    """
+
     idempotency_key: Optional[str] = None
     """The idempotency key you chose for this object.
 

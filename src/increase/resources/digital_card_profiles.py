@@ -179,7 +179,7 @@ class DigitalCardProfilesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[DigitalCardProfile]:
         """
-        List Card Profiles
+        List Digital Card Profiles
 
         Args:
           cursor: Return the page of entries after this one.
@@ -292,7 +292,7 @@ class DigitalCardProfilesResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> DigitalCardProfile:
         """
-        Clones a Digital Card Profile
+        Clone a Digital Card Profile
 
         Args:
           digital_card_profile_id: The identifier of the Digital Card Profile to clone.
@@ -513,7 +513,7 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[DigitalCardProfile, AsyncPage[DigitalCardProfile]]:
         """
-        List Card Profiles
+        List Digital Card Profiles
 
         Args:
           cursor: Return the page of entries after this one.
@@ -626,7 +626,7 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> DigitalCardProfile:
         """
-        Clones a Digital Card Profile
+        Clone a Digital Card Profile
 
         Args:
           digital_card_profile_id: The identifier of the Digital Card Profile to clone.
