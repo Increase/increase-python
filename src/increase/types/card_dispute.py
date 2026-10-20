@@ -2655,7 +2655,7 @@ class Withdrawal(BaseModel):
 
 class CardDispute(BaseModel):
     """
-    If unauthorized activity occurs on a card, you can create a Card Dispute and we'll work with the card networks to return the funds if appropriate.
+    If unauthorized activity occurs on a card, you can create a Card Dispute and we'll work with the card networks to return the funds if appropriate. For more information, see our guide on [card disputes](https://increase.com/documentation/card-disputes).
     """
 
     id: str
