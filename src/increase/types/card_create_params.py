@@ -325,7 +325,8 @@ class DigitalWallet(TypedDict, total=False):
     phone: str
     """
     A phone number that can be used to contact and verify the cardholder via
-    one-time passcode over SMS.
+    one-time passcode over SMS. Accepts formats like `+14155550123`, `4155550123`,
+    `415-555-0123`, or `(415) 555-0123`.
     """
 
 
