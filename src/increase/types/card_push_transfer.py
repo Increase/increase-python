@@ -337,6 +337,7 @@ class PresentmentAmount(BaseModel):
         "DZD",
         "USD",
         "AOA",
+        "XCD",
         "ARS",
         "AMD",
         "AWG",
@@ -348,6 +349,7 @@ class PresentmentAmount(BaseModel):
         "BBD",
         "BYN",
         "BZD",
+        "XOF",
         "BMD",
         "INR",
         "BTN",
@@ -358,10 +360,10 @@ class PresentmentAmount(BaseModel):
         "NOK",
         "BRL",
         "BND",
-        "BGN",
         "BIF",
         "CVE",
         "KHR",
+        "XAF",
         "CAD",
         "KYD",
         "CLP",
@@ -374,6 +376,7 @@ class PresentmentAmount(BaseModel):
         "NZD",
         "CRC",
         "CUP",
+        "XCG",
         "CZK",
         "DKK",
         "DJF",
@@ -385,6 +388,7 @@ class PresentmentAmount(BaseModel):
         "ETB",
         "FKP",
         "FJD",
+        "XPF",
         "GMD",
         "GEL",
         "GHS",
@@ -491,6 +495,7 @@ class PresentmentAmount(BaseModel):
         "YER",
         "ZMW",
         "ZWG",
+        "BGN",
     ]
     """The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code.
 
@@ -500,6 +505,7 @@ class PresentmentAmount(BaseModel):
     - `DZD` - DZD
     - `USD` - USD
     - `AOA` - AOA
+    - `XCD` - XCD
     - `ARS` - ARS
     - `AMD` - AMD
     - `AWG` - AWG
@@ -511,6 +517,7 @@ class PresentmentAmount(BaseModel):
     - `BBD` - BBD
     - `BYN` - BYN
     - `BZD` - BZD
+    - `XOF` - XOF
     - `BMD` - BMD
     - `INR` - INR
     - `BTN` - BTN
@@ -521,10 +528,10 @@ class PresentmentAmount(BaseModel):
     - `NOK` - NOK
     - `BRL` - BRL
     - `BND` - BND
-    - `BGN` - BGN
     - `BIF` - BIF
     - `CVE` - CVE
     - `KHR` - KHR
+    - `XAF` - XAF
     - `CAD` - CAD
     - `KYD` - KYD
     - `CLP` - CLP
@@ -537,6 +544,7 @@ class PresentmentAmount(BaseModel):
     - `NZD` - NZD
     - `CRC` - CRC
     - `CUP` - CUP
+    - `XCG` - XCG
     - `CZK` - CZK
     - `DKK` - DKK
     - `DJF` - DJF
@@ -548,6 +556,7 @@ class PresentmentAmount(BaseModel):
     - `ETB` - ETB
     - `FKP` - FKP
     - `FJD` - FJD
+    - `XPF` - XPF
     - `GMD` - GMD
     - `GEL` - GEL
     - `GHS` - GHS
@@ -654,6 +663,7 @@ class PresentmentAmount(BaseModel):
     - `YER` - YER
     - `ZMW` - ZMW
     - `ZWG` - ZWG
+    - `BGN` - BGN
     """
 
     value: str

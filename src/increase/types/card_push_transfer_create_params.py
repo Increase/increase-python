@@ -159,6 +159,7 @@ class PresentmentAmount(TypedDict, total=False):
             "DZD",
             "USD",
             "AOA",
+            "XCD",
             "ARS",
             "AMD",
             "AWG",
@@ -170,6 +171,7 @@ class PresentmentAmount(TypedDict, total=False):
             "BBD",
             "BYN",
             "BZD",
+            "XOF",
             "BMD",
             "INR",
             "BTN",
@@ -180,10 +182,10 @@ class PresentmentAmount(TypedDict, total=False):
             "NOK",
             "BRL",
             "BND",
-            "BGN",
             "BIF",
             "CVE",
             "KHR",
+            "XAF",
             "CAD",
             "KYD",
             "CLP",
@@ -196,6 +198,7 @@ class PresentmentAmount(TypedDict, total=False):
             "NZD",
             "CRC",
             "CUP",
+            "XCG",
             "CZK",
             "DKK",
             "DJF",
@@ -207,6 +210,7 @@ class PresentmentAmount(TypedDict, total=False):
             "ETB",
             "FKP",
             "FJD",
+            "XPF",
             "GMD",
             "GEL",
             "GHS",
@@ -313,6 +317,7 @@ class PresentmentAmount(TypedDict, total=False):
             "YER",
             "ZMW",
             "ZWG",
+            "BGN",
         ]
     ]
     """The ISO 4217 currency code representing the currency of the amount.
@@ -323,6 +328,7 @@ class PresentmentAmount(TypedDict, total=False):
     - `DZD` - DZD
     - `USD` - USD
     - `AOA` - AOA
+    - `XCD` - XCD
     - `ARS` - ARS
     - `AMD` - AMD
     - `AWG` - AWG
@@ -334,6 +340,7 @@ class PresentmentAmount(TypedDict, total=False):
     - `BBD` - BBD
     - `BYN` - BYN
     - `BZD` - BZD
+    - `XOF` - XOF
     - `BMD` - BMD
     - `INR` - INR
     - `BTN` - BTN
@@ -344,10 +351,10 @@ class PresentmentAmount(TypedDict, total=False):
     - `NOK` - NOK
     - `BRL` - BRL
     - `BND` - BND
-    - `BGN` - BGN
     - `BIF` - BIF
     - `CVE` - CVE
     - `KHR` - KHR
+    - `XAF` - XAF
     - `CAD` - CAD
     - `KYD` - KYD
     - `CLP` - CLP
@@ -360,6 +367,7 @@ class PresentmentAmount(TypedDict, total=False):
     - `NZD` - NZD
     - `CRC` - CRC
     - `CUP` - CUP
+    - `XCG` - XCG
     - `CZK` - CZK
     - `DKK` - DKK
     - `DJF` - DJF
@@ -371,6 +379,7 @@ class PresentmentAmount(TypedDict, total=False):
     - `ETB` - ETB
     - `FKP` - FKP
     - `FJD` - FJD
+    - `XPF` - XPF
     - `GMD` - GMD
     - `GEL` - GEL
     - `GHS` - GHS
@@ -477,6 +486,7 @@ class PresentmentAmount(TypedDict, total=False):
     - `YER` - YER
     - `ZMW` - ZMW
     - `ZWG` - ZWG
+    - `BGN` - BGN
     """
 
     value: Required[str]
