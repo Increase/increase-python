@@ -28,6 +28,7 @@ class TestOAuthApplications:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.oauth_applications.with_raw_response.retrieve(
             "application_gj9ufmpgh5i56k4vyriy",
         )
@@ -77,6 +78,7 @@ class TestOAuthApplications:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.oauth_applications.with_raw_response.list()
 
         assert response.is_closed is True
@@ -108,6 +110,7 @@ class TestAsyncOAuthApplications:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.oauth_applications.with_raw_response.retrieve(
             "application_gj9ufmpgh5i56k4vyriy",
         )
@@ -157,6 +160,7 @@ class TestAsyncOAuthApplications:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.oauth_applications.with_raw_response.list()
 
         assert response.is_closed is True

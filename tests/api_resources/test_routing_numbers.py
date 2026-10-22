@@ -36,6 +36,7 @@ class TestRoutingNumbers:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.routing_numbers.with_raw_response.list(
             routing_number="483310694",
         )
@@ -80,6 +81,7 @@ class TestAsyncRoutingNumbers:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.routing_numbers.with_raw_response.list(
             routing_number="483310694",
         )

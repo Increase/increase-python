@@ -26,6 +26,7 @@ class TestWireDrawdownRequests:
 
     @parametrize
     def test_raw_response_refuse(self, client: Increase) -> None:
+
         response = client.simulations.wire_drawdown_requests.with_raw_response.refuse(
             "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         )
@@ -64,6 +65,7 @@ class TestWireDrawdownRequests:
 
     @parametrize
     def test_raw_response_submit(self, client: Increase) -> None:
+
         response = client.simulations.wire_drawdown_requests.with_raw_response.submit(
             "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         )
@@ -108,6 +110,7 @@ class TestAsyncWireDrawdownRequests:
 
     @parametrize
     async def test_raw_response_refuse(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.wire_drawdown_requests.with_raw_response.refuse(
             "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         )
@@ -146,6 +149,7 @@ class TestAsyncWireDrawdownRequests:
 
     @parametrize
     async def test_raw_response_submit(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.wire_drawdown_requests.with_raw_response.submit(
             "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         )

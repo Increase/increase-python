@@ -26,6 +26,7 @@ class TestRealTimeDecisions:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.real_time_decisions.with_raw_response.retrieve(
             "real_time_decision_j76n2e810ezcg3zh5qtn",
         )
@@ -106,6 +107,7 @@ class TestRealTimeDecisions:
 
     @parametrize
     def test_raw_response_action(self, client: Increase) -> None:
+
         response = client.real_time_decisions.with_raw_response.action(
             real_time_decision_id="real_time_decision_j76n2e810ezcg3zh5qtn",
         )
@@ -148,6 +150,7 @@ class TestAsyncRealTimeDecisions:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.real_time_decisions.with_raw_response.retrieve(
             "real_time_decision_j76n2e810ezcg3zh5qtn",
         )
@@ -228,6 +231,7 @@ class TestAsyncRealTimeDecisions:
 
     @parametrize
     async def test_raw_response_action(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.real_time_decisions.with_raw_response.action(
             real_time_decision_id="real_time_decision_j76n2e810ezcg3zh5qtn",
         )

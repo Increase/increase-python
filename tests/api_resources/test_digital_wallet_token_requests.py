@@ -28,6 +28,7 @@ class TestDigitalWalletTokenRequests:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.digital_wallet_token_requests.with_raw_response.retrieve(
             "digital_wallet_token_request_dlsq0yabf7ev4xvke6ek",
         )
@@ -79,6 +80,7 @@ class TestDigitalWalletTokenRequests:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.digital_wallet_token_requests.with_raw_response.list()
 
         assert response.is_closed is True
@@ -110,6 +112,7 @@ class TestAsyncDigitalWalletTokenRequests:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.digital_wallet_token_requests.with_raw_response.retrieve(
             "digital_wallet_token_request_dlsq0yabf7ev4xvke6ek",
         )
@@ -161,6 +164,7 @@ class TestAsyncDigitalWalletTokenRequests:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.digital_wallet_token_requests.with_raw_response.list()
 
         assert response.is_closed is True

@@ -28,6 +28,7 @@ class TestCardPurchaseSupplements:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.card_purchase_supplements.with_raw_response.retrieve(
             "card_purchase_supplement_ijuc45iym4jchnh2sfk3",
         )
@@ -79,6 +80,7 @@ class TestCardPurchaseSupplements:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.card_purchase_supplements.with_raw_response.list()
 
         assert response.is_closed is True
@@ -110,6 +112,7 @@ class TestAsyncCardPurchaseSupplements:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.card_purchase_supplements.with_raw_response.retrieve(
             "card_purchase_supplement_ijuc45iym4jchnh2sfk3",
         )
@@ -161,6 +164,7 @@ class TestAsyncCardPurchaseSupplements:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.card_purchase_supplements.with_raw_response.list()
 
         assert response.is_closed is True

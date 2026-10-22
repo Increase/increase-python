@@ -59,6 +59,7 @@ class TestFednowTransfers:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.fednow_transfers.with_raw_response.create(
             amount=100,
             creditor_name="Ian Crease",
@@ -96,6 +97,7 @@ class TestFednowTransfers:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.fednow_transfers.with_raw_response.retrieve(
             "fednow_transfer_4i0mptrdu1mueg1196bg",
         )
@@ -148,6 +150,7 @@ class TestFednowTransfers:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.fednow_transfers.with_raw_response.list()
 
         assert response.is_closed is True
@@ -173,6 +176,7 @@ class TestFednowTransfers:
 
     @parametrize
     def test_raw_response_approve(self, client: Increase) -> None:
+
         response = client.fednow_transfers.with_raw_response.approve(
             "fednow_transfer_4i0mptrdu1mueg1196bg",
         )
@@ -209,6 +213,7 @@ class TestFednowTransfers:
 
     @parametrize
     def test_raw_response_cancel(self, client: Increase) -> None:
+
         response = client.fednow_transfers.with_raw_response.cancel(
             "fednow_transfer_4i0mptrdu1mueg1196bg",
         )
@@ -282,6 +287,7 @@ class TestAsyncFednowTransfers:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.fednow_transfers.with_raw_response.create(
             amount=100,
             creditor_name="Ian Crease",
@@ -319,6 +325,7 @@ class TestAsyncFednowTransfers:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.fednow_transfers.with_raw_response.retrieve(
             "fednow_transfer_4i0mptrdu1mueg1196bg",
         )
@@ -371,6 +378,7 @@ class TestAsyncFednowTransfers:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.fednow_transfers.with_raw_response.list()
 
         assert response.is_closed is True
@@ -396,6 +404,7 @@ class TestAsyncFednowTransfers:
 
     @parametrize
     async def test_raw_response_approve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.fednow_transfers.with_raw_response.approve(
             "fednow_transfer_4i0mptrdu1mueg1196bg",
         )
@@ -432,6 +441,7 @@ class TestAsyncFednowTransfers:
 
     @parametrize
     async def test_raw_response_cancel(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.fednow_transfers.with_raw_response.cancel(
             "fednow_transfer_4i0mptrdu1mueg1196bg",
         )

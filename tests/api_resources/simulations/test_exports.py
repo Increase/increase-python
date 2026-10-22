@@ -34,6 +34,7 @@ class TestExports:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.simulations.exports.with_raw_response.create(
             category="form_1099_int",
         )
@@ -77,6 +78,7 @@ class TestAsyncExports:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.exports.with_raw_response.create(
             category="form_1099_int",
         )

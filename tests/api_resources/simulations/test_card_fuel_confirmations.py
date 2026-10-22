@@ -27,6 +27,7 @@ class TestCardFuelConfirmations:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.simulations.card_fuel_confirmations.with_raw_response.create(
             amount=5000,
             card_payment_id="card_payment_nd3k2kacrqjli8482ave",
@@ -65,6 +66,7 @@ class TestAsyncCardFuelConfirmations:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.card_fuel_confirmations.with_raw_response.create(
             amount=5000,
             card_payment_id="card_payment_nd3k2kacrqjli8482ave",

@@ -51,6 +51,7 @@ class TestDigitalCardProfiles:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.digital_card_profiles.with_raw_response.create(
             app_icon_file_id="file_8zxqkwlh43wo144u8yec",
             background_image_file_id="file_1ai913suu1zfn1pdetru",
@@ -86,6 +87,7 @@ class TestDigitalCardProfiles:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.digital_card_profiles.with_raw_response.retrieve(
             "digital_card_profile_s3puplu90f04xhcwkiga",
         )
@@ -132,6 +134,7 @@ class TestDigitalCardProfiles:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.digital_card_profiles.with_raw_response.list()
 
         assert response.is_closed is True
@@ -157,6 +160,7 @@ class TestDigitalCardProfiles:
 
     @parametrize
     def test_raw_response_archive(self, client: Increase) -> None:
+
         response = client.digital_card_profiles.with_raw_response.archive(
             "digital_card_profile_s3puplu90f04xhcwkiga",
         )
@@ -215,6 +219,7 @@ class TestDigitalCardProfiles:
 
     @parametrize
     def test_raw_response_clone(self, client: Increase) -> None:
+
         response = client.digital_card_profiles.with_raw_response.clone(
             digital_card_profile_id="digital_card_profile_s3puplu90f04xhcwkiga",
         )
@@ -281,6 +286,7 @@ class TestAsyncDigitalCardProfiles:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.digital_card_profiles.with_raw_response.create(
             app_icon_file_id="file_8zxqkwlh43wo144u8yec",
             background_image_file_id="file_1ai913suu1zfn1pdetru",
@@ -316,6 +322,7 @@ class TestAsyncDigitalCardProfiles:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.digital_card_profiles.with_raw_response.retrieve(
             "digital_card_profile_s3puplu90f04xhcwkiga",
         )
@@ -362,6 +369,7 @@ class TestAsyncDigitalCardProfiles:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.digital_card_profiles.with_raw_response.list()
 
         assert response.is_closed is True
@@ -387,6 +395,7 @@ class TestAsyncDigitalCardProfiles:
 
     @parametrize
     async def test_raw_response_archive(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.digital_card_profiles.with_raw_response.archive(
             "digital_card_profile_s3puplu90f04xhcwkiga",
         )
@@ -445,6 +454,7 @@ class TestAsyncDigitalCardProfiles:
 
     @parametrize
     async def test_raw_response_clone(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.digital_card_profiles.with_raw_response.clone(
             digital_card_profile_id="digital_card_profile_s3puplu90f04xhcwkiga",
         )

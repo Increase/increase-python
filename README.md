@@ -3,7 +3,7 @@
 <!-- prettier-ignore -->
 [![PyPI version](https://img.shields.io/pypi/v/increase.svg?label=pypi%20(stable))](https://pypi.org/project/increase/)
 
-The Increase Python library provides convenient access to the Increase REST API from any Python 3.9+
+The Increase Python library provides convenient access to the Increase REST API from any Python 3.10+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -362,10 +362,10 @@ In an API response, a field may be explicitly `null`, or missing entirely; in ei
 
 ```py
 if response.my_field is None:
-  if 'my_field' not in response.model_fields_set:
-    print('Got json like {}, without a "my_field" key present at all.')
-  else:
-    print('Got json like {"my_field": null}.')
+    if "my_field" not in response.model_fields_set:
+        print('Got json like {}, without a "my_field" key present at all.')
+    else:
+        print('Got json like {"my_field": null}.')
 ```
 
 ### Accessing raw response data (e.g. headers)
@@ -381,7 +381,7 @@ response = client.accounts.with_raw_response.create(
     entity_id="entity_n8y8tnk2p9339ti393yi",
     program_id="program_i2v2os4mwza1oetokh9i",
 )
-print(response.headers.get('X-My-Header'))
+print(response.headers.get("X-My-Header"))
 
 account = response.parse()  # get the object that `accounts.create()` would have returned
 print(account.id)
@@ -481,8 +481,8 @@ By default the library closes underlying HTTP connections whenever the client is
 from increase import Increase
 
 with Increase() as client:
-  # make requests here
-  ...
+    # make requests here
+    ...
 
 # HTTP client is now closed
 ```
@@ -507,12 +507,13 @@ You can determine the version that is being used at runtime with:
 
 ```py
 import increase
+
 print(increase.__version__)
 ```
 
 ## Requirements
 
-Python 3.9 or higher.
+Python 3.10 or higher.
 
 ## Contributing
 

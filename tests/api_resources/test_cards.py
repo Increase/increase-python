@@ -95,6 +95,7 @@ class TestCards:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.cards.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
         )
@@ -124,6 +125,7 @@ class TestCards:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.cards.with_raw_response.retrieve(
             "card_oubs0hwk5rn6knuecxg2",
         )
@@ -214,6 +216,7 @@ class TestCards:
 
     @parametrize
     def test_raw_response_update(self, client: Increase) -> None:
+
         response = client.cards.with_raw_response.update(
             card_id="card_oubs0hwk5rn6knuecxg2",
         )
@@ -265,6 +268,7 @@ class TestCards:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.cards.with_raw_response.list()
 
         assert response.is_closed is True
@@ -298,6 +302,7 @@ class TestCards:
 
     @parametrize
     def test_raw_response_create_details_iframe(self, client: Increase) -> None:
+
         response = client.cards.with_raw_response.create_details_iframe(
             card_id="card_oubs0hwk5rn6knuecxg2",
         )
@@ -334,6 +339,7 @@ class TestCards:
 
     @parametrize
     def test_raw_response_create_details_token(self, client: Increase) -> None:
+
         response = client.cards.with_raw_response.create_details_token(
             "card_oubs0hwk5rn6knuecxg2",
         )
@@ -370,6 +376,7 @@ class TestCards:
 
     @parametrize
     def test_raw_response_details(self, client: Increase) -> None:
+
         response = client.cards.with_raw_response.details(
             "card_oubs0hwk5rn6knuecxg2",
         )
@@ -406,6 +413,7 @@ class TestCards:
 
     @parametrize
     def test_raw_response_renew(self, client: Increase) -> None:
+
         response = client.cards.with_raw_response.renew(
             "card_oubs0hwk5rn6knuecxg2",
         )
@@ -443,6 +451,7 @@ class TestCards:
 
     @parametrize
     def test_raw_response_update_pin(self, client: Increase) -> None:
+
         response = client.cards.with_raw_response.update_pin(
             card_id="card_oubs0hwk5rn6knuecxg2",
             pin="1234",
@@ -550,6 +559,7 @@ class TestAsyncCards:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.cards.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
         )
@@ -579,6 +589,7 @@ class TestAsyncCards:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.cards.with_raw_response.retrieve(
             "card_oubs0hwk5rn6knuecxg2",
         )
@@ -669,6 +680,7 @@ class TestAsyncCards:
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.cards.with_raw_response.update(
             card_id="card_oubs0hwk5rn6knuecxg2",
         )
@@ -720,6 +732,7 @@ class TestAsyncCards:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.cards.with_raw_response.list()
 
         assert response.is_closed is True
@@ -753,6 +766,7 @@ class TestAsyncCards:
 
     @parametrize
     async def test_raw_response_create_details_iframe(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.cards.with_raw_response.create_details_iframe(
             card_id="card_oubs0hwk5rn6knuecxg2",
         )
@@ -789,6 +803,7 @@ class TestAsyncCards:
 
     @parametrize
     async def test_raw_response_create_details_token(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.cards.with_raw_response.create_details_token(
             "card_oubs0hwk5rn6knuecxg2",
         )
@@ -825,6 +840,7 @@ class TestAsyncCards:
 
     @parametrize
     async def test_raw_response_details(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.cards.with_raw_response.details(
             "card_oubs0hwk5rn6knuecxg2",
         )
@@ -861,6 +877,7 @@ class TestAsyncCards:
 
     @parametrize
     async def test_raw_response_renew(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.cards.with_raw_response.renew(
             "card_oubs0hwk5rn6knuecxg2",
         )
@@ -898,6 +915,7 @@ class TestAsyncCards:
 
     @parametrize
     async def test_raw_response_update_pin(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.cards.with_raw_response.update_pin(
             card_id="card_oubs0hwk5rn6knuecxg2",
             pin="1234",

@@ -26,6 +26,7 @@ class TestCheckTransfers:
 
     @parametrize
     def test_raw_response_mail(self, client: Increase) -> None:
+
         response = client.simulations.check_transfers.with_raw_response.mail(
             "check_transfer_30b43acfu9vw8fyc4f5",
         )
@@ -68,6 +69,7 @@ class TestAsyncCheckTransfers:
 
     @parametrize
     async def test_raw_response_mail(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.check_transfers.with_raw_response.mail(
             "check_transfer_30b43acfu9vw8fyc4f5",
         )

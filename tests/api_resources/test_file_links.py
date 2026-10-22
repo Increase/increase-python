@@ -35,6 +35,7 @@ class TestFileLinks:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.file_links.with_raw_response.create(
             file_id="file_makxrc67oh9l6sg7w9yc",
         )
@@ -78,6 +79,7 @@ class TestAsyncFileLinks:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.file_links.with_raw_response.create(
             file_id="file_makxrc67oh9l6sg7w9yc",
         )

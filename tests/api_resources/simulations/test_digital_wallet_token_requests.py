@@ -28,6 +28,7 @@ class TestDigitalWalletTokenRequests:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.simulations.digital_wallet_token_requests.with_raw_response.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
         )
@@ -65,6 +66,7 @@ class TestAsyncDigitalWalletTokenRequests:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.digital_wallet_token_requests.with_raw_response.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
         )

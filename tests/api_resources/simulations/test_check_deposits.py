@@ -35,6 +35,7 @@ class TestCheckDeposits:
 
     @parametrize
     def test_raw_response_adjustment(self, client: Increase) -> None:
+
         response = client.simulations.check_deposits.with_raw_response.adjustment(
             check_deposit_id="check_deposit_f06n9gpg7sxn8t19lfc1",
         )
@@ -71,6 +72,7 @@ class TestCheckDeposits:
 
     @parametrize
     def test_raw_response_reject(self, client: Increase) -> None:
+
         response = client.simulations.check_deposits.with_raw_response.reject(
             "check_deposit_f06n9gpg7sxn8t19lfc1",
         )
@@ -107,6 +109,7 @@ class TestCheckDeposits:
 
     @parametrize
     def test_raw_response_return(self, client: Increase) -> None:
+
         response = client.simulations.check_deposits.with_raw_response.return_(
             "check_deposit_f06n9gpg7sxn8t19lfc1",
         )
@@ -156,6 +159,7 @@ class TestCheckDeposits:
 
     @parametrize
     def test_raw_response_submit(self, client: Increase) -> None:
+
         response = client.simulations.check_deposits.with_raw_response.submit(
             check_deposit_id="check_deposit_f06n9gpg7sxn8t19lfc1",
         )
@@ -207,6 +211,7 @@ class TestAsyncCheckDeposits:
 
     @parametrize
     async def test_raw_response_adjustment(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.check_deposits.with_raw_response.adjustment(
             check_deposit_id="check_deposit_f06n9gpg7sxn8t19lfc1",
         )
@@ -243,6 +248,7 @@ class TestAsyncCheckDeposits:
 
     @parametrize
     async def test_raw_response_reject(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.check_deposits.with_raw_response.reject(
             "check_deposit_f06n9gpg7sxn8t19lfc1",
         )
@@ -279,6 +285,7 @@ class TestAsyncCheckDeposits:
 
     @parametrize
     async def test_raw_response_return(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.check_deposits.with_raw_response.return_(
             "check_deposit_f06n9gpg7sxn8t19lfc1",
         )
@@ -328,6 +335,7 @@ class TestAsyncCheckDeposits:
 
     @parametrize
     async def test_raw_response_submit(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.check_deposits.with_raw_response.submit(
             check_deposit_id="check_deposit_f06n9gpg7sxn8t19lfc1",
         )

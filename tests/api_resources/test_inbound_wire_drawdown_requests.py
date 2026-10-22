@@ -27,6 +27,7 @@ class TestInboundWireDrawdownRequests:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.inbound_wire_drawdown_requests.with_raw_response.retrieve(
             "inbound_wire_drawdown_request_u5a92ikqhz1ytphn799e",
         )
@@ -71,6 +72,7 @@ class TestInboundWireDrawdownRequests:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.inbound_wire_drawdown_requests.with_raw_response.list()
 
         assert response.is_closed is True
@@ -102,6 +104,7 @@ class TestAsyncInboundWireDrawdownRequests:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_wire_drawdown_requests.with_raw_response.retrieve(
             "inbound_wire_drawdown_request_u5a92ikqhz1ytphn799e",
         )
@@ -146,6 +149,7 @@ class TestAsyncInboundWireDrawdownRequests:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_wire_drawdown_requests.with_raw_response.list()
 
         assert response.is_closed is True
