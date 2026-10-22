@@ -60,6 +60,7 @@ class TestCardPurchaseSupplements:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.simulations.card_purchase_supplements.with_raw_response.create(
             transaction_id="transaction_uyrp7fld2ium70oa7oi",
         )
@@ -128,6 +129,7 @@ class TestAsyncCardPurchaseSupplements:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.card_purchase_supplements.with_raw_response.create(
             transaction_id="transaction_uyrp7fld2ium70oa7oi",
         )

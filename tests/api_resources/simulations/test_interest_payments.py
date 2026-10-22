@@ -39,6 +39,7 @@ class TestInterestPayments:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.simulations.interest_payments.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
@@ -88,6 +89,7 @@ class TestAsyncInterestPayments:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.interest_payments.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,

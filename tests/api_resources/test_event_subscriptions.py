@@ -40,6 +40,7 @@ class TestEventSubscriptions:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.event_subscriptions.with_raw_response.create(
             url="https://website.com/webhooks",
         )
@@ -69,6 +70,7 @@ class TestEventSubscriptions:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.event_subscriptions.with_raw_response.retrieve(
             "event_subscription_001dzz0r20rcdxgb013zqb8m04g",
         )
@@ -113,6 +115,7 @@ class TestEventSubscriptions:
 
     @parametrize
     def test_raw_response_update(self, client: Increase) -> None:
+
         response = client.event_subscriptions.with_raw_response.update(
             event_subscription_id="event_subscription_001dzz0r20rcdxgb013zqb8m04g",
         )
@@ -156,6 +159,7 @@ class TestEventSubscriptions:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.event_subscriptions.with_raw_response.list()
 
         assert response.is_closed is True
@@ -198,6 +202,7 @@ class TestAsyncEventSubscriptions:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.event_subscriptions.with_raw_response.create(
             url="https://website.com/webhooks",
         )
@@ -227,6 +232,7 @@ class TestAsyncEventSubscriptions:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.event_subscriptions.with_raw_response.retrieve(
             "event_subscription_001dzz0r20rcdxgb013zqb8m04g",
         )
@@ -271,6 +277,7 @@ class TestAsyncEventSubscriptions:
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.event_subscriptions.with_raw_response.update(
             event_subscription_id="event_subscription_001dzz0r20rcdxgb013zqb8m04g",
         )
@@ -314,6 +321,7 @@ class TestAsyncEventSubscriptions:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.event_subscriptions.with_raw_response.list()
 
         assert response.is_closed is True

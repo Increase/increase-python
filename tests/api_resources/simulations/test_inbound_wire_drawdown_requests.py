@@ -55,6 +55,7 @@ class TestInboundWireDrawdownRequests:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.simulations.inbound_wire_drawdown_requests.with_raw_response.create(
             amount=10000,
             creditor_account_number="987654321",
@@ -127,6 +128,7 @@ class TestAsyncInboundWireDrawdownRequests:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.inbound_wire_drawdown_requests.with_raw_response.create(
             amount=10000,
             creditor_account_number="987654321",

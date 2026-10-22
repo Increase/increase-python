@@ -30,6 +30,7 @@ class TestInboundACHTransfers:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.inbound_ach_transfers.with_raw_response.retrieve(
             "inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         )
@@ -83,6 +84,7 @@ class TestInboundACHTransfers:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.inbound_ach_transfers.with_raw_response.list()
 
         assert response.is_closed is True
@@ -117,6 +119,7 @@ class TestInboundACHTransfers:
 
     @parametrize
     def test_raw_response_create_notification_of_change(self, client: Increase) -> None:
+
         response = client.inbound_ach_transfers.with_raw_response.create_notification_of_change(
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         )
@@ -163,6 +166,7 @@ class TestInboundACHTransfers:
 
     @parametrize
     def test_raw_response_decline(self, client: Increase) -> None:
+
         response = client.inbound_ach_transfers.with_raw_response.decline(
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         )
@@ -202,6 +206,7 @@ class TestInboundACHTransfers:
 
     @parametrize
     def test_raw_response_transfer_return(self, client: Increase) -> None:
+
         response = client.inbound_ach_transfers.with_raw_response.transfer_return(
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
             reason="payment_stopped",
@@ -249,6 +254,7 @@ class TestAsyncInboundACHTransfers:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_ach_transfers.with_raw_response.retrieve(
             "inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         )
@@ -302,6 +308,7 @@ class TestAsyncInboundACHTransfers:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_ach_transfers.with_raw_response.list()
 
         assert response.is_closed is True
@@ -336,6 +343,7 @@ class TestAsyncInboundACHTransfers:
 
     @parametrize
     async def test_raw_response_create_notification_of_change(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_ach_transfers.with_raw_response.create_notification_of_change(
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         )
@@ -382,6 +390,7 @@ class TestAsyncInboundACHTransfers:
 
     @parametrize
     async def test_raw_response_decline(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_ach_transfers.with_raw_response.decline(
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         )
@@ -421,6 +430,7 @@ class TestAsyncInboundACHTransfers:
 
     @parametrize
     async def test_raw_response_transfer_return(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_ach_transfers.with_raw_response.transfer_return(
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
             reason="payment_stopped",

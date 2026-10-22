@@ -28,6 +28,7 @@ class TestIntrafiExclusions:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.intrafi_exclusions.with_raw_response.create(
             entity_id="entity_n8y8tnk2p9339ti393yi",
             fdic_certificate_number="314159",
@@ -59,6 +60,7 @@ class TestIntrafiExclusions:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.intrafi_exclusions.with_raw_response.retrieve(
             "account_in71c4amph0vgo2qllky",
         )
@@ -103,6 +105,7 @@ class TestIntrafiExclusions:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.intrafi_exclusions.with_raw_response.list()
 
         assert response.is_closed is True
@@ -128,6 +131,7 @@ class TestIntrafiExclusions:
 
     @parametrize
     def test_raw_response_archive(self, client: Increase) -> None:
+
         response = client.intrafi_exclusions.with_raw_response.archive(
             "intrafi_exclusion_ygfqduuzpau3jqof6jyh",
         )
@@ -171,6 +175,7 @@ class TestAsyncIntrafiExclusions:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.intrafi_exclusions.with_raw_response.create(
             entity_id="entity_n8y8tnk2p9339ti393yi",
             fdic_certificate_number="314159",
@@ -202,6 +207,7 @@ class TestAsyncIntrafiExclusions:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.intrafi_exclusions.with_raw_response.retrieve(
             "account_in71c4amph0vgo2qllky",
         )
@@ -246,6 +252,7 @@ class TestAsyncIntrafiExclusions:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.intrafi_exclusions.with_raw_response.list()
 
         assert response.is_closed is True
@@ -271,6 +278,7 @@ class TestAsyncIntrafiExclusions:
 
     @parametrize
     async def test_raw_response_archive(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.intrafi_exclusions.with_raw_response.archive(
             "intrafi_exclusion_ygfqduuzpau3jqof6jyh",
         )

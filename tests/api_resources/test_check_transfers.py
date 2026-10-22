@@ -85,6 +85,7 @@ class TestCheckTransfers:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.check_transfers.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
@@ -120,6 +121,7 @@ class TestCheckTransfers:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.check_transfers.with_raw_response.retrieve(
             "check_transfer_30b43acfu9vw8fyc4f5",
         )
@@ -171,6 +173,7 @@ class TestCheckTransfers:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.check_transfers.with_raw_response.list()
 
         assert response.is_closed is True
@@ -196,6 +199,7 @@ class TestCheckTransfers:
 
     @parametrize
     def test_raw_response_approve(self, client: Increase) -> None:
+
         response = client.check_transfers.with_raw_response.approve(
             "check_transfer_30b43acfu9vw8fyc4f5",
         )
@@ -232,6 +236,7 @@ class TestCheckTransfers:
 
     @parametrize
     def test_raw_response_cancel(self, client: Increase) -> None:
+
         response = client.check_transfers.with_raw_response.cancel(
             "check_transfer_30b43acfu9vw8fyc4f5",
         )
@@ -276,6 +281,7 @@ class TestCheckTransfers:
 
     @parametrize
     def test_raw_response_stop_payment(self, client: Increase) -> None:
+
         response = client.check_transfers.with_raw_response.stop_payment(
             check_transfer_id="check_transfer_30b43acfu9vw8fyc4f5",
         )
@@ -373,6 +379,7 @@ class TestAsyncCheckTransfers:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.check_transfers.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
@@ -408,6 +415,7 @@ class TestAsyncCheckTransfers:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.check_transfers.with_raw_response.retrieve(
             "check_transfer_30b43acfu9vw8fyc4f5",
         )
@@ -459,6 +467,7 @@ class TestAsyncCheckTransfers:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.check_transfers.with_raw_response.list()
 
         assert response.is_closed is True
@@ -484,6 +493,7 @@ class TestAsyncCheckTransfers:
 
     @parametrize
     async def test_raw_response_approve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.check_transfers.with_raw_response.approve(
             "check_transfer_30b43acfu9vw8fyc4f5",
         )
@@ -520,6 +530,7 @@ class TestAsyncCheckTransfers:
 
     @parametrize
     async def test_raw_response_cancel(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.check_transfers.with_raw_response.cancel(
             "check_transfer_30b43acfu9vw8fyc4f5",
         )
@@ -564,6 +575,7 @@ class TestAsyncCheckTransfers:
 
     @parametrize
     async def test_raw_response_stop_payment(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.check_transfers.with_raw_response.stop_payment(
             check_transfer_id="check_transfer_30b43acfu9vw8fyc4f5",
         )

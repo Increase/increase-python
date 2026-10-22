@@ -30,6 +30,7 @@ class TestIntrafiAccountEnrollments:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.intrafi_account_enrollments.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             email_address="user@example.com",
@@ -61,6 +62,7 @@ class TestIntrafiAccountEnrollments:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.intrafi_account_enrollments.with_raw_response.retrieve(
             "intrafi_account_enrollment_w8l97znzreopkwf2tg75",
         )
@@ -108,6 +110,7 @@ class TestIntrafiAccountEnrollments:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.intrafi_account_enrollments.with_raw_response.list()
 
         assert response.is_closed is True
@@ -133,6 +136,7 @@ class TestIntrafiAccountEnrollments:
 
     @parametrize
     def test_raw_response_unenroll(self, client: Increase) -> None:
+
         response = client.intrafi_account_enrollments.with_raw_response.unenroll(
             "intrafi_account_enrollment_w8l97znzreopkwf2tg75",
         )
@@ -178,6 +182,7 @@ class TestAsyncIntrafiAccountEnrollments:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.intrafi_account_enrollments.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             email_address="user@example.com",
@@ -209,6 +214,7 @@ class TestAsyncIntrafiAccountEnrollments:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.intrafi_account_enrollments.with_raw_response.retrieve(
             "intrafi_account_enrollment_w8l97znzreopkwf2tg75",
         )
@@ -256,6 +262,7 @@ class TestAsyncIntrafiAccountEnrollments:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.intrafi_account_enrollments.with_raw_response.list()
 
         assert response.is_closed is True
@@ -281,6 +288,7 @@ class TestAsyncIntrafiAccountEnrollments:
 
     @parametrize
     async def test_raw_response_unenroll(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.intrafi_account_enrollments.with_raw_response.unenroll(
             "intrafi_account_enrollment_w8l97znzreopkwf2tg75",
         )

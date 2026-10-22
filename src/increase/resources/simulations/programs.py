@@ -69,7 +69,7 @@ class ProgramsResource(SyncAPIResource):
         Args:
           name: The name of the program being added.
 
-          bank: The bank for the program's accounts, defaults to First Internet Bank.
+          bank: The bank for the program's accounts, defaults to Increase Bank.
 
               - `core_bank` - Core Bank
               - `first_internet_bank` - First Internet Bank of Indiana
@@ -162,7 +162,7 @@ class AsyncProgramsResource(AsyncAPIResource):
         Args:
           name: The name of the program being added.
 
-          bank: The bank for the program's accounts, defaults to First Internet Bank.
+          bank: The bank for the program's accounts, defaults to Increase Bank.
 
               - `core_bank` - Core Bank
               - `first_internet_bank` - First Internet Bank of Indiana

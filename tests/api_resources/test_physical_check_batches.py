@@ -64,6 +64,7 @@ class TestPhysicalCheckBatches:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.physical_check_batches.with_raw_response.create(
             mailing_address={
                 "city": "New York",
@@ -119,6 +120,7 @@ class TestPhysicalCheckBatches:
 
     @parametrize
     def test_raw_response_cancel(self, client: Increase) -> None:
+
         response = client.physical_check_batches.with_raw_response.cancel(
             "physical_check_batch_yzdwjhdbw0in6191whce",
         )
@@ -157,6 +159,7 @@ class TestPhysicalCheckBatches:
 
     @parametrize
     def test_raw_response_complete(self, client: Increase) -> None:
+
         response = client.physical_check_batches.with_raw_response.complete(
             "physical_check_batch_yzdwjhdbw0in6191whce",
         )
@@ -239,6 +242,7 @@ class TestAsyncPhysicalCheckBatches:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.physical_check_batches.with_raw_response.create(
             mailing_address={
                 "city": "New York",
@@ -294,6 +298,7 @@ class TestAsyncPhysicalCheckBatches:
 
     @parametrize
     async def test_raw_response_cancel(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.physical_check_batches.with_raw_response.cancel(
             "physical_check_batch_yzdwjhdbw0in6191whce",
         )
@@ -332,6 +337,7 @@ class TestAsyncPhysicalCheckBatches:
 
     @parametrize
     async def test_raw_response_complete(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.physical_check_batches.with_raw_response.complete(
             "physical_check_batch_yzdwjhdbw0in6191whce",
         )

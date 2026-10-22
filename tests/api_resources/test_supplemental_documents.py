@@ -30,6 +30,7 @@ class TestSupplementalDocuments:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.supplemental_documents.with_raw_response.create(
             entity_id="entity_n8y8tnk2p9339ti393yi",
             file_id="file_makxrc67oh9l6sg7w9yc",
@@ -71,6 +72,7 @@ class TestSupplementalDocuments:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.supplemental_documents.with_raw_response.list(
             entity_id="entity_id",
         )
@@ -107,6 +109,7 @@ class TestAsyncSupplementalDocuments:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.supplemental_documents.with_raw_response.create(
             entity_id="entity_n8y8tnk2p9339ti393yi",
             file_id="file_makxrc67oh9l6sg7w9yc",
@@ -148,6 +151,7 @@ class TestAsyncSupplementalDocuments:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.supplemental_documents.with_raw_response.list(
             entity_id="entity_id",
         )

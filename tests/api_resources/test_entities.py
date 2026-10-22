@@ -321,6 +321,7 @@ class TestEntities:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.entities.with_raw_response.create(
             structure="corporation",
         )
@@ -350,6 +351,7 @@ class TestEntities:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.entities.with_raw_response.retrieve(
             "entity_n8y8tnk2p9339ti393yi",
         )
@@ -604,6 +606,7 @@ class TestEntities:
 
     @parametrize
     def test_raw_response_update(self, client: Increase) -> None:
+
         response = client.entities.with_raw_response.update(
             entity_id="entity_n8y8tnk2p9339ti393yi",
         )
@@ -655,6 +658,7 @@ class TestEntities:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.entities.with_raw_response.list()
 
         assert response.is_closed is True
@@ -680,6 +684,7 @@ class TestEntities:
 
     @parametrize
     def test_raw_response_archive(self, client: Increase) -> None:
+
         response = client.entities.with_raw_response.archive(
             "entity_n8y8tnk2p9339ti393yi",
         )
@@ -1015,6 +1020,7 @@ class TestAsyncEntities:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.entities.with_raw_response.create(
             structure="corporation",
         )
@@ -1044,6 +1050,7 @@ class TestAsyncEntities:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.entities.with_raw_response.retrieve(
             "entity_n8y8tnk2p9339ti393yi",
         )
@@ -1298,6 +1305,7 @@ class TestAsyncEntities:
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.entities.with_raw_response.update(
             entity_id="entity_n8y8tnk2p9339ti393yi",
         )
@@ -1349,6 +1357,7 @@ class TestAsyncEntities:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.entities.with_raw_response.list()
 
         assert response.is_closed is True
@@ -1374,6 +1383,7 @@ class TestAsyncEntities:
 
     @parametrize
     async def test_raw_response_archive(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.entities.with_raw_response.archive(
             "entity_n8y8tnk2p9339ti393yi",
         )

@@ -35,6 +35,7 @@ class TestLockboxAddresses:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.lockbox_addresses.with_raw_response.create()
 
         assert response.is_closed is True
@@ -60,6 +61,7 @@ class TestLockboxAddresses:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.lockbox_addresses.with_raw_response.retrieve(
             "lockbox_address_lw6sbzl9ol5dfd8hdml6",
         )
@@ -105,6 +107,7 @@ class TestLockboxAddresses:
 
     @parametrize
     def test_raw_response_update(self, client: Increase) -> None:
+
         response = client.lockbox_addresses.with_raw_response.update(
             lockbox_address_id="lockbox_address_lw6sbzl9ol5dfd8hdml6",
         )
@@ -154,6 +157,7 @@ class TestLockboxAddresses:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.lockbox_addresses.with_raw_response.list()
 
         assert response.is_closed is True
@@ -190,6 +194,7 @@ class TestAsyncLockboxAddresses:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.lockbox_addresses.with_raw_response.create()
 
         assert response.is_closed is True
@@ -215,6 +220,7 @@ class TestAsyncLockboxAddresses:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.lockbox_addresses.with_raw_response.retrieve(
             "lockbox_address_lw6sbzl9ol5dfd8hdml6",
         )
@@ -260,6 +266,7 @@ class TestAsyncLockboxAddresses:
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.lockbox_addresses.with_raw_response.update(
             lockbox_address_id="lockbox_address_lw6sbzl9ol5dfd8hdml6",
         )
@@ -309,6 +316,7 @@ class TestAsyncLockboxAddresses:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.lockbox_addresses.with_raw_response.list()
 
         assert response.is_closed is True

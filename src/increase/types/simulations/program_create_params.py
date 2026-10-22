@@ -12,7 +12,7 @@ class ProgramCreateParams(TypedDict, total=False):
     """The name of the program being added."""
 
     bank: Literal["core_bank", "first_internet_bank", "grasshopper_bank", "increase_bank"]
-    """The bank for the program's accounts, defaults to First Internet Bank.
+    """The bank for the program's accounts, defaults to Increase Bank.
 
     - `core_bank` - Core Bank
     - `first_internet_bank` - First Internet Bank of Indiana
