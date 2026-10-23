@@ -284,6 +284,7 @@ class TestCardDisputes:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.card_disputes.with_raw_response.create(
             disputed_transaction_id="transaction_uyrp7fld2ium70oa7oi",
             network="visa",
@@ -315,6 +316,7 @@ class TestCardDisputes:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.card_disputes.with_raw_response.retrieve(
             "card_dispute_h9sc95nbl1cgltpp7men",
         )
@@ -365,6 +367,7 @@ class TestCardDisputes:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.card_disputes.with_raw_response.list()
 
         assert response.is_closed is True
@@ -657,6 +660,7 @@ class TestCardDisputes:
 
     @parametrize
     def test_raw_response_submit_user_submission(self, client: Increase) -> None:
+
         response = client.card_disputes.with_raw_response.submit_user_submission(
             card_dispute_id="card_dispute_h9sc95nbl1cgltpp7men",
             network="visa",
@@ -704,6 +708,7 @@ class TestCardDisputes:
 
     @parametrize
     def test_raw_response_withdraw(self, client: Increase) -> None:
+
         response = client.card_disputes.with_raw_response.withdraw(
             card_dispute_id="card_dispute_h9sc95nbl1cgltpp7men",
         )
@@ -1000,6 +1005,7 @@ class TestAsyncCardDisputes:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.card_disputes.with_raw_response.create(
             disputed_transaction_id="transaction_uyrp7fld2ium70oa7oi",
             network="visa",
@@ -1031,6 +1037,7 @@ class TestAsyncCardDisputes:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.card_disputes.with_raw_response.retrieve(
             "card_dispute_h9sc95nbl1cgltpp7men",
         )
@@ -1081,6 +1088,7 @@ class TestAsyncCardDisputes:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.card_disputes.with_raw_response.list()
 
         assert response.is_closed is True
@@ -1373,6 +1381,7 @@ class TestAsyncCardDisputes:
 
     @parametrize
     async def test_raw_response_submit_user_submission(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.card_disputes.with_raw_response.submit_user_submission(
             card_dispute_id="card_dispute_h9sc95nbl1cgltpp7men",
             network="visa",
@@ -1420,6 +1429,7 @@ class TestAsyncCardDisputes:
 
     @parametrize
     async def test_raw_response_withdraw(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.card_disputes.with_raw_response.withdraw(
             card_dispute_id="card_dispute_h9sc95nbl1cgltpp7men",
         )

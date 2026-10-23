@@ -59,8 +59,10 @@ class PhysicalCardsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> PhysicalCard:
-        """
-        Create a Physical Card
+        """Physical Cards start in the status `disabled`.
+
+        Activate the card once it arrives
+        at the destination and the recipient confirms receipt.
 
         Args:
           card_id: The underlying card representing this physical card.
@@ -288,8 +290,10 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> PhysicalCard:
-        """
-        Create a Physical Card
+        """Physical Cards start in the status `disabled`.
+
+        Activate the card once it arrives
+        at the destination and the recipient confirms receipt.
 
         Args:
           card_id: The underlying card representing this physical card.

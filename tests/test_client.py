@@ -156,6 +156,17 @@ class TestIncrease:
         assert copied.timeout is None
         assert isinstance(client.timeout, httpx.Timeout)
 
+    def test_copy_environment(self, client: Increase) -> None:
+        # an explicit environment takes precedence over the base URL inherited from the original client
+        original_base_url = client.base_url
+        copied = client.copy(environment="sandbox")
+        assert str(copied.base_url).startswith("https://sandbox.increase.com")
+        assert client.base_url == original_base_url
+
+        # an explicit base_url still takes precedence over the environment
+        copied = client.copy(environment="sandbox", base_url="http://localhost:5000/custom/path/")
+        assert copied.base_url == "http://localhost:5000/custom/path/"
+
     def test_copy_default_headers(self) -> None:
         client = Increase(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
@@ -1049,6 +1060,17 @@ class TestAsyncIncrease:
         copied = async_client.copy(timeout=None)
         assert copied.timeout is None
         assert isinstance(async_client.timeout, httpx.Timeout)
+
+    def test_copy_environment(self, async_client: AsyncIncrease) -> None:
+        # an explicit environment takes precedence over the base URL inherited from the original client
+        original_base_url = async_client.base_url
+        copied = async_client.copy(environment="sandbox")
+        assert str(copied.base_url).startswith("https://sandbox.increase.com")
+        assert async_client.base_url == original_base_url
+
+        # an explicit base_url still takes precedence over the environment
+        copied = async_client.copy(environment="sandbox", base_url="http://localhost:5000/custom/path/")
+        assert copied.base_url == "http://localhost:5000/custom/path/"
 
     async def test_copy_default_headers(self) -> None:
         client = AsyncIncrease(

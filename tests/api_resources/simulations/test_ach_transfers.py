@@ -26,6 +26,7 @@ class TestACHTransfers:
 
     @parametrize
     def test_raw_response_acknowledge(self, client: Increase) -> None:
+
         response = client.simulations.ach_transfers.with_raw_response.acknowledge(
             "ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
@@ -73,6 +74,7 @@ class TestACHTransfers:
 
     @parametrize
     def test_raw_response_create_notification_of_change(self, client: Increase) -> None:
+
         response = client.simulations.ach_transfers.with_raw_response.create_notification_of_change(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
@@ -118,6 +120,7 @@ class TestACHTransfers:
 
     @parametrize
     def test_raw_response_return(self, client: Increase) -> None:
+
         response = client.simulations.ach_transfers.with_raw_response.return_(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
@@ -162,6 +165,7 @@ class TestACHTransfers:
 
     @parametrize
     def test_raw_response_settle(self, client: Increase) -> None:
+
         response = client.simulations.ach_transfers.with_raw_response.settle(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
@@ -198,6 +202,7 @@ class TestACHTransfers:
 
     @parametrize
     def test_raw_response_submit(self, client: Increase) -> None:
+
         response = client.simulations.ach_transfers.with_raw_response.submit(
             "ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
@@ -240,6 +245,7 @@ class TestAsyncACHTransfers:
 
     @parametrize
     async def test_raw_response_acknowledge(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.ach_transfers.with_raw_response.acknowledge(
             "ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
@@ -287,6 +293,7 @@ class TestAsyncACHTransfers:
 
     @parametrize
     async def test_raw_response_create_notification_of_change(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.ach_transfers.with_raw_response.create_notification_of_change(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
@@ -332,6 +339,7 @@ class TestAsyncACHTransfers:
 
     @parametrize
     async def test_raw_response_return(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.ach_transfers.with_raw_response.return_(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
@@ -376,6 +384,7 @@ class TestAsyncACHTransfers:
 
     @parametrize
     async def test_raw_response_settle(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.ach_transfers.with_raw_response.settle(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
@@ -412,6 +421,7 @@ class TestAsyncACHTransfers:
 
     @parametrize
     async def test_raw_response_submit(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.ach_transfers.with_raw_response.submit(
             "ach_transfer_uoxatyh3lt5evrsdvo7q",
         )

@@ -227,7 +227,7 @@ class PhysicalCard(BaseModel):
     """The details used to ship this physical card."""
 
     status: Literal["active", "disabled", "canceled"]
-    """The status of the Physical Card.
+    """The status of the Physical Card. The initial status is `disabled`.
 
     - `active` - The physical card is active.
     - `disabled` - The physical card is temporarily disabled.

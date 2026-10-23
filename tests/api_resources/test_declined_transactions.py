@@ -28,6 +28,7 @@ class TestDeclinedTransactions:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.declined_transactions.with_raw_response.retrieve(
             "declined_transaction_17jbn0yyhvkt4v4ooym8",
         )
@@ -81,6 +82,7 @@ class TestDeclinedTransactions:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.declined_transactions.with_raw_response.list()
 
         assert response.is_closed is True
@@ -112,6 +114,7 @@ class TestAsyncDeclinedTransactions:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.declined_transactions.with_raw_response.retrieve(
             "declined_transaction_17jbn0yyhvkt4v4ooym8",
         )
@@ -165,6 +168,7 @@ class TestAsyncDeclinedTransactions:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.declined_transactions.with_raw_response.list()
 
         assert response.is_closed is True

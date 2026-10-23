@@ -46,6 +46,7 @@ class TestFiles:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.files.with_raw_response.create(
             file=b"Example data",
             purpose="check_image_front",
@@ -77,6 +78,7 @@ class TestFiles:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.files.with_raw_response.retrieve(
             "file_makxrc67oh9l6sg7w9yc",
         )
@@ -127,6 +129,7 @@ class TestFiles:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.files.with_raw_response.list()
 
         assert response.is_closed is True
@@ -222,6 +225,7 @@ class TestAsyncFiles:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.files.with_raw_response.create(
             file=b"Example data",
             purpose="check_image_front",
@@ -253,6 +257,7 @@ class TestAsyncFiles:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.files.with_raw_response.retrieve(
             "file_makxrc67oh9l6sg7w9yc",
         )
@@ -303,6 +308,7 @@ class TestAsyncFiles:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.files.with_raw_response.list()
 
         assert response.is_closed is True

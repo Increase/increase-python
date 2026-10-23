@@ -38,6 +38,7 @@ class TestInboundCheckDeposits:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.simulations.inbound_check_deposits.with_raw_response.create(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=1000,
@@ -71,6 +72,7 @@ class TestInboundCheckDeposits:
 
     @parametrize
     def test_raw_response_accept(self, client: Increase) -> None:
+
         response = client.simulations.inbound_check_deposits.with_raw_response.accept(
             "inbound_check_deposit_zoshvqybq0cjjm31mra",
         )
@@ -118,6 +120,7 @@ class TestInboundCheckDeposits:
 
     @parametrize
     def test_raw_response_adjustment(self, client: Increase) -> None:
+
         response = client.simulations.inbound_check_deposits.with_raw_response.adjustment(
             inbound_check_deposit_id="inbound_check_deposit_zoshvqybq0cjjm31mra",
         )
@@ -174,6 +177,7 @@ class TestAsyncInboundCheckDeposits:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.inbound_check_deposits.with_raw_response.create(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=1000,
@@ -207,6 +211,7 @@ class TestAsyncInboundCheckDeposits:
 
     @parametrize
     async def test_raw_response_accept(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.inbound_check_deposits.with_raw_response.accept(
             "inbound_check_deposit_zoshvqybq0cjjm31mra",
         )
@@ -254,6 +259,7 @@ class TestAsyncInboundCheckDeposits:
 
     @parametrize
     async def test_raw_response_adjustment(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.inbound_check_deposits.with_raw_response.adjustment(
             inbound_check_deposit_id="inbound_check_deposit_zoshvqybq0cjjm31mra",
         )

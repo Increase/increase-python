@@ -38,6 +38,7 @@ class TestPendingTransactions:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.pending_transactions.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=-1000,
@@ -69,6 +70,7 @@ class TestPendingTransactions:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.pending_transactions.with_raw_response.retrieve(
             "pending_transaction_k1sfetcau2qbvjbzgju4",
         )
@@ -123,6 +125,7 @@ class TestPendingTransactions:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.pending_transactions.with_raw_response.list()
 
         assert response.is_closed is True
@@ -148,6 +151,7 @@ class TestPendingTransactions:
 
     @parametrize
     def test_raw_response_release(self, client: Increase) -> None:
+
         response = client.pending_transactions.with_raw_response.release(
             "pending_transaction_k1sfetcau2qbvjbzgju4",
         )
@@ -202,6 +206,7 @@ class TestAsyncPendingTransactions:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.pending_transactions.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=-1000,
@@ -233,6 +238,7 @@ class TestAsyncPendingTransactions:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.pending_transactions.with_raw_response.retrieve(
             "pending_transaction_k1sfetcau2qbvjbzgju4",
         )
@@ -287,6 +293,7 @@ class TestAsyncPendingTransactions:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.pending_transactions.with_raw_response.list()
 
         assert response.is_closed is True
@@ -312,6 +319,7 @@ class TestAsyncPendingTransactions:
 
     @parametrize
     async def test_raw_response_release(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.pending_transactions.with_raw_response.release(
             "pending_transaction_k1sfetcau2qbvjbzgju4",
         )
