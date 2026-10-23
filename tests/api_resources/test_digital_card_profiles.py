@@ -37,6 +37,12 @@ class TestDigitalCardProfiles:
             background_image_file_id="file_1ai913suu1zfn1pdetru",
             card_description="National Phonograph Card",
             description="My Card Profile",
+            apple_pay={
+                "associated_application_identifiers": [
+                    {"identifier": "210B9798AD.---aH0O-6L.8tjDQ-3.-K-h.8asJ.WN--u-kX-Q.l3VU-F.-i-5p54n-N"}
+                ],
+                "associated_store_identifiers": [{"identifier": "26"}],
+            },
             contact_email="user@example.com",
             contact_name="National Phonograph Company",
             contact_phone="+18885551212",
@@ -202,6 +208,12 @@ class TestDigitalCardProfiles:
         digital_card_profile = client.digital_card_profiles.clone(
             digital_card_profile_id="digital_card_profile_s3puplu90f04xhcwkiga",
             app_icon_file_id="app_icon_file_id",
+            apple_pay={
+                "associated_application_identifiers": [
+                    {"identifier": "210B9798AD.---aH0O-6L.8tjDQ-3.-K-h.8asJ.WN--u-kX-Q.l3VU-F.-i-5p54n-N"}
+                ],
+                "associated_store_identifiers": [{"identifier": "26"}],
+            },
             background_image_file_id="file_1ai913suu1zfn1pdetru",
             card_description="x",
             contact_email="dev@stainless.com",
@@ -272,6 +284,12 @@ class TestAsyncDigitalCardProfiles:
             background_image_file_id="file_1ai913suu1zfn1pdetru",
             card_description="National Phonograph Card",
             description="My Card Profile",
+            apple_pay={
+                "associated_application_identifiers": [
+                    {"identifier": "210B9798AD.---aH0O-6L.8tjDQ-3.-K-h.8asJ.WN--u-kX-Q.l3VU-F.-i-5p54n-N"}
+                ],
+                "associated_store_identifiers": [{"identifier": "26"}],
+            },
             contact_email="user@example.com",
             contact_name="National Phonograph Company",
             contact_phone="+18885551212",
@@ -437,6 +455,12 @@ class TestAsyncDigitalCardProfiles:
         digital_card_profile = await async_client.digital_card_profiles.clone(
             digital_card_profile_id="digital_card_profile_s3puplu90f04xhcwkiga",
             app_icon_file_id="app_icon_file_id",
+            apple_pay={
+                "associated_application_identifiers": [
+                    {"identifier": "210B9798AD.---aH0O-6L.8tjDQ-3.-K-h.8asJ.WN--u-kX-Q.l3VU-F.-i-5p54n-N"}
+                ],
+                "associated_store_identifiers": [{"identifier": "26"}],
+            },
             background_image_file_id="file_1ai913suu1zfn1pdetru",
             card_description="x",
             contact_email="dev@stainless.com",
