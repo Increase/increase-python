@@ -53,6 +53,7 @@ class DigitalCardProfilesResource(SyncAPIResource):
         background_image_file_id: str,
         card_description: str,
         description: str,
+        apple_pay: digital_card_profile_create_params.ApplePay | Omit = omit,
         contact_email: str | Omit = omit,
         contact_name: str | Omit = omit,
         contact_phone: str | Omit = omit,
@@ -77,6 +78,8 @@ class DigitalCardProfilesResource(SyncAPIResource):
           card_description: A user-facing description for the card itself.
 
           description: A description you can use to identify the Card Profile.
+
+          apple_pay: Apple Pay specific settings for the Card Profile.
 
           contact_email: An email address the user can contact to receive support for their card.
 
@@ -107,6 +110,7 @@ class DigitalCardProfilesResource(SyncAPIResource):
                     "background_image_file_id": background_image_file_id,
                     "card_description": card_description,
                     "description": description,
+                    "apple_pay": apple_pay,
                     "contact_email": contact_email,
                     "contact_name": contact_name,
                     "contact_phone": contact_phone,
@@ -275,6 +279,7 @@ class DigitalCardProfilesResource(SyncAPIResource):
         digital_card_profile_id: str,
         *,
         app_icon_file_id: str | Omit = omit,
+        apple_pay: digital_card_profile_clone_params.ApplePay | Omit = omit,
         background_image_file_id: str | Omit = omit,
         card_description: str | Omit = omit,
         contact_email: str | Omit = omit,
@@ -298,6 +303,9 @@ class DigitalCardProfilesResource(SyncAPIResource):
           digital_card_profile_id: The identifier of the Digital Card Profile to clone.
 
           app_icon_file_id: The identifier of the File containing the card's icon image.
+
+          apple_pay: Apple Pay specific settings for the Card Profile. Each list you leave out is
+              copied from the original Card Profile.
 
           background_image_file_id: The identifier of the File containing the card's front image.
 
@@ -338,6 +346,7 @@ class DigitalCardProfilesResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "app_icon_file_id": app_icon_file_id,
+                    "apple_pay": apple_pay,
                     "background_image_file_id": background_image_file_id,
                     "card_description": card_description,
                     "contact_email": contact_email,
@@ -387,6 +396,7 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
         background_image_file_id: str,
         card_description: str,
         description: str,
+        apple_pay: digital_card_profile_create_params.ApplePay | Omit = omit,
         contact_email: str | Omit = omit,
         contact_name: str | Omit = omit,
         contact_phone: str | Omit = omit,
@@ -411,6 +421,8 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
           card_description: A user-facing description for the card itself.
 
           description: A description you can use to identify the Card Profile.
+
+          apple_pay: Apple Pay specific settings for the Card Profile.
 
           contact_email: An email address the user can contact to receive support for their card.
 
@@ -441,6 +453,7 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
                     "background_image_file_id": background_image_file_id,
                     "card_description": card_description,
                     "description": description,
+                    "apple_pay": apple_pay,
                     "contact_email": contact_email,
                     "contact_name": contact_name,
                     "contact_phone": contact_phone,
@@ -609,6 +622,7 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
         digital_card_profile_id: str,
         *,
         app_icon_file_id: str | Omit = omit,
+        apple_pay: digital_card_profile_clone_params.ApplePay | Omit = omit,
         background_image_file_id: str | Omit = omit,
         card_description: str | Omit = omit,
         contact_email: str | Omit = omit,
@@ -632,6 +646,9 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
           digital_card_profile_id: The identifier of the Digital Card Profile to clone.
 
           app_icon_file_id: The identifier of the File containing the card's icon image.
+
+          apple_pay: Apple Pay specific settings for the Card Profile. Each list you leave out is
+              copied from the original Card Profile.
 
           background_image_file_id: The identifier of the File containing the card's front image.
 
@@ -672,6 +689,7 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "app_icon_file_id": app_icon_file_id,
+                    "apple_pay": apple_pay,
                     "background_image_file_id": background_image_file_id,
                     "card_description": card_description,
                     "contact_email": contact_email,

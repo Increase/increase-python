@@ -2,9 +2,16 @@
 
 from __future__ import annotations
 
+from typing import Iterable
 from typing_extensions import Required, TypedDict
 
-__all__ = ["DigitalCardProfileCreateParams", "TextColor"]
+__all__ = [
+    "DigitalCardProfileCreateParams",
+    "ApplePay",
+    "ApplePayAssociatedApplicationIdentifier",
+    "ApplePayAssociatedStoreIdentifier",
+    "TextColor",
+]
 
 
 class DigitalCardProfileCreateParams(TypedDict, total=False):
@@ -19,6 +26,9 @@ class DigitalCardProfileCreateParams(TypedDict, total=False):
 
     description: Required[str]
     """A description you can use to identify the Card Profile."""
+
+    apple_pay: ApplePay
+    """Apple Pay specific settings for the Card Profile."""
 
     contact_email: str
     """An email address the user can contact to receive support for their card."""
@@ -37,6 +47,32 @@ class DigitalCardProfileCreateParams(TypedDict, total=False):
 
     text_color: TextColor
     """The Card's text color, specified as an RGB triple. The default is white."""
+
+
+class ApplePayAssociatedApplicationIdentifier(TypedDict, total=False):
+    identifier: Required[str]
+    """
+    The application identifier, composed of your Apple Developer Team ID and the
+    application's bundle identifier, like `ABCDE12345.com.example.app`.
+    """
+
+
+class ApplePayAssociatedStoreIdentifier(TypedDict, total=False):
+    identifier: Required[str]
+    """The numeric App Store identifier."""
+
+
+class ApplePay(TypedDict, total=False):
+    """Apple Pay specific settings for the Card Profile."""
+
+    associated_application_identifiers: Iterable[ApplePayAssociatedApplicationIdentifier]
+    """The applications to associate with cards using this Card Profile."""
+
+    associated_store_identifiers: Iterable[ApplePayAssociatedStoreIdentifier]
+    """
+    The App Store listings of the applications to associate with cards using this
+    Card Profile.
+    """
 
 
 class TextColor(TypedDict, total=False):
