@@ -28,6 +28,7 @@ class TestInboundCheckDeposits:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.inbound_check_deposits.with_raw_response.retrieve(
             "inbound_check_deposit_zoshvqybq0cjjm31mra",
         )
@@ -80,6 +81,7 @@ class TestInboundCheckDeposits:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.inbound_check_deposits.with_raw_response.list()
 
         assert response.is_closed is True
@@ -105,6 +107,7 @@ class TestInboundCheckDeposits:
 
     @parametrize
     def test_raw_response_decline(self, client: Increase) -> None:
+
         response = client.inbound_check_deposits.with_raw_response.decline(
             "inbound_check_deposit_zoshvqybq0cjjm31mra",
         )
@@ -144,6 +147,7 @@ class TestInboundCheckDeposits:
 
     @parametrize
     def test_raw_response_return(self, client: Increase) -> None:
+
         response = client.inbound_check_deposits.with_raw_response.return_(
             inbound_check_deposit_id="inbound_check_deposit_zoshvqybq0cjjm31mra",
             reason="altered_or_fictitious",
@@ -191,6 +195,7 @@ class TestAsyncInboundCheckDeposits:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_check_deposits.with_raw_response.retrieve(
             "inbound_check_deposit_zoshvqybq0cjjm31mra",
         )
@@ -243,6 +248,7 @@ class TestAsyncInboundCheckDeposits:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_check_deposits.with_raw_response.list()
 
         assert response.is_closed is True
@@ -268,6 +274,7 @@ class TestAsyncInboundCheckDeposits:
 
     @parametrize
     async def test_raw_response_decline(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_check_deposits.with_raw_response.decline(
             "inbound_check_deposit_zoshvqybq0cjjm31mra",
         )
@@ -307,6 +314,7 @@ class TestAsyncInboundCheckDeposits:
 
     @parametrize
     async def test_raw_response_return(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_check_deposits.with_raw_response.return_(
             inbound_check_deposit_id="inbound_check_deposit_zoshvqybq0cjjm31mra",
             reason="altered_or_fictitious",

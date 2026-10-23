@@ -70,6 +70,7 @@ class TestRealTimePaymentsRequestsForPayment:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.real_time_payments_requests_for_payment.with_raw_response.create(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=100,
@@ -125,6 +126,7 @@ class TestRealTimePaymentsRequestsForPayment:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.real_time_payments_requests_for_payment.with_raw_response.retrieve(
             "real_time_payments_request_for_payment_28kcliz1oevcnqyn9qp7",
         )
@@ -186,6 +188,7 @@ class TestRealTimePaymentsRequestsForPayment:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.real_time_payments_requests_for_payment.with_raw_response.list()
 
         assert response.is_closed is True
@@ -228,6 +231,7 @@ class TestRealTimePaymentsRequestsForPayment:
 
     @parametrize
     def test_raw_response_cancel(self, client: Increase) -> None:
+
         response = client.real_time_payments_requests_for_payment.with_raw_response.cancel(
             real_time_payments_request_for_payment_id="real_time_payments_request_for_payment_28kcliz1oevcnqyn9qp7",
         )
@@ -317,6 +321,7 @@ class TestAsyncRealTimePaymentsRequestsForPayment:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.real_time_payments_requests_for_payment.with_raw_response.create(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=100,
@@ -372,6 +377,7 @@ class TestAsyncRealTimePaymentsRequestsForPayment:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.real_time_payments_requests_for_payment.with_raw_response.retrieve(
             "real_time_payments_request_for_payment_28kcliz1oevcnqyn9qp7",
         )
@@ -433,6 +439,7 @@ class TestAsyncRealTimePaymentsRequestsForPayment:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.real_time_payments_requests_for_payment.with_raw_response.list()
 
         assert response.is_closed is True
@@ -475,6 +482,7 @@ class TestAsyncRealTimePaymentsRequestsForPayment:
 
     @parametrize
     async def test_raw_response_cancel(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.real_time_payments_requests_for_payment.with_raw_response.cancel(
             real_time_payments_request_for_payment_id="real_time_payments_request_for_payment_28kcliz1oevcnqyn9qp7",
         )

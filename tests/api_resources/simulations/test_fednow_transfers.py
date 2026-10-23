@@ -34,6 +34,7 @@ class TestFednowTransfers:
 
     @parametrize
     def test_raw_response_complete(self, client: Increase) -> None:
+
         response = client.simulations.fednow_transfers.with_raw_response.complete(
             fednow_transfer_id="fednow_transfer_4i0mptrdu1mueg1196bg",
         )
@@ -84,6 +85,7 @@ class TestAsyncFednowTransfers:
 
     @parametrize
     async def test_raw_response_complete(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.fednow_transfers.with_raw_response.complete(
             fednow_transfer_id="fednow_transfer_4i0mptrdu1mueg1196bg",
         )

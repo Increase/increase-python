@@ -73,6 +73,7 @@ class TestWireDrawdownRequests:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.wire_drawdown_requests.with_raw_response.create(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=10000,
@@ -130,6 +131,7 @@ class TestWireDrawdownRequests:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.wire_drawdown_requests.with_raw_response.retrieve(
             "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         )
@@ -176,6 +178,7 @@ class TestWireDrawdownRequests:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.wire_drawdown_requests.with_raw_response.list()
 
         assert response.is_closed is True
@@ -253,6 +256,7 @@ class TestAsyncWireDrawdownRequests:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.wire_drawdown_requests.with_raw_response.create(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=10000,
@@ -310,6 +314,7 @@ class TestAsyncWireDrawdownRequests:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.wire_drawdown_requests.with_raw_response.retrieve(
             "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         )
@@ -356,6 +361,7 @@ class TestAsyncWireDrawdownRequests:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.wire_drawdown_requests.with_raw_response.list()
 
         assert response.is_closed is True

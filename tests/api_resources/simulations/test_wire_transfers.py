@@ -26,6 +26,7 @@ class TestWireTransfers:
 
     @parametrize
     def test_raw_response_reverse(self, client: Increase) -> None:
+
         response = client.simulations.wire_transfers.with_raw_response.reverse(
             "wire_transfer_5akynk7dqsq25qwk9q2u",
         )
@@ -62,6 +63,7 @@ class TestWireTransfers:
 
     @parametrize
     def test_raw_response_submit(self, client: Increase) -> None:
+
         response = client.simulations.wire_transfers.with_raw_response.submit(
             "wire_transfer_5akynk7dqsq25qwk9q2u",
         )
@@ -104,6 +106,7 @@ class TestAsyncWireTransfers:
 
     @parametrize
     async def test_raw_response_reverse(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.wire_transfers.with_raw_response.reverse(
             "wire_transfer_5akynk7dqsq25qwk9q2u",
         )
@@ -140,6 +143,7 @@ class TestAsyncWireTransfers:
 
     @parametrize
     async def test_raw_response_submit(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.wire_transfers.with_raw_response.submit(
             "wire_transfer_5akynk7dqsq25qwk9q2u",
         )

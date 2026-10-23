@@ -42,6 +42,7 @@ class TestCheckDeposits:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.check_deposits.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
@@ -77,6 +78,7 @@ class TestCheckDeposits:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.check_deposits.with_raw_response.retrieve(
             "check_deposit_f06n9gpg7sxn8t19lfc1",
         )
@@ -127,6 +129,7 @@ class TestCheckDeposits:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.check_deposits.with_raw_response.list()
 
         assert response.is_closed is True
@@ -172,6 +175,7 @@ class TestAsyncCheckDeposits:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.check_deposits.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
@@ -207,6 +211,7 @@ class TestAsyncCheckDeposits:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.check_deposits.with_raw_response.retrieve(
             "check_deposit_f06n9gpg7sxn8t19lfc1",
         )
@@ -257,6 +262,7 @@ class TestAsyncCheckDeposits:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.check_deposits.with_raw_response.list()
 
         assert response.is_closed is True

@@ -28,6 +28,7 @@ class TestDigitalWalletTokens:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.digital_wallet_tokens.with_raw_response.retrieve(
             "digital_wallet_token_izi62go3h51p369jrie0",
         )
@@ -79,6 +80,7 @@ class TestDigitalWalletTokens:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.digital_wallet_tokens.with_raw_response.list()
 
         assert response.is_closed is True
@@ -105,6 +107,7 @@ class TestDigitalWalletTokens:
 
     @parametrize
     def test_raw_response_transition(self, client: Increase) -> None:
+
         response = client.digital_wallet_tokens.with_raw_response.transition(
             digital_wallet_token_id="digital_wallet_token_izi62go3h51p369jrie0",
             status="suspended",
@@ -152,6 +155,7 @@ class TestAsyncDigitalWalletTokens:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.digital_wallet_tokens.with_raw_response.retrieve(
             "digital_wallet_token_izi62go3h51p369jrie0",
         )
@@ -203,6 +207,7 @@ class TestAsyncDigitalWalletTokens:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.digital_wallet_tokens.with_raw_response.list()
 
         assert response.is_closed is True
@@ -229,6 +234,7 @@ class TestAsyncDigitalWalletTokens:
 
     @parametrize
     async def test_raw_response_transition(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.digital_wallet_tokens.with_raw_response.transition(
             digital_wallet_token_id="digital_wallet_token_izi62go3h51p369jrie0",
             status="suspended",

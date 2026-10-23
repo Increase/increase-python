@@ -78,6 +78,7 @@ class TestCardPushTransfers:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.card_push_transfers.with_raw_response.create(
             business_application_identifier="funds_disbursement",
             card_token_id="outbound_card_token_zlt0ml6youq3q7vcdlg0",
@@ -143,6 +144,7 @@ class TestCardPushTransfers:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.card_push_transfers.with_raw_response.retrieve(
             "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         )
@@ -194,6 +196,7 @@ class TestCardPushTransfers:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.card_push_transfers.with_raw_response.list()
 
         assert response.is_closed is True
@@ -219,6 +222,7 @@ class TestCardPushTransfers:
 
     @parametrize
     def test_raw_response_approve(self, client: Increase) -> None:
+
         response = client.card_push_transfers.with_raw_response.approve(
             "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         )
@@ -255,6 +259,7 @@ class TestCardPushTransfers:
 
     @parametrize
     def test_raw_response_cancel(self, client: Increase) -> None:
+
         response = client.card_push_transfers.with_raw_response.cancel(
             "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         )
@@ -347,6 +352,7 @@ class TestAsyncCardPushTransfers:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.card_push_transfers.with_raw_response.create(
             business_application_identifier="funds_disbursement",
             card_token_id="outbound_card_token_zlt0ml6youq3q7vcdlg0",
@@ -412,6 +418,7 @@ class TestAsyncCardPushTransfers:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.card_push_transfers.with_raw_response.retrieve(
             "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         )
@@ -463,6 +470,7 @@ class TestAsyncCardPushTransfers:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.card_push_transfers.with_raw_response.list()
 
         assert response.is_closed is True
@@ -488,6 +496,7 @@ class TestAsyncCardPushTransfers:
 
     @parametrize
     async def test_raw_response_approve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.card_push_transfers.with_raw_response.approve(
             "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         )
@@ -524,6 +533,7 @@ class TestAsyncCardPushTransfers:
 
     @parametrize
     async def test_raw_response_cancel(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.card_push_transfers.with_raw_response.cancel(
             "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         )

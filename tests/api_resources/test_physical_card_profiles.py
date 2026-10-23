@@ -48,6 +48,7 @@ class TestPhysicalCardProfiles:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.physical_card_profiles.with_raw_response.create(
             carrier_image_file_id="file_h6v7mtipe119os47ehlu",
             contact_phone="+16505046304",
@@ -85,6 +86,7 @@ class TestPhysicalCardProfiles:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.physical_card_profiles.with_raw_response.retrieve(
             "physical_card_profile_m534d5rn9qyy9ufqxoec",
         )
@@ -131,6 +133,7 @@ class TestPhysicalCardProfiles:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.physical_card_profiles.with_raw_response.list()
 
         assert response.is_closed is True
@@ -156,6 +159,7 @@ class TestPhysicalCardProfiles:
 
     @parametrize
     def test_raw_response_archive(self, client: Increase) -> None:
+
         response = client.physical_card_profiles.with_raw_response.archive(
             "physical_card_profile_m534d5rn9qyy9ufqxoec",
         )
@@ -210,6 +214,7 @@ class TestPhysicalCardProfiles:
 
     @parametrize
     def test_raw_response_clone(self, client: Increase) -> None:
+
         response = client.physical_card_profiles.with_raw_response.clone(
             physical_card_profile_id="physical_card_profile_m534d5rn9qyy9ufqxoec",
         )
@@ -273,6 +278,7 @@ class TestAsyncPhysicalCardProfiles:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.physical_card_profiles.with_raw_response.create(
             carrier_image_file_id="file_h6v7mtipe119os47ehlu",
             contact_phone="+16505046304",
@@ -310,6 +316,7 @@ class TestAsyncPhysicalCardProfiles:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.physical_card_profiles.with_raw_response.retrieve(
             "physical_card_profile_m534d5rn9qyy9ufqxoec",
         )
@@ -356,6 +363,7 @@ class TestAsyncPhysicalCardProfiles:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.physical_card_profiles.with_raw_response.list()
 
         assert response.is_closed is True
@@ -381,6 +389,7 @@ class TestAsyncPhysicalCardProfiles:
 
     @parametrize
     async def test_raw_response_archive(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.physical_card_profiles.with_raw_response.archive(
             "physical_card_profile_m534d5rn9qyy9ufqxoec",
         )
@@ -435,6 +444,7 @@ class TestAsyncPhysicalCardProfiles:
 
     @parametrize
     async def test_raw_response_clone(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.physical_card_profiles.with_raw_response.clone(
             physical_card_profile_id="physical_card_profile_m534d5rn9qyy9ufqxoec",
         )

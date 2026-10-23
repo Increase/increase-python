@@ -68,6 +68,7 @@ class TestACHTransfers:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.ach_transfers.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
@@ -101,6 +102,7 @@ class TestACHTransfers:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.ach_transfers.with_raw_response.retrieve(
             "ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
@@ -153,6 +155,7 @@ class TestACHTransfers:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.ach_transfers.with_raw_response.list()
 
         assert response.is_closed is True
@@ -178,6 +181,7 @@ class TestACHTransfers:
 
     @parametrize
     def test_raw_response_approve(self, client: Increase) -> None:
+
         response = client.ach_transfers.with_raw_response.approve(
             "ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
@@ -214,6 +218,7 @@ class TestACHTransfers:
 
     @parametrize
     def test_raw_response_cancel(self, client: Increase) -> None:
+
         response = client.ach_transfers.with_raw_response.cancel(
             "ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
@@ -296,6 +301,7 @@ class TestAsyncACHTransfers:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.ach_transfers.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
@@ -329,6 +335,7 @@ class TestAsyncACHTransfers:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.ach_transfers.with_raw_response.retrieve(
             "ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
@@ -381,6 +388,7 @@ class TestAsyncACHTransfers:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.ach_transfers.with_raw_response.list()
 
         assert response.is_closed is True
@@ -406,6 +414,7 @@ class TestAsyncACHTransfers:
 
     @parametrize
     async def test_raw_response_approve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.ach_transfers.with_raw_response.approve(
             "ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
@@ -442,6 +451,7 @@ class TestAsyncACHTransfers:
 
     @parametrize
     async def test_raw_response_cancel(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.ach_transfers.with_raw_response.cancel(
             "ach_transfer_uoxatyh3lt5evrsdvo7q",
         )

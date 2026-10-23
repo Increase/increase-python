@@ -26,6 +26,7 @@ class TestPendingTransactions:
 
     @parametrize
     def test_raw_response_release_inbound_funds_hold(self, client: Increase) -> None:
+
         response = client.simulations.pending_transactions.with_raw_response.release_inbound_funds_hold(
             "pending_transaction_k1sfetcau2qbvjbzgju4",
         )
@@ -70,6 +71,7 @@ class TestAsyncPendingTransactions:
 
     @parametrize
     async def test_raw_response_release_inbound_funds_hold(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.pending_transactions.with_raw_response.release_inbound_funds_hold(
             "pending_transaction_k1sfetcau2qbvjbzgju4",
         )

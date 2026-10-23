@@ -49,6 +49,7 @@ class TestCardDisputes:
 
     @parametrize
     def test_raw_response_action(self, client: Increase) -> None:
+
         response = client.simulations.card_disputes.with_raw_response.action(
             card_dispute_id="card_dispute_h9sc95nbl1cgltpp7men",
             network="visa",
@@ -117,6 +118,7 @@ class TestAsyncCardDisputes:
 
     @parametrize
     async def test_raw_response_action(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.card_disputes.with_raw_response.action(
             card_dispute_id="card_dispute_h9sc95nbl1cgltpp7men",
             network="visa",

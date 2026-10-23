@@ -28,6 +28,7 @@ class TestInboundWireTransfers:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.inbound_wire_transfers.with_raw_response.retrieve(
             "inbound_wire_transfer_f228m6bmhtcxjco9pwp0",
         )
@@ -82,6 +83,7 @@ class TestInboundWireTransfers:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.inbound_wire_transfers.with_raw_response.list()
 
         assert response.is_closed is True
@@ -108,6 +110,7 @@ class TestInboundWireTransfers:
 
     @parametrize
     def test_raw_response_reverse(self, client: Increase) -> None:
+
         response = client.inbound_wire_transfers.with_raw_response.reverse(
             inbound_wire_transfer_id="inbound_wire_transfer_f228m6bmhtcxjco9pwp0",
             reason="creditor_request",
@@ -155,6 +158,7 @@ class TestAsyncInboundWireTransfers:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_wire_transfers.with_raw_response.retrieve(
             "inbound_wire_transfer_f228m6bmhtcxjco9pwp0",
         )
@@ -209,6 +213,7 @@ class TestAsyncInboundWireTransfers:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_wire_transfers.with_raw_response.list()
 
         assert response.is_closed is True
@@ -235,6 +240,7 @@ class TestAsyncInboundWireTransfers:
 
     @parametrize
     async def test_raw_response_reverse(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_wire_transfers.with_raw_response.reverse(
             inbound_wire_transfer_id="inbound_wire_transfer_f228m6bmhtcxjco9pwp0",
             reason="creditor_request",

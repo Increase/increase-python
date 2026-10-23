@@ -26,6 +26,7 @@ class TestEntityOnboardingSessions:
 
     @parametrize
     def test_raw_response_submit(self, client: Increase) -> None:
+
         response = client.simulations.entity_onboarding_sessions.with_raw_response.submit(
             "entity_onboarding_session_wid2ug11fsmvh3k9hymd",
         )
@@ -70,6 +71,7 @@ class TestAsyncEntityOnboardingSessions:
 
     @parametrize
     async def test_raw_response_submit(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.entity_onboarding_sessions.with_raw_response.submit(
             "entity_onboarding_session_wid2ug11fsmvh3k9hymd",
         )

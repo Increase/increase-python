@@ -28,6 +28,7 @@ class TestInboundFednowTransfers:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.inbound_fednow_transfers.with_raw_response.retrieve(
             "inbound_fednow_transfer_ctxxbc07oh5ke5w1hk20",
         )
@@ -80,6 +81,7 @@ class TestInboundFednowTransfers:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.inbound_fednow_transfers.with_raw_response.list()
 
         assert response.is_closed is True
@@ -111,6 +113,7 @@ class TestAsyncInboundFednowTransfers:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_fednow_transfers.with_raw_response.retrieve(
             "inbound_fednow_transfer_ctxxbc07oh5ke5w1hk20",
         )
@@ -163,6 +166,7 @@ class TestAsyncInboundFednowTransfers:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_fednow_transfers.with_raw_response.list()
 
         assert response.is_closed is True

@@ -42,6 +42,7 @@ class TestExternalAccounts:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.external_accounts.with_raw_response.create(
             account_number="987654321",
             description="Landlord",
@@ -75,6 +76,7 @@ class TestExternalAccounts:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.external_accounts.with_raw_response.retrieve(
             "external_account_ukk55lr923a3ac0pp7iv",
         )
@@ -122,6 +124,7 @@ class TestExternalAccounts:
 
     @parametrize
     def test_raw_response_update(self, client: Increase) -> None:
+
         response = client.external_accounts.with_raw_response.update(
             external_account_id="external_account_ukk55lr923a3ac0pp7iv",
         )
@@ -167,6 +170,7 @@ class TestExternalAccounts:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.external_accounts.with_raw_response.list()
 
         assert response.is_closed is True
@@ -211,6 +215,7 @@ class TestAsyncExternalAccounts:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.external_accounts.with_raw_response.create(
             account_number="987654321",
             description="Landlord",
@@ -244,6 +249,7 @@ class TestAsyncExternalAccounts:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.external_accounts.with_raw_response.retrieve(
             "external_account_ukk55lr923a3ac0pp7iv",
         )
@@ -291,6 +297,7 @@ class TestAsyncExternalAccounts:
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.external_accounts.with_raw_response.update(
             external_account_id="external_account_ukk55lr923a3ac0pp7iv",
         )
@@ -336,6 +343,7 @@ class TestAsyncExternalAccounts:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.external_accounts.with_raw_response.list()
 
         assert response.is_closed is True

@@ -39,6 +39,7 @@ class TestEntityOnboardingSessions:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.entity_onboarding_sessions.with_raw_response.create(
             program_id="program_i2v2os4mwza1oetokh9i",
             redirect_url="https://example.com/onboarding/session",
@@ -70,6 +71,7 @@ class TestEntityOnboardingSessions:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.entity_onboarding_sessions.with_raw_response.retrieve(
             "entity_onboarding_session_wid2ug11fsmvh3k9hymd",
         )
@@ -116,6 +118,7 @@ class TestEntityOnboardingSessions:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.entity_onboarding_sessions.with_raw_response.list()
 
         assert response.is_closed is True
@@ -141,6 +144,7 @@ class TestEntityOnboardingSessions:
 
     @parametrize
     def test_raw_response_expire(self, client: Increase) -> None:
+
         response = client.entity_onboarding_sessions.with_raw_response.expire(
             "entity_onboarding_session_wid2ug11fsmvh3k9hymd",
         )
@@ -195,6 +199,7 @@ class TestAsyncEntityOnboardingSessions:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.entity_onboarding_sessions.with_raw_response.create(
             program_id="program_i2v2os4mwza1oetokh9i",
             redirect_url="https://example.com/onboarding/session",
@@ -226,6 +231,7 @@ class TestAsyncEntityOnboardingSessions:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.entity_onboarding_sessions.with_raw_response.retrieve(
             "entity_onboarding_session_wid2ug11fsmvh3k9hymd",
         )
@@ -272,6 +278,7 @@ class TestAsyncEntityOnboardingSessions:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.entity_onboarding_sessions.with_raw_response.list()
 
         assert response.is_closed is True
@@ -297,6 +304,7 @@ class TestAsyncEntityOnboardingSessions:
 
     @parametrize
     async def test_raw_response_expire(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.entity_onboarding_sessions.with_raw_response.expire(
             "entity_onboarding_session_wid2ug11fsmvh3k9hymd",
         )

@@ -37,6 +37,7 @@ class TestOAuthTokens:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.oauth_tokens.with_raw_response.create(
             grant_type="authorization_code",
         )
@@ -83,6 +84,7 @@ class TestAsyncOAuthTokens:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.oauth_tokens.with_raw_response.create(
             grant_type="authorization_code",
         )

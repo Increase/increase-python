@@ -49,6 +49,7 @@ class TestACHPrenotifications:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.ach_prenotifications.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
@@ -82,6 +83,7 @@ class TestACHPrenotifications:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.ach_prenotifications.with_raw_response.retrieve(
             "ach_prenotification_ubjf9qqsxl3obbcn1u34",
         )
@@ -133,6 +135,7 @@ class TestACHPrenotifications:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.ach_prenotifications.with_raw_response.list()
 
         assert response.is_closed is True
@@ -185,6 +188,7 @@ class TestAsyncACHPrenotifications:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.ach_prenotifications.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
@@ -218,6 +222,7 @@ class TestAsyncACHPrenotifications:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.ach_prenotifications.with_raw_response.retrieve(
             "ach_prenotification_ubjf9qqsxl3obbcn1u34",
         )
@@ -269,6 +274,7 @@ class TestAsyncACHPrenotifications:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.ach_prenotifications.with_raw_response.list()
 
         assert response.is_closed is True

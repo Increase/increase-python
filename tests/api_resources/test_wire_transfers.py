@@ -80,6 +80,7 @@ class TestWireTransfers:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.wire_transfers.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
@@ -115,6 +116,7 @@ class TestWireTransfers:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.wire_transfers.with_raw_response.retrieve(
             "wire_transfer_5akynk7dqsq25qwk9q2u",
         )
@@ -167,6 +169,7 @@ class TestWireTransfers:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.wire_transfers.with_raw_response.list()
 
         assert response.is_closed is True
@@ -192,6 +195,7 @@ class TestWireTransfers:
 
     @parametrize
     def test_raw_response_approve(self, client: Increase) -> None:
+
         response = client.wire_transfers.with_raw_response.approve(
             "wire_transfer_5akynk7dqsq25qwk9q2u",
         )
@@ -228,6 +232,7 @@ class TestWireTransfers:
 
     @parametrize
     def test_raw_response_cancel(self, client: Increase) -> None:
+
         response = client.wire_transfers.with_raw_response.cancel(
             "wire_transfer_5akynk7dqsq25qwk9q2u",
         )
@@ -322,6 +327,7 @@ class TestAsyncWireTransfers:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.wire_transfers.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
@@ -357,6 +363,7 @@ class TestAsyncWireTransfers:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.wire_transfers.with_raw_response.retrieve(
             "wire_transfer_5akynk7dqsq25qwk9q2u",
         )
@@ -409,6 +416,7 @@ class TestAsyncWireTransfers:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.wire_transfers.with_raw_response.list()
 
         assert response.is_closed is True
@@ -434,6 +442,7 @@ class TestAsyncWireTransfers:
 
     @parametrize
     async def test_raw_response_approve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.wire_transfers.with_raw_response.approve(
             "wire_transfer_5akynk7dqsq25qwk9q2u",
         )
@@ -470,6 +479,7 @@ class TestAsyncWireTransfers:
 
     @parametrize
     async def test_raw_response_cancel(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.wire_transfers.with_raw_response.cancel(
             "wire_transfer_5akynk7dqsq25qwk9q2u",
         )
