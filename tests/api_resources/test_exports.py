@@ -86,6 +86,7 @@ class TestExports:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.exports.with_raw_response.create(
             category="transaction_csv",
         )
@@ -115,6 +116,7 @@ class TestExports:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.exports.with_raw_response.retrieve(
             "export_8s4m48qz3bclzje0zwh9",
         )
@@ -168,6 +170,7 @@ class TestExports:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.exports.with_raw_response.list()
 
         assert response.is_closed is True
@@ -257,6 +260,7 @@ class TestAsyncExports:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.exports.with_raw_response.create(
             category="transaction_csv",
         )
@@ -286,6 +290,7 @@ class TestAsyncExports:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.exports.with_raw_response.retrieve(
             "export_8s4m48qz3bclzje0zwh9",
         )
@@ -339,6 +344,7 @@ class TestAsyncExports:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.exports.with_raw_response.list()
 
         assert response.is_closed is True

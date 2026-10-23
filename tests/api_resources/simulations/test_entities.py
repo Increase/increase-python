@@ -27,6 +27,7 @@ class TestEntities:
 
     @parametrize
     def test_raw_response_update_validation(self, client: Increase) -> None:
+
         response = client.simulations.entities.with_raw_response.update_validation(
             entity_id="entity_n8y8tnk2p9339ti393yi",
             issues=[{"category": "entity_tax_identifier"}],
@@ -73,6 +74,7 @@ class TestAsyncEntities:
 
     @parametrize
     async def test_raw_response_update_validation(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.entities.with_raw_response.update_validation(
             entity_id="entity_n8y8tnk2p9339ti393yi",
             issues=[{"category": "entity_tax_identifier"}],

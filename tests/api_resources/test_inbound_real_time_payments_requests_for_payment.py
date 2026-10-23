@@ -34,6 +34,7 @@ class TestInboundRealTimePaymentsRequestsForPayment:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.inbound_real_time_payments_requests_for_payment.with_raw_response.retrieve(
             "inbound_real_time_payments_request_for_payment_j9c5rm4hr6qf34en8tky",
         )
@@ -101,6 +102,7 @@ class TestInboundRealTimePaymentsRequestsForPayment:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.inbound_real_time_payments_requests_for_payment.with_raw_response.list()
 
         assert response.is_closed is True
@@ -144,6 +146,7 @@ class TestAsyncInboundRealTimePaymentsRequestsForPayment:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_real_time_payments_requests_for_payment.with_raw_response.retrieve(
             "inbound_real_time_payments_request_for_payment_j9c5rm4hr6qf34en8tky",
         )
@@ -215,6 +218,7 @@ class TestAsyncInboundRealTimePaymentsRequestsForPayment:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_real_time_payments_requests_for_payment.with_raw_response.list()
 
         assert response.is_closed is True

@@ -27,6 +27,7 @@ class TestOAuthConnections:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.oauth_connections.with_raw_response.retrieve(
             "connection_dauknoksyr4wilz4e6my",
         )
@@ -71,6 +72,7 @@ class TestOAuthConnections:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.oauth_connections.with_raw_response.list()
 
         assert response.is_closed is True
@@ -102,6 +104,7 @@ class TestAsyncOAuthConnections:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.oauth_connections.with_raw_response.retrieve(
             "connection_dauknoksyr4wilz4e6my",
         )
@@ -146,6 +149,7 @@ class TestAsyncOAuthConnections:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.oauth_connections.with_raw_response.list()
 
         assert response.is_closed is True

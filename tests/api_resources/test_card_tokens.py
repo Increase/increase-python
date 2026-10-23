@@ -28,6 +28,7 @@ class TestCardTokens:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.card_tokens.with_raw_response.retrieve(
             "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         )
@@ -76,6 +77,7 @@ class TestCardTokens:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.card_tokens.with_raw_response.list()
 
         assert response.is_closed is True
@@ -101,6 +103,7 @@ class TestCardTokens:
 
     @parametrize
     def test_raw_response_capabilities(self, client: Increase) -> None:
+
         response = client.card_tokens.with_raw_response.capabilities(
             "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         )
@@ -143,6 +146,7 @@ class TestAsyncCardTokens:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.card_tokens.with_raw_response.retrieve(
             "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         )
@@ -191,6 +195,7 @@ class TestAsyncCardTokens:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.card_tokens.with_raw_response.list()
 
         assert response.is_closed is True
@@ -216,6 +221,7 @@ class TestAsyncCardTokens:
 
     @parametrize
     async def test_raw_response_capabilities(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.card_tokens.with_raw_response.capabilities(
             "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         )

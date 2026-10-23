@@ -22,6 +22,7 @@ class Declined(BaseModel):
         "group_locked",
         "account_closed",
         "entity_not_active",
+        "card_expiration_mismatch",
     ]
     """The reason the tokenization was declined.
 
@@ -38,6 +39,8 @@ class Declined(BaseModel):
     - `group_locked` - The group was locked.
     - `account_closed` - The account has been closed.
     - `entity_not_active` - The account's entity was not active.
+    - `card_expiration_mismatch` - The given expiration date did not match the
+      card's value.
     """
 
 

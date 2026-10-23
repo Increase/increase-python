@@ -30,6 +30,7 @@ class TestEvents:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.events.with_raw_response.retrieve(
             "event_001dzz0r20rzr4zrhrr1364hy80",
         )
@@ -84,6 +85,7 @@ class TestEvents:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.events.with_raw_response.list()
 
         assert response.is_closed is True
@@ -154,6 +156,7 @@ class TestAsyncEvents:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.events.with_raw_response.retrieve(
             "event_001dzz0r20rzr4zrhrr1364hy80",
         )
@@ -208,6 +211,7 @@ class TestAsyncEvents:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.events.with_raw_response.list()
 
         assert response.is_closed is True

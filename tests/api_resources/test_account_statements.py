@@ -28,6 +28,7 @@ class TestAccountStatements:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.account_statements.with_raw_response.retrieve(
             "account_statement_lkc03a4skm2k7f38vj15",
         )
@@ -77,6 +78,7 @@ class TestAccountStatements:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.account_statements.with_raw_response.list()
 
         assert response.is_closed is True
@@ -108,6 +110,7 @@ class TestAsyncAccountStatements:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.account_statements.with_raw_response.retrieve(
             "account_statement_lkc03a4skm2k7f38vj15",
         )
@@ -157,6 +160,7 @@ class TestAsyncAccountStatements:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.account_statements.with_raw_response.list()
 
         assert response.is_closed is True

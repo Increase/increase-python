@@ -1,12 +1,14 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import TYPE_CHECKING, Dict, List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
+from pydantic import Field as FieldInfo
+
 from .._models import BaseModel
 
-__all__ = ["DigitalWalletToken", "Cardholder", "Decline", "Device", "DynamicPrimaryAccountNumber", "Update"]
+__all__ = ["DigitalWalletToken", "Cardholder", "Device", "DynamicPrimaryAccountNumber", "Update"]
 
 
 class Cardholder(BaseModel):
@@ -14,40 +16,6 @@ class Cardholder(BaseModel):
 
     name: Optional[str] = None
     """Name of the cardholder, for example "John Smith"."""
-
-
-class Decline(BaseModel):
-    """
-    If the Digital Wallet Token was declined during provisioning, details about the decline.
-    """
-
-    reason: Literal[
-        "card_not_active",
-        "no_verification_method",
-        "webhook_timed_out",
-        "webhook_declined",
-        "incorrect_card_verification_code",
-        "declined_by_token_requestor",
-        "group_locked",
-        "account_closed",
-        "entity_not_active",
-    ]
-    """The reason the token provisioning was declined.
-
-    - `card_not_active` - The card is not active.
-    - `no_verification_method` - The card does not have a two-factor authentication
-      method.
-    - `webhook_timed_out` - Your webhook timed out when evaluating the token
-      provisioning attempt.
-    - `webhook_declined` - Your webhook declined the token provisioning attempt.
-    - `incorrect_card_verification_code` - The tokenization attempt failed because
-      the Card Verification Code (CVC) was incorrect.
-    - `declined_by_token_requestor` - The tokenization attempt was declined by the
-      token requestor.
-    - `group_locked` - The group was locked.
-    - `account_closed` - The account has been closed.
-    - `entity_not_active` - The account's entity was not active.
-    """
 
 
 class Device(BaseModel):
@@ -100,7 +68,7 @@ class DynamicPrimaryAccountNumber(BaseModel):
 
 
 class Update(BaseModel):
-    status: Literal["active", "inactive", "suspended", "deactivated", "declined", "pending_transitioning"]
+    status: Literal["active", "inactive", "suspended", "deactivated", "pending_transitioning"]
     """The status the update changed this Digital Wallet Token to.
 
     - `active` - The digital wallet token is active.
@@ -108,7 +76,6 @@ class Update(BaseModel):
       activated via two-factor authentication yet.
     - `suspended` - The digital wallet token has been temporarily paused.
     - `deactivated` - The digital wallet token has been permanently canceled.
-    - `declined` - The digital wallet token was declined during provisioning.
     - `pending_transitioning` - The digital wallet token is transitioning to a new
       status and is awaiting confirmation from the card network.
     """
@@ -143,12 +110,6 @@ class DigitalWalletToken(BaseModel):
     the Digital Wallet Token was created.
     """
 
-    decline: Optional[Decline] = None
-    """
-    If the Digital Wallet Token was declined during provisioning, details about the
-    decline.
-    """
-
     device: Device
     """The device that was used to create the Digital Wallet Token."""
 
@@ -158,7 +119,7 @@ class DigitalWalletToken(BaseModel):
     primary_account_number_reference_identifier: str
     """The reference identifier assigned by the card network to the underlying Card."""
 
-    status: Literal["active", "inactive", "suspended", "deactivated", "declined", "pending_transitioning"]
+    status: Literal["active", "inactive", "suspended", "deactivated", "pending_transitioning"]
     """This indicates if payments can be made with the Digital Wallet Token.
 
     - `active` - The digital wallet token is active.
@@ -166,7 +127,6 @@ class DigitalWalletToken(BaseModel):
       activated via two-factor authentication yet.
     - `suspended` - The digital wallet token has been temporarily paused.
     - `deactivated` - The digital wallet token has been permanently canceled.
-    - `declined` - The digital wallet token was declined during provisioning.
     - `pending_transitioning` - The digital wallet token is transitioning to a new
       status and is awaiting confirmation from the card network.
     """
@@ -192,3 +152,15 @@ class DigitalWalletToken(BaseModel):
 
     updates: List[Update]
     """Updates to the Digital Wallet Token."""
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]

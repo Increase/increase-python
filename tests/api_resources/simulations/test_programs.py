@@ -37,6 +37,7 @@ class TestPrograms:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.simulations.programs.with_raw_response.create(
             name="For Benefit Of",
         )
@@ -83,6 +84,7 @@ class TestAsyncPrograms:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.programs.with_raw_response.create(
             name="For Benefit Of",
         )

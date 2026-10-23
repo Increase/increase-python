@@ -24,6 +24,7 @@ class TestGroups:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.groups.with_raw_response.retrieve()
 
         assert response.is_closed is True
@@ -53,6 +54,7 @@ class TestAsyncGroups:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.groups.with_raw_response.retrieve()
 
         assert response.is_closed is True

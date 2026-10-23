@@ -36,6 +36,7 @@ class TestInboundMailItems:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.simulations.inbound_mail_items.with_raw_response.create(
             amount=1000,
         )
@@ -81,6 +82,7 @@ class TestAsyncInboundMailItems:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.inbound_mail_items.with_raw_response.create(
             amount=1000,
         )

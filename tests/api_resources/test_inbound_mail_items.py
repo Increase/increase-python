@@ -28,6 +28,7 @@ class TestInboundMailItems:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.inbound_mail_items.with_raw_response.retrieve(
             "inbound_mail_item_q6rrg7mmqpplx80zceev",
         )
@@ -78,6 +79,7 @@ class TestInboundMailItems:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.inbound_mail_items.with_raw_response.list()
 
         assert response.is_closed is True
@@ -104,6 +106,7 @@ class TestInboundMailItems:
 
     @parametrize
     def test_raw_response_action(self, client: Increase) -> None:
+
         response = client.inbound_mail_items.with_raw_response.action(
             inbound_mail_item_id="inbound_mail_item_q6rrg7mmqpplx80zceev",
             checks=[{"action": "deposit"}, {"action": "ignore"}],
@@ -149,6 +152,7 @@ class TestAsyncInboundMailItems:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_mail_items.with_raw_response.retrieve(
             "inbound_mail_item_q6rrg7mmqpplx80zceev",
         )
@@ -199,6 +203,7 @@ class TestAsyncInboundMailItems:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_mail_items.with_raw_response.list()
 
         assert response.is_closed is True
@@ -225,6 +230,7 @@ class TestAsyncInboundMailItems:
 
     @parametrize
     async def test_raw_response_action(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.inbound_mail_items.with_raw_response.action(
             inbound_mail_item_id="inbound_mail_item_q6rrg7mmqpplx80zceev",
             checks=[{"action": "deposit"}, {"action": "ignore"}],

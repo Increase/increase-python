@@ -40,6 +40,7 @@ class TestPhysicalCards:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.simulations.physical_cards.with_raw_response.create(
             physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
             category="delivered",
@@ -80,6 +81,7 @@ class TestPhysicalCards:
 
     @parametrize
     def test_raw_response_advance_shipment(self, client: Increase) -> None:
+
         response = client.simulations.physical_cards.with_raw_response.advance_shipment(
             physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
             shipment_status="shipped",
@@ -138,6 +140,7 @@ class TestAsyncPhysicalCards:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.physical_cards.with_raw_response.create(
             physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
             category="delivered",
@@ -178,6 +181,7 @@ class TestAsyncPhysicalCards:
 
     @parametrize
     async def test_raw_response_advance_shipment(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.physical_cards.with_raw_response.advance_shipment(
             physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
             shipment_status="shipped",

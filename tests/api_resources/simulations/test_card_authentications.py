@@ -40,6 +40,7 @@ class TestCardAuthentications:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.simulations.card_authentications.with_raw_response.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
         )
@@ -70,6 +71,7 @@ class TestCardAuthentications:
 
     @parametrize
     def test_raw_response_challenge_attempts(self, client: Increase) -> None:
+
         response = client.simulations.card_authentications.with_raw_response.challenge_attempts(
             card_payment_id="card_payment_nd3k2kacrqjli8482ave",
             one_time_code="123456",
@@ -109,6 +111,7 @@ class TestCardAuthentications:
 
     @parametrize
     def test_raw_response_challenges(self, client: Increase) -> None:
+
         response = client.simulations.card_authentications.with_raw_response.challenges(
             "card_payment_nd3k2kacrqjli8482ave",
         )
@@ -165,6 +168,7 @@ class TestAsyncCardAuthentications:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.card_authentications.with_raw_response.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
         )
@@ -195,6 +199,7 @@ class TestAsyncCardAuthentications:
 
     @parametrize
     async def test_raw_response_challenge_attempts(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.card_authentications.with_raw_response.challenge_attempts(
             card_payment_id="card_payment_nd3k2kacrqjli8482ave",
             one_time_code="123456",
@@ -234,6 +239,7 @@ class TestAsyncCardAuthentications:
 
     @parametrize
     async def test_raw_response_challenges(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.card_authentications.with_raw_response.challenges(
             "card_payment_nd3k2kacrqjli8482ave",
         )

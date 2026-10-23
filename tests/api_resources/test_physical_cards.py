@@ -71,6 +71,7 @@ class TestPhysicalCards:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.physical_cards.with_raw_response.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
             cardholder={
@@ -128,6 +129,7 @@ class TestPhysicalCards:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.physical_cards.with_raw_response.retrieve(
             "physical_card_ode8duyq5v2ynhjoharl",
         )
@@ -165,6 +167,7 @@ class TestPhysicalCards:
 
     @parametrize
     def test_raw_response_update(self, client: Increase) -> None:
+
         response = client.physical_cards.with_raw_response.update(
             physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
             status="disabled",
@@ -218,6 +221,7 @@ class TestPhysicalCards:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.physical_cards.with_raw_response.list()
 
         assert response.is_closed is True
@@ -290,6 +294,7 @@ class TestAsyncPhysicalCards:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.physical_cards.with_raw_response.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
             cardholder={
@@ -347,6 +352,7 @@ class TestAsyncPhysicalCards:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.physical_cards.with_raw_response.retrieve(
             "physical_card_ode8duyq5v2ynhjoharl",
         )
@@ -384,6 +390,7 @@ class TestAsyncPhysicalCards:
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.physical_cards.with_raw_response.update(
             physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
             status="disabled",
@@ -437,6 +444,7 @@ class TestAsyncPhysicalCards:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.physical_cards.with_raw_response.list()
 
         assert response.is_closed is True

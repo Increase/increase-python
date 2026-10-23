@@ -35,6 +35,7 @@ class TestCardSettlements:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.simulations.card_settlements.with_raw_response.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
         )
@@ -79,6 +80,7 @@ class TestAsyncCardSettlements:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.card_settlements.with_raw_response.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
         )

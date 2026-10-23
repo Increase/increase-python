@@ -34,6 +34,7 @@ class TestRealTimePaymentsTransfers:
 
     @parametrize
     def test_raw_response_complete(self, client: Increase) -> None:
+
         response = client.simulations.real_time_payments_transfers.with_raw_response.complete(
             real_time_payments_transfer_id="real_time_payments_transfer_iyuhl5kdn7ssmup83mvq",
         )
@@ -86,6 +87,7 @@ class TestAsyncRealTimePaymentsTransfers:
 
     @parametrize
     async def test_raw_response_complete(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.simulations.real_time_payments_transfers.with_raw_response.complete(
             real_time_payments_transfer_id="real_time_payments_transfer_iyuhl5kdn7ssmup83mvq",
         )

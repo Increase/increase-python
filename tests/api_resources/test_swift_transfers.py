@@ -80,6 +80,7 @@ class TestSwiftTransfers:
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
+
         response = client.swift_transfers.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
@@ -145,6 +146,7 @@ class TestSwiftTransfers:
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
+
         response = client.swift_transfers.with_raw_response.retrieve(
             "swift_transfer_29h21xkng03788zwd3fh",
         )
@@ -196,6 +198,7 @@ class TestSwiftTransfers:
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
+
         response = client.swift_transfers.with_raw_response.list()
 
         assert response.is_closed is True
@@ -221,6 +224,7 @@ class TestSwiftTransfers:
 
     @parametrize
     def test_raw_response_approve(self, client: Increase) -> None:
+
         response = client.swift_transfers.with_raw_response.approve(
             "swift_transfer_29h21xkng03788zwd3fh",
         )
@@ -257,6 +261,7 @@ class TestSwiftTransfers:
 
     @parametrize
     def test_raw_response_cancel(self, client: Increase) -> None:
+
         response = client.swift_transfers.with_raw_response.cancel(
             "swift_transfer_29h21xkng03788zwd3fh",
         )
@@ -351,6 +356,7 @@ class TestAsyncSwiftTransfers:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.swift_transfers.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
@@ -416,6 +422,7 @@ class TestAsyncSwiftTransfers:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.swift_transfers.with_raw_response.retrieve(
             "swift_transfer_29h21xkng03788zwd3fh",
         )
@@ -467,6 +474,7 @@ class TestAsyncSwiftTransfers:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.swift_transfers.with_raw_response.list()
 
         assert response.is_closed is True
@@ -492,6 +500,7 @@ class TestAsyncSwiftTransfers:
 
     @parametrize
     async def test_raw_response_approve(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.swift_transfers.with_raw_response.approve(
             "swift_transfer_29h21xkng03788zwd3fh",
         )
@@ -528,6 +537,7 @@ class TestAsyncSwiftTransfers:
 
     @parametrize
     async def test_raw_response_cancel(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.swift_transfers.with_raw_response.cancel(
             "swift_transfer_29h21xkng03788zwd3fh",
         )

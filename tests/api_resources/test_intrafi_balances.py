@@ -26,6 +26,7 @@ class TestIntrafiBalances:
 
     @parametrize
     def test_raw_response_intrafi_balance(self, client: Increase) -> None:
+
         response = client.intrafi_balances.with_raw_response.intrafi_balance(
             "account_in71c4amph0vgo2qllky",
         )
@@ -68,6 +69,7 @@ class TestAsyncIntrafiBalances:
 
     @parametrize
     async def test_raw_response_intrafi_balance(self, async_client: AsyncIncrease) -> None:
+
         response = await async_client.intrafi_balances.with_raw_response.intrafi_balance(
             "account_in71c4amph0vgo2qllky",
         )
