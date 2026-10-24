@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import TYPE_CHECKING, Dict, Optional
+from typing import TYPE_CHECKING, Dict, List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -8,7 +8,39 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["DigitalCardProfile", "TextColor"]
+__all__ = [
+    "DigitalCardProfile",
+    "ApplePay",
+    "ApplePayAssociatedApplicationIdentifier",
+    "ApplePayAssociatedStoreIdentifier",
+    "TextColor",
+]
+
+
+class ApplePayAssociatedApplicationIdentifier(BaseModel):
+    identifier: str
+    """
+    The application identifier, composed of your Apple Developer Team ID and the
+    application's bundle identifier, like `ABCDE12345.com.example.app`.
+    """
+
+
+class ApplePayAssociatedStoreIdentifier(BaseModel):
+    identifier: str
+    """The numeric App Store identifier."""
+
+
+class ApplePay(BaseModel):
+    """Apple Pay specific settings for the Card Profile."""
+
+    associated_application_identifiers: List[ApplePayAssociatedApplicationIdentifier]
+    """The applications associated with cards using this Card Profile."""
+
+    associated_store_identifiers: List[ApplePayAssociatedStoreIdentifier]
+    """
+    The App Store listings of the applications associated with cards using this Card
+    Profile.
+    """
 
 
 class TextColor(BaseModel):
@@ -34,6 +66,9 @@ class DigitalCardProfile(BaseModel):
 
     app_icon_file_id: str
     """The identifier of the File containing the card's icon image."""
+
+    apple_pay: Optional[ApplePay] = None
+    """Apple Pay specific settings for the Card Profile."""
 
     background_image_file_id: str
     """The identifier of the File containing the card's front image."""

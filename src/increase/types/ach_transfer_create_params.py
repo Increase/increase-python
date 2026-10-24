@@ -86,7 +86,7 @@ class ACHTransferCreateParams(TypedDict, total=False):
     """The name by which the recipient knows you, sent in the company batch header.
 
     We recommend setting this on every transfer; if you do not, we fall back to the
-    ACH company name configured on your account.
+    `statement_descriptor`.
     """
 
     destination_account_holder: Literal["business", "individual", "unknown"]
