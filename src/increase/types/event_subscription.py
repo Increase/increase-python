@@ -96,6 +96,8 @@ class SelectedEventCategory(BaseModel):
             "loan_offer.created",
             "loan_offer.updated",
             "loan_purchase.created",
+            "loan_purchase_offer.created",
+            "loan_purchase_offer.updated",
             "lockbox.created",
             "lockbox.updated",
             "lockbox_address.created",
@@ -268,6 +270,10 @@ class SelectedEventCategory(BaseModel):
     - `loan_offer.created` - Occurs whenever a Loan Offer is created.
     - `loan_offer.updated` - Occurs whenever a Loan Offer is updated.
     - `loan_purchase.created` - Occurs whenever a Loan Purchase is created.
+    - `loan_purchase_offer.created` - Occurs whenever a Loan Purchase Offer is
+      created.
+    - `loan_purchase_offer.updated` - Occurs whenever a Loan Purchase Offer is
+      updated.
     - `lockbox.created` - Occurs whenever a Lockbox is created.
     - `lockbox.updated` - Occurs whenever a Lockbox is updated.
     - `lockbox_address.created` - Occurs whenever a Lockbox Address is created.
