@@ -102,6 +102,9 @@ class InboundRealTimePaymentsTransfer(BaseModel):
     decline: Optional[Decline] = None
     """If your transfer is declined, this will contain details of the decline."""
 
+    end_to_end_identification: Optional[str] = None
+    """A free-form reference string set by the sender, to help identify the transfer."""
+
     status: Literal["pending_confirming", "timed_out", "confirmed", "declined"]
     """The lifecycle status of the transfer.
 
