@@ -80,14 +80,24 @@ class ACHTransfersResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> ACHTransfer:
         """
-        Create an ACH Transfer
+        An ACH Transfer has two primary descriptive fields:
+        [`company_name`](/documentation/api/ach-transfers#create-an-ach-transfer.company_name)
+        and
+        [`individual_name`](/documentation/api/ach-transfers#create-an-ach-transfer.individual_name).
+        You should set both of these, in addition to the required amount and account
+        fields.
 
         Args:
-          account_id: The Increase identifier for the account that will send the transfer.
+          account_id: The Increase identifier for the account that will originate the transfer. For
+              credit transfers (transfers with a positive `amount`), this is the account that
+              funds will be sent from. For debit transfers (transfers with a negative
+              `amount`), this is the account that funds will be pulled into.
 
           amount: The transfer amount in USD cents. A positive amount originates a credit transfer
-              pushing funds to the receiving account. A negative amount originates a debit
-              transfer pulling funds from the receiving account.
+              pushing funds from Increase to the account at the other bank. A negative amount
+              originates a debit transfer pulling funds from the account at the other bank
+              into Increase. Debit transfers
+              [might result in a hold before funds are available](/documentation/sending-ach-debit-transfers).
 
           statement_descriptor: A description you choose to give the transfer. This will be saved with the
               transfer details, displayed in the dashboard, and returned by the API. If
@@ -96,9 +106,10 @@ class ACHTransfersResource(SyncAPIResource):
               help the customer recognize the transfer. You are highly encouraged to pass
               `individual_name` and `company_name` instead of relying on this fallback.
 
-          account_number: The receiver's account number. For credit transfers (positive `amount`) this is
-              the account that funds will be sent to. For debit transfers (negative `amount`)
-              this is the account that funds will be pulled from.
+          account_number: The receiver's account number. For credit transfers (transfers with a positive
+              `amount`), this is the account that funds will be sent to. For debit transfers
+              (transfers with a negative `amount`), this is the account that funds will be
+              pulled from.
 
           addenda: Additional information passed through to the receiving bank with the transfer.
               Most ACH transfers do not need this. Only set this if your recipient has asked
@@ -109,19 +120,24 @@ class ACHTransfersResource(SyncAPIResource):
               batch header. This value is informational and does not affect funds movement,
               settlement timing, or returns. Only set this if your recipient has asked for it.
 
-          company_discretionary_data: Custom data sent in the company batch header. This value is informational and
-              does not affect funds movement, settlement timing, or returns. Most ACH
-              transfers do not need this. Only set this if your recipient has asked for it.
+          company_discretionary_data: Custom data sent in the company batch header, meant as metadata for the
+              originator. This value is informational and does not affect funds movement,
+              settlement timing, or returns. Most ACH transfers do not need this; we recommend
+              storing metadata in your own application instead.
 
-          company_entry_description: A short description sent in the company batch header. Most receivers do not
-              surface this. Only set this if your recipient has asked for a specific value or
-              if Nacha mandates one for your Standard Entry Class (SEC) code and use case. For
-              example, Prearranged Payment and Deposit (PPD) payroll credits must use
-              `PAYROLL`, and reversals must use `REVERSAL`.
+          company_entry_description: A short description sent in the company batch header, meant to provide the
+              receiver with a reason for the transfer. Many receivers do not surface this data
+              on the receiver's bank statement. Only set this if your recipient has asked for
+              a specific value or if Nacha mandates one for your Standard Entry Class (SEC)
+              code and use case. For example, some use cases require constants like
+              `ACCTVERIFY`, `PURCHASE`, `PAYROLL`, or `REVERSAL`.
 
-          company_name: The name by which the recipient knows you, sent in the company batch header. We
-              recommend setting this on every transfer; if you do not, we fall back to the
-              `statement_descriptor`.
+          company_name: The name by which the recipient knows the counterparty of this transaction. If
+              you're processing payments on behalf of another party, use their name, not your
+              own, so that it's more likely the recipient understands the context of the
+              payment. This value is usually displayed to the recipient on their bank
+              statement. We recommend setting this on every transfer; if you do not, we fall
+              back to the `statement_descriptor`.
 
           destination_account_holder: The type of entity that owns the receiver's account.
 
@@ -139,11 +155,15 @@ class ACHTransfersResource(SyncAPIResource):
               - `loan` - A loan account used in a lender-borrower relationship. Uncommon.
               - `general_ledger` - A bank's general ledger. Uncommon.
 
-          individual_id: Your internal identifier for the transfer recipient. This value is informational
-              and not verified by the recipient's bank. Most callers can leave this unset.
+          individual_id: Your internal identifier for the recipient. This value is informational and
+              generally not verified by the recipient's bank. Most callers can leave this
+              unset. For the specific case of person-to-person credits with the WEB standard
+              entry class code, this must include the name of the payer.
 
-          individual_name: The name of the transfer recipient. This value is informational and not verified
-              by the recipient's bank.
+          individual_name: The name of the transfer recipient. This value is informational and generally
+              not verified by the recipient's bank. This value is usually displayed to the
+              recipient on their bank statement. We recommend setting this on every transfer;
+              if you do not, we fall back to the `statement_descriptor`.
 
           preferred_effective_date: Configuration for how the effective date of the transfer will be set. This
               determines same-day vs future-dated settlement timing. If not set, defaults to a
@@ -462,14 +482,24 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> ACHTransfer:
         """
-        Create an ACH Transfer
+        An ACH Transfer has two primary descriptive fields:
+        [`company_name`](/documentation/api/ach-transfers#create-an-ach-transfer.company_name)
+        and
+        [`individual_name`](/documentation/api/ach-transfers#create-an-ach-transfer.individual_name).
+        You should set both of these, in addition to the required amount and account
+        fields.
 
         Args:
-          account_id: The Increase identifier for the account that will send the transfer.
+          account_id: The Increase identifier for the account that will originate the transfer. For
+              credit transfers (transfers with a positive `amount`), this is the account that
+              funds will be sent from. For debit transfers (transfers with a negative
+              `amount`), this is the account that funds will be pulled into.
 
           amount: The transfer amount in USD cents. A positive amount originates a credit transfer
-              pushing funds to the receiving account. A negative amount originates a debit
-              transfer pulling funds from the receiving account.
+              pushing funds from Increase to the account at the other bank. A negative amount
+              originates a debit transfer pulling funds from the account at the other bank
+              into Increase. Debit transfers
+              [might result in a hold before funds are available](/documentation/sending-ach-debit-transfers).
 
           statement_descriptor: A description you choose to give the transfer. This will be saved with the
               transfer details, displayed in the dashboard, and returned by the API. If
@@ -478,9 +508,10 @@ class AsyncACHTransfersResource(AsyncAPIResource):
               help the customer recognize the transfer. You are highly encouraged to pass
               `individual_name` and `company_name` instead of relying on this fallback.
 
-          account_number: The receiver's account number. For credit transfers (positive `amount`) this is
-              the account that funds will be sent to. For debit transfers (negative `amount`)
-              this is the account that funds will be pulled from.
+          account_number: The receiver's account number. For credit transfers (transfers with a positive
+              `amount`), this is the account that funds will be sent to. For debit transfers
+              (transfers with a negative `amount`), this is the account that funds will be
+              pulled from.
 
           addenda: Additional information passed through to the receiving bank with the transfer.
               Most ACH transfers do not need this. Only set this if your recipient has asked
@@ -491,19 +522,24 @@ class AsyncACHTransfersResource(AsyncAPIResource):
               batch header. This value is informational and does not affect funds movement,
               settlement timing, or returns. Only set this if your recipient has asked for it.
 
-          company_discretionary_data: Custom data sent in the company batch header. This value is informational and
-              does not affect funds movement, settlement timing, or returns. Most ACH
-              transfers do not need this. Only set this if your recipient has asked for it.
+          company_discretionary_data: Custom data sent in the company batch header, meant as metadata for the
+              originator. This value is informational and does not affect funds movement,
+              settlement timing, or returns. Most ACH transfers do not need this; we recommend
+              storing metadata in your own application instead.
 
-          company_entry_description: A short description sent in the company batch header. Most receivers do not
-              surface this. Only set this if your recipient has asked for a specific value or
-              if Nacha mandates one for your Standard Entry Class (SEC) code and use case. For
-              example, Prearranged Payment and Deposit (PPD) payroll credits must use
-              `PAYROLL`, and reversals must use `REVERSAL`.
+          company_entry_description: A short description sent in the company batch header, meant to provide the
+              receiver with a reason for the transfer. Many receivers do not surface this data
+              on the receiver's bank statement. Only set this if your recipient has asked for
+              a specific value or if Nacha mandates one for your Standard Entry Class (SEC)
+              code and use case. For example, some use cases require constants like
+              `ACCTVERIFY`, `PURCHASE`, `PAYROLL`, or `REVERSAL`.
 
-          company_name: The name by which the recipient knows you, sent in the company batch header. We
-              recommend setting this on every transfer; if you do not, we fall back to the
-              `statement_descriptor`.
+          company_name: The name by which the recipient knows the counterparty of this transaction. If
+              you're processing payments on behalf of another party, use their name, not your
+              own, so that it's more likely the recipient understands the context of the
+              payment. This value is usually displayed to the recipient on their bank
+              statement. We recommend setting this on every transfer; if you do not, we fall
+              back to the `statement_descriptor`.
 
           destination_account_holder: The type of entity that owns the receiver's account.
 
@@ -521,11 +557,15 @@ class AsyncACHTransfersResource(AsyncAPIResource):
               - `loan` - A loan account used in a lender-borrower relationship. Uncommon.
               - `general_ledger` - A bank's general ledger. Uncommon.
 
-          individual_id: Your internal identifier for the transfer recipient. This value is informational
-              and not verified by the recipient's bank. Most callers can leave this unset.
+          individual_id: Your internal identifier for the recipient. This value is informational and
+              generally not verified by the recipient's bank. Most callers can leave this
+              unset. For the specific case of person-to-person credits with the WEB standard
+              entry class code, this must include the name of the payer.
 
-          individual_name: The name of the transfer recipient. This value is informational and not verified
-              by the recipient's bank.
+          individual_name: The name of the transfer recipient. This value is informational and generally
+              not verified by the recipient's bank. This value is usually displayed to the
+              recipient on their bank statement. We recommend setting this on every transfer;
+              if you do not, we fall back to the `statement_descriptor`.
 
           preferred_effective_date: Configuration for how the effective date of the transfer will be set. This
               determines same-day vs future-dated settlement timing. If not set, defaults to a

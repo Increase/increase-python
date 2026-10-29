@@ -22,7 +22,7 @@ class TestAccountRevenuePayments:
     def test_method_create(self, client: Increase) -> None:
         account_revenue_payment = client.simulations.account_revenue_payments.create(
             account_id="account_in71c4amph0vgo2qllky",
-            amount=1000,
+            amount=100,
         )
         assert_matches_type(Transaction, account_revenue_payment, path=["response"])
 
@@ -30,7 +30,7 @@ class TestAccountRevenuePayments:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         account_revenue_payment = client.simulations.account_revenue_payments.create(
             account_id="account_in71c4amph0vgo2qllky",
-            amount=1000,
+            amount=100,
             accrued_on_account_id="accrued_on_account_id",
             period_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             period_start=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -42,7 +42,7 @@ class TestAccountRevenuePayments:
 
         response = client.simulations.account_revenue_payments.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
-            amount=1000,
+            amount=100,
         )
 
         assert response.is_closed is True
@@ -53,7 +53,7 @@ class TestAccountRevenuePayments:
     def test_streaming_response_create(self, client: Increase) -> None:
         with client.simulations.account_revenue_payments.with_streaming_response.create(
             account_id="account_in71c4amph0vgo2qllky",
-            amount=1000,
+            amount=100,
         ) as response:
             assert not response.is_closed
 
@@ -72,7 +72,7 @@ class TestAsyncAccountRevenuePayments:
     async def test_method_create(self, async_client: AsyncIncrease) -> None:
         account_revenue_payment = await async_client.simulations.account_revenue_payments.create(
             account_id="account_in71c4amph0vgo2qllky",
-            amount=1000,
+            amount=100,
         )
         assert_matches_type(Transaction, account_revenue_payment, path=["response"])
 
@@ -80,7 +80,7 @@ class TestAsyncAccountRevenuePayments:
     async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
         account_revenue_payment = await async_client.simulations.account_revenue_payments.create(
             account_id="account_in71c4amph0vgo2qllky",
-            amount=1000,
+            amount=100,
             accrued_on_account_id="accrued_on_account_id",
             period_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             period_start=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -92,7 +92,7 @@ class TestAsyncAccountRevenuePayments:
 
         response = await async_client.simulations.account_revenue_payments.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
-            amount=1000,
+            amount=100,
         )
 
         assert response.is_closed is True
@@ -103,7 +103,7 @@ class TestAsyncAccountRevenuePayments:
     async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.account_revenue_payments.with_streaming_response.create(
             account_id="account_in71c4amph0vgo2qllky",
-            amount=1000,
+            amount=100,
         ) as response:
             assert not response.is_closed
 
