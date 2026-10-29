@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
-from ..._types import Body, Query, Headers, NotGiven, not_given
-from ..._utils import path_template
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -15,6 +17,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
+from ...types.simulations import wire_drawdown_request_refuse_params
 from ...types.wire_drawdown_request import WireDrawdownRequest
 
 __all__ = ["WireDrawdownRequestsResource", "AsyncWireDrawdownRequestsResource"]
@@ -44,6 +47,16 @@ class WireDrawdownRequestsResource(SyncAPIResource):
         self,
         wire_drawdown_request_id: str,
         *,
+        refusal_reason_additional_information: str | Omit = omit,
+        refusal_reason_code: Literal[
+            "invalid_debtor_account_number",
+            "transaction_forbidden",
+            "unsuccessful_direct_debit",
+            "inconsistent_with_end_customer",
+            "narrative",
+            "other",
+        ]
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -57,6 +70,22 @@ class WireDrawdownRequestsResource(SyncAPIResource):
 
         Args:
           wire_drawdown_request_id: The identifier of the Wire Drawdown Request you wish to refuse.
+
+          refusal_reason_additional_information: Additional information about the refusal that the simulated refusal will have.
+
+          refusal_reason_code: The reason code that the simulated refusal will have.
+
+              - `invalid_debtor_account_number` - The debtor's account number is invalid or
+                missing. Corresponds to the Fedwire reason code `AC02`.
+              - `transaction_forbidden` - The debtor account does not allow drawdown requests.
+                Corresponds to the Fedwire reason code `AG01`.
+              - `unsuccessful_direct_debit` - The debtor account cannot be debited for a
+                generic reason. Corresponds to the Fedwire reason code `AG07`.
+              - `inconsistent_with_end_customer` - The debtor's identification is inconsistent
+                with the debtor account number. Corresponds to the Fedwire reason code `BE01`.
+              - `narrative` - The reason is provided as narrative information in the
+                additional information field. Corresponds to the Fedwire reason code `NARR`.
+              - `other` - Some other error or issue has occurred.
 
           extra_headers: Send extra headers
 
@@ -76,6 +105,13 @@ class WireDrawdownRequestsResource(SyncAPIResource):
             path_template(
                 "/simulations/wire_drawdown_requests/{wire_drawdown_request_id}/refuse",
                 wire_drawdown_request_id=wire_drawdown_request_id,
+            ),
+            body=maybe_transform(
+                {
+                    "refusal_reason_additional_information": refusal_reason_additional_information,
+                    "refusal_reason_code": refusal_reason_code,
+                },
+                wire_drawdown_request_refuse_params.WireDrawdownRequestRefuseParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -159,6 +195,16 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
         self,
         wire_drawdown_request_id: str,
         *,
+        refusal_reason_additional_information: str | Omit = omit,
+        refusal_reason_code: Literal[
+            "invalid_debtor_account_number",
+            "transaction_forbidden",
+            "unsuccessful_direct_debit",
+            "inconsistent_with_end_customer",
+            "narrative",
+            "other",
+        ]
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -172,6 +218,22 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
 
         Args:
           wire_drawdown_request_id: The identifier of the Wire Drawdown Request you wish to refuse.
+
+          refusal_reason_additional_information: Additional information about the refusal that the simulated refusal will have.
+
+          refusal_reason_code: The reason code that the simulated refusal will have.
+
+              - `invalid_debtor_account_number` - The debtor's account number is invalid or
+                missing. Corresponds to the Fedwire reason code `AC02`.
+              - `transaction_forbidden` - The debtor account does not allow drawdown requests.
+                Corresponds to the Fedwire reason code `AG01`.
+              - `unsuccessful_direct_debit` - The debtor account cannot be debited for a
+                generic reason. Corresponds to the Fedwire reason code `AG07`.
+              - `inconsistent_with_end_customer` - The debtor's identification is inconsistent
+                with the debtor account number. Corresponds to the Fedwire reason code `BE01`.
+              - `narrative` - The reason is provided as narrative information in the
+                additional information field. Corresponds to the Fedwire reason code `NARR`.
+              - `other` - Some other error or issue has occurred.
 
           extra_headers: Send extra headers
 
@@ -191,6 +253,13 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
             path_template(
                 "/simulations/wire_drawdown_requests/{wire_drawdown_request_id}/refuse",
                 wire_drawdown_request_id=wire_drawdown_request_id,
+            ),
+            body=await async_maybe_transform(
+                {
+                    "refusal_reason_additional_information": refusal_reason_additional_information,
+                    "refusal_reason_code": refusal_reason_code,
+                },
+                wire_drawdown_request_refuse_params.WireDrawdownRequestRefuseParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
