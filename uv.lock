@@ -517,7 +517,7 @@ wheels = [
 
 [[package]]
 name = "increase"
-version = "0.552.0"
+version = "0.553.0"
 source = { editable = "." }
 dependencies = [
     { name = "anyio" },

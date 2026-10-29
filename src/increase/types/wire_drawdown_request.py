@@ -8,7 +8,7 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["WireDrawdownRequest", "CreditorAddress", "DebtorAddress", "Submission"]
+__all__ = ["WireDrawdownRequest", "CreditorAddress", "DebtorAddress", "Refusal", "Submission"]
 
 
 class CreditorAddress(BaseModel):
@@ -61,6 +61,47 @@ class DebtorAddress(BaseModel):
 
     state: Optional[str] = None
     """The address state."""
+
+
+class Refusal(BaseModel):
+    """
+    If the debtor refuses the drawdown request, this will contain supplemental details.
+    """
+
+    refusal_reason_additional_information: Optional[str] = None
+    """Additional information about the refusal provided by the debtor bank.
+
+    This is typically present when the `refusal_reason_code` is `narrative`.
+    """
+
+    refusal_reason_code: Literal[
+        "invalid_debtor_account_number",
+        "transaction_forbidden",
+        "unsuccessful_direct_debit",
+        "inconsistent_with_end_customer",
+        "narrative",
+        "other",
+    ]
+    """The reason the wire drawdown request was refused as provided by the debtor bank.
+
+    - `invalid_debtor_account_number` - The debtor's account number is invalid or
+      missing. Corresponds to the Fedwire reason code `AC02`.
+    - `transaction_forbidden` - The debtor account does not allow drawdown requests.
+      Corresponds to the Fedwire reason code `AG01`.
+    - `unsuccessful_direct_debit` - The debtor account cannot be debited for a
+      generic reason. Corresponds to the Fedwire reason code `AG07`.
+    - `inconsistent_with_end_customer` - The debtor's identification is inconsistent
+      with the debtor account number. Corresponds to the Fedwire reason code `BE01`.
+    - `narrative` - The reason is provided as narrative information in the
+      additional information field. Corresponds to the Fedwire reason code `NARR`.
+    - `other` - Some other error or issue has occurred.
+    """
+
+    refused_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the wire drawdown request was refused.
+    """
 
 
 class Submission(BaseModel):
@@ -150,6 +191,12 @@ class WireDrawdownRequest(BaseModel):
     This value is unique across Increase and is used to ensure that a request is
     only processed once. Learn more about
     [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
+    refusal: Optional[Refusal] = None
+    """
+    If the debtor refuses the drawdown request, this will contain supplemental
+    details.
     """
 
     status: Literal["pending_submission", "pending_response", "fulfilled", "refused"]

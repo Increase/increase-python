@@ -33,6 +33,7 @@ class TestCardDisputes:
             visa={
                 "action": "accept_user_submission",
                 "accept_chargeback": {},
+                "accept_user_prearbitration": {},
                 "accept_user_submission": {},
                 "decline_user_prearbitration": {},
                 "receive_merchant_prearbitration": {},
@@ -102,6 +103,7 @@ class TestAsyncCardDisputes:
             visa={
                 "action": "accept_user_submission",
                 "accept_chargeback": {},
+                "accept_user_prearbitration": {},
                 "accept_user_submission": {},
                 "decline_user_prearbitration": {},
                 "receive_merchant_prearbitration": {},

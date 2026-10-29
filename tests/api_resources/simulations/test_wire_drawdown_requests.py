@@ -20,7 +20,16 @@ class TestWireDrawdownRequests:
     @parametrize
     def test_method_refuse(self, client: Increase) -> None:
         wire_drawdown_request = client.simulations.wire_drawdown_requests.refuse(
-            "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
+            wire_drawdown_request_id="wire_drawdown_request_q6lmocus3glo0lr2bfv3",
+        )
+        assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
+
+    @parametrize
+    def test_method_refuse_with_all_params(self, client: Increase) -> None:
+        wire_drawdown_request = client.simulations.wire_drawdown_requests.refuse(
+            wire_drawdown_request_id="wire_drawdown_request_q6lmocus3glo0lr2bfv3",
+            refusal_reason_additional_information="x",
+            refusal_reason_code="invalid_debtor_account_number",
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
@@ -28,7 +37,7 @@ class TestWireDrawdownRequests:
     def test_raw_response_refuse(self, client: Increase) -> None:
 
         response = client.simulations.wire_drawdown_requests.with_raw_response.refuse(
-            "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
+            wire_drawdown_request_id="wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         )
 
         assert response.is_closed is True
@@ -38,7 +47,7 @@ class TestWireDrawdownRequests:
     @parametrize
     def test_streaming_response_refuse(self, client: Increase) -> None:
         with client.simulations.wire_drawdown_requests.with_streaming_response.refuse(
-            "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
+            wire_drawdown_request_id="wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         ) as response:
             assert not response.is_closed
 
@@ -53,7 +62,7 @@ class TestWireDrawdownRequests:
             ValueError, match=r"Expected a non-empty value for `wire_drawdown_request_id` but received ''"
         ):
             client.simulations.wire_drawdown_requests.with_raw_response.refuse(
-                "",
+                wire_drawdown_request_id="",
             )
 
     @parametrize
@@ -104,7 +113,16 @@ class TestAsyncWireDrawdownRequests:
     @parametrize
     async def test_method_refuse(self, async_client: AsyncIncrease) -> None:
         wire_drawdown_request = await async_client.simulations.wire_drawdown_requests.refuse(
-            "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
+            wire_drawdown_request_id="wire_drawdown_request_q6lmocus3glo0lr2bfv3",
+        )
+        assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
+
+    @parametrize
+    async def test_method_refuse_with_all_params(self, async_client: AsyncIncrease) -> None:
+        wire_drawdown_request = await async_client.simulations.wire_drawdown_requests.refuse(
+            wire_drawdown_request_id="wire_drawdown_request_q6lmocus3glo0lr2bfv3",
+            refusal_reason_additional_information="x",
+            refusal_reason_code="invalid_debtor_account_number",
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
@@ -112,7 +130,7 @@ class TestAsyncWireDrawdownRequests:
     async def test_raw_response_refuse(self, async_client: AsyncIncrease) -> None:
 
         response = await async_client.simulations.wire_drawdown_requests.with_raw_response.refuse(
-            "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
+            wire_drawdown_request_id="wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         )
 
         assert response.is_closed is True
@@ -122,7 +140,7 @@ class TestAsyncWireDrawdownRequests:
     @parametrize
     async def test_streaming_response_refuse(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.wire_drawdown_requests.with_streaming_response.refuse(
-            "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
+            wire_drawdown_request_id="wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         ) as response:
             assert not response.is_closed
 
@@ -137,7 +155,7 @@ class TestAsyncWireDrawdownRequests:
             ValueError, match=r"Expected a non-empty value for `wire_drawdown_request_id` but received ''"
         ):
             await async_client.simulations.wire_drawdown_requests.with_raw_response.refuse(
-                "",
+                wire_drawdown_request_id="",
             )
 
     @parametrize
