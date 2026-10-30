@@ -917,7 +917,7 @@ class ACHTransfer(BaseModel):
       consumer to consumer transactions.
     """
 
-    statement_descriptor: str
+    statement_descriptor: Optional[str] = None
     """The descriptor that will show on the recipient's bank statement."""
 
     status: Literal[
