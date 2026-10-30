@@ -9,7 +9,10 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import InboundRealTimePaymentsTransfer
+from increase.types import (
+    RealTimePaymentsTransfer,
+    InboundRealTimePaymentsTransfer,
+)
 from increase._utils import parse_datetime
 from increase.pagination import SyncPage, AsyncPage
 
@@ -106,6 +109,53 @@ class TestInboundRealTimePaymentsTransfers:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_return(self, client: Increase) -> None:
+        inbound_real_time_payments_transfer = client.inbound_real_time_payments_transfers.return_(
+            inbound_real_time_payments_transfer_id="inbound_real_time_payments_transfer_63hlz498vcxg644hcrzr",
+        )
+        assert_matches_type(RealTimePaymentsTransfer, inbound_real_time_payments_transfer, path=["response"])
+
+    @parametrize
+    def test_method_return_with_all_params(self, client: Increase) -> None:
+        inbound_real_time_payments_transfer = client.inbound_real_time_payments_transfers.return_(
+            inbound_real_time_payments_transfer_id="inbound_real_time_payments_transfer_63hlz498vcxg644hcrzr",
+            amount=1,
+        )
+        assert_matches_type(RealTimePaymentsTransfer, inbound_real_time_payments_transfer, path=["response"])
+
+    @parametrize
+    def test_raw_response_return(self, client: Increase) -> None:
+
+        response = client.inbound_real_time_payments_transfers.with_raw_response.return_(
+            inbound_real_time_payments_transfer_id="inbound_real_time_payments_transfer_63hlz498vcxg644hcrzr",
+        )
+
+        assert response.is_closed is True
+        inbound_real_time_payments_transfer = response.parse()
+        assert_matches_type(RealTimePaymentsTransfer, inbound_real_time_payments_transfer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_return(self, client: Increase) -> None:
+        with client.inbound_real_time_payments_transfers.with_streaming_response.return_(
+            inbound_real_time_payments_transfer_id="inbound_real_time_payments_transfer_63hlz498vcxg644hcrzr",
+        ) as response:
+            assert not response.is_closed
+
+            inbound_real_time_payments_transfer = response.parse()
+            assert_matches_type(RealTimePaymentsTransfer, inbound_real_time_payments_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_return(self, client: Increase) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `inbound_real_time_payments_transfer_id` but received ''"
+        ):
+            client.inbound_real_time_payments_transfers.with_raw_response.return_(
+                inbound_real_time_payments_transfer_id="",
+            )
+
 
 class TestAsyncInboundRealTimePaymentsTransfers:
     parametrize = pytest.mark.parametrize(
@@ -198,3 +248,50 @@ class TestAsyncInboundRealTimePaymentsTransfers:
             )
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_return(self, async_client: AsyncIncrease) -> None:
+        inbound_real_time_payments_transfer = await async_client.inbound_real_time_payments_transfers.return_(
+            inbound_real_time_payments_transfer_id="inbound_real_time_payments_transfer_63hlz498vcxg644hcrzr",
+        )
+        assert_matches_type(RealTimePaymentsTransfer, inbound_real_time_payments_transfer, path=["response"])
+
+    @parametrize
+    async def test_method_return_with_all_params(self, async_client: AsyncIncrease) -> None:
+        inbound_real_time_payments_transfer = await async_client.inbound_real_time_payments_transfers.return_(
+            inbound_real_time_payments_transfer_id="inbound_real_time_payments_transfer_63hlz498vcxg644hcrzr",
+            amount=1,
+        )
+        assert_matches_type(RealTimePaymentsTransfer, inbound_real_time_payments_transfer, path=["response"])
+
+    @parametrize
+    async def test_raw_response_return(self, async_client: AsyncIncrease) -> None:
+
+        response = await async_client.inbound_real_time_payments_transfers.with_raw_response.return_(
+            inbound_real_time_payments_transfer_id="inbound_real_time_payments_transfer_63hlz498vcxg644hcrzr",
+        )
+
+        assert response.is_closed is True
+        inbound_real_time_payments_transfer = await response.parse()
+        assert_matches_type(RealTimePaymentsTransfer, inbound_real_time_payments_transfer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_return(self, async_client: AsyncIncrease) -> None:
+        async with async_client.inbound_real_time_payments_transfers.with_streaming_response.return_(
+            inbound_real_time_payments_transfer_id="inbound_real_time_payments_transfer_63hlz498vcxg644hcrzr",
+        ) as response:
+            assert not response.is_closed
+
+            inbound_real_time_payments_transfer = await response.parse()
+            assert_matches_type(RealTimePaymentsTransfer, inbound_real_time_payments_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_return(self, async_client: AsyncIncrease) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `inbound_real_time_payments_transfer_id` but received ''"
+        ):
+            await async_client.inbound_real_time_payments_transfers.with_raw_response.return_(
+                inbound_real_time_payments_transfer_id="",
+            )
