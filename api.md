@@ -379,13 +379,14 @@ Methods:
 Types:
 
 ```python
-from increase.types import InboundRealTimePaymentsTransfer
+from increase.types import InboundRealTimePaymentsTransfer, RealTimePaymentsTransfer
 ```
 
 Methods:
 
 - <code title="get /inbound_real_time_payments_transfers/{inbound_real_time_payments_transfer_id}">client.inbound_real_time_payments_transfers.<a href="./src/increase/resources/inbound_real_time_payments_transfers.py">retrieve</a>(inbound_real_time_payments_transfer_id) -> <a href="./src/increase/types/inbound_real_time_payments_transfer.py">InboundRealTimePaymentsTransfer</a></code>
 - <code title="get /inbound_real_time_payments_transfers">client.inbound_real_time_payments_transfers.<a href="./src/increase/resources/inbound_real_time_payments_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_real_time_payments_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_real_time_payments_transfer.py">SyncPage[InboundRealTimePaymentsTransfer]</a></code>
+- <code title="post /inbound_real_time_payments_transfers/{inbound_real_time_payments_transfer_id}/return">client.inbound*real_time_payments_transfers.<a href="./src/increase/resources/inbound_real_time_payments_transfers.py">return*</a>(inbound_real_time_payments_transfer_id, \*\*<a href="src/increase/types/inbound_real_time_payments_transfer_return_params.py">params</a>) -> <a href="./src/increase/types/real_time_payments_transfer.py">RealTimePaymentsTransfer</a></code>
 
 # RealTimePaymentsRequestsForPayment
 
@@ -712,56 +713,6 @@ Methods:
 
 - <code title="get /real_time_decisions/{real_time_decision_id}">client.real_time_decisions.<a href="./src/increase/resources/real_time_decisions.py">retrieve</a>(real_time_decision_id) -> <a href="./src/increase/types/real_time_decision.py">RealTimeDecision</a></code>
 - <code title="post /real_time_decisions/{real_time_decision_id}/action">client.real_time_decisions.<a href="./src/increase/resources/real_time_decisions.py">action</a>(real_time_decision_id, \*\*<a href="src/increase/types/real_time_decision_action_params.py">params</a>) -> <a href="./src/increase/types/real_time_decision.py">RealTimeDecision</a></code>
-
-# Groups
-
-Types:
-
-```python
-from increase.types import Group
-```
-
-Methods:
-
-- <code title="get /groups/current">client.groups.<a href="./src/increase/resources/groups.py">retrieve</a>() -> <a href="./src/increase/types/group.py">Group</a></code>
-
-# OAuthApplications
-
-Types:
-
-```python
-from increase.types import OAuthApplication
-```
-
-Methods:
-
-- <code title="get /oauth_applications/{oauth_application_id}">client.oauth_applications.<a href="./src/increase/resources/oauth_applications.py">retrieve</a>(oauth_application_id) -> <a href="./src/increase/types/oauth_application.py">OAuthApplication</a></code>
-- <code title="get /oauth_applications">client.oauth_applications.<a href="./src/increase/resources/oauth_applications.py">list</a>(\*\*<a href="src/increase/types/oauth_application_list_params.py">params</a>) -> <a href="./src/increase/types/oauth_application.py">SyncPage[OAuthApplication]</a></code>
-
-# OAuthConnections
-
-Types:
-
-```python
-from increase.types import OAuthConnection
-```
-
-Methods:
-
-- <code title="get /oauth_connections/{oauth_connection_id}">client.oauth_connections.<a href="./src/increase/resources/oauth_connections.py">retrieve</a>(oauth_connection_id) -> <a href="./src/increase/types/oauth_connection.py">OAuthConnection</a></code>
-- <code title="get /oauth_connections">client.oauth_connections.<a href="./src/increase/resources/oauth_connections.py">list</a>(\*\*<a href="src/increase/types/oauth_connection_list_params.py">params</a>) -> <a href="./src/increase/types/oauth_connection.py">SyncPage[OAuthConnection]</a></code>
-
-# OAuthTokens
-
-Types:
-
-```python
-from increase.types import OAuthToken
-```
-
-Methods:
-
-- <code title="post /oauth/tokens">client.oauth_tokens.<a href="./src/increase/resources/oauth_tokens.py">create</a>(\*\*<a href="src/increase/types/oauth_token_create_params.py">params</a>) -> <a href="./src/increase/types/oauth_token.py">OAuthToken</a></code>
 
 # IntrafiAccountEnrollments
 
