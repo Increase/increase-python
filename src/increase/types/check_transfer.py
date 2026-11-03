@@ -138,10 +138,10 @@ class Mailing(BaseModel):
 class PhysicalCheckMailingAddress(BaseModel):
     """Details for where Increase will mail the check."""
 
-    city: Optional[str] = None
+    city: str
     """The city of the check's destination."""
 
-    line1: Optional[str] = None
+    line1: str
     """The street address of the check's destination."""
 
     line2: Optional[str] = None
@@ -156,10 +156,10 @@ class PhysicalCheckMailingAddress(BaseModel):
     address. Only used for FedEx overnight shipping.
     """
 
-    postal_code: Optional[str] = None
+    postal_code: str
     """The postal code of the check's destination."""
 
-    state: Optional[str] = None
+    state: str
     """The state of the check's destination."""
 
 
@@ -171,16 +171,16 @@ class PhysicalCheckPayer(BaseModel):
 class PhysicalCheckReturnAddress(BaseModel):
     """The return address to be printed on the check."""
 
-    city: Optional[str] = None
+    city: str
     """The city of the check's destination."""
 
-    line1: Optional[str] = None
+    line1: str
     """The street address of the check's destination."""
 
     line2: Optional[str] = None
     """The second line of the address of the check's destination."""
 
-    name: Optional[str] = None
+    name: str
     """The name component of the check's return address."""
 
     phone: Optional[str] = None
@@ -189,10 +189,10 @@ class PhysicalCheckReturnAddress(BaseModel):
     Only used for FedEx overnight shipping.
     """
 
-    postal_code: Optional[str] = None
+    postal_code: str
     """The postal code of the check's destination."""
 
-    state: Optional[str] = None
+    state: str
     """The state of the check's destination."""
 
 
@@ -272,8 +272,7 @@ class PhysicalCheck(BaseModel):
     payer: List[PhysicalCheckPayer]
     """The payer of the check.
 
-    This will be printed on the top-left portion of the check and defaults to the
-    return address if unspecified.
+    This will be printed on the top-left portion of the check.
     """
 
     physical_check_batch_id: Optional[str] = None
@@ -282,7 +281,7 @@ class PhysicalCheck(BaseModel):
     recipient_name: str
     """The name that will be printed on the check."""
 
-    return_address: Optional[PhysicalCheckReturnAddress] = None
+    return_address: PhysicalCheckReturnAddress
     """The return address to be printed on the check."""
 
     return_address_name: Optional[str] = None

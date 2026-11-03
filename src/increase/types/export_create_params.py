@@ -243,7 +243,10 @@ class EntityCsv(TypedDict, total=False):
 
 
 class FeeCsvCreatedAt(TypedDict, total=False):
-    """Filter results by time range on the `created_at` attribute."""
+    """Filter exported Fees by the time they were created.
+
+    This suits historical exports across many fee statements. To get all of the Fees for a given fee statement period, we recommend using `fee_statement_period_start` instead. The time range must not include any Fees on an open fee statement.
+    """
 
     after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """
@@ -270,11 +273,24 @@ class FeeCsvCreatedAt(TypedDict, total=False):
     """
 
 
-class FeeCsv(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
+class FeeCsv(TypedDict, total=False):
     """Options for the created export. Required if `category` is equal to `fee_csv`."""
 
     created_at: FeeCsvCreatedAt
-    """Filter results by time range on the `created_at` attribute."""
+    """Filter exported Fees by the time they were created.
+
+    This suits historical exports across many fee statements. To get all of the Fees
+    for a given fee statement period, we recommend using
+    `fee_statement_period_start` instead. The time range must not include any Fees
+    on an open fee statement.
+    """
+
+    fee_statement_period_start: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
+    """
+    Filter exported Fees to the fee statements whose period starts on this UTC date,
+    such as `2026-08-01`. Use this filter to export all of the Fees on a fee
+    statement. The matching fee statements must be closed.
+    """
 
     program_id: str
     """Filter exported Fees to the specified Program."""
