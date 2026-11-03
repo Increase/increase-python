@@ -379,7 +379,7 @@ Methods:
 Types:
 
 ```python
-from increase.types import InboundRealTimePaymentsTransfer, RealTimePaymentsTransfer
+from increase.types import InboundRealTimePaymentsTransfer
 ```
 
 Methods:

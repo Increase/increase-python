@@ -147,7 +147,7 @@ class PhysicalCheckMailingAddress(BaseModel):
     line2: Optional[str] = None
     """The second line of the address of the check's destination."""
 
-    name: Optional[str] = None
+    name: str
     """The name component of the check's mailing address."""
 
     phone: Optional[str] = None
