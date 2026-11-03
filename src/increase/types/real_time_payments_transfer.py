@@ -285,6 +285,9 @@ class RealTimePaymentsTransfer(BaseModel):
     If not provided, defaults to the name of the account's entity.
     """
 
+    end_to_end_identification: Optional[str] = None
+    """A free-form reference string set by the sender, to help identify the transfer."""
+
     external_account_id: Optional[str] = None
     """The identifier of the External Account the transfer was made to, if any."""
 
