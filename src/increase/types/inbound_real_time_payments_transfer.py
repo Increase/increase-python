@@ -105,6 +105,11 @@ class InboundRealTimePaymentsTransfer(BaseModel):
     end_to_end_identification: Optional[str] = None
     """A free-form reference string set by the sender, to help identify the transfer."""
 
+    return_of_real_time_payments_transfer_id: Optional[str] = None
+    """
+    The identifier of the Real-Time Payments Transfer this transfer returns, if any.
+    """
+
     status: Literal["pending_confirming", "timed_out", "confirmed", "declined"]
     """The lifecycle status of the transfer.
 

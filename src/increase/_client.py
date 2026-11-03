@@ -35,7 +35,6 @@ if TYPE_CHECKING:
         cards,
         files,
         events,
-        groups,
         exports,
         accounts,
         entities,
@@ -43,7 +42,6 @@ if TYPE_CHECKING:
         file_links,
         card_tokens,
         simulations,
-        oauth_tokens,
         transactions,
         ach_transfers,
         card_disputes,
@@ -62,12 +60,10 @@ if TYPE_CHECKING:
         beneficial_owners,
         external_accounts,
         lockbox_addresses,
-        oauth_connections,
         account_statements,
         inbound_mail_items,
         intrafi_exclusions,
         lockbox_recipients,
-        oauth_applications,
         card_push_transfers,
         event_subscriptions,
         real_time_decisions,
@@ -97,14 +93,12 @@ if TYPE_CHECKING:
     from .resources.cards import CardsResource, AsyncCardsResource
     from .resources.files import FilesResource, AsyncFilesResource
     from .resources.events import EventsResource, AsyncEventsResource
-    from .resources.groups import GroupsResource, AsyncGroupsResource
     from .resources.exports import ExportsResource, AsyncExportsResource
     from .resources.accounts import AccountsResource, AsyncAccountsResource
     from .resources.entities import EntitiesResource, AsyncEntitiesResource
     from .resources.programs import ProgramsResource, AsyncProgramsResource
     from .resources.file_links import FileLinksResource, AsyncFileLinksResource
     from .resources.card_tokens import CardTokensResource, AsyncCardTokensResource
-    from .resources.oauth_tokens import OAuthTokensResource, AsyncOAuthTokensResource
     from .resources.transactions import TransactionsResource, AsyncTransactionsResource
     from .resources.ach_transfers import ACHTransfersResource, AsyncACHTransfersResource
     from .resources.card_disputes import CardDisputesResource, AsyncCardDisputesResource
@@ -123,12 +117,10 @@ if TYPE_CHECKING:
     from .resources.beneficial_owners import BeneficialOwnersResource, AsyncBeneficialOwnersResource
     from .resources.external_accounts import ExternalAccountsResource, AsyncExternalAccountsResource
     from .resources.lockbox_addresses import LockboxAddressesResource, AsyncLockboxAddressesResource
-    from .resources.oauth_connections import OAuthConnectionsResource, AsyncOAuthConnectionsResource
     from .resources.account_statements import AccountStatementsResource, AsyncAccountStatementsResource
     from .resources.inbound_mail_items import InboundMailItemsResource, AsyncInboundMailItemsResource
     from .resources.intrafi_exclusions import IntrafiExclusionsResource, AsyncIntrafiExclusionsResource
     from .resources.lockbox_recipients import LockboxRecipientsResource, AsyncLockboxRecipientsResource
-    from .resources.oauth_applications import OAuthApplicationsResource, AsyncOAuthApplicationsResource
     from .resources.card_push_transfers import CardPushTransfersResource, AsyncCardPushTransfersResource
     from .resources.event_subscriptions import EventSubscriptionsResource, AsyncEventSubscriptionsResource
     from .resources.real_time_decisions import RealTimeDecisionsResource, AsyncRealTimeDecisionsResource
@@ -594,30 +586,6 @@ class Increase(SyncAPIClient):
         from .resources.real_time_decisions import RealTimeDecisionsResource
 
         return RealTimeDecisionsResource(self)
-
-    @cached_property
-    def groups(self) -> GroupsResource:
-        from .resources.groups import GroupsResource
-
-        return GroupsResource(self)
-
-    @cached_property
-    def oauth_applications(self) -> OAuthApplicationsResource:
-        from .resources.oauth_applications import OAuthApplicationsResource
-
-        return OAuthApplicationsResource(self)
-
-    @cached_property
-    def oauth_connections(self) -> OAuthConnectionsResource:
-        from .resources.oauth_connections import OAuthConnectionsResource
-
-        return OAuthConnectionsResource(self)
-
-    @cached_property
-    def oauth_tokens(self) -> OAuthTokensResource:
-        from .resources.oauth_tokens import OAuthTokensResource
-
-        return OAuthTokensResource(self)
 
     @cached_property
     def intrafi_account_enrollments(self) -> IntrafiAccountEnrollmentsResource:
@@ -1223,30 +1191,6 @@ class AsyncIncrease(AsyncAPIClient):
         return AsyncRealTimeDecisionsResource(self)
 
     @cached_property
-    def groups(self) -> AsyncGroupsResource:
-        from .resources.groups import AsyncGroupsResource
-
-        return AsyncGroupsResource(self)
-
-    @cached_property
-    def oauth_applications(self) -> AsyncOAuthApplicationsResource:
-        from .resources.oauth_applications import AsyncOAuthApplicationsResource
-
-        return AsyncOAuthApplicationsResource(self)
-
-    @cached_property
-    def oauth_connections(self) -> AsyncOAuthConnectionsResource:
-        from .resources.oauth_connections import AsyncOAuthConnectionsResource
-
-        return AsyncOAuthConnectionsResource(self)
-
-    @cached_property
-    def oauth_tokens(self) -> AsyncOAuthTokensResource:
-        from .resources.oauth_tokens import AsyncOAuthTokensResource
-
-        return AsyncOAuthTokensResource(self)
-
-    @cached_property
     def intrafi_account_enrollments(self) -> AsyncIntrafiAccountEnrollmentsResource:
         from .resources.intrafi_account_enrollments import AsyncIntrafiAccountEnrollmentsResource
 
@@ -1782,30 +1726,6 @@ class IncreaseWithRawResponse:
         return RealTimeDecisionsResourceWithRawResponse(self._client.real_time_decisions)
 
     @cached_property
-    def groups(self) -> groups.GroupsResourceWithRawResponse:
-        from .resources.groups import GroupsResourceWithRawResponse
-
-        return GroupsResourceWithRawResponse(self._client.groups)
-
-    @cached_property
-    def oauth_applications(self) -> oauth_applications.OAuthApplicationsResourceWithRawResponse:
-        from .resources.oauth_applications import OAuthApplicationsResourceWithRawResponse
-
-        return OAuthApplicationsResourceWithRawResponse(self._client.oauth_applications)
-
-    @cached_property
-    def oauth_connections(self) -> oauth_connections.OAuthConnectionsResourceWithRawResponse:
-        from .resources.oauth_connections import OAuthConnectionsResourceWithRawResponse
-
-        return OAuthConnectionsResourceWithRawResponse(self._client.oauth_connections)
-
-    @cached_property
-    def oauth_tokens(self) -> oauth_tokens.OAuthTokensResourceWithRawResponse:
-        from .resources.oauth_tokens import OAuthTokensResourceWithRawResponse
-
-        return OAuthTokensResourceWithRawResponse(self._client.oauth_tokens)
-
-    @cached_property
     def intrafi_account_enrollments(
         self,
     ) -> intrafi_account_enrollments.IntrafiAccountEnrollmentsResourceWithRawResponse:
@@ -2185,30 +2105,6 @@ class AsyncIncreaseWithRawResponse:
         return AsyncRealTimeDecisionsResourceWithRawResponse(self._client.real_time_decisions)
 
     @cached_property
-    def groups(self) -> groups.AsyncGroupsResourceWithRawResponse:
-        from .resources.groups import AsyncGroupsResourceWithRawResponse
-
-        return AsyncGroupsResourceWithRawResponse(self._client.groups)
-
-    @cached_property
-    def oauth_applications(self) -> oauth_applications.AsyncOAuthApplicationsResourceWithRawResponse:
-        from .resources.oauth_applications import AsyncOAuthApplicationsResourceWithRawResponse
-
-        return AsyncOAuthApplicationsResourceWithRawResponse(self._client.oauth_applications)
-
-    @cached_property
-    def oauth_connections(self) -> oauth_connections.AsyncOAuthConnectionsResourceWithRawResponse:
-        from .resources.oauth_connections import AsyncOAuthConnectionsResourceWithRawResponse
-
-        return AsyncOAuthConnectionsResourceWithRawResponse(self._client.oauth_connections)
-
-    @cached_property
-    def oauth_tokens(self) -> oauth_tokens.AsyncOAuthTokensResourceWithRawResponse:
-        from .resources.oauth_tokens import AsyncOAuthTokensResourceWithRawResponse
-
-        return AsyncOAuthTokensResourceWithRawResponse(self._client.oauth_tokens)
-
-    @cached_property
     def intrafi_account_enrollments(
         self,
     ) -> intrafi_account_enrollments.AsyncIntrafiAccountEnrollmentsResourceWithRawResponse:
@@ -2586,30 +2482,6 @@ class IncreaseWithStreamedResponse:
         from .resources.real_time_decisions import RealTimeDecisionsResourceWithStreamingResponse
 
         return RealTimeDecisionsResourceWithStreamingResponse(self._client.real_time_decisions)
-
-    @cached_property
-    def groups(self) -> groups.GroupsResourceWithStreamingResponse:
-        from .resources.groups import GroupsResourceWithStreamingResponse
-
-        return GroupsResourceWithStreamingResponse(self._client.groups)
-
-    @cached_property
-    def oauth_applications(self) -> oauth_applications.OAuthApplicationsResourceWithStreamingResponse:
-        from .resources.oauth_applications import OAuthApplicationsResourceWithStreamingResponse
-
-        return OAuthApplicationsResourceWithStreamingResponse(self._client.oauth_applications)
-
-    @cached_property
-    def oauth_connections(self) -> oauth_connections.OAuthConnectionsResourceWithStreamingResponse:
-        from .resources.oauth_connections import OAuthConnectionsResourceWithStreamingResponse
-
-        return OAuthConnectionsResourceWithStreamingResponse(self._client.oauth_connections)
-
-    @cached_property
-    def oauth_tokens(self) -> oauth_tokens.OAuthTokensResourceWithStreamingResponse:
-        from .resources.oauth_tokens import OAuthTokensResourceWithStreamingResponse
-
-        return OAuthTokensResourceWithStreamingResponse(self._client.oauth_tokens)
 
     @cached_property
     def intrafi_account_enrollments(
@@ -2997,30 +2869,6 @@ class AsyncIncreaseWithStreamedResponse:
         from .resources.real_time_decisions import AsyncRealTimeDecisionsResourceWithStreamingResponse
 
         return AsyncRealTimeDecisionsResourceWithStreamingResponse(self._client.real_time_decisions)
-
-    @cached_property
-    def groups(self) -> groups.AsyncGroupsResourceWithStreamingResponse:
-        from .resources.groups import AsyncGroupsResourceWithStreamingResponse
-
-        return AsyncGroupsResourceWithStreamingResponse(self._client.groups)
-
-    @cached_property
-    def oauth_applications(self) -> oauth_applications.AsyncOAuthApplicationsResourceWithStreamingResponse:
-        from .resources.oauth_applications import AsyncOAuthApplicationsResourceWithStreamingResponse
-
-        return AsyncOAuthApplicationsResourceWithStreamingResponse(self._client.oauth_applications)
-
-    @cached_property
-    def oauth_connections(self) -> oauth_connections.AsyncOAuthConnectionsResourceWithStreamingResponse:
-        from .resources.oauth_connections import AsyncOAuthConnectionsResourceWithStreamingResponse
-
-        return AsyncOAuthConnectionsResourceWithStreamingResponse(self._client.oauth_connections)
-
-    @cached_property
-    def oauth_tokens(self) -> oauth_tokens.AsyncOAuthTokensResourceWithStreamingResponse:
-        from .resources.oauth_tokens import AsyncOAuthTokensResourceWithStreamingResponse
-
-        return AsyncOAuthTokensResourceWithStreamingResponse(self._client.oauth_tokens)
 
     @cached_property
     def intrafi_account_enrollments(

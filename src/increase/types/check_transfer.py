@@ -272,8 +272,7 @@ class PhysicalCheck(BaseModel):
     payer: List[PhysicalCheckPayer]
     """The payer of the check.
 
-    This will be printed on the top-left portion of the check and defaults to the
-    return address if unspecified.
+    This will be printed on the top-left portion of the check.
     """
 
     physical_check_batch_id: Optional[str] = None
