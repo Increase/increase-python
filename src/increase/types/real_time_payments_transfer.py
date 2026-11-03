@@ -316,6 +316,12 @@ class RealTimePaymentsTransfer(BaseModel):
     institution, this will contain supplemental details.
     """
 
+    return_of_inbound_real_time_payments_transfer_id: Optional[str] = None
+    """
+    The identifier of the Inbound Real-Time Payments Transfer this transfer returns,
+    if any.
+    """
+
     routing_number: str
     """
     The destination American Bankers' Association (ABA) Routing Transit Number

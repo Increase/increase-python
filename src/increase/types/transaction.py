@@ -198,7 +198,7 @@ class SourceACHTransferIntention(BaseModel):
     destination account.
     """
 
-    statement_descriptor: str
+    statement_descriptor: Optional[str] = None
     """A description set when the ACH Transfer was created."""
 
     transfer_id: str
