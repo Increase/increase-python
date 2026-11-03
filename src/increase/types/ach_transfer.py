@@ -357,9 +357,9 @@ class NotificationsOfChange(BaseModel):
 
 
 class PreferredEffectiveDate(BaseModel):
-    """Configuration for how the effective date of the transfer will be set.
+    """Configuration for how the effective date of the transfer was set.
 
-    This determines same-day vs future-dated settlement timing. If not set, defaults to a `settlement_schedule` of `same_day`. If set, exactly one of the child attributes must be set.
+    This determines same-day vs future-dated settlement timing.
     """
 
     date: Optional[datetime.date] = None
@@ -776,16 +776,33 @@ class ACHTransfer(BaseModel):
     """
 
     company_descriptive_date: Optional[str] = None
-    """The description of the date of the transfer."""
+    """
+    A description of the transfer date (typically `YYMMDD`), sent in the company
+    batch header. This value is informational and does not affect funds movement,
+    settlement timing, or returns.
+    """
 
     company_discretionary_data: Optional[str] = None
-    """The data you chose to associate with the transfer."""
+    """
+    Custom data sent in the company batch header, meant as metadata for the
+    originator. This value is informational and does not affect funds movement,
+    settlement timing, or returns.
+    """
 
     company_entry_description: Optional[str] = None
-    """The description of the transfer you set to be shown to the recipient."""
+    """
+    A short description sent in the company batch header, meant to provide the
+    receiver with a reason for the transfer. Many receivers do not surface this data
+    on the receiver's bank statement.
+    """
 
     company_id: str
-    """The company ID associated with the transfer."""
+    """
+    The Company ID sent in the batch header, which identifies the originator to the
+    receiving bank. Businesses use this value to allowlist the companies permitted
+    to debit their accounts. This value is configured by Increase and will be the
+    same for all your transfers.
+    """
 
     company_name: Optional[str] = None
     """The name by which the recipient knows you."""
@@ -871,11 +888,9 @@ class ACHTransfer(BaseModel):
     """
 
     preferred_effective_date: PreferredEffectiveDate
-    """Configuration for how the effective date of the transfer will be set.
+    """Configuration for how the effective date of the transfer was set.
 
-    This determines same-day vs future-dated settlement timing. If not set, defaults
-    to a `settlement_schedule` of `same_day`. If set, exactly one of the child
-    attributes must be set.
+    This determines same-day vs future-dated settlement timing.
     """
 
     return_: Optional[Return] = FieldInfo(alias="return", default=None)
@@ -917,7 +932,7 @@ class ACHTransfer(BaseModel):
       consumer to consumer transactions.
     """
 
-    statement_descriptor: str
+    statement_descriptor: Optional[str] = None
     """The descriptor that will show on the recipient's bank statement."""
 
     status: Literal[
