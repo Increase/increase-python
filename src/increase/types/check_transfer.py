@@ -19,6 +19,7 @@ __all__ = [
     "Mailing",
     "PhysicalCheck",
     "PhysicalCheckMailingAddress",
+    "PhysicalCheckPayee",
     "PhysicalCheckPayer",
     "PhysicalCheckReturnAddress",
     "PhysicalCheckSignature",
@@ -163,6 +164,11 @@ class PhysicalCheckMailingAddress(BaseModel):
     """The state of the check's destination."""
 
 
+class PhysicalCheckPayee(BaseModel):
+    contents: str
+    """The contents of the line."""
+
+
 class PhysicalCheckPayer(BaseModel):
     contents: str
     """The contents of the line."""
@@ -269,6 +275,12 @@ class PhysicalCheck(BaseModel):
     note: Optional[str] = None
     """The descriptor that will be printed on the letter included with the check."""
 
+    payee: List[PhysicalCheckPayee]
+    """The payee of the check.
+
+    This will be printed in the Pay to the Order Of portion of the check.
+    """
+
     payer: List[PhysicalCheckPayer]
     """The payer of the check.
 
@@ -277,9 +289,6 @@ class PhysicalCheck(BaseModel):
 
     physical_check_batch_id: Optional[str] = None
     """The identifier of the Physical Check Batch that this check is a part of."""
-
-    recipient_name: str
-    """The name that will be printed on the check."""
 
     return_address: PhysicalCheckReturnAddress
     """The return address to be printed on the check."""
