@@ -12,6 +12,7 @@ __all__ = [
     "CheckTransferCreateParams",
     "PhysicalCheck",
     "PhysicalCheckMailingAddress",
+    "PhysicalCheckPayee",
     "PhysicalCheckPayer",
     "PhysicalCheckReturnAddress",
     "PhysicalCheckSignature",
@@ -100,6 +101,9 @@ class PhysicalCheckMailingAddress(TypedDict, total=False):
     line1: Required[str]
     """The first line of the address component of the check's destination address."""
 
+    name: Required[str]
+    """The name component of the check's destination address."""
+
     postal_code: Required[str]
     """The postal code component of the check's destination address."""
 
@@ -109,18 +113,17 @@ class PhysicalCheckMailingAddress(TypedDict, total=False):
     line2: str
     """The second line of the address component of the check's destination address."""
 
-    name: str
-    """The name component of the check's destination address.
-
-    Defaults to the provided `recipient_name` parameter if `name` is not provided.
-    """
-
     phone: str
     """The phone number to associate with the check's destination address.
 
     The phone number is only used when `shipping_method` is `fedex_overnight` and
     will be supplied to FedEx to be used in case of delivery issues.
     """
+
+
+class PhysicalCheckPayee(TypedDict, total=False):
+    contents: Required[str]
+    """The contents of the line."""
 
 
 class PhysicalCheckPayer(TypedDict, total=False):
@@ -191,15 +194,20 @@ class PhysicalCheck(TypedDict, total=False, extra_items=object):  # type: ignore
     memo: Required[str]
     """The descriptor that will be printed on the memo field on the check."""
 
+    payee: Required[Iterable[PhysicalCheckPayee]]
+    """The payee of the check.
+
+    This will be printed in the Pay to the Order Of portion of the check. This
+    should be an array of up to 4 elements, each of which represents a line of the
+    payee.
+    """
+
     payer: Required[Iterable[PhysicalCheckPayer]]
     """The payer of the check.
 
     This will be printed on the top-left portion of the check. This should be an
     array of up to 4 elements, each of which represents a line of the payer.
     """
-
-    recipient_name: Required[str]
-    """The name that will be printed on the check in the 'To:' field."""
 
     attachment_file_id: str
     """The ID of a File to be attached to the check.
