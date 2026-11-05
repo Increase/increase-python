@@ -1871,6 +1871,7 @@ class SourceCardRefundPurchaseDetailsFleet(BaseModel):
             "electric_vehicle_charging_level_1_110_volt",
             "electric_vehicle_charging_level_2_240_volt",
             "electric_vehicle_charging_level_3_480_volt",
+            "diesel_1_off_road_non_taxable",
             "renewable_diesel_r95_or_greater_off_road_non_taxable",
             "biodiesel_blend_1_off_road_non_taxable",
             "biodiesel_blend_75_off_road_non_taxable",
@@ -1990,6 +1991,7 @@ class SourceCardRefundPurchaseDetailsFleet(BaseModel):
       2 240 volt
     - `electric_vehicle_charging_level_3_480_volt` - Electric vehicle charging level
       3 480 volt
+    - `diesel_1_off_road_non_taxable` - Diesel 1 off-road non-taxable
     - `renewable_diesel_r95_or_greater_off_road_non_taxable` - Renewable diesel R95
       or greater off-road non-taxable
     - `biodiesel_blend_1_off_road_non_taxable` - Biodiesel blend 1% off-road
@@ -3006,6 +3008,7 @@ class SourceCardSettlementPurchaseDetailsFleet(BaseModel):
             "electric_vehicle_charging_level_1_110_volt",
             "electric_vehicle_charging_level_2_240_volt",
             "electric_vehicle_charging_level_3_480_volt",
+            "diesel_1_off_road_non_taxable",
             "renewable_diesel_r95_or_greater_off_road_non_taxable",
             "biodiesel_blend_1_off_road_non_taxable",
             "biodiesel_blend_75_off_road_non_taxable",
@@ -3125,6 +3128,7 @@ class SourceCardSettlementPurchaseDetailsFleet(BaseModel):
       2 240 volt
     - `electric_vehicle_charging_level_3_480_volt` - Electric vehicle charging level
       3 480 volt
+    - `diesel_1_off_road_non_taxable` - Diesel 1 off-road non-taxable
     - `renewable_diesel_r95_or_greater_off_road_non_taxable` - Renewable diesel R95
       or greater off-road non-taxable
     - `biodiesel_blend_1_off_road_non_taxable` - Biodiesel blend 1% off-road

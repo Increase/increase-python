@@ -1977,8 +1977,40 @@ class DigitalWalletAuthentication(BaseModel):
 class DigitalWalletTokenDevice(BaseModel):
     """Device that is being used to provision the digital wallet token."""
 
+    device_type: Optional[
+        Literal[
+            "unknown",
+            "mobile_phone",
+            "tablet",
+            "watch",
+            "mobilephone_or_tablet",
+            "pc",
+            "household_device",
+            "wearable_device",
+            "automobile_device",
+        ]
+    ] = None
+    """Device type.
+
+    - `unknown` - Unknown
+    - `mobile_phone` - Mobile Phone
+    - `tablet` - Tablet
+    - `watch` - Watch
+    - `mobilephone_or_tablet` - Mobile Phone or Tablet
+    - `pc` - PC
+    - `household_device` - Household Device
+    - `wearable_device` - Wearable Device
+    - `automobile_device` - Automobile Device
+    """
+
     identifier: Optional[str] = None
     """ID assigned to the device by the digital wallet provider."""
+
+    ip_address: Optional[str] = None
+    """IP address of the device."""
+
+    name: Optional[str] = None
+    """Name of the device, for example "My Work Phone"."""
 
 
 class DigitalWalletToken(BaseModel):

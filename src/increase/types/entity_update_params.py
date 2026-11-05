@@ -21,7 +21,6 @@ __all__ = [
     "NaturalPersonIdentificationDriversLicense",
     "NaturalPersonIdentificationOther",
     "NaturalPersonIdentificationPassport",
-    "RiskRating",
     "SoleProprietorship",
     "SoleProprietorshipAddress",
     "SoleProprietorshipSoleProprietor",
@@ -77,12 +76,6 @@ class EntityUpdateParams(TypedDict, total=False):
 
     If you specify this parameter and the entity is not a natural person, the
     request will fail.
-    """
-
-    risk_rating: RiskRating
-    """
-    An assessment of the entity’s potential risk of involvement in financial crimes,
-    such as money laundering.
     """
 
     sole_proprietorship: SoleProprietorship
@@ -430,26 +423,6 @@ class NaturalPerson(TypedDict, total=False):
 
     name: str
     """The legal name of the natural person."""
-
-
-class RiskRating(TypedDict, total=False):
-    """
-    An assessment of the entity’s potential risk of involvement in financial crimes, such as money laundering.
-    """
-
-    rated_at: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
-    """
-    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the risk
-    rating was performed.
-    """
-
-    rating: Required[Literal["low", "medium", "high"]]
-    """The rating given to this entity.
-
-    - `low` - Minimal risk of involvement in financial crime.
-    - `medium` - Moderate risk of involvement in financial crime.
-    - `high` - Elevated risk of involvement in financial crime.
-    """
 
 
 class SoleProprietorshipAddress(TypedDict, total=False):
