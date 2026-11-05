@@ -362,7 +362,7 @@ class NotificationOfChange(BaseModel):
 
 class Settlement(BaseModel):
     """
-    A subhash containing information about when and how the transfer settled at the Federal Reserve.
+    A subhash containing information about when the transfer settled (or will settle) at the Federal Reserve.
     """
 
     settled_at: datetime
@@ -520,8 +520,8 @@ class InboundACHTransfer(BaseModel):
 
     settlement: Settlement
     """
-    A subhash containing information about when and how the transfer settled at the
-    Federal Reserve.
+    A subhash containing information about when the transfer settled (or will
+    settle) at the Federal Reserve.
     """
 
     standard_entry_class_code: Literal[
