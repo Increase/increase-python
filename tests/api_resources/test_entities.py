@@ -180,10 +180,6 @@ class TestEntities:
                 "name": "x",
                 "confirmed_no_us_tax_id": True,
             },
-            risk_rating={
-                "rated_at": parse_datetime("2019-12-27T18:11:19.117Z"),
-                "rating": "low",
-            },
             sole_proprietorship={
                 "address": {
                     "city": "x",
@@ -407,7 +403,7 @@ class TestEntities:
                     "category": "us_employer_identification_number",
                 },
                 "name": "x",
-                "website": "website",
+                "website": "https://company.example.com",
             },
             details_confirmed_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             government_authority={
@@ -453,10 +449,6 @@ class TestEntities:
                     },
                 },
                 "name": "x",
-            },
-            risk_rating={
-                "rated_at": parse_datetime("2020-01-31T23:59:59Z"),
-                "rating": "low",
             },
             sole_proprietorship={
                 "address": {
@@ -879,10 +871,6 @@ class TestAsyncEntities:
                 "name": "x",
                 "confirmed_no_us_tax_id": True,
             },
-            risk_rating={
-                "rated_at": parse_datetime("2019-12-27T18:11:19.117Z"),
-                "rating": "low",
-            },
             sole_proprietorship={
                 "address": {
                     "city": "x",
@@ -1106,7 +1094,7 @@ class TestAsyncEntities:
                     "category": "us_employer_identification_number",
                 },
                 "name": "x",
-                "website": "website",
+                "website": "https://company.example.com",
             },
             details_confirmed_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             government_authority={
@@ -1152,10 +1140,6 @@ class TestAsyncEntities:
                     },
                 },
                 "name": "x",
-            },
-            risk_rating={
-                "rated_at": parse_datetime("2020-01-31T23:59:59Z"),
-                "rating": "low",
             },
             sole_proprietorship={
                 "address": {
