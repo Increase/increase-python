@@ -8,37 +8,7 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["AccountNumber", "InboundACH", "InboundChecks"]
-
-
-class InboundACH(BaseModel):
-    """Properties related to how this Account Number handles inbound ACH transfers."""
-
-    debit_status: Literal["allowed", "blocked"]
-    """Whether ACH debits are allowed against this Account Number.
-
-    Note that they will still be declined if this is `allowed` but the Account
-    Number is not active.
-
-    - `allowed` - ACH Debits are allowed.
-    - `blocked` - ACH Debits are blocked. Received debits will be declined and
-      returned with code `R20` (non-transaction account).
-    """
-
-
-class InboundChecks(BaseModel):
-    """
-    Properties related to how this Account Number should handle inbound check withdrawals.
-    """
-
-    status: Literal["allowed", "check_transfers_only"]
-    """How Increase should process checks with this account number printed on them.
-
-    - `allowed` - Checks with this Account Number will be processed even if they are
-      not associated with a Check Transfer.
-    - `check_transfers_only` - Checks with this Account Number will be processed
-      only if they can be matched to an existing Check Transfer.
-    """
+__all__ = ["AccountNumber"]
 
 
 class AccountNumber(BaseModel):
@@ -70,13 +40,15 @@ class AccountNumber(BaseModel):
     [idempotency](https://increase.com/documentation/idempotency-keys).
     """
 
-    inbound_ach: InboundACH
-    """Properties related to how this Account Number handles inbound ACH transfers."""
+    inbound_ach_debits: Literal["allowed", "blocked"]
+    """Whether inbound ACH debits are allowed against this Account Number.
 
-    inbound_checks: InboundChecks
-    """
-    Properties related to how this Account Number should handle inbound check
-    withdrawals.
+    Note that they will still be declined if this is `allowed` but the Account
+    Number is not active.
+
+    - `allowed` - ACH Debits are allowed.
+    - `blocked` - ACH Debits are blocked. Received debits will be declined and
+      returned with code `R20` (non-transaction account).
     """
 
     name: str
@@ -97,6 +69,15 @@ class AccountNumber(BaseModel):
     """A constant representing the object's type.
 
     For this resource it will always be `account_number`.
+    """
+
+    unregistered_inbound_checks: Literal["allowed", "blocked"]
+    """Whether unregistered inbound checks for this Account Number can be deposited.
+
+    - `allowed` - Accept all Inbound Check Deposits, even if they are not associated
+      with a Check Transfer or Checkbook Check.
+    - `blocked` - Only accept Inbound Check Deposits if they can be matched to a
+      Check Transfer or Checkbook Check.
     """
 
     if TYPE_CHECKING:

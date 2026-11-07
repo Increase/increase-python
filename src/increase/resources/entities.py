@@ -53,11 +53,9 @@ class EntitiesResource(SyncAPIResource):
             "corporation", "natural_person", "joint", "trust", "government_authority", "sole_proprietorship"
         ],
         corporation: entity_create_params.Corporation | Omit = omit,
-        description: str | Omit = omit,
         government_authority: entity_create_params.GovernmentAuthority | Omit = omit,
         joint: entity_create_params.Joint | Omit = omit,
         natural_person: entity_create_params.NaturalPerson | Omit = omit,
-        risk_rating: entity_create_params.RiskRating | Omit = omit,
         sole_proprietorship: entity_create_params.SoleProprietorship | Omit = omit,
         supplemental_documents: Iterable[entity_create_params.SupplementalDocument] | Omit = omit,
         terms_agreements: Iterable[entity_create_params.TermsAgreement] | Omit = omit,
@@ -87,8 +85,6 @@ class EntitiesResource(SyncAPIResource):
           corporation: Details of the corporation entity to create. Required if `structure` is equal to
               `corporation`.
 
-          description: The description you choose to give the entity.
-
           government_authority: Details of the Government Authority entity to create. Required if `structure` is
               equal to `government_authority`.
 
@@ -99,9 +95,6 @@ class EntitiesResource(SyncAPIResource):
               to `natural_person`. Natural people entities should be submitted with
               `social_security_number` or `individual_taxpayer_identification_number`
               identification methods.
-
-          risk_rating: An assessment of the entity's potential risk of involvement in financial crimes,
-              such as money laundering.
 
           sole_proprietorship: Details of the sole proprietorship entity to create. Required if `structure` is
               equal to `sole_proprietorship`.
@@ -134,11 +127,9 @@ class EntitiesResource(SyncAPIResource):
                 {
                     "structure": structure,
                     "corporation": corporation,
-                    "description": description,
                     "government_authority": government_authority,
                     "joint": joint,
                     "natural_person": natural_person,
-                    "risk_rating": risk_rating,
                     "sole_proprietorship": sole_proprietorship,
                     "supplemental_documents": supplemental_documents,
                     "terms_agreements": terms_agreements,
@@ -200,7 +191,6 @@ class EntitiesResource(SyncAPIResource):
         details_confirmed_at: Union[str, datetime] | Omit = omit,
         government_authority: entity_update_params.GovernmentAuthority | Omit = omit,
         natural_person: entity_update_params.NaturalPerson | Omit = omit,
-        risk_rating: entity_update_params.RiskRating | Omit = omit,
         sole_proprietorship: entity_update_params.SoleProprietorship | Omit = omit,
         terms_agreements: Iterable[entity_update_params.TermsAgreement] | Omit = omit,
         third_party_verification: entity_update_params.ThirdPartyVerification | Omit = omit,
@@ -231,9 +221,6 @@ class EntitiesResource(SyncAPIResource):
 
           natural_person: Details of the natural person entity to update. If you specify this parameter
               and the entity is not a natural person, the request will fail.
-
-          risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
-              such as money laundering.
 
           sole_proprietorship: Details of the sole proprietorship entity to update. If you specify this
               parameter and the entity is not a sole proprietorship, the request will fail.
@@ -268,7 +255,6 @@ class EntitiesResource(SyncAPIResource):
                     "details_confirmed_at": details_confirmed_at,
                     "government_authority": government_authority,
                     "natural_person": natural_person,
-                    "risk_rating": risk_rating,
                     "sole_proprietorship": sole_proprietorship,
                     "terms_agreements": terms_agreements,
                     "third_party_verification": third_party_verification,
@@ -421,11 +407,9 @@ class AsyncEntitiesResource(AsyncAPIResource):
             "corporation", "natural_person", "joint", "trust", "government_authority", "sole_proprietorship"
         ],
         corporation: entity_create_params.Corporation | Omit = omit,
-        description: str | Omit = omit,
         government_authority: entity_create_params.GovernmentAuthority | Omit = omit,
         joint: entity_create_params.Joint | Omit = omit,
         natural_person: entity_create_params.NaturalPerson | Omit = omit,
-        risk_rating: entity_create_params.RiskRating | Omit = omit,
         sole_proprietorship: entity_create_params.SoleProprietorship | Omit = omit,
         supplemental_documents: Iterable[entity_create_params.SupplementalDocument] | Omit = omit,
         terms_agreements: Iterable[entity_create_params.TermsAgreement] | Omit = omit,
@@ -455,8 +439,6 @@ class AsyncEntitiesResource(AsyncAPIResource):
           corporation: Details of the corporation entity to create. Required if `structure` is equal to
               `corporation`.
 
-          description: The description you choose to give the entity.
-
           government_authority: Details of the Government Authority entity to create. Required if `structure` is
               equal to `government_authority`.
 
@@ -467,9 +449,6 @@ class AsyncEntitiesResource(AsyncAPIResource):
               to `natural_person`. Natural people entities should be submitted with
               `social_security_number` or `individual_taxpayer_identification_number`
               identification methods.
-
-          risk_rating: An assessment of the entity's potential risk of involvement in financial crimes,
-              such as money laundering.
 
           sole_proprietorship: Details of the sole proprietorship entity to create. Required if `structure` is
               equal to `sole_proprietorship`.
@@ -502,11 +481,9 @@ class AsyncEntitiesResource(AsyncAPIResource):
                 {
                     "structure": structure,
                     "corporation": corporation,
-                    "description": description,
                     "government_authority": government_authority,
                     "joint": joint,
                     "natural_person": natural_person,
-                    "risk_rating": risk_rating,
                     "sole_proprietorship": sole_proprietorship,
                     "supplemental_documents": supplemental_documents,
                     "terms_agreements": terms_agreements,
@@ -568,7 +545,6 @@ class AsyncEntitiesResource(AsyncAPIResource):
         details_confirmed_at: Union[str, datetime] | Omit = omit,
         government_authority: entity_update_params.GovernmentAuthority | Omit = omit,
         natural_person: entity_update_params.NaturalPerson | Omit = omit,
-        risk_rating: entity_update_params.RiskRating | Omit = omit,
         sole_proprietorship: entity_update_params.SoleProprietorship | Omit = omit,
         terms_agreements: Iterable[entity_update_params.TermsAgreement] | Omit = omit,
         third_party_verification: entity_update_params.ThirdPartyVerification | Omit = omit,
@@ -599,9 +575,6 @@ class AsyncEntitiesResource(AsyncAPIResource):
 
           natural_person: Details of the natural person entity to update. If you specify this parameter
               and the entity is not a natural person, the request will fail.
-
-          risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
-              such as money laundering.
 
           sole_proprietorship: Details of the sole proprietorship entity to update. If you specify this
               parameter and the entity is not a sole proprietorship, the request will fail.
@@ -636,7 +609,6 @@ class AsyncEntitiesResource(AsyncAPIResource):
                     "details_confirmed_at": details_confirmed_at,
                     "government_authority": government_authority,
                     "natural_person": natural_person,
-                    "risk_rating": risk_rating,
                     "sole_proprietorship": sole_proprietorship,
                     "terms_agreements": terms_agreements,
                     "third_party_verification": third_party_verification,

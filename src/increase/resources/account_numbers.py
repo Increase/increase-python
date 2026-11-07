@@ -49,8 +49,8 @@ class AccountNumbersResource(SyncAPIResource):
         *,
         account_id: str,
         name: str,
-        inbound_ach: account_number_create_params.InboundACH | Omit = omit,
-        inbound_checks: account_number_create_params.InboundChecks | Omit = omit,
+        inbound_ach_debits: Literal["allowed", "blocked"] | Omit = omit,
+        unregistered_inbound_checks: Literal["allowed", "blocked"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -67,10 +67,21 @@ class AccountNumbersResource(SyncAPIResource):
 
           name: The name you choose for the Account Number.
 
-          inbound_ach: Options related to how this Account Number should handle inbound ACH transfers.
+          inbound_ach_debits: Whether inbound ACH debits are allowed against this Account Number. Note that
+              ACH debits will be declined if this is `allowed` but the Account Number is not
+              active. If you do not specify this field, the default is `allowed`.
 
-          inbound_checks: Options related to how this Account Number should handle inbound check
-              withdrawals.
+              - `allowed` - ACH Debits are allowed.
+              - `blocked` - ACH Debits are blocked. Received debits will be declined and
+                returned with code `R20` (non-transaction account).
+
+          unregistered_inbound_checks: Whether unregistered inbound checks for this Account Number can be deposited. If
+              you do not specify this field, the default is `blocked`.
+
+              - `allowed` - Accept all Inbound Check Deposits, even if they are not associated
+                with a Check Transfer or Checkbook Check.
+              - `blocked` - Only accept Inbound Check Deposits if they can be matched to a
+                Check Transfer or Checkbook Check.
 
           extra_headers: Send extra headers
 
@@ -88,8 +99,8 @@ class AccountNumbersResource(SyncAPIResource):
                 {
                     "account_id": account_id,
                     "name": name,
-                    "inbound_ach": inbound_ach,
-                    "inbound_checks": inbound_checks,
+                    "inbound_ach_debits": inbound_ach_debits,
+                    "unregistered_inbound_checks": unregistered_inbound_checks,
                 },
                 account_number_create_params.AccountNumberCreateParams,
             ),
@@ -142,10 +153,10 @@ class AccountNumbersResource(SyncAPIResource):
         self,
         account_number_id: str,
         *,
-        inbound_ach: account_number_update_params.InboundACH | Omit = omit,
-        inbound_checks: account_number_update_params.InboundChecks | Omit = omit,
+        inbound_ach_debits: Literal["allowed", "blocked"] | Omit = omit,
         name: str | Omit = omit,
         status: Literal["active", "disabled", "canceled"] | Omit = omit,
+        unregistered_inbound_checks: Literal["allowed", "blocked"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -160,10 +171,13 @@ class AccountNumbersResource(SyncAPIResource):
         Args:
           account_number_id: The identifier of the Account Number.
 
-          inbound_ach: Options related to how this Account Number handles inbound ACH transfers.
+          inbound_ach_debits: Whether inbound ACH debits are allowed against this Account Number. Note that
+              ACH debits will be declined if this is `allowed` but the Account Number is not
+              active.
 
-          inbound_checks: Options related to how this Account Number should handle inbound check
-              withdrawals.
+              - `allowed` - ACH Debits are allowed.
+              - `blocked` - ACH Debits are blocked. Received debits will be declined and
+                returned with code `R20` (non-transaction account).
 
           name: The name you choose for the Account Number.
 
@@ -172,6 +186,13 @@ class AccountNumbersResource(SyncAPIResource):
               - `active` - The account number is active.
               - `disabled` - The account number is temporarily disabled.
               - `canceled` - The account number is permanently disabled.
+
+          unregistered_inbound_checks: Whether unregistered inbound checks for this Account Number can be deposited.
+
+              - `allowed` - Accept all Inbound Check Deposits, even if they are not associated
+                with a Check Transfer or Checkbook Check.
+              - `blocked` - Only accept Inbound Check Deposits if they can be matched to a
+                Check Transfer or Checkbook Check.
 
           extra_headers: Send extra headers
 
@@ -189,10 +210,10 @@ class AccountNumbersResource(SyncAPIResource):
             path_template("/account_numbers/{account_number_id}", account_number_id=account_number_id),
             body=maybe_transform(
                 {
-                    "inbound_ach": inbound_ach,
-                    "inbound_checks": inbound_checks,
+                    "inbound_ach_debits": inbound_ach_debits,
                     "name": name,
                     "status": status,
+                    "unregistered_inbound_checks": unregistered_inbound_checks,
                 },
                 account_number_update_params.AccountNumberUpdateParams,
             ),
@@ -210,10 +231,10 @@ class AccountNumbersResource(SyncAPIResource):
         self,
         *,
         account_id: str | Omit = omit,
-        ach_debit_status: account_number_list_params.ACHDebitStatus | Omit = omit,
         created_at: account_number_list_params.CreatedAt | Omit = omit,
         cursor: str | Omit = omit,
         idempotency_key: str | Omit = omit,
+        inbound_ach_debits: account_number_list_params.InboundACHDebits | Omit = omit,
         limit: int | Omit = omit,
         status: account_number_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -260,10 +281,10 @@ class AccountNumbersResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "account_id": account_id,
-                        "ach_debit_status": ach_debit_status,
                         "created_at": created_at,
                         "cursor": cursor,
                         "idempotency_key": idempotency_key,
+                        "inbound_ach_debits": inbound_ach_debits,
                         "limit": limit,
                         "status": status,
                     },
@@ -299,8 +320,8 @@ class AsyncAccountNumbersResource(AsyncAPIResource):
         *,
         account_id: str,
         name: str,
-        inbound_ach: account_number_create_params.InboundACH | Omit = omit,
-        inbound_checks: account_number_create_params.InboundChecks | Omit = omit,
+        inbound_ach_debits: Literal["allowed", "blocked"] | Omit = omit,
+        unregistered_inbound_checks: Literal["allowed", "blocked"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -317,10 +338,21 @@ class AsyncAccountNumbersResource(AsyncAPIResource):
 
           name: The name you choose for the Account Number.
 
-          inbound_ach: Options related to how this Account Number should handle inbound ACH transfers.
+          inbound_ach_debits: Whether inbound ACH debits are allowed against this Account Number. Note that
+              ACH debits will be declined if this is `allowed` but the Account Number is not
+              active. If you do not specify this field, the default is `allowed`.
 
-          inbound_checks: Options related to how this Account Number should handle inbound check
-              withdrawals.
+              - `allowed` - ACH Debits are allowed.
+              - `blocked` - ACH Debits are blocked. Received debits will be declined and
+                returned with code `R20` (non-transaction account).
+
+          unregistered_inbound_checks: Whether unregistered inbound checks for this Account Number can be deposited. If
+              you do not specify this field, the default is `blocked`.
+
+              - `allowed` - Accept all Inbound Check Deposits, even if they are not associated
+                with a Check Transfer or Checkbook Check.
+              - `blocked` - Only accept Inbound Check Deposits if they can be matched to a
+                Check Transfer or Checkbook Check.
 
           extra_headers: Send extra headers
 
@@ -338,8 +370,8 @@ class AsyncAccountNumbersResource(AsyncAPIResource):
                 {
                     "account_id": account_id,
                     "name": name,
-                    "inbound_ach": inbound_ach,
-                    "inbound_checks": inbound_checks,
+                    "inbound_ach_debits": inbound_ach_debits,
+                    "unregistered_inbound_checks": unregistered_inbound_checks,
                 },
                 account_number_create_params.AccountNumberCreateParams,
             ),
@@ -392,10 +424,10 @@ class AsyncAccountNumbersResource(AsyncAPIResource):
         self,
         account_number_id: str,
         *,
-        inbound_ach: account_number_update_params.InboundACH | Omit = omit,
-        inbound_checks: account_number_update_params.InboundChecks | Omit = omit,
+        inbound_ach_debits: Literal["allowed", "blocked"] | Omit = omit,
         name: str | Omit = omit,
         status: Literal["active", "disabled", "canceled"] | Omit = omit,
+        unregistered_inbound_checks: Literal["allowed", "blocked"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -410,10 +442,13 @@ class AsyncAccountNumbersResource(AsyncAPIResource):
         Args:
           account_number_id: The identifier of the Account Number.
 
-          inbound_ach: Options related to how this Account Number handles inbound ACH transfers.
+          inbound_ach_debits: Whether inbound ACH debits are allowed against this Account Number. Note that
+              ACH debits will be declined if this is `allowed` but the Account Number is not
+              active.
 
-          inbound_checks: Options related to how this Account Number should handle inbound check
-              withdrawals.
+              - `allowed` - ACH Debits are allowed.
+              - `blocked` - ACH Debits are blocked. Received debits will be declined and
+                returned with code `R20` (non-transaction account).
 
           name: The name you choose for the Account Number.
 
@@ -422,6 +457,13 @@ class AsyncAccountNumbersResource(AsyncAPIResource):
               - `active` - The account number is active.
               - `disabled` - The account number is temporarily disabled.
               - `canceled` - The account number is permanently disabled.
+
+          unregistered_inbound_checks: Whether unregistered inbound checks for this Account Number can be deposited.
+
+              - `allowed` - Accept all Inbound Check Deposits, even if they are not associated
+                with a Check Transfer or Checkbook Check.
+              - `blocked` - Only accept Inbound Check Deposits if they can be matched to a
+                Check Transfer or Checkbook Check.
 
           extra_headers: Send extra headers
 
@@ -439,10 +481,10 @@ class AsyncAccountNumbersResource(AsyncAPIResource):
             path_template("/account_numbers/{account_number_id}", account_number_id=account_number_id),
             body=await async_maybe_transform(
                 {
-                    "inbound_ach": inbound_ach,
-                    "inbound_checks": inbound_checks,
+                    "inbound_ach_debits": inbound_ach_debits,
                     "name": name,
                     "status": status,
+                    "unregistered_inbound_checks": unregistered_inbound_checks,
                 },
                 account_number_update_params.AccountNumberUpdateParams,
             ),
@@ -460,10 +502,10 @@ class AsyncAccountNumbersResource(AsyncAPIResource):
         self,
         *,
         account_id: str | Omit = omit,
-        ach_debit_status: account_number_list_params.ACHDebitStatus | Omit = omit,
         created_at: account_number_list_params.CreatedAt | Omit = omit,
         cursor: str | Omit = omit,
         idempotency_key: str | Omit = omit,
+        inbound_ach_debits: account_number_list_params.InboundACHDebits | Omit = omit,
         limit: int | Omit = omit,
         status: account_number_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -510,10 +552,10 @@ class AsyncAccountNumbersResource(AsyncAPIResource):
                 query=maybe_transform(
                     {
                         "account_id": account_id,
-                        "ach_debit_status": ach_debit_status,
                         "created_at": created_at,
                         "cursor": cursor,
                         "idempotency_key": idempotency_key,
+                        "inbound_ach_debits": inbound_ach_debits,
                         "limit": limit,
                         "status": status,
                     },
