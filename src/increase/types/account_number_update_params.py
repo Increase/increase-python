@@ -2,19 +2,21 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Literal, TypedDict
 
-__all__ = ["AccountNumberUpdateParams", "InboundACH", "InboundChecks"]
+__all__ = ["AccountNumberUpdateParams"]
 
 
 class AccountNumberUpdateParams(TypedDict, total=False):
-    inbound_ach: InboundACH
-    """Options related to how this Account Number handles inbound ACH transfers."""
+    inbound_ach_debits: Literal["allowed", "blocked"]
+    """Whether inbound ACH debits are allowed against this Account Number.
 
-    inbound_checks: InboundChecks
-    """
-    Options related to how this Account Number should handle inbound check
-    withdrawals.
+    Note that ACH debits will be declined if this is `allowed` but the Account
+    Number is not active.
+
+    - `allowed` - ACH Debits are allowed.
+    - `blocked` - ACH Debits are blocked. Received debits will be declined and
+      returned with code `R20` (non-transaction account).
     """
 
     name: str
@@ -28,32 +30,11 @@ class AccountNumberUpdateParams(TypedDict, total=False):
     - `canceled` - The account number is permanently disabled.
     """
 
+    unregistered_inbound_checks: Literal["allowed", "blocked"]
+    """Whether unregistered inbound checks for this Account Number can be deposited.
 
-class InboundACH(TypedDict, total=False):
-    """Options related to how this Account Number handles inbound ACH transfers."""
-
-    debit_status: Literal["allowed", "blocked"]
-    """Whether ACH debits are allowed against this Account Number.
-
-    Note that ACH debits will be declined if this is `allowed` but the Account
-    Number is not active.
-
-    - `allowed` - ACH Debits are allowed.
-    - `blocked` - ACH Debits are blocked. Received debits will be declined and
-      returned with code `R20` (non-transaction account).
-    """
-
-
-class InboundChecks(TypedDict, total=False):
-    """
-    Options related to how this Account Number should handle inbound check withdrawals.
-    """
-
-    status: Required[Literal["allowed", "check_transfers_only"]]
-    """How Increase should process checks with this account number printed on them.
-
-    - `allowed` - Checks with this Account Number will be processed even if they are
-      not associated with a Check Transfer.
-    - `check_transfers_only` - Checks with this Account Number will be processed
-      only if they can be matched to an existing Check Transfer.
+    - `allowed` - Accept all Inbound Check Deposits, even if they are not associated
+      with a Check Transfer or Checkbook Check.
+    - `blocked` - Only accept Inbound Check Deposits if they can be matched to a
+      Check Transfer or Checkbook Check.
     """

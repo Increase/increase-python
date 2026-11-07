@@ -34,8 +34,8 @@ class TestAccountNumbers:
         account_number = client.account_numbers.create(
             account_id="account_in71c4amph0vgo2qllky",
             name="Rent payments",
-            inbound_ach={"debit_status": "allowed"},
-            inbound_checks={"status": "allowed"},
+            inbound_ach_debits="allowed",
+            unregistered_inbound_checks="allowed",
         )
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
@@ -112,10 +112,10 @@ class TestAccountNumbers:
     def test_method_update_with_all_params(self, client: Increase) -> None:
         account_number = client.account_numbers.update(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
-            inbound_ach={"debit_status": "blocked"},
-            inbound_checks={"status": "allowed"},
+            inbound_ach_debits="blocked",
             name="x",
             status="disabled",
+            unregistered_inbound_checks="allowed",
         )
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
@@ -158,7 +158,6 @@ class TestAccountNumbers:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         account_number = client.account_numbers.list(
             account_id="account_id",
-            ach_debit_status={"in": ["allowed"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -167,6 +166,7 @@ class TestAccountNumbers:
             },
             cursor="cursor",
             idempotency_key="x",
+            inbound_ach_debits={"in": ["allowed"]},
             limit=1,
             status={"in": ["active"]},
         )
@@ -210,8 +210,8 @@ class TestAsyncAccountNumbers:
         account_number = await async_client.account_numbers.create(
             account_id="account_in71c4amph0vgo2qllky",
             name="Rent payments",
-            inbound_ach={"debit_status": "allowed"},
-            inbound_checks={"status": "allowed"},
+            inbound_ach_debits="allowed",
+            unregistered_inbound_checks="allowed",
         )
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
@@ -288,10 +288,10 @@ class TestAsyncAccountNumbers:
     async def test_method_update_with_all_params(self, async_client: AsyncIncrease) -> None:
         account_number = await async_client.account_numbers.update(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
-            inbound_ach={"debit_status": "blocked"},
-            inbound_checks={"status": "allowed"},
+            inbound_ach_debits="blocked",
             name="x",
             status="disabled",
+            unregistered_inbound_checks="allowed",
         )
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
@@ -334,7 +334,6 @@ class TestAsyncAccountNumbers:
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         account_number = await async_client.account_numbers.list(
             account_id="account_id",
-            ach_debit_status={"in": ["allowed"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -343,6 +342,7 @@ class TestAsyncAccountNumbers:
             },
             cursor="cursor",
             idempotency_key="x",
+            inbound_ach_debits={"in": ["allowed"]},
             limit=1,
             status={"in": ["active"]},
         )

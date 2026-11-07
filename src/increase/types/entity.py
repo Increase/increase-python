@@ -28,7 +28,6 @@ __all__ = [
     "NaturalPerson",
     "NaturalPersonAddress",
     "NaturalPersonIdentification",
-    "RiskRating",
     "SoleProprietorship",
     "SoleProprietorshipAddress",
     "SoleProprietorshipSoleProprietor",
@@ -522,26 +521,6 @@ class NaturalPerson(BaseModel):
 
     name: str
     """The person's legal name."""
-
-
-class RiskRating(BaseModel):
-    """
-    An assessment of the entity’s potential risk of involvement in financial crimes, such as money laundering.
-    """
-
-    rated_at: datetime
-    """
-    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the risk
-    rating was performed.
-    """
-
-    rating: Literal["low", "medium", "high"]
-    """The rating given to this entity.
-
-    - `low` - Minimal risk of involvement in financial crime.
-    - `medium` - Moderate risk of involvement in financial crime.
-    - `high` - Elevated risk of involvement in financial crime.
-    """
 
 
 class SoleProprietorshipAddress(BaseModel):
@@ -1112,9 +1091,6 @@ class Entity(BaseModel):
     Entity, if any.
     """
 
-    description: Optional[str] = None
-    """The entity's description for display purposes."""
-
     details_confirmed_at: Optional[datetime] = None
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
@@ -1145,12 +1121,6 @@ class Entity(BaseModel):
     """Details of the natural person entity.
 
     Will be present if `structure` is equal to `natural_person`.
-    """
-
-    risk_rating: Optional[RiskRating] = None
-    """
-    An assessment of the entity’s potential risk of involvement in financial crimes,
-    such as money laundering.
     """
 
     sole_proprietorship: Optional[SoleProprietorship] = None

@@ -36,7 +36,6 @@ __all__ = [
     "NaturalPersonIdentificationDriversLicense",
     "NaturalPersonIdentificationOther",
     "NaturalPersonIdentificationPassport",
-    "RiskRating",
     "SoleProprietorship",
     "SoleProprietorshipAddress",
     "SoleProprietorshipSoleProprietor",
@@ -83,9 +82,6 @@ class EntityCreateParams(TypedDict, total=False):
     Required if `structure` is equal to `corporation`.
     """
 
-    description: str
-    """The description you choose to give the entity."""
-
     government_authority: GovernmentAuthority
     """Details of the Government Authority entity to create.
 
@@ -104,12 +100,6 @@ class EntityCreateParams(TypedDict, total=False):
     Required if `structure` is equal to `natural_person`. Natural people entities
     should be submitted with `social_security_number` or
     `individual_taxpayer_identification_number` identification methods.
-    """
-
-    risk_rating: RiskRating
-    """
-    An assessment of the entity's potential risk of involvement in financial crimes,
-    such as money laundering.
     """
 
     sole_proprietorship: SoleProprietorship
@@ -888,26 +878,6 @@ class NaturalPerson(TypedDict, total=False):
     license, or other document if you've confirmed the individual does not have a US
     tax id (either a Social Security Number or Individual Taxpayer Identification
     Number).
-    """
-
-
-class RiskRating(TypedDict, total=False):
-    """
-    An assessment of the entity's potential risk of involvement in financial crimes, such as money laundering.
-    """
-
-    rated_at: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
-    """
-    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the risk
-    rating was performed.
-    """
-
-    rating: Required[Literal["low", "medium", "high"]]
-    """The rating given to this entity.
-
-    - `low` - Minimal risk of involvement in financial crime.
-    - `medium` - Moderate risk of involvement in financial crime.
-    - `high` - Elevated risk of involvement in financial crime.
     """
 
 

@@ -27,6 +27,14 @@ from .programs import (
     AsyncProgramsResourceWithStreamingResponse,
 )
 from ..._compat import cached_property
+from .checkbooks import (
+    CheckbooksResource,
+    AsyncCheckbooksResource,
+    CheckbooksResourceWithRawResponse,
+    AsyncCheckbooksResourceWithRawResponse,
+    CheckbooksResourceWithStreamingResponse,
+    AsyncCheckbooksResourceWithStreamingResponse,
+)
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from .card_tokens import (
     CardTokensResource,
@@ -390,6 +398,10 @@ class SimulationsResource(SyncAPIResource):
         return CheckTransfersResource(self._client)
 
     @cached_property
+    def checkbooks(self) -> CheckbooksResource:
+        return CheckbooksResource(self._client)
+
+    @cached_property
     def inbound_check_deposits(self) -> InboundCheckDepositsResource:
         return InboundCheckDepositsResource(self._client)
 
@@ -553,6 +565,10 @@ class AsyncSimulationsResource(AsyncAPIResource):
     @cached_property
     def check_transfers(self) -> AsyncCheckTransfersResource:
         return AsyncCheckTransfersResource(self._client)
+
+    @cached_property
+    def checkbooks(self) -> AsyncCheckbooksResource:
+        return AsyncCheckbooksResource(self._client)
 
     @cached_property
     def inbound_check_deposits(self) -> AsyncInboundCheckDepositsResource:
@@ -723,6 +739,10 @@ class SimulationsResourceWithRawResponse:
         return CheckTransfersResourceWithRawResponse(self._simulations.check_transfers)
 
     @cached_property
+    def checkbooks(self) -> CheckbooksResourceWithRawResponse:
+        return CheckbooksResourceWithRawResponse(self._simulations.checkbooks)
+
+    @cached_property
     def inbound_check_deposits(self) -> InboundCheckDepositsResourceWithRawResponse:
         return InboundCheckDepositsResourceWithRawResponse(self._simulations.inbound_check_deposits)
 
@@ -874,6 +894,10 @@ class AsyncSimulationsResourceWithRawResponse:
     @cached_property
     def check_transfers(self) -> AsyncCheckTransfersResourceWithRawResponse:
         return AsyncCheckTransfersResourceWithRawResponse(self._simulations.check_transfers)
+
+    @cached_property
+    def checkbooks(self) -> AsyncCheckbooksResourceWithRawResponse:
+        return AsyncCheckbooksResourceWithRawResponse(self._simulations.checkbooks)
 
     @cached_property
     def inbound_check_deposits(self) -> AsyncInboundCheckDepositsResourceWithRawResponse:
@@ -1031,6 +1055,10 @@ class SimulationsResourceWithStreamingResponse:
         return CheckTransfersResourceWithStreamingResponse(self._simulations.check_transfers)
 
     @cached_property
+    def checkbooks(self) -> CheckbooksResourceWithStreamingResponse:
+        return CheckbooksResourceWithStreamingResponse(self._simulations.checkbooks)
+
+    @cached_property
     def inbound_check_deposits(self) -> InboundCheckDepositsResourceWithStreamingResponse:
         return InboundCheckDepositsResourceWithStreamingResponse(self._simulations.inbound_check_deposits)
 
@@ -1186,6 +1214,10 @@ class AsyncSimulationsResourceWithStreamingResponse:
     @cached_property
     def check_transfers(self) -> AsyncCheckTransfersResourceWithStreamingResponse:
         return AsyncCheckTransfersResourceWithStreamingResponse(self._simulations.check_transfers)
+
+    @cached_property
+    def checkbooks(self) -> AsyncCheckbooksResourceWithStreamingResponse:
+        return AsyncCheckbooksResourceWithStreamingResponse(self._simulations.checkbooks)
 
     @cached_property
     def inbound_check_deposits(self) -> AsyncInboundCheckDepositsResourceWithStreamingResponse:
