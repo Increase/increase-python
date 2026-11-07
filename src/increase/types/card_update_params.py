@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Iterable
+from typing import Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = [
@@ -287,15 +287,17 @@ class DigitalWallet(TypedDict, total=False):
     digital_card_profile_id: str
     """The digital card profile assigned to this digital card."""
 
-    email: str
+    email: Optional[str]
     """
     An email address that can be used to verify the cardholder via one-time passcode
-    over email.
+    over email. Send `null` to clear the email address. Omit this field to leave it
+    unchanged.
     """
 
-    phone: str
+    phone: Optional[str]
     """
     A phone number that can be used to verify the cardholder via one-time passcode
     over SMS. Accepts formats like `+14155550123`, `4155550123`, `415-555-0123`, or
-    `(415) 555-0123`.
+    `(415) 555-0123`. Send `null` to clear the phone number. Omit this field to
+    leave it unchanged.
     """
