@@ -1129,6 +1129,9 @@ class SourceCheckDecline(BaseModel):
     check_transfer_id: Optional[str] = None
     """The identifier of the Check Transfer object associated with this decline."""
 
+    checkbook_check_id: Optional[str] = None
+    """The identifier of the Checkbook Check object associated with this decline."""
+
     front_image_file_id: Optional[str] = None
     """
     The identifier of the API File object containing an image of the front of the

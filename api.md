@@ -343,6 +343,35 @@ Methods:
 - <code title="post /check_transfers/{check_transfer_id}/cancel">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">cancel</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
 - <code title="post /check_transfers/{check_transfer_id}/stop_payment">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">stop_payment</a>(check_transfer_id, \*\*<a href="src/increase/types/check_transfer_stop_payment_params.py">params</a>) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
 
+# Checkbooks
+
+Types:
+
+```python
+from increase.types import Checkbook
+```
+
+Methods:
+
+- <code title="post /checkbooks">client.checkbooks.<a href="./src/increase/resources/checkbooks.py">create</a>(\*\*<a href="src/increase/types/checkbook_create_params.py">params</a>) -> <a href="./src/increase/types/checkbook.py">Checkbook</a></code>
+- <code title="get /checkbooks/{checkbook_id}">client.checkbooks.<a href="./src/increase/resources/checkbooks.py">retrieve</a>(checkbook_id) -> <a href="./src/increase/types/checkbook.py">Checkbook</a></code>
+- <code title="get /checkbooks">client.checkbooks.<a href="./src/increase/resources/checkbooks.py">list</a>(\*\*<a href="src/increase/types/checkbook_list_params.py">params</a>) -> <a href="./src/increase/types/checkbook.py">SyncPage[Checkbook]</a></code>
+- <code title="post /checkbooks/{checkbook_id}/stop">client.checkbooks.<a href="./src/increase/resources/checkbooks.py">stop</a>(checkbook_id) -> <a href="./src/increase/types/checkbook.py">Checkbook</a></code>
+
+# CheckbookChecks
+
+Types:
+
+```python
+from increase.types import CheckbookCheck
+```
+
+Methods:
+
+- <code title="get /checkbook_checks/{checkbook_check_id}">client.checkbook_checks.<a href="./src/increase/resources/checkbook_checks.py">retrieve</a>(checkbook_check_id) -> <a href="./src/increase/types/checkbook_check.py">CheckbookCheck</a></code>
+- <code title="get /checkbook_checks">client.checkbook_checks.<a href="./src/increase/resources/checkbook_checks.py">list</a>(\*\*<a href="src/increase/types/checkbook_check_list_params.py">params</a>) -> <a href="./src/increase/types/checkbook_check.py">SyncPage[CheckbookCheck]</a></code>
+- <code title="post /checkbook_checks/{checkbook_check_id}/stop">client.checkbook_checks.<a href="./src/increase/resources/checkbook_checks.py">stop</a>(checkbook_check_id) -> <a href="./src/increase/types/checkbook_check.py">CheckbookCheck</a></code>
+
 # InboundCheckDeposits
 
 Types:
@@ -974,6 +1003,12 @@ Methods:
 Methods:
 
 - <code title="post /simulations/check_transfers/{check_transfer_id}/mail">client.simulations.check_transfers.<a href="./src/increase/resources/simulations/check_transfers.py">mail</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
+
+## Checkbooks
+
+Methods:
+
+- <code title="post /simulations/checkbooks/{checkbook_id}/mail">client.simulations.checkbooks.<a href="./src/increase/resources/simulations/checkbooks.py">mail</a>(checkbook_id) -> <a href="./src/increase/types/checkbook.py">Checkbook</a></code>
 
 ## InboundCheckDeposits
 
