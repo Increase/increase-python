@@ -933,7 +933,12 @@ class ACHTransfer(BaseModel):
     """
 
     statement_descriptor: Optional[str] = None
-    """The descriptor that will show on the recipient's bank statement."""
+    """A description you chose to give the transfer.
+
+    If `individual_name` and `company_name` were not explicitly set, the
+    `statement_descriptor` will be sent in those fields to the receiving bank to
+    help the customer recognize the transfer.
+    """
 
     status: Literal[
         "pending_approval",

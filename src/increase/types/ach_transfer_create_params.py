@@ -37,15 +37,23 @@ class ACHTransferCreateParams(TypedDict, total=False):
     [might result in a hold before funds are available](/documentation/sending-ach-debit-transfers).
     """
 
-    statement_descriptor: Required[str]
-    """A description you choose to give the transfer.
+    company_name: Required[str]
+    """The name by which the recipient knows the counterparty of this transaction.
 
-    This will be saved with the transfer details, displayed in the dashboard, and
-    returned by the API. If `individual_name` and `company_name` are not explicitly
-    set by this API, the `statement_descriptor` will be sent in those fields to the
-    receiving bank to help the customer recognize the transfer. You are highly
-    encouraged to pass `individual_name` and `company_name` instead of relying on
-    this fallback.
+    If you're processing payments on behalf of another party, use their name, not
+    your own, so that it's more likely the recipient understands the context of the
+    payment. This value is usually displayed to the recipient on their bank
+    statement. We recommend setting this on every transfer; if you do not, we fall
+    back to the `statement_descriptor`.
+    """
+
+    individual_name: Required[str]
+    """The name of the transfer recipient.
+
+    This value is informational and generally not verified by the recipient's bank.
+    This value is usually displayed to the recipient on their bank statement. We
+    recommend setting this on every transfer; if you do not, we fall back to the
+    `statement_descriptor`.
     """
 
     account_number: str
@@ -89,16 +97,6 @@ class ACHTransferCreateParams(TypedDict, total=False):
     `ACCTVERIFY`, `PURCHASE`, `PAYROLL`, or `REVERSAL`.
     """
 
-    company_name: str
-    """The name by which the recipient knows the counterparty of this transaction.
-
-    If you're processing payments on behalf of another party, use their name, not
-    your own, so that it's more likely the recipient understands the context of the
-    payment. This value is usually displayed to the recipient on their bank
-    statement. We recommend setting this on every transfer; if you do not, we fall
-    back to the `statement_descriptor`.
-    """
-
     destination_account_holder: Literal["business", "individual", "unknown"]
     """The type of entity that owns the receiver's account.
 
@@ -130,15 +128,6 @@ class ACHTransferCreateParams(TypedDict, total=False):
     Most callers can leave this unset. For the specific case of person-to-person
     credits with the WEB standard entry class code, this must include the name of
     the payer.
-    """
-
-    individual_name: str
-    """The name of the transfer recipient.
-
-    This value is informational and generally not verified by the recipient's bank.
-    This value is usually displayed to the recipient on their bank statement. We
-    recommend setting this on every transfer; if you do not, we fall back to the
-    `statement_descriptor`.
     """
 
     preferred_effective_date: PreferredEffectiveDate

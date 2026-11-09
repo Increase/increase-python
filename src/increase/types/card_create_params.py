@@ -38,7 +38,12 @@ class CardCreateParams(TypedDict, total=False):
     """Controls that restrict how this card can be used."""
 
     billing_address: BillingAddress
-    """The card's billing address."""
+    """The card's billing address.
+
+    This is used in card authorizations to
+    [validate the address provided by the acquirer](/documentation/address-verification-system-codes-and-overrides).
+    If not provided, the address associated with the account's entity will be used.
+    """
 
     cardholder_name: CardholderName
     """The name of the cardholder.
@@ -274,7 +279,10 @@ class AuthorizationControls(TypedDict, total=False, extra_items=object):  # type
 
 
 class BillingAddress(TypedDict, total=False):
-    """The card's billing address."""
+    """The card's billing address.
+
+    This is used in card authorizations to [validate the address provided by the acquirer](/documentation/address-verification-system-codes-and-overrides). If not provided, the address associated with the account's entity will be used.
+    """
 
     city: Required[str]
     """The city of the billing address."""
