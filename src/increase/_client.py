@@ -39,6 +39,7 @@ if TYPE_CHECKING:
         accounts,
         entities,
         programs,
+        checkbooks,
         file_links,
         card_tokens,
         simulations,
@@ -54,6 +55,7 @@ if TYPE_CHECKING:
         routing_numbers,
         swift_transfers,
         card_validations,
+        checkbook_checks,
         fednow_transfers,
         intrafi_balances,
         account_transfers,
@@ -97,6 +99,7 @@ if TYPE_CHECKING:
     from .resources.accounts import AccountsResource, AsyncAccountsResource
     from .resources.entities import EntitiesResource, AsyncEntitiesResource
     from .resources.programs import ProgramsResource, AsyncProgramsResource
+    from .resources.checkbooks import CheckbooksResource, AsyncCheckbooksResource
     from .resources.file_links import FileLinksResource, AsyncFileLinksResource
     from .resources.card_tokens import CardTokensResource, AsyncCardTokensResource
     from .resources.transactions import TransactionsResource, AsyncTransactionsResource
@@ -111,6 +114,7 @@ if TYPE_CHECKING:
     from .resources.routing_numbers import RoutingNumbersResource, AsyncRoutingNumbersResource
     from .resources.swift_transfers import SwiftTransfersResource, AsyncSwiftTransfersResource
     from .resources.card_validations import CardValidationsResource, AsyncCardValidationsResource
+    from .resources.checkbook_checks import CheckbookChecksResource, AsyncCheckbookChecksResource
     from .resources.fednow_transfers import FednowTransfersResource, AsyncFednowTransfersResource
     from .resources.intrafi_balances import IntrafiBalancesResource, AsyncIntrafiBalancesResource
     from .resources.account_transfers import AccountTransfersResource, AsyncAccountTransfersResource
@@ -428,6 +432,18 @@ class Increase(SyncAPIClient):
         from .resources.check_transfers import CheckTransfersResource
 
         return CheckTransfersResource(self)
+
+    @cached_property
+    def checkbooks(self) -> CheckbooksResource:
+        from .resources.checkbooks import CheckbooksResource
+
+        return CheckbooksResource(self)
+
+    @cached_property
+    def checkbook_checks(self) -> CheckbookChecksResource:
+        from .resources.checkbook_checks import CheckbookChecksResource
+
+        return CheckbookChecksResource(self)
 
     @cached_property
     def inbound_check_deposits(self) -> InboundCheckDepositsResource:
@@ -1033,6 +1049,18 @@ class AsyncIncrease(AsyncAPIClient):
         return AsyncCheckTransfersResource(self)
 
     @cached_property
+    def checkbooks(self) -> AsyncCheckbooksResource:
+        from .resources.checkbooks import AsyncCheckbooksResource
+
+        return AsyncCheckbooksResource(self)
+
+    @cached_property
+    def checkbook_checks(self) -> AsyncCheckbookChecksResource:
+        from .resources.checkbook_checks import AsyncCheckbookChecksResource
+
+        return AsyncCheckbookChecksResource(self)
+
+    @cached_property
     def inbound_check_deposits(self) -> AsyncInboundCheckDepositsResource:
         from .resources.inbound_check_deposits import AsyncInboundCheckDepositsResource
 
@@ -1548,6 +1576,18 @@ class IncreaseWithRawResponse:
         return CheckTransfersResourceWithRawResponse(self._client.check_transfers)
 
     @cached_property
+    def checkbooks(self) -> checkbooks.CheckbooksResourceWithRawResponse:
+        from .resources.checkbooks import CheckbooksResourceWithRawResponse
+
+        return CheckbooksResourceWithRawResponse(self._client.checkbooks)
+
+    @cached_property
+    def checkbook_checks(self) -> checkbook_checks.CheckbookChecksResourceWithRawResponse:
+        from .resources.checkbook_checks import CheckbookChecksResourceWithRawResponse
+
+        return CheckbookChecksResourceWithRawResponse(self._client.checkbook_checks)
+
+    @cached_property
     def inbound_check_deposits(self) -> inbound_check_deposits.InboundCheckDepositsResourceWithRawResponse:
         from .resources.inbound_check_deposits import InboundCheckDepositsResourceWithRawResponse
 
@@ -1927,6 +1967,18 @@ class AsyncIncreaseWithRawResponse:
         return AsyncCheckTransfersResourceWithRawResponse(self._client.check_transfers)
 
     @cached_property
+    def checkbooks(self) -> checkbooks.AsyncCheckbooksResourceWithRawResponse:
+        from .resources.checkbooks import AsyncCheckbooksResourceWithRawResponse
+
+        return AsyncCheckbooksResourceWithRawResponse(self._client.checkbooks)
+
+    @cached_property
+    def checkbook_checks(self) -> checkbook_checks.AsyncCheckbookChecksResourceWithRawResponse:
+        from .resources.checkbook_checks import AsyncCheckbookChecksResourceWithRawResponse
+
+        return AsyncCheckbookChecksResourceWithRawResponse(self._client.checkbook_checks)
+
+    @cached_property
     def inbound_check_deposits(self) -> inbound_check_deposits.AsyncInboundCheckDepositsResourceWithRawResponse:
         from .resources.inbound_check_deposits import AsyncInboundCheckDepositsResourceWithRawResponse
 
@@ -2304,6 +2356,18 @@ class IncreaseWithStreamedResponse:
         from .resources.check_transfers import CheckTransfersResourceWithStreamingResponse
 
         return CheckTransfersResourceWithStreamingResponse(self._client.check_transfers)
+
+    @cached_property
+    def checkbooks(self) -> checkbooks.CheckbooksResourceWithStreamingResponse:
+        from .resources.checkbooks import CheckbooksResourceWithStreamingResponse
+
+        return CheckbooksResourceWithStreamingResponse(self._client.checkbooks)
+
+    @cached_property
+    def checkbook_checks(self) -> checkbook_checks.CheckbookChecksResourceWithStreamingResponse:
+        from .resources.checkbook_checks import CheckbookChecksResourceWithStreamingResponse
+
+        return CheckbookChecksResourceWithStreamingResponse(self._client.checkbook_checks)
 
     @cached_property
     def inbound_check_deposits(self) -> inbound_check_deposits.InboundCheckDepositsResourceWithStreamingResponse:
@@ -2689,6 +2753,18 @@ class AsyncIncreaseWithStreamedResponse:
         from .resources.check_transfers import AsyncCheckTransfersResourceWithStreamingResponse
 
         return AsyncCheckTransfersResourceWithStreamingResponse(self._client.check_transfers)
+
+    @cached_property
+    def checkbooks(self) -> checkbooks.AsyncCheckbooksResourceWithStreamingResponse:
+        from .resources.checkbooks import AsyncCheckbooksResourceWithStreamingResponse
+
+        return AsyncCheckbooksResourceWithStreamingResponse(self._client.checkbooks)
+
+    @cached_property
+    def checkbook_checks(self) -> checkbook_checks.AsyncCheckbookChecksResourceWithStreamingResponse:
+        from .resources.checkbook_checks import AsyncCheckbookChecksResourceWithStreamingResponse
+
+        return AsyncCheckbookChecksResourceWithStreamingResponse(self._client.checkbook_checks)
 
     @cached_property
     def inbound_check_deposits(self) -> inbound_check_deposits.AsyncInboundCheckDepositsResourceWithStreamingResponse:

@@ -8,14 +8,12 @@ from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["AccountNumberListParams", "ACHDebitStatus", "CreatedAt", "Status"]
+__all__ = ["AccountNumberListParams", "CreatedAt", "InboundACHDebits", "Status"]
 
 
 class AccountNumberListParams(TypedDict, total=False):
     account_id: str
     """Filter Account Numbers to those belonging to the specified Account."""
-
-    ach_debit_status: ACHDebitStatus
 
     created_at: CreatedAt
 
@@ -30,6 +28,8 @@ class AccountNumberListParams(TypedDict, total=False):
     [idempotency](https://increase.com/documentation/idempotency-keys).
     """
 
+    inbound_ach_debits: InboundACHDebits
+
     limit: int
     """Limit the size of the list that is returned.
 
@@ -39,19 +39,6 @@ class AccountNumberListParams(TypedDict, total=False):
     """
 
     status: Status
-
-
-_ACHDebitStatusReservedKeywords = TypedDict(
-    "_ACHDebitStatusReservedKeywords",
-    {
-        "in": List[Literal["allowed", "blocked"]],
-    },
-    total=False,
-)
-
-
-class ACHDebitStatus(_ACHDebitStatusReservedKeywords, total=False):
-    pass
 
 
 class CreatedAt(TypedDict, total=False):
@@ -78,6 +65,19 @@ class CreatedAt(TypedDict, total=False):
     Return results on or before this
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
     """
+
+
+_InboundACHDebitsReservedKeywords = TypedDict(
+    "_InboundACHDebitsReservedKeywords",
+    {
+        "in": List[Literal["allowed", "blocked"]],
+    },
+    total=False,
+)
+
+
+class InboundACHDebits(_InboundACHDebitsReservedKeywords, total=False):
+    pass
 
 
 _StatusReservedKeywords = TypedDict(
