@@ -80,7 +80,9 @@ class CardsResource(SyncAPIResource):
 
           authorization_controls: Controls that restrict how this card can be used.
 
-          billing_address: The card's billing address.
+          billing_address: The card's billing address. This is used in card authorizations to
+              [validate the address provided by the acquirer](/documentation/address-verification-system-codes-and-overrides).
+              If not provided, the address associated with the account's entity will be used.
 
           cardholder_name: The name of the cardholder. Used to respond to Account Name Inquiry requests
               from acquirers in Card Validations.
@@ -195,7 +197,9 @@ class CardsResource(SyncAPIResource):
 
           authorization_controls: Controls that restrict how this card can be used.
 
-          billing_address: The card's updated billing address.
+          billing_address: The card's billing address. This is used in card authorizations to
+              [validate the address provided by the acquirer](/documentation/address-verification-system-codes-and-overrides).
+              If not provided, the address associated with the account's entity will be used.
 
           description: The description you choose to give the card.
 
@@ -586,7 +590,9 @@ class AsyncCardsResource(AsyncAPIResource):
 
           authorization_controls: Controls that restrict how this card can be used.
 
-          billing_address: The card's billing address.
+          billing_address: The card's billing address. This is used in card authorizations to
+              [validate the address provided by the acquirer](/documentation/address-verification-system-codes-and-overrides).
+              If not provided, the address associated with the account's entity will be used.
 
           cardholder_name: The name of the cardholder. Used to respond to Account Name Inquiry requests
               from acquirers in Card Validations.
@@ -701,7 +707,9 @@ class AsyncCardsResource(AsyncAPIResource):
 
           authorization_controls: Controls that restrict how this card can be used.
 
-          billing_address: The card's updated billing address.
+          billing_address: The card's billing address. This is used in card authorizations to
+              [validate the address provided by the acquirer](/documentation/address-verification-system-codes-and-overrides).
+              If not provided, the address associated with the account's entity will be used.
 
           description: The description you choose to give the card.
 
