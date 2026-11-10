@@ -47,6 +47,7 @@ __all__ = [
     "SourceCardRefund",
     "SourceCardRefundCashback",
     "SourceCardRefundInterchange",
+    "SourceCardRefundInterchangeAdjustment",
     "SourceCardRefundNetworkIdentifiers",
     "SourceCardRefundPurchaseDetails",
     "SourceCardRefundPurchaseDetailsCarRental",
@@ -61,6 +62,7 @@ __all__ = [
     "SourceCardSettlement",
     "SourceCardSettlementCashback",
     "SourceCardSettlementInterchange",
+    "SourceCardSettlementInterchangeAdjustment",
     "SourceCardSettlementNetworkIdentifiers",
     "SourceCardSettlementPurchaseDetails",
     "SourceCardSettlementPurchaseDetailsCarRental",
@@ -1631,8 +1633,36 @@ class SourceCardRefundCashback(BaseModel):
     """
 
 
+class SourceCardRefundInterchangeAdjustment(BaseModel):
+    """
+    An adjustment the card network made to the interchange after this transaction cleared, if any.
+    """
+
+    adjusted_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the interchange was adjusted.
+    """
+
+    amount: str
+    """
+    The adjustment amount given as a string containing a decimal number in major
+    units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
+    credited to Increase and a negative number if it is debited.
+    """
+
+    code: str
+    """The card network specific interchange code that applies after the adjustment."""
+
+
 class SourceCardRefundInterchange(BaseModel):
     """Interchange assessed as a part of this transaction."""
+
+    adjustment: Optional[SourceCardRefundInterchangeAdjustment] = None
+    """
+    An adjustment the card network made to the interchange after this transaction
+    cleared, if any.
+    """
 
     amount: str
     """
@@ -2768,8 +2798,36 @@ class SourceCardSettlementCashback(BaseModel):
     """
 
 
+class SourceCardSettlementInterchangeAdjustment(BaseModel):
+    """
+    An adjustment the card network made to the interchange after this transaction cleared, if any.
+    """
+
+    adjusted_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the interchange was adjusted.
+    """
+
+    amount: str
+    """
+    The adjustment amount given as a string containing a decimal number in major
+    units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
+    credited to Increase and a negative number if it is debited.
+    """
+
+    code: str
+    """The card network specific interchange code that applies after the adjustment."""
+
+
 class SourceCardSettlementInterchange(BaseModel):
     """Interchange assessed as a part of this transaction."""
+
+    adjustment: Optional[SourceCardSettlementInterchangeAdjustment] = None
+    """
+    An adjustment the card network made to the interchange after this transaction
+    cleared, if any.
+    """
 
     amount: str
     """

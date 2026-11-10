@@ -126,6 +126,7 @@ __all__ = [
     "ElementCardRefund",
     "ElementCardRefundCashback",
     "ElementCardRefundInterchange",
+    "ElementCardRefundInterchangeAdjustment",
     "ElementCardRefundNetworkIdentifiers",
     "ElementCardRefundPurchaseDetails",
     "ElementCardRefundPurchaseDetailsCarRental",
@@ -142,6 +143,7 @@ __all__ = [
     "ElementCardSettlement",
     "ElementCardSettlementCashback",
     "ElementCardSettlementInterchange",
+    "ElementCardSettlementInterchangeAdjustment",
     "ElementCardSettlementNetworkIdentifiers",
     "ElementCardSettlementPurchaseDetails",
     "ElementCardSettlementPurchaseDetailsCarRental",
@@ -5003,8 +5005,36 @@ class ElementCardRefundCashback(BaseModel):
     """
 
 
+class ElementCardRefundInterchangeAdjustment(BaseModel):
+    """
+    An adjustment the card network made to the interchange after this transaction cleared, if any.
+    """
+
+    adjusted_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the interchange was adjusted.
+    """
+
+    amount: str
+    """
+    The adjustment amount given as a string containing a decimal number in major
+    units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
+    credited to Increase and a negative number if it is debited.
+    """
+
+    code: str
+    """The card network specific interchange code that applies after the adjustment."""
+
+
 class ElementCardRefundInterchange(BaseModel):
     """Interchange assessed as a part of this transaction."""
+
+    adjustment: Optional[ElementCardRefundInterchangeAdjustment] = None
+    """
+    An adjustment the card network made to the interchange after this transaction
+    cleared, if any.
+    """
 
     amount: str
     """
@@ -6420,8 +6450,36 @@ class ElementCardSettlementCashback(BaseModel):
     """
 
 
+class ElementCardSettlementInterchangeAdjustment(BaseModel):
+    """
+    An adjustment the card network made to the interchange after this transaction cleared, if any.
+    """
+
+    adjusted_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the interchange was adjusted.
+    """
+
+    amount: str
+    """
+    The adjustment amount given as a string containing a decimal number in major
+    units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
+    credited to Increase and a negative number if it is debited.
+    """
+
+    code: str
+    """The card network specific interchange code that applies after the adjustment."""
+
+
 class ElementCardSettlementInterchange(BaseModel):
     """Interchange assessed as a part of this transaction."""
+
+    adjustment: Optional[ElementCardSettlementInterchangeAdjustment] = None
+    """
+    An adjustment the card network made to the interchange after this transaction
+    cleared, if any.
+    """
 
     amount: str
     """

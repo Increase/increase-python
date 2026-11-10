@@ -43,17 +43,14 @@ class ACHTransferCreateParams(TypedDict, total=False):
     If you're processing payments on behalf of another party, use their name, not
     your own, so that it's more likely the recipient understands the context of the
     payment. This value is usually displayed to the recipient on their bank
-    statement. We recommend setting this on every transfer; if you do not, we fall
-    back to the `statement_descriptor`.
+    statement.
     """
 
     individual_name: Required[str]
     """The name of the transfer recipient.
 
     This value is informational and generally not verified by the recipient's bank.
-    This value is usually displayed to the recipient on their bank statement. We
-    recommend setting this on every transfer; if you do not, we fall back to the
-    `statement_descriptor`.
+    This value is usually displayed to the recipient on their bank statement.
     """
 
     account_number: str
