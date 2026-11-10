@@ -49,18 +49,17 @@ class ACHTransfersResource(SyncAPIResource):
         *,
         account_id: str,
         amount: int,
-        statement_descriptor: str,
+        company_name: str,
+        individual_name: str,
         account_number: str | Omit = omit,
         addenda: ach_transfer_create_params.Addenda | Omit = omit,
         company_descriptive_date: str | Omit = omit,
         company_discretionary_data: str | Omit = omit,
         company_entry_description: str | Omit = omit,
-        company_name: str | Omit = omit,
         destination_account_holder: Literal["business", "individual", "unknown"] | Omit = omit,
         external_account_id: str | Omit = omit,
         funding: Literal["checking", "savings", "loan", "general_ledger"] | Omit = omit,
         individual_id: str | Omit = omit,
-        individual_name: str | Omit = omit,
         preferred_effective_date: ach_transfer_create_params.PreferredEffectiveDate | Omit = omit,
         require_approval: bool | Omit = omit,
         routing_number: str | Omit = omit,
@@ -99,12 +98,17 @@ class ACHTransfersResource(SyncAPIResource):
               into Increase. Debit transfers
               [might result in a hold before funds are available](/documentation/sending-ach-debit-transfers).
 
-          statement_descriptor: A description you choose to give the transfer. This will be saved with the
-              transfer details, displayed in the dashboard, and returned by the API. If
-              `individual_name` and `company_name` are not explicitly set by this API, the
-              `statement_descriptor` will be sent in those fields to the receiving bank to
-              help the customer recognize the transfer. You are highly encouraged to pass
-              `individual_name` and `company_name` instead of relying on this fallback.
+          company_name: The name by which the recipient knows the counterparty of this transaction. If
+              you're processing payments on behalf of another party, use their name, not your
+              own, so that it's more likely the recipient understands the context of the
+              payment. This value is usually displayed to the recipient on their bank
+              statement. We recommend setting this on every transfer; if you do not, we fall
+              back to the `statement_descriptor`.
+
+          individual_name: The name of the transfer recipient. This value is informational and generally
+              not verified by the recipient's bank. This value is usually displayed to the
+              recipient on their bank statement. We recommend setting this on every transfer;
+              if you do not, we fall back to the `statement_descriptor`.
 
           account_number: The receiver's account number. For credit transfers (transfers with a positive
               `amount`), this is the account that funds will be sent to. For debit transfers
@@ -132,13 +136,6 @@ class ACHTransfersResource(SyncAPIResource):
               code and use case. For example, some use cases require constants like
               `ACCTVERIFY`, `PURCHASE`, `PAYROLL`, or `REVERSAL`.
 
-          company_name: The name by which the recipient knows the counterparty of this transaction. If
-              you're processing payments on behalf of another party, use their name, not your
-              own, so that it's more likely the recipient understands the context of the
-              payment. This value is usually displayed to the recipient on their bank
-              statement. We recommend setting this on every transfer; if you do not, we fall
-              back to the `statement_descriptor`.
-
           destination_account_holder: The type of entity that owns the receiver's account.
 
               - `business` - The External Account is owned by a business.
@@ -159,11 +156,6 @@ class ACHTransfersResource(SyncAPIResource):
               generally not verified by the recipient's bank. Most callers can leave this
               unset. For the specific case of person-to-person credits with the WEB standard
               entry class code, this must include the name of the payer.
-
-          individual_name: The name of the transfer recipient. This value is informational and generally
-              not verified by the recipient's bank. This value is usually displayed to the
-              recipient on their bank statement. We recommend setting this on every transfer;
-              if you do not, we fall back to the `statement_descriptor`.
 
           preferred_effective_date: Configuration for how the effective date of the transfer will be set. This
               determines same-day vs future-dated settlement timing. If not set, defaults to a
@@ -208,18 +200,17 @@ class ACHTransfersResource(SyncAPIResource):
                 {
                     "account_id": account_id,
                     "amount": amount,
-                    "statement_descriptor": statement_descriptor,
+                    "company_name": company_name,
+                    "individual_name": individual_name,
                     "account_number": account_number,
                     "addenda": addenda,
                     "company_descriptive_date": company_descriptive_date,
                     "company_discretionary_data": company_discretionary_data,
                     "company_entry_description": company_entry_description,
-                    "company_name": company_name,
                     "destination_account_holder": destination_account_holder,
                     "external_account_id": external_account_id,
                     "funding": funding,
                     "individual_id": individual_id,
-                    "individual_name": individual_name,
                     "preferred_effective_date": preferred_effective_date,
                     "require_approval": require_approval,
                     "routing_number": routing_number,
@@ -451,18 +442,17 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         *,
         account_id: str,
         amount: int,
-        statement_descriptor: str,
+        company_name: str,
+        individual_name: str,
         account_number: str | Omit = omit,
         addenda: ach_transfer_create_params.Addenda | Omit = omit,
         company_descriptive_date: str | Omit = omit,
         company_discretionary_data: str | Omit = omit,
         company_entry_description: str | Omit = omit,
-        company_name: str | Omit = omit,
         destination_account_holder: Literal["business", "individual", "unknown"] | Omit = omit,
         external_account_id: str | Omit = omit,
         funding: Literal["checking", "savings", "loan", "general_ledger"] | Omit = omit,
         individual_id: str | Omit = omit,
-        individual_name: str | Omit = omit,
         preferred_effective_date: ach_transfer_create_params.PreferredEffectiveDate | Omit = omit,
         require_approval: bool | Omit = omit,
         routing_number: str | Omit = omit,
@@ -501,12 +491,17 @@ class AsyncACHTransfersResource(AsyncAPIResource):
               into Increase. Debit transfers
               [might result in a hold before funds are available](/documentation/sending-ach-debit-transfers).
 
-          statement_descriptor: A description you choose to give the transfer. This will be saved with the
-              transfer details, displayed in the dashboard, and returned by the API. If
-              `individual_name` and `company_name` are not explicitly set by this API, the
-              `statement_descriptor` will be sent in those fields to the receiving bank to
-              help the customer recognize the transfer. You are highly encouraged to pass
-              `individual_name` and `company_name` instead of relying on this fallback.
+          company_name: The name by which the recipient knows the counterparty of this transaction. If
+              you're processing payments on behalf of another party, use their name, not your
+              own, so that it's more likely the recipient understands the context of the
+              payment. This value is usually displayed to the recipient on their bank
+              statement. We recommend setting this on every transfer; if you do not, we fall
+              back to the `statement_descriptor`.
+
+          individual_name: The name of the transfer recipient. This value is informational and generally
+              not verified by the recipient's bank. This value is usually displayed to the
+              recipient on their bank statement. We recommend setting this on every transfer;
+              if you do not, we fall back to the `statement_descriptor`.
 
           account_number: The receiver's account number. For credit transfers (transfers with a positive
               `amount`), this is the account that funds will be sent to. For debit transfers
@@ -534,13 +529,6 @@ class AsyncACHTransfersResource(AsyncAPIResource):
               code and use case. For example, some use cases require constants like
               `ACCTVERIFY`, `PURCHASE`, `PAYROLL`, or `REVERSAL`.
 
-          company_name: The name by which the recipient knows the counterparty of this transaction. If
-              you're processing payments on behalf of another party, use their name, not your
-              own, so that it's more likely the recipient understands the context of the
-              payment. This value is usually displayed to the recipient on their bank
-              statement. We recommend setting this on every transfer; if you do not, we fall
-              back to the `statement_descriptor`.
-
           destination_account_holder: The type of entity that owns the receiver's account.
 
               - `business` - The External Account is owned by a business.
@@ -561,11 +549,6 @@ class AsyncACHTransfersResource(AsyncAPIResource):
               generally not verified by the recipient's bank. Most callers can leave this
               unset. For the specific case of person-to-person credits with the WEB standard
               entry class code, this must include the name of the payer.
-
-          individual_name: The name of the transfer recipient. This value is informational and generally
-              not verified by the recipient's bank. This value is usually displayed to the
-              recipient on their bank statement. We recommend setting this on every transfer;
-              if you do not, we fall back to the `statement_descriptor`.
 
           preferred_effective_date: Configuration for how the effective date of the transfer will be set. This
               determines same-day vs future-dated settlement timing. If not set, defaults to a
@@ -610,18 +593,17 @@ class AsyncACHTransfersResource(AsyncAPIResource):
                 {
                     "account_id": account_id,
                     "amount": amount,
-                    "statement_descriptor": statement_descriptor,
+                    "company_name": company_name,
+                    "individual_name": individual_name,
                     "account_number": account_number,
                     "addenda": addenda,
                     "company_descriptive_date": company_descriptive_date,
                     "company_discretionary_data": company_discretionary_data,
                     "company_entry_description": company_entry_description,
-                    "company_name": company_name,
                     "destination_account_holder": destination_account_holder,
                     "external_account_id": external_account_id,
                     "funding": funding,
                     "individual_id": individual_id,
-                    "individual_name": individual_name,
                     "preferred_effective_date": preferred_effective_date,
                     "require_approval": require_approval,
                     "routing_number": routing_number,
