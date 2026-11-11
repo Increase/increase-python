@@ -47,6 +47,7 @@ __all__ = [
     "SourceCardRefund",
     "SourceCardRefundCashback",
     "SourceCardRefundInterchange",
+    "SourceCardRefundInterchangeAdjustment",
     "SourceCardRefundNetworkIdentifiers",
     "SourceCardRefundPurchaseDetails",
     "SourceCardRefundPurchaseDetailsCarRental",
@@ -61,6 +62,7 @@ __all__ = [
     "SourceCardSettlement",
     "SourceCardSettlementCashback",
     "SourceCardSettlementInterchange",
+    "SourceCardSettlementInterchangeAdjustment",
     "SourceCardSettlementNetworkIdentifiers",
     "SourceCardSettlementPurchaseDetails",
     "SourceCardSettlementPurchaseDetailsCarRental",
@@ -1187,6 +1189,9 @@ class SourceCardFinancialSchemeFee(BaseModel):
         "visa_advertising_service_commercial_credit",
         "visa_community_growth_acceleration_program",
         "visa_processing_guarantee_commercial_credit",
+        "visa_atm_cash_withdrawal_domestic",
+        "visa_atm_cash_withdrawal_international",
+        "visa_atm_cash_deposit_domestic",
         "pulse_switch_fee",
         "pulse_tokenization_fee",
     ]
@@ -1224,7 +1229,8 @@ class SourceCardFinancialSchemeFee(BaseModel):
     - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
       tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
       in real-time. Activity related to Purchase (includes Signature Authenticated
-      Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+      Visa and PIN Authenticated Visa Debit (PAVD) transactions) and ATM
+      transactions.
     - `visa_message_transmission` - Issuer Transactions Visa represents a charge
       based on total actual monthly processing (Visa transactions only) through a
       VisaNet Access Point (VAP). Charges are assessed to the processor for each
@@ -1276,6 +1282,12 @@ class SourceCardFinancialSchemeFee(BaseModel):
       Acceleration Program Fee.
     - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
       for Commercial Credit cards.
+    - `visa_atm_cash_withdrawal_domestic` - Activity and fees for the processing of
+      an original cash withdrawal at a domestic ATM.
+    - `visa_atm_cash_withdrawal_international` - Activity and fees for the
+      processing of an original cash withdrawal at an international ATM.
+    - `visa_atm_cash_deposit_domestic` - Activity and fees for the processing of an
+      original deposit at a domestic ATM.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
     - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
@@ -1631,8 +1643,36 @@ class SourceCardRefundCashback(BaseModel):
     """
 
 
+class SourceCardRefundInterchangeAdjustment(BaseModel):
+    """
+    An adjustment the card network made to the interchange after this transaction cleared, if any.
+    """
+
+    adjusted_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the interchange was adjusted.
+    """
+
+    amount: str
+    """
+    The adjustment amount given as a string containing a decimal number in major
+    units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
+    credited to Increase and a negative number if it is debited.
+    """
+
+    code: str
+    """The card network specific interchange code that applies after the adjustment."""
+
+
 class SourceCardRefundInterchange(BaseModel):
     """Interchange assessed as a part of this transaction."""
+
+    adjustment: Optional[SourceCardRefundInterchangeAdjustment] = None
+    """
+    An adjustment the card network made to the interchange after this transaction
+    cleared, if any.
+    """
 
     amount: str
     """
@@ -2489,6 +2529,9 @@ class SourceCardRefundSchemeFee(BaseModel):
         "visa_advertising_service_commercial_credit",
         "visa_community_growth_acceleration_program",
         "visa_processing_guarantee_commercial_credit",
+        "visa_atm_cash_withdrawal_domestic",
+        "visa_atm_cash_withdrawal_international",
+        "visa_atm_cash_deposit_domestic",
         "pulse_switch_fee",
         "pulse_tokenization_fee",
     ]
@@ -2526,7 +2569,8 @@ class SourceCardRefundSchemeFee(BaseModel):
     - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
       tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
       in real-time. Activity related to Purchase (includes Signature Authenticated
-      Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+      Visa and PIN Authenticated Visa Debit (PAVD) transactions) and ATM
+      transactions.
     - `visa_message_transmission` - Issuer Transactions Visa represents a charge
       based on total actual monthly processing (Visa transactions only) through a
       VisaNet Access Point (VAP). Charges are assessed to the processor for each
@@ -2578,6 +2622,12 @@ class SourceCardRefundSchemeFee(BaseModel):
       Acceleration Program Fee.
     - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
       for Commercial Credit cards.
+    - `visa_atm_cash_withdrawal_domestic` - Activity and fees for the processing of
+      an original cash withdrawal at a domestic ATM.
+    - `visa_atm_cash_withdrawal_international` - Activity and fees for the
+      processing of an original cash withdrawal at an international ATM.
+    - `visa_atm_cash_deposit_domestic` - Activity and fees for the processing of an
+      original deposit at a domestic ATM.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
     - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
@@ -2768,8 +2818,36 @@ class SourceCardSettlementCashback(BaseModel):
     """
 
 
+class SourceCardSettlementInterchangeAdjustment(BaseModel):
+    """
+    An adjustment the card network made to the interchange after this transaction cleared, if any.
+    """
+
+    adjusted_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the interchange was adjusted.
+    """
+
+    amount: str
+    """
+    The adjustment amount given as a string containing a decimal number in major
+    units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
+    credited to Increase and a negative number if it is debited.
+    """
+
+    code: str
+    """The card network specific interchange code that applies after the adjustment."""
+
+
 class SourceCardSettlementInterchange(BaseModel):
     """Interchange assessed as a part of this transaction."""
+
+    adjustment: Optional[SourceCardSettlementInterchangeAdjustment] = None
+    """
+    An adjustment the card network made to the interchange after this transaction
+    cleared, if any.
+    """
 
     amount: str
     """
@@ -3626,6 +3704,9 @@ class SourceCardSettlementSchemeFee(BaseModel):
         "visa_advertising_service_commercial_credit",
         "visa_community_growth_acceleration_program",
         "visa_processing_guarantee_commercial_credit",
+        "visa_atm_cash_withdrawal_domestic",
+        "visa_atm_cash_withdrawal_international",
+        "visa_atm_cash_deposit_domestic",
         "pulse_switch_fee",
         "pulse_tokenization_fee",
     ]
@@ -3663,7 +3744,8 @@ class SourceCardSettlementSchemeFee(BaseModel):
     - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
       tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
       in real-time. Activity related to Purchase (includes Signature Authenticated
-      Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+      Visa and PIN Authenticated Visa Debit (PAVD) transactions) and ATM
+      transactions.
     - `visa_message_transmission` - Issuer Transactions Visa represents a charge
       based on total actual monthly processing (Visa transactions only) through a
       VisaNet Access Point (VAP). Charges are assessed to the processor for each
@@ -3715,6 +3797,12 @@ class SourceCardSettlementSchemeFee(BaseModel):
       Acceleration Program Fee.
     - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
       for Commercial Credit cards.
+    - `visa_atm_cash_withdrawal_domestic` - Activity and fees for the processing of
+      an original cash withdrawal at a domestic ATM.
+    - `visa_atm_cash_withdrawal_international` - Activity and fees for the
+      processing of an original cash withdrawal at an international ATM.
+    - `visa_atm_cash_deposit_domestic` - Activity and fees for the processing of an
+      original deposit at a domestic ATM.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
     - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
