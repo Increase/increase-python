@@ -49,6 +49,7 @@ _CategoryReservedKeywords = TypedDict(
                 "cashback_payment",
                 "card_dispute_acceptance",
                 "card_dispute_financial",
+                "card_dispute_provisional_credit",
                 "card_dispute_loss",
                 "card_refund",
                 "card_settlement",
