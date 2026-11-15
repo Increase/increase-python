@@ -74,8 +74,8 @@ class CardDisputesResource(SyncAPIResource):
           disputed_transaction_id: The Transaction you wish to dispute. This Transaction must have a `source_type`
               of `card_settlement`.
 
-          network: The network of the disputed transaction. Details specific to the network are
-              required under the sub-object with the same identifier as the network.
+          network: The network of the disputed transaction. Details specific to the network can be
+              provided under the sub-object with the same identifier as the network.
 
               - `visa` - Visa
 
@@ -84,13 +84,15 @@ class CardDisputesResource(SyncAPIResource):
               provided. If provided, the amount must be less than or equal to the amount of
               the transaction.
 
-          attachment_files: The files to be attached to the initial dispute submission.
+          attachment_files: The files to be attached to the initial dispute submission. Can only be provided
+              along with the network-specific details.
 
           explanation: The free-form explanation provided to Increase to provide more context for the
-              user submission. This field is not sent directly to the card networks.
+              user submission. This field is not sent directly to the card networks. Can only
+              be provided along with the network-specific details.
 
-          visa: The Visa-specific parameters for the dispute. Required if and only if `network`
-              is `visa`.
+          visa: The Visa-specific parameters for the initial User Submission. If omitted, a
+              later User Submission will be required.
 
           extra_headers: Send extra headers
 
@@ -387,8 +389,8 @@ class AsyncCardDisputesResource(AsyncAPIResource):
           disputed_transaction_id: The Transaction you wish to dispute. This Transaction must have a `source_type`
               of `card_settlement`.
 
-          network: The network of the disputed transaction. Details specific to the network are
-              required under the sub-object with the same identifier as the network.
+          network: The network of the disputed transaction. Details specific to the network can be
+              provided under the sub-object with the same identifier as the network.
 
               - `visa` - Visa
 
@@ -397,13 +399,15 @@ class AsyncCardDisputesResource(AsyncAPIResource):
               provided. If provided, the amount must be less than or equal to the amount of
               the transaction.
 
-          attachment_files: The files to be attached to the initial dispute submission.
+          attachment_files: The files to be attached to the initial dispute submission. Can only be provided
+              along with the network-specific details.
 
           explanation: The free-form explanation provided to Increase to provide more context for the
-              user submission. This field is not sent directly to the card networks.
+              user submission. This field is not sent directly to the card networks. Can only
+              be provided along with the network-specific details.
 
-          visa: The Visa-specific parameters for the dispute. Required if and only if `network`
-              is `visa`.
+          visa: The Visa-specific parameters for the initial User Submission. If omitted, a
+              later User Submission will be required.
 
           extra_headers: Send extra headers
 
