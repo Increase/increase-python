@@ -64,9 +64,9 @@ class CardRefundsResource(SyncAPIResource):
           amount: The refund amount in cents. Pulled off the `pending_transaction` or the
               `transaction` if not provided.
 
-          pending_transaction_id: The identifier of the Pending Transaction for the refund authorization. If this
-              is provided, `transaction` must not be provided as a refund with a refund
-              authorized can not be linked to a regular transaction.
+          pending_transaction_id: The identifier of the Pending Transaction for the refund or original credit
+              authorization. If this is provided, `transaction` must not be provided as a
+              refund with a refund authorized can not be linked to a regular transaction.
 
           transaction_id: The identifier for the Transaction to refund. The Transaction's source must have
               a category of card_settlement.
@@ -145,9 +145,9 @@ class AsyncCardRefundsResource(AsyncAPIResource):
           amount: The refund amount in cents. Pulled off the `pending_transaction` or the
               `transaction` if not provided.
 
-          pending_transaction_id: The identifier of the Pending Transaction for the refund authorization. If this
-              is provided, `transaction` must not be provided as a refund with a refund
-              authorized can not be linked to a regular transaction.
+          pending_transaction_id: The identifier of the Pending Transaction for the refund or original credit
+              authorization. If this is provided, `transaction` must not be provided as a
+              refund with a refund authorized can not be linked to a regular transaction.
 
           transaction_id: The identifier for the Transaction to refund. The Transaction's source must have
               a category of card_settlement.
