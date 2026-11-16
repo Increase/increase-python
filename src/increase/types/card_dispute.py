@@ -1,16 +1,16 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import TYPE_CHECKING, Dict, List, Optional
+from typing import List, Optional
 from datetime import date, datetime
 from typing_extensions import Literal
-
-from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
 __all__ = [
     "CardDispute",
     "Loss",
+    "ProvisionalCredit",
+    "ProvisionalCreditReversal",
     "Rejection",
     "Visa",
     "VisaNetworkEvent",
@@ -128,6 +128,66 @@ class Loss(BaseModel):
 
     - `user_withdrawn` - The user withdrew the Card Dispute.
     - `loss` - The Card Dispute was lost according to network rules.
+    """
+
+
+class ProvisionalCreditReversal(BaseModel):
+    """
+    If the provisional credit has been reversed, this will contain details of the reversal.
+    """
+
+    amount: int
+    """The amount of the reversal in the minor unit of its currency.
+
+    For dollars, for example, this is cents.
+    """
+
+    cardholder_account_transaction_id: str
+    """The identifier of the Transaction that debited the cardholder's Account."""
+
+    provisional_credit_funding_account_transaction_id: str
+    """
+    The identifier of the Transaction that credited the provisional credit funding
+    Account.
+    """
+
+    reversed_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the provisional credit was reversed.
+    """
+
+
+class ProvisionalCredit(BaseModel):
+    """
+    If a provisional credit has been provided for the Card Dispute, this will contain details of the provisional credit.
+    """
+
+    amount: int
+    """The amount of the provisional credit in the minor unit of its currency.
+
+    For dollars, for example, this is cents.
+    """
+
+    cardholder_account_transaction_id: str
+    """The identifier of the Transaction that credited the cardholder's Account."""
+
+    provided_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the provisional credit was provided.
+    """
+
+    provisional_credit_funding_account_transaction_id: str
+    """
+    The identifier of the Transaction that debited the provisional credit funding
+    Account.
+    """
+
+    reversal: Optional[ProvisionalCreditReversal] = None
+    """
+    If the provisional credit has been reversed, this will contain details of the
+    reversal.
     """
 
 
@@ -826,6 +886,9 @@ class VisaNetworkEvent(BaseModel):
     the Visa Card Dispute Network Event was created.
     """
 
+    dispute_financial_account_id: Optional[str] = None
+    """The account the dispute financial transaction was posted to, if any."""
+
     dispute_financial_transaction_id: Optional[str] = None
     """The dispute financial transaction that resulted from the network event, if any."""
 
@@ -949,18 +1012,6 @@ class VisaNetworkEvent(BaseModel):
     withdrawal submitted Visa Card Dispute Network Event, which represents that the
     user's request to withdraw the dispute has been submitted to the network.
     """
-
-    if TYPE_CHECKING:
-        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
-        # value to this field, so for compatibility we avoid doing it at runtime.
-        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
-
-        # Stub to indicate that arbitrary properties are accepted.
-        # To access properties that are not valid identifiers you can use `getattr`, e.g.
-        # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> object: ...
-    else:
-        __pydantic_extra__: Dict[str, object]
 
 
 class VisaUserSubmissionAttachmentFile(BaseModel):
@@ -2712,6 +2763,12 @@ class CardDispute(BaseModel):
 
     - `visa` - Visa: details will be under the `visa` object.
     - `pulse` - Pulse: details will be under the `pulse` object.
+    """
+
+    provisional_credit: Optional[ProvisionalCredit] = None
+    """
+    If a provisional credit has been provided for the Card Dispute, this will
+    contain details of the provisional credit.
     """
 
     rejection: Optional[Rejection] = None

@@ -74,8 +74,8 @@ class CardDisputesResource(SyncAPIResource):
           disputed_transaction_id: The Transaction you wish to dispute. This Transaction must have a `source_type`
               of `card_settlement`.
 
-          network: The network of the disputed transaction. Details specific to the network are
-              required under the sub-object with the same identifier as the network.
+          network: The network of the disputed transaction. Details specific to the network can be
+              provided under the sub-object with the same identifier as the network.
 
               - `visa` - Visa
 
@@ -84,13 +84,15 @@ class CardDisputesResource(SyncAPIResource):
               provided. If provided, the amount must be less than or equal to the amount of
               the transaction.
 
-          attachment_files: The files to be attached to the initial dispute submission.
+          attachment_files: The files to be attached to the initial dispute submission. Can only be provided
+              along with the network-specific details.
 
           explanation: The free-form explanation provided to Increase to provide more context for the
-              user submission. This field is not sent directly to the card networks.
+              user submission. This field is not sent directly to the card networks. Can only
+              be provided along with the network-specific details.
 
-          visa: The Visa-specific parameters for the dispute. Required if and only if `network`
-              is `visa`.
+          visa: The Visa-specific parameters for the initial User Submission. If omitted, a
+              later User Submission will be required.
 
           extra_headers: Send extra headers
 
@@ -219,6 +221,96 @@ class CardDisputesResource(SyncAPIResource):
                 ),
             ),
             model=CardDispute,
+        )
+
+    def provide_provisional_credit(
+        self,
+        card_dispute_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> CardDispute:
+        """
+        Credits the cardholder's Account for the Card Dispute amount, funded by your
+        program's provisional credit Account.
+
+        Args:
+          card_dispute_id: The identifier of the Card Dispute to provide a provisional credit for.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not card_dispute_id:
+            raise ValueError(f"Expected a non-empty value for `card_dispute_id` but received {card_dispute_id!r}")
+        return self._post(
+            path_template(
+                "/card_disputes/{card_dispute_id}/provide_provisional_credit", card_dispute_id=card_dispute_id
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardDispute,
+        )
+
+    def reverse_provisional_credit(
+        self,
+        card_dispute_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> CardDispute:
+        """
+        Debits the cardholder's Account for the provisional credit and returns it to
+        your program's provisional credit Account.
+
+        Args:
+          card_dispute_id: The identifier of the Card Dispute to reverse the provisional credit for.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not card_dispute_id:
+            raise ValueError(f"Expected a non-empty value for `card_dispute_id` but received {card_dispute_id!r}")
+        return self._post(
+            path_template(
+                "/card_disputes/{card_dispute_id}/reverse_provisional_credit", card_dispute_id=card_dispute_id
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardDispute,
         )
 
     def submit_user_submission(
@@ -387,8 +479,8 @@ class AsyncCardDisputesResource(AsyncAPIResource):
           disputed_transaction_id: The Transaction you wish to dispute. This Transaction must have a `source_type`
               of `card_settlement`.
 
-          network: The network of the disputed transaction. Details specific to the network are
-              required under the sub-object with the same identifier as the network.
+          network: The network of the disputed transaction. Details specific to the network can be
+              provided under the sub-object with the same identifier as the network.
 
               - `visa` - Visa
 
@@ -397,13 +489,15 @@ class AsyncCardDisputesResource(AsyncAPIResource):
               provided. If provided, the amount must be less than or equal to the amount of
               the transaction.
 
-          attachment_files: The files to be attached to the initial dispute submission.
+          attachment_files: The files to be attached to the initial dispute submission. Can only be provided
+              along with the network-specific details.
 
           explanation: The free-form explanation provided to Increase to provide more context for the
-              user submission. This field is not sent directly to the card networks.
+              user submission. This field is not sent directly to the card networks. Can only
+              be provided along with the network-specific details.
 
-          visa: The Visa-specific parameters for the dispute. Required if and only if `network`
-              is `visa`.
+          visa: The Visa-specific parameters for the initial User Submission. If omitted, a
+              later User Submission will be required.
 
           extra_headers: Send extra headers
 
@@ -532,6 +626,96 @@ class AsyncCardDisputesResource(AsyncAPIResource):
                 ),
             ),
             model=CardDispute,
+        )
+
+    async def provide_provisional_credit(
+        self,
+        card_dispute_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> CardDispute:
+        """
+        Credits the cardholder's Account for the Card Dispute amount, funded by your
+        program's provisional credit Account.
+
+        Args:
+          card_dispute_id: The identifier of the Card Dispute to provide a provisional credit for.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not card_dispute_id:
+            raise ValueError(f"Expected a non-empty value for `card_dispute_id` but received {card_dispute_id!r}")
+        return await self._post(
+            path_template(
+                "/card_disputes/{card_dispute_id}/provide_provisional_credit", card_dispute_id=card_dispute_id
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardDispute,
+        )
+
+    async def reverse_provisional_credit(
+        self,
+        card_dispute_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> CardDispute:
+        """
+        Debits the cardholder's Account for the provisional credit and returns it to
+        your program's provisional credit Account.
+
+        Args:
+          card_dispute_id: The identifier of the Card Dispute to reverse the provisional credit for.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not card_dispute_id:
+            raise ValueError(f"Expected a non-empty value for `card_dispute_id` but received {card_dispute_id!r}")
+        return await self._post(
+            path_template(
+                "/card_disputes/{card_dispute_id}/reverse_provisional_credit", card_dispute_id=card_dispute_id
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardDispute,
         )
 
     async def submit_user_submission(
@@ -671,6 +855,12 @@ class CardDisputesResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             card_disputes.list,
         )
+        self.provide_provisional_credit = to_raw_response_wrapper(
+            card_disputes.provide_provisional_credit,
+        )
+        self.reverse_provisional_credit = to_raw_response_wrapper(
+            card_disputes.reverse_provisional_credit,
+        )
         self.submit_user_submission = to_raw_response_wrapper(
             card_disputes.submit_user_submission,
         )
@@ -691,6 +881,12 @@ class AsyncCardDisputesResourceWithRawResponse:
         )
         self.list = async_to_raw_response_wrapper(
             card_disputes.list,
+        )
+        self.provide_provisional_credit = async_to_raw_response_wrapper(
+            card_disputes.provide_provisional_credit,
+        )
+        self.reverse_provisional_credit = async_to_raw_response_wrapper(
+            card_disputes.reverse_provisional_credit,
         )
         self.submit_user_submission = async_to_raw_response_wrapper(
             card_disputes.submit_user_submission,
@@ -713,6 +909,12 @@ class CardDisputesResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             card_disputes.list,
         )
+        self.provide_provisional_credit = to_streamed_response_wrapper(
+            card_disputes.provide_provisional_credit,
+        )
+        self.reverse_provisional_credit = to_streamed_response_wrapper(
+            card_disputes.reverse_provisional_credit,
+        )
         self.submit_user_submission = to_streamed_response_wrapper(
             card_disputes.submit_user_submission,
         )
@@ -733,6 +935,12 @@ class AsyncCardDisputesResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             card_disputes.list,
+        )
+        self.provide_provisional_credit = async_to_streamed_response_wrapper(
+            card_disputes.provide_provisional_credit,
+        )
+        self.reverse_provisional_credit = async_to_streamed_response_wrapper(
+            card_disputes.reverse_provisional_credit,
         )
         self.submit_user_submission = async_to_streamed_response_wrapper(
             card_disputes.submit_user_submission,

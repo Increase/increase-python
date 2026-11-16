@@ -102,7 +102,10 @@ class AddendaFreeformEntry(TypedDict, total=False):
 
 
 class AddendaFreeform(TypedDict, total=False):
-    """Unstructured `payment_related_information` passed through with the transfer."""
+    """Unstructured `payment_related_information` passed through with the transfer.
+
+    Required if and only if `category` is `freeform`.
+    """
 
     entries: Required[Iterable[AddendaFreeformEntry]]
     """Each entry represents an addendum sent with the transfer."""
@@ -119,4 +122,7 @@ class Addenda(TypedDict, total=False):
     """
 
     freeform: AddendaFreeform
-    """Unstructured `payment_related_information` passed through with the transfer."""
+    """Unstructured `payment_related_information` passed through with the transfer.
+
+    Required if and only if `category` is `freeform`.
+    """

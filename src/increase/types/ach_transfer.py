@@ -804,7 +804,7 @@ class ACHTransfer(BaseModel):
     same for all your transfers.
     """
 
-    company_name: Optional[str] = None
+    company_name: str
     """The name by which the recipient knows you."""
 
     created_at: datetime.datetime
@@ -864,7 +864,7 @@ class ACHTransfer(BaseModel):
     This value is informational and not verified by the recipient's bank.
     """
 
-    individual_name: Optional[str] = None
+    individual_name: str
     """The name of the transfer recipient.
 
     This value is informational and not verified by the recipient's bank.
