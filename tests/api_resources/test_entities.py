@@ -83,6 +83,7 @@ class TestEntities:
                 "legal_identifier": {
                     "value": "602214076",
                     "category": "us_employer_identification_number",
+                    "issued_on": parse_date("2019-12-27"),
                 },
                 "name": "National Phonograph Company",
                 "beneficial_ownership_exemption_reason": "regulated_financial_institution",
@@ -400,6 +401,7 @@ class TestEntities:
                 "legal_identifier": {
                     "value": "x",
                     "category": "us_employer_identification_number",
+                    "issued_on": parse_date("2019-12-27"),
                 },
                 "name": "x",
                 "website": "https://company.example.com",
@@ -773,6 +775,7 @@ class TestAsyncEntities:
                 "legal_identifier": {
                     "value": "602214076",
                     "category": "us_employer_identification_number",
+                    "issued_on": parse_date("2019-12-27"),
                 },
                 "name": "National Phonograph Company",
                 "beneficial_ownership_exemption_reason": "regulated_financial_institution",
@@ -1090,6 +1093,7 @@ class TestAsyncEntities:
                 "legal_identifier": {
                     "value": "x",
                     "category": "us_employer_identification_number",
+                    "issued_on": parse_date("2019-12-27"),
                 },
                 "name": "x",
                 "website": "https://company.example.com",

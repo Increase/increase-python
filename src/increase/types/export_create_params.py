@@ -71,7 +71,11 @@ class ExportCreateParams(TypedDict, total=False):
     account_statement_bai2: AccountStatementBai2
     """Options for the created export.
 
-    Required if `category` is equal to `account_statement_bai2`.
+    Required if `category` is equal to `account_statement_bai2`. Each as-of date
+    from `on_or_after_date` through `on_or_before_date` gets its own BAI2 group
+    (`02` record) in the file. If a group's as-of date is before the UTC date the
+    Export was created, it has end-of-day balances. If it's the UTC date the Export
+    was created, it has intraday balances as of the time the Export was created.
     """
 
     account_statement_ofx: AccountStatementOfx
@@ -132,10 +136,10 @@ class ExportCreateParams(TypedDict, total=False):
     """
 
 
-class AccountStatementBai2(TypedDict, total=False):
+class AccountStatementBai2(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """Options for the created export.
 
-    Required if `category` is equal to `account_statement_bai2`.
+    Required if `category` is equal to `account_statement_bai2`. Each as-of date from `on_or_after_date` through `on_or_before_date` gets its own BAI2 group (`02` record) in the file. If a group's as-of date is before the UTC date the Export was created, it has end-of-day balances. If it's the UTC date the Export was created, it has intraday balances as of the time the Export was created.
     """
 
     account_id: str
@@ -144,12 +148,17 @@ class AccountStatementBai2(TypedDict, total=False):
     If not provided, all open accounts will be included.
     """
 
-    effective_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
-    """The UTC date to create a BAI2 report for.
+    on_or_after_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
+    """The first as-of date (UTC) to report.
 
-    If not provided, the current date will be used. If the current date is used, the
-    report will include intraday balances, otherwise it will include end-of-day
-    balances for the provided date.
+    Each as-of date gets its own group in the BAI2 file. If not provided, the report
+    starts from the earliest included Account.
+    """
+
+    on_or_before_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
+    """The last as-of date (UTC) to report.
+
+    If not provided, the report runs through the current UTC date.
     """
 
     program_id: str
