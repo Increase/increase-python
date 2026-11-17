@@ -385,6 +385,80 @@ class TestCardDisputes:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_provide_provisional_credit(self, client: Increase) -> None:
+        card_dispute = client.card_disputes.provide_provisional_credit(
+            "card_dispute_h9sc95nbl1cgltpp7men",
+        )
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+    @parametrize
+    def test_raw_response_provide_provisional_credit(self, client: Increase) -> None:
+
+        response = client.card_disputes.with_raw_response.provide_provisional_credit(
+            "card_dispute_h9sc95nbl1cgltpp7men",
+        )
+
+        assert response.is_closed is True
+        card_dispute = response.parse()
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+    @parametrize
+    def test_streaming_response_provide_provisional_credit(self, client: Increase) -> None:
+        with client.card_disputes.with_streaming_response.provide_provisional_credit(
+            "card_dispute_h9sc95nbl1cgltpp7men",
+        ) as response:
+            assert not response.is_closed
+
+            card_dispute = response.parse()
+            assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_provide_provisional_credit(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_dispute_id` but received ''"):
+            client.card_disputes.with_raw_response.provide_provisional_credit(
+                "",
+            )
+
+    @parametrize
+    def test_method_reverse_provisional_credit(self, client: Increase) -> None:
+        card_dispute = client.card_disputes.reverse_provisional_credit(
+            "card_dispute_h9sc95nbl1cgltpp7men",
+        )
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+    @parametrize
+    def test_raw_response_reverse_provisional_credit(self, client: Increase) -> None:
+
+        response = client.card_disputes.with_raw_response.reverse_provisional_credit(
+            "card_dispute_h9sc95nbl1cgltpp7men",
+        )
+
+        assert response.is_closed is True
+        card_dispute = response.parse()
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+    @parametrize
+    def test_streaming_response_reverse_provisional_credit(self, client: Increase) -> None:
+        with client.card_disputes.with_streaming_response.reverse_provisional_credit(
+            "card_dispute_h9sc95nbl1cgltpp7men",
+        ) as response:
+            assert not response.is_closed
+
+            card_dispute = response.parse()
+            assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_reverse_provisional_credit(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_dispute_id` but received ''"):
+            client.card_disputes.with_raw_response.reverse_provisional_credit(
+                "",
+            )
+
+    @parametrize
     def test_method_submit_user_submission(self, client: Increase) -> None:
         card_dispute = client.card_disputes.submit_user_submission(
             card_dispute_id="card_dispute_h9sc95nbl1cgltpp7men",
@@ -1104,6 +1178,80 @@ class TestAsyncCardDisputes:
             assert_matches_type(AsyncPage[CardDispute], card_dispute, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_provide_provisional_credit(self, async_client: AsyncIncrease) -> None:
+        card_dispute = await async_client.card_disputes.provide_provisional_credit(
+            "card_dispute_h9sc95nbl1cgltpp7men",
+        )
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+    @parametrize
+    async def test_raw_response_provide_provisional_credit(self, async_client: AsyncIncrease) -> None:
+
+        response = await async_client.card_disputes.with_raw_response.provide_provisional_credit(
+            "card_dispute_h9sc95nbl1cgltpp7men",
+        )
+
+        assert response.is_closed is True
+        card_dispute = await response.parse()
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_provide_provisional_credit(self, async_client: AsyncIncrease) -> None:
+        async with async_client.card_disputes.with_streaming_response.provide_provisional_credit(
+            "card_dispute_h9sc95nbl1cgltpp7men",
+        ) as response:
+            assert not response.is_closed
+
+            card_dispute = await response.parse()
+            assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_provide_provisional_credit(self, async_client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_dispute_id` but received ''"):
+            await async_client.card_disputes.with_raw_response.provide_provisional_credit(
+                "",
+            )
+
+    @parametrize
+    async def test_method_reverse_provisional_credit(self, async_client: AsyncIncrease) -> None:
+        card_dispute = await async_client.card_disputes.reverse_provisional_credit(
+            "card_dispute_h9sc95nbl1cgltpp7men",
+        )
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+    @parametrize
+    async def test_raw_response_reverse_provisional_credit(self, async_client: AsyncIncrease) -> None:
+
+        response = await async_client.card_disputes.with_raw_response.reverse_provisional_credit(
+            "card_dispute_h9sc95nbl1cgltpp7men",
+        )
+
+        assert response.is_closed is True
+        card_dispute = await response.parse()
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_reverse_provisional_credit(self, async_client: AsyncIncrease) -> None:
+        async with async_client.card_disputes.with_streaming_response.reverse_provisional_credit(
+            "card_dispute_h9sc95nbl1cgltpp7men",
+        ) as response:
+            assert not response.is_closed
+
+            card_dispute = await response.parse()
+            assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_reverse_provisional_credit(self, async_client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_dispute_id` but received ''"):
+            await async_client.card_disputes.with_raw_response.reverse_provisional_credit(
+                "",
+            )
 
     @parametrize
     async def test_method_submit_user_submission(self, async_client: AsyncIncrease) -> None:
