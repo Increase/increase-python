@@ -107,7 +107,11 @@ class ExportsResource(SyncAPIResource):
               - `voided_check` - A PDF of a voided check.
 
           account_statement_bai2: Options for the created export. Required if `category` is equal to
-              `account_statement_bai2`.
+              `account_statement_bai2`. Each as-of date from `on_or_after_date` through
+              `on_or_before_date` gets its own BAI2 group (`02` record) in the file. If a
+              group's as-of date is before the UTC date the Export was created, it has
+              end-of-day balances. If it's the UTC date the Export was created, it has
+              intraday balances as of the time the Export was created.
 
           account_statement_ofx: Options for the created export. Required if `category` is equal to
               `account_statement_ofx`.
@@ -404,7 +408,11 @@ class AsyncExportsResource(AsyncAPIResource):
               - `voided_check` - A PDF of a voided check.
 
           account_statement_bai2: Options for the created export. Required if `category` is equal to
-              `account_statement_bai2`.
+              `account_statement_bai2`. Each as-of date from `on_or_after_date` through
+              `on_or_before_date` gets its own BAI2 group (`02` record) in the file. If a
+              group's as-of date is before the UTC date the Export was created, it has
+              end-of-day balances. If it's the UTC date the Export was created, it has
+              intraday balances as of the time the Export was created.
 
           account_statement_ofx: Options for the created export. Required if `category` is equal to
               `account_statement_ofx`.

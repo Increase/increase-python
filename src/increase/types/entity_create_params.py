@@ -376,6 +376,9 @@ class CorporationLegalIdentifier(TypedDict, total=False):
       identification number or registration number.
     """
 
+    issued_on: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
+    """The date on which the legal identifier was issued."""
+
 
 class Corporation(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """Details of the corporation entity to create.
