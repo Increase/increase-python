@@ -43,11 +43,32 @@ class AccountStatementBai2(BaseModel):
     account_id: Optional[str] = None
     """Filter results by Account."""
 
-    effective_date: Optional[date] = None
-    """The UTC date for which to retrieve the balance."""
+    on_or_after_date: Optional[date] = None
+    """The first as-of date (UTC) reported in the BAI2 file.
+
+    If null, the report started from the earliest included Account.
+    """
+
+    on_or_before_date: Optional[date] = None
+    """The last as-of date (UTC) reported in the BAI2 file.
+
+    If null, the report ran through the date the Export was created.
+    """
 
     program_id: Optional[str] = None
     """Filter results by Program."""
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
 
 
 class AccountStatementOfxCreatedAt(BaseModel):

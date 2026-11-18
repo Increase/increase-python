@@ -66,6 +66,7 @@ _CategoryReservedKeywords = TypedDict(
                 "inbound_check_deposit_return_intention",
                 "inbound_check_adjustment",
                 "inbound_fednow_transfer_confirmation",
+                "inbound_fednow_transfer_return_acknowledgement",
                 "inbound_real_time_payments_transfer_confirmation",
                 "inbound_wire_reversal",
                 "inbound_wire_transfer",
