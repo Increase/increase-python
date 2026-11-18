@@ -18,7 +18,7 @@ class CardRefundCreateParams(TypedDict, total=False):
     """
     The identifier of the Pending Transaction for the refund or original credit
     authorization. If this is provided, `transaction` must not be provided as a
-    refund with a refund authorized can not be linked to a regular transaction.
+    refund with a refund authorization can not be linked to a regular transaction.
     """
 
     transaction_id: str
