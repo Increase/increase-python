@@ -1149,6 +1149,7 @@ class ElementCardAuthorizationSchemeFee(BaseModel):
         "visa_atm_cash_withdrawal_international",
         "visa_atm_cash_deposit_domestic",
         "pulse_switch_fee",
+        "pulse_switch_fee_credit",
         "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
@@ -1246,6 +1247,9 @@ class ElementCardAuthorizationSchemeFee(BaseModel):
       original deposit at a domestic ATM.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+      Switch Fee charged for an authorization that was subsequently reversed in
+      full.
     - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
       Pulse network for processing tokenized transactions on its network.
     """
@@ -2098,6 +2102,7 @@ class ElementCardBalanceInquirySchemeFee(BaseModel):
         "visa_atm_cash_withdrawal_international",
         "visa_atm_cash_deposit_domestic",
         "pulse_switch_fee",
+        "pulse_switch_fee_credit",
         "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
@@ -2195,6 +2200,9 @@ class ElementCardBalanceInquirySchemeFee(BaseModel):
       original deposit at a domestic ATM.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+      Switch Fee charged for an authorization that was subsequently reversed in
+      full.
     - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
       Pulse network for processing tokenized transactions on its network.
     """
@@ -2900,6 +2908,7 @@ class ElementCardDeclineSchemeFee(BaseModel):
         "visa_atm_cash_withdrawal_international",
         "visa_atm_cash_deposit_domestic",
         "pulse_switch_fee",
+        "pulse_switch_fee_credit",
         "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
@@ -2997,6 +3006,9 @@ class ElementCardDeclineSchemeFee(BaseModel):
       original deposit at a domestic ATM.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+      Switch Fee charged for an authorization that was subsequently reversed in
+      full.
     - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
       Pulse network for processing tokenized transactions on its network.
     """
@@ -3868,6 +3880,7 @@ class ElementCardFinancialSchemeFee(BaseModel):
         "visa_atm_cash_withdrawal_international",
         "visa_atm_cash_deposit_domestic",
         "pulse_switch_fee",
+        "pulse_switch_fee_credit",
         "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
@@ -3965,6 +3978,9 @@ class ElementCardFinancialSchemeFee(BaseModel):
       original deposit at a domestic ATM.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+      Switch Fee charged for an authorization that was subsequently reversed in
+      full.
     - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
       Pulse network for processing tokenized transactions on its network.
     """
@@ -4353,6 +4369,7 @@ class ElementCardFuelConfirmationSchemeFee(BaseModel):
         "visa_atm_cash_withdrawal_international",
         "visa_atm_cash_deposit_domestic",
         "pulse_switch_fee",
+        "pulse_switch_fee_credit",
         "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
@@ -4450,6 +4467,9 @@ class ElementCardFuelConfirmationSchemeFee(BaseModel):
       original deposit at a domestic ATM.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+      Switch Fee charged for an authorization that was subsequently reversed in
+      full.
     - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
       Pulse network for processing tokenized transactions on its network.
     """
@@ -4821,6 +4841,7 @@ class ElementCardIncrementSchemeFee(BaseModel):
         "visa_atm_cash_withdrawal_international",
         "visa_atm_cash_deposit_domestic",
         "pulse_switch_fee",
+        "pulse_switch_fee_credit",
         "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
@@ -4918,6 +4939,9 @@ class ElementCardIncrementSchemeFee(BaseModel):
       original deposit at a domestic ATM.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+      Switch Fee charged for an authorization that was subsequently reversed in
+      full.
     - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
       Pulse network for processing tokenized transactions on its network.
     """
@@ -6015,6 +6039,7 @@ class ElementCardRefundSchemeFee(BaseModel):
         "visa_atm_cash_withdrawal_international",
         "visa_atm_cash_deposit_domestic",
         "pulse_switch_fee",
+        "pulse_switch_fee_credit",
         "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
@@ -6112,6 +6137,9 @@ class ElementCardRefundSchemeFee(BaseModel):
       original deposit at a domestic ATM.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+      Switch Fee charged for an authorization that was subsequently reversed in
+      full.
     - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
       Pulse network for processing tokenized transactions on its network.
     """
@@ -6318,6 +6346,7 @@ class ElementCardReversalSchemeFee(BaseModel):
         "visa_atm_cash_withdrawal_international",
         "visa_atm_cash_deposit_domestic",
         "pulse_switch_fee",
+        "pulse_switch_fee_credit",
         "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
@@ -6415,6 +6444,9 @@ class ElementCardReversalSchemeFee(BaseModel):
       original deposit at a domestic ATM.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+      Switch Fee charged for an authorization that was subsequently reversed in
+      full.
     - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
       Pulse network for processing tokenized transactions on its network.
     """
@@ -7540,6 +7572,7 @@ class ElementCardSettlementSchemeFee(BaseModel):
         "visa_atm_cash_withdrawal_international",
         "visa_atm_cash_deposit_domestic",
         "pulse_switch_fee",
+        "pulse_switch_fee_credit",
         "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
@@ -7637,6 +7670,9 @@ class ElementCardSettlementSchemeFee(BaseModel):
       original deposit at a domestic ATM.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+      Switch Fee charged for an authorization that was subsequently reversed in
+      full.
     - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
       Pulse network for processing tokenized transactions on its network.
     """
@@ -8269,6 +8305,7 @@ class ElementCardValidationSchemeFee(BaseModel):
         "visa_atm_cash_withdrawal_international",
         "visa_atm_cash_deposit_domestic",
         "pulse_switch_fee",
+        "pulse_switch_fee_credit",
         "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
@@ -8366,6 +8403,9 @@ class ElementCardValidationSchemeFee(BaseModel):
       original deposit at a domestic ATM.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+      Switch Fee charged for an authorization that was subsequently reversed in
+      full.
     - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
       Pulse network for processing tokenized transactions on its network.
     """
