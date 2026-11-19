@@ -138,7 +138,7 @@ class CorporationAddress(TypedDict, total=False):
     """The ZIP or postal code of the address. Required in certain countries."""
 
 
-class CorporationLegalIdentifier(TypedDict, total=False):
+class CorporationLegalIdentifier(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """The legal identifier of the corporation.
 
     This is usually the Employer Identification Number (EIN).

@@ -353,7 +353,7 @@ class CorporationBeneficialOwner(TypedDict, total=False, extra_items=object):  #
     """This person's role or title within the entity."""
 
 
-class CorporationLegalIdentifier(TypedDict, total=False):
+class CorporationLegalIdentifier(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """The legal identifier of the corporation.
 
     This is usually the Employer Identification Number (EIN). This replaces the deprecated `tax_identifier` field.

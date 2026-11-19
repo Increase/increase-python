@@ -126,13 +126,15 @@ class InboundFednowTransfer(BaseModel):
     message_identification: str
     """The FedNow network identification of the transfer."""
 
-    status: Literal["pending_confirming", "timed_out", "confirmed", "declined", "requires_attention"]
+    status: Literal["pending_confirming", "timed_out", "confirmed", "declined", "returned", "requires_attention"]
     """The lifecycle status of the transfer.
 
     - `pending_confirming` - The transfer is pending confirmation.
     - `timed_out` - The transfer was not responded to in time.
     - `confirmed` - The transfer has been received successfully and is confirmed.
     - `declined` - The transfer has been declined.
+    - `returned` - The transfer has been returned, in full or in part, to its
+      sender.
     - `requires_attention` - The transfer requires attention from an Increase
       operator.
     """
@@ -161,3 +163,15 @@ class InboundFednowTransfer(BaseModel):
 
     unstructured_remittance_information: Optional[str] = None
     """Additional information included with the transfer."""
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
