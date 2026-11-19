@@ -32,7 +32,8 @@ class TestExports:
             category="transaction_csv",
             account_statement_bai2={
                 "account_id": "account_id",
-                "effective_date": parse_date("2019-12-27"),
+                "on_or_after_date": parse_date("2019-12-27"),
+                "on_or_before_date": parse_date("2019-12-27"),
                 "program_id": "program_id",
             },
             account_statement_ofx={
@@ -207,7 +208,8 @@ class TestAsyncExports:
             category="transaction_csv",
             account_statement_bai2={
                 "account_id": "account_id",
-                "effective_date": parse_date("2019-12-27"),
+                "on_or_after_date": parse_date("2019-12-27"),
+                "on_or_before_date": parse_date("2019-12-27"),
                 "program_id": "program_id",
             },
             account_statement_ofx={

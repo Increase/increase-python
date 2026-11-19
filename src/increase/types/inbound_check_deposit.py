@@ -163,8 +163,6 @@ class InboundCheckDeposit(BaseModel):
     payee_name_analysis: Literal["name_matches", "does_not_match", "not_evaluated"]
     """Whether the details on the check match the recipient name of the check transfer.
 
-    This is an optional feature, contact sales to enable.
-
     - `name_matches` - The details on the check match the recipient name of the
       check transfer.
     - `does_not_match` - The details on the check do not match the recipient name of

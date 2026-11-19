@@ -90,6 +90,7 @@ __all__ = [
     "SourceInboundCheckAdjustment",
     "SourceInboundCheckDepositReturnIntention",
     "SourceInboundFednowTransferConfirmation",
+    "SourceInboundFednowTransferReturnAcknowledgement",
     "SourceInboundRealTimePaymentsTransferConfirmation",
     "SourceInboundWireReversal",
     "SourceInboundWireTransfer",
@@ -1251,6 +1252,7 @@ class SourceCardFinancialSchemeFee(BaseModel):
         "visa_atm_cash_withdrawal_international",
         "visa_atm_cash_deposit_domestic",
         "pulse_switch_fee",
+        "pulse_switch_fee_credit",
         "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
@@ -1348,6 +1350,9 @@ class SourceCardFinancialSchemeFee(BaseModel):
       original deposit at a domestic ATM.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+      Switch Fee charged for an authorization that was subsequently reversed in
+      full.
     - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
       Pulse network for processing tokenized transactions on its network.
     """
@@ -2651,6 +2656,7 @@ class SourceCardRefundSchemeFee(BaseModel):
         "visa_atm_cash_withdrawal_international",
         "visa_atm_cash_deposit_domestic",
         "pulse_switch_fee",
+        "pulse_switch_fee_credit",
         "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
@@ -2748,6 +2754,9 @@ class SourceCardRefundSchemeFee(BaseModel):
       original deposit at a domestic ATM.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+      Switch Fee charged for an authorization that was subsequently reversed in
+      full.
     - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
       Pulse network for processing tokenized transactions on its network.
     """
@@ -3886,6 +3895,7 @@ class SourceCardSettlementSchemeFee(BaseModel):
         "visa_atm_cash_withdrawal_international",
         "visa_atm_cash_deposit_domestic",
         "pulse_switch_fee",
+        "pulse_switch_fee_credit",
         "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
@@ -3983,6 +3993,9 @@ class SourceCardSettlementSchemeFee(BaseModel):
       original deposit at a domestic ATM.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+      Switch Fee charged for an authorization that was subsequently reversed in
+      full.
     - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
       Pulse network for processing tokenized transactions on its network.
     """
@@ -4780,6 +4793,45 @@ class SourceInboundFednowTransferConfirmation(BaseModel):
         __pydantic_extra__: Dict[str, object]
 
 
+class SourceInboundFednowTransferReturnAcknowledgement(BaseModel):
+    """An Inbound FedNow Transfer Return Acknowledgement object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `inbound_fednow_transfer_return_acknowledgement`. An Inbound FedNow Transfer Return Acknowledgement is created when a return of an Inbound FedNow Transfer has been accepted and settled by the FedNow Service.
+    """
+
+    inbound_fednow_transfer_id: str
+    """The identifier of the Inbound FedNow Transfer that was returned."""
+
+    reason: Literal["duplicate", "creditor_request", "wrong_amount", "undue_payment", "fraud"]
+    """The reason for the return.
+
+    - `duplicate` - The inbound FedNow transfer was a duplicate. Corresponds to the
+      FedNow reason code `DUPL`.
+    - `creditor_request` - The recipient of the inbound FedNow transfer requested
+      the funds be returned to the sender. Corresponds to the FedNow reason code
+      `CUST`.
+    - `wrong_amount` - The inbound FedNow transfer was for the wrong amount.
+      Corresponds to the FedNow reason code `AM09`.
+    - `undue_payment` - The recipient of the inbound FedNow transfer was not owed
+      the funds. Corresponds to the FedNow reason code `UPAY`.
+    - `fraud` - The inbound FedNow transfer was determined to be fraudulent.
+      Corresponds to the FedNow reason code `FR01`, and reports the fraud to the
+      Federal Reserve and the sending bank.
+    """
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
+
+
 class SourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
     """An Inbound Real-Time Payments Transfer Confirmation object.
 
@@ -5364,6 +5416,7 @@ class Source(BaseModel):
         "inbound_check_deposit_return_intention",
         "inbound_check_adjustment",
         "inbound_fednow_transfer_confirmation",
+        "inbound_fednow_transfer_return_acknowledgement",
         "inbound_real_time_payments_transfer_confirmation",
         "inbound_wire_reversal",
         "inbound_wire_transfer",
@@ -5436,6 +5489,9 @@ class Source(BaseModel):
       the `inbound_check_adjustment` object.
     - `inbound_fednow_transfer_confirmation` - Inbound FedNow Transfer Confirmation:
       details will be under the `inbound_fednow_transfer_confirmation` object.
+    - `inbound_fednow_transfer_return_acknowledgement` - Inbound FedNow Transfer
+      Return Acknowledgement: details will be under the
+      `inbound_fednow_transfer_return_acknowledgement` object.
     - `inbound_real_time_payments_transfer_confirmation` - Inbound Real-Time
       Payments Transfer Confirmation: details will be under the
       `inbound_real_time_payments_transfer_confirmation` object.
@@ -5719,6 +5775,15 @@ class Source(BaseModel):
     equal to `inbound_fednow_transfer_confirmation`. An Inbound FedNow Transfer
     Confirmation is created when a FedNow transfer is initiated at another bank and
     received by Increase.
+    """
+
+    inbound_fednow_transfer_return_acknowledgement: Optional[SourceInboundFednowTransferReturnAcknowledgement] = None
+    """An Inbound FedNow Transfer Return Acknowledgement object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `inbound_fednow_transfer_return_acknowledgement`. An Inbound FedNow
+    Transfer Return Acknowledgement is created when a return of an Inbound FedNow
+    Transfer has been accepted and settled by the FedNow Service.
     """
 
     inbound_real_time_payments_transfer_confirmation: Optional[SourceInboundRealTimePaymentsTransferConfirmation] = None

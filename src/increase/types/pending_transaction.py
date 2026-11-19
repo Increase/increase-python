@@ -41,6 +41,7 @@ __all__ = [
     "SourceCheckDepositInstruction",
     "SourceCheckTransferInstruction",
     "SourceFednowTransferInstruction",
+    "SourceInboundFednowTransferReturn",
     "SourceInboundFundsHold",
     "SourceInboundWireTransferReversal",
     "SourceOther",
@@ -674,6 +675,7 @@ class SourceCardAuthorizationSchemeFee(BaseModel):
         "visa_atm_cash_withdrawal_international",
         "visa_atm_cash_deposit_domestic",
         "pulse_switch_fee",
+        "pulse_switch_fee_credit",
         "pulse_tokenization_fee",
     ]
     """The type of fee being assessed.
@@ -771,6 +773,9 @@ class SourceCardAuthorizationSchemeFee(BaseModel):
       original deposit at a domestic ATM.
     - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
       for processing transactions on its network.
+    - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+      Switch Fee charged for an authorization that was subsequently reversed in
+      full.
     - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
       Pulse network for processing tokenized transactions on its network.
     """
@@ -1213,6 +1218,45 @@ class SourceFednowTransferInstruction(BaseModel):
         __pydantic_extra__: Dict[str, object]
 
 
+class SourceInboundFednowTransferReturn(BaseModel):
+    """An Inbound FedNow Transfer Return object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `inbound_fednow_transfer_return`. An Inbound FedNow Transfer Return is created when Increase has received a FedNow transfer and the User requests that it be returned.
+    """
+
+    inbound_fednow_transfer_id: str
+    """The identifier of the Inbound FedNow Transfer that is being returned."""
+
+    reason: Literal["duplicate", "creditor_request", "wrong_amount", "undue_payment", "fraud"]
+    """The reason for the return.
+
+    - `duplicate` - The inbound FedNow transfer was a duplicate. Corresponds to the
+      FedNow reason code `DUPL`.
+    - `creditor_request` - The recipient of the inbound FedNow transfer requested
+      the funds be returned to the sender. Corresponds to the FedNow reason code
+      `CUST`.
+    - `wrong_amount` - The inbound FedNow transfer was for the wrong amount.
+      Corresponds to the FedNow reason code `AM09`.
+    - `undue_payment` - The recipient of the inbound FedNow transfer was not owed
+      the funds. Corresponds to the FedNow reason code `UPAY`.
+    - `fraud` - The inbound FedNow transfer was determined to be fraudulent.
+      Corresponds to the FedNow reason code `FR01`, and reports the fraud to the
+      Federal Reserve and the sending bank.
+    """
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
+
+
 class SourceInboundFundsHold(BaseModel):
     """An Inbound Funds Hold object.
 
@@ -1457,6 +1501,7 @@ class Source(BaseModel):
         "check_deposit_instruction",
         "check_transfer_instruction",
         "fednow_transfer_instruction",
+        "inbound_fednow_transfer_return",
         "inbound_funds_hold",
         "user_initiated_hold",
         "real_time_payments_transfer_instruction",
@@ -1487,6 +1532,8 @@ class Source(BaseModel):
       under the `check_transfer_instruction` object.
     - `fednow_transfer_instruction` - FedNow Transfer Instruction: details will be
       under the `fednow_transfer_instruction` object.
+    - `inbound_fednow_transfer_return` - Inbound FedNow Transfer Return: details
+      will be under the `inbound_fednow_transfer_return` object.
     - `inbound_funds_hold` - Inbound Funds Hold: details will be under the
       `inbound_funds_hold` object.
     - `user_initiated_hold` - User Initiated Hold: details will be under the
@@ -1580,6 +1627,15 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `fednow_transfer_instruction`.
+    """
+
+    inbound_fednow_transfer_return: Optional[SourceInboundFednowTransferReturn] = None
+    """An Inbound FedNow Transfer Return object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `inbound_fednow_transfer_return`. An Inbound FedNow Transfer Return is
+    created when Increase has received a FedNow transfer and the User requests that
+    it be returned.
     """
 
     inbound_funds_hold: Optional[SourceInboundFundsHold] = None
