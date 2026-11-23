@@ -8,7 +8,15 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["DigitalWalletToken", "Cardholder", "Device", "DynamicPrimaryAccountNumber", "Update"]
+__all__ = [
+    "DigitalWalletToken",
+    "Cardholder",
+    "Device",
+    "DynamicPrimaryAccountNumber",
+    "TokenRequestorDetails",
+    "Update",
+    "Wallet",
+]
 
 
 class Cardholder(BaseModel):
@@ -67,6 +75,16 @@ class DynamicPrimaryAccountNumber(BaseModel):
     """The last 4 digits of the token's Dynamic Primary Account Number."""
 
 
+class TokenRequestorDetails(BaseModel):
+    """The digital wallet or merchant that requested the token."""
+
+    identifier: str
+    """The identifier assigned to the token requestor by the card network."""
+
+    name: Optional[str] = None
+    """The name of the token requestor, for example "Apple Inc."."""
+
+
 class Update(BaseModel):
     status: Literal["active", "inactive", "suspended", "deactivated", "pending_transitioning"]
     """The status the update changed this Digital Wallet Token to.
@@ -85,6 +103,16 @@ class Update(BaseModel):
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the update happened.
     """
+
+
+class Wallet(BaseModel):
+    """Details about the digital wallet."""
+
+    account_identifier: Optional[str] = None
+    """An identifier for the cardholder's account with the digital wallet."""
+
+    email_hash: Optional[str] = None
+    """A hash of the email address on the cardholder's digital wallet account."""
 
 
 class DigitalWalletToken(BaseModel):
@@ -144,6 +172,9 @@ class DigitalWalletToken(BaseModel):
     - `unknown` - Unknown
     """
 
+    token_requestor_details: TokenRequestorDetails
+    """The digital wallet or merchant that requested the token."""
+
     type: Literal["digital_wallet_token"]
     """A constant representing the object's type.
 
@@ -152,6 +183,9 @@ class DigitalWalletToken(BaseModel):
 
     updates: List[Update]
     """Updates to the Digital Wallet Token."""
+
+    wallet: Wallet
+    """Details about the digital wallet."""
 
     if TYPE_CHECKING:
         # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
