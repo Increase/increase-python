@@ -67,7 +67,13 @@ __all__ = [
     "CardBalanceInquiryVerificationCardholderName",
     "DigitalWalletAuthentication",
     "DigitalWalletToken",
+    "DigitalWalletTokenCardholder",
     "DigitalWalletTokenDevice",
+    "DigitalWalletTokenTokenRequestorDetails",
+    "DigitalWalletTokenVerification",
+    "DigitalWalletTokenVerificationCardholderAddress",
+    "DigitalWalletTokenVisa",
+    "DigitalWalletTokenWallet",
 ]
 
 
@@ -1974,6 +1980,13 @@ class DigitalWalletAuthentication(BaseModel):
     """
 
 
+class DigitalWalletTokenCardholder(BaseModel):
+    """The cardholder adding the card to the digital wallet."""
+
+    name: Optional[str] = None
+    """The cardholder's name, as entered in the digital wallet."""
+
+
 class DigitalWalletTokenDevice(BaseModel):
     """Device that is being used to provision the digital wallet token."""
 
@@ -2013,11 +2026,124 @@ class DigitalWalletTokenDevice(BaseModel):
     """Name of the device, for example "My Work Phone"."""
 
 
+class DigitalWalletTokenTokenRequestorDetails(BaseModel):
+    """The digital wallet or merchant that requested the token."""
+
+    identifier: str
+    """The identifier assigned to the token requestor by the card network."""
+
+    name: Optional[str] = None
+    """The name of the token requestor, for example "Apple Inc."."""
+
+
+class DigitalWalletTokenVerificationCardholderAddress(BaseModel):
+    """
+    Cardholder address provided in the provisioning request and the address on file we verified it against.
+    """
+
+    actual_line1: Optional[str] = None
+    """Line 1 of the address on file for the cardholder."""
+
+    actual_postal_code: Optional[str] = None
+    """The postal code of the address on file for the cardholder."""
+
+    provided_line1: Optional[str] = None
+    """
+    The cardholder address line 1 provided for verification in the provisioning
+    request.
+    """
+
+    provided_postal_code: Optional[str] = None
+    """The postal code provided for verification in the provisioning request."""
+
+    result: Literal[
+        "not_checked",
+        "postal_code_match_address_no_match",
+        "postal_code_no_match_address_match",
+        "match",
+        "no_match",
+        "postal_code_match_address_not_checked",
+    ]
+    """The address verification result.
+
+    - `not_checked` - No address information was provided in the authorization
+      request.
+    - `postal_code_match_address_no_match` - Postal code matches, but the street
+      address does not match or was not provided.
+    - `postal_code_no_match_address_match` - Postal code does not match, but the
+      street address matches or was not provided.
+    - `match` - Postal code and street address match.
+    - `no_match` - Postal code and street address do not match.
+    - `postal_code_match_address_not_checked` - Postal code matches, but the street
+      address was not verified. (deprecated)
+    """
+
+
+class DigitalWalletTokenVerification(BaseModel):
+    """Fields related to verification of cardholder-provided values."""
+
+    cardholder_address: DigitalWalletTokenVerificationCardholderAddress
+    """
+    Cardholder address provided in the provisioning request and the address on file
+    we verified it against.
+    """
+
+
+class DigitalWalletTokenVisa(BaseModel):
+    """Risk scores provided by Visa for the provisioning request.
+
+    This field will be present in the JSON response if and only if `network` is equal to `visa`.
+    """
+
+    network_risk_score: Optional[int] = None
+    """Visa's risk score for the card, based on its transaction history, from 0 to 99.
+
+    A higher score indicates a higher risk.
+    """
+
+    provisioning_risk_score: Optional[int] = None
+    """Visa's risk score for the provisioning request, from 1 to 99.
+
+    A higher score indicates a higher risk.
+    """
+
+
+class DigitalWalletTokenWallet(BaseModel):
+    """Details about the digital wallet."""
+
+    account_email_age_days: Optional[int] = None
+    """
+    The number of days since the email address was added to the cardholder's digital
+    wallet account, up to 999.
+    """
+
+    account_identifier: Optional[str] = None
+    """An identifier for the cardholder's account with the digital wallet."""
+
+    account_score: Optional[int] = None
+    """How much the digital wallet trusts the cardholder's account, from 1 to 5.
+
+    A higher score indicates more trust.
+    """
+
+    device_score: Optional[int] = None
+    """
+    How much the digital wallet trusts the device the card is being added to, from 1
+    to 5. A higher score indicates more trust.
+    """
+
+    email_hash: Optional[str] = None
+    """A hash of the email address on the cardholder's digital wallet account."""
+
+
 class DigitalWalletToken(BaseModel):
     """Fields related to a digital wallet token provisioning attempt."""
 
     card_id: str
     """The identifier of the Card that is being tokenized."""
+
+    cardholder: DigitalWalletTokenCardholder
+    """The cardholder adding the card to the digital wallet."""
 
     decision: Optional[Literal["approve", "decline"]] = None
     """Whether or not the provisioning request was approved.
@@ -2040,6 +2166,28 @@ class DigitalWalletToken(BaseModel):
     - `garmin_pay` - Garmin Pay
     - `unknown` - Unknown
     """
+
+    network: Literal["visa"]
+    """The card network the token is being provisioned on.
+
+    - `visa` - Visa
+    """
+
+    token_requestor_details: DigitalWalletTokenTokenRequestorDetails
+    """The digital wallet or merchant that requested the token."""
+
+    verification: DigitalWalletTokenVerification
+    """Fields related to verification of cardholder-provided values."""
+
+    visa: Optional[DigitalWalletTokenVisa] = None
+    """Risk scores provided by Visa for the provisioning request.
+
+    This field will be present in the JSON response if and only if `network` is
+    equal to `visa`.
+    """
+
+    wallet: DigitalWalletTokenWallet
+    """Details about the digital wallet."""
 
 
 class RealTimeDecision(BaseModel):
