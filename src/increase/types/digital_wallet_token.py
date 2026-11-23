@@ -8,7 +8,15 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["DigitalWalletToken", "Cardholder", "Device", "DynamicPrimaryAccountNumber", "Update"]
+__all__ = [
+    "DigitalWalletToken",
+    "Cardholder",
+    "Device",
+    "DynamicPrimaryAccountNumber",
+    "TokenRequestorDetails",
+    "Update",
+    "Wallet",
+]
 
 
 class Cardholder(BaseModel):
@@ -67,6 +75,16 @@ class DynamicPrimaryAccountNumber(BaseModel):
     """The last 4 digits of the token's Dynamic Primary Account Number."""
 
 
+class TokenRequestorDetails(BaseModel):
+    """The token requestor."""
+
+    identifier: str
+    """The token requestor identifier."""
+
+    name: Optional[str] = None
+    """The token requestor name, for example "Apple Inc."."""
+
+
 class Update(BaseModel):
     status: Literal["active", "inactive", "suspended", "deactivated", "pending_transitioning"]
     """The status the update changed this Digital Wallet Token to.
@@ -85,6 +103,16 @@ class Update(BaseModel):
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the update happened.
     """
+
+
+class Wallet(BaseModel):
+    """The digital wallet account."""
+
+    account_identifier: Optional[str] = None
+    """The wallet account identifier."""
+
+    email_hash: Optional[str] = None
+    """A hash of the wallet account email address."""
 
 
 class DigitalWalletToken(BaseModel):
@@ -144,6 +172,9 @@ class DigitalWalletToken(BaseModel):
     - `unknown` - Unknown
     """
 
+    token_requestor_details: TokenRequestorDetails
+    """The token requestor."""
+
     type: Literal["digital_wallet_token"]
     """A constant representing the object's type.
 
@@ -152,6 +183,9 @@ class DigitalWalletToken(BaseModel):
 
     updates: List[Update]
     """Updates to the Digital Wallet Token."""
+
+    wallet: Wallet
+    """The digital wallet account."""
 
     if TYPE_CHECKING:
         # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
