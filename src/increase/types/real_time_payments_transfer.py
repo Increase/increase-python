@@ -17,6 +17,7 @@ __all__ = [
     "CreatedByAPIKey",
     "CreatedByOAuthApplication",
     "CreatedByUser",
+    "DebtorAddress",
     "Rejection",
     "Submission",
 ]
@@ -109,6 +110,34 @@ class CreatedBy(BaseModel):
 
     user: Optional[CreatedByUser] = None
     """If present, details about the User that created the transfer."""
+
+
+class DebtorAddress(BaseModel):
+    """The address of the transfer's sender."""
+
+    address_line2: Optional[str] = None
+    """A second address line, such as an apartment or suite number.
+
+    The first address line is separated into `building_number` and `street_name`.
+    """
+
+    building_number: Optional[str] = None
+    """The number identifying the position of the building on the street."""
+
+    city: Optional[str] = None
+    """The town or city."""
+
+    country: Optional[str] = None
+    """The ISO 3166, Alpha-2 country code."""
+
+    postal_code: Optional[str] = None
+    """The postal code or zip."""
+
+    state: Optional[str] = None
+    """The US state component of the address."""
+
+    street_name: Optional[str] = None
+    """The street name without the street number."""
 
 
 class Rejection(BaseModel):
@@ -278,6 +307,9 @@ class RealTimePaymentsTransfer(BaseModel):
 
     - `USD` - US Dollar (USD)
     """
+
+    debtor_address: Optional[DebtorAddress] = None
+    """The address of the transfer's sender."""
 
     debtor_name: Optional[str] = None
     """The name of the transfer's sender.
