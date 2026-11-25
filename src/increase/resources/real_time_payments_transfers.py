@@ -50,6 +50,7 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
         source_account_number_id: str,
         unstructured_remittance_information: str,
         account_number: str | Omit = omit,
+        debtor_address: real_time_payments_transfer_create_params.DebtorAddress | Omit = omit,
         debtor_name: str | Omit = omit,
         external_account_id: str | Omit = omit,
         inbound_real_time_payments_request_for_payment_id: str | Omit = omit,
@@ -79,6 +80,9 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
           unstructured_remittance_information: Unstructured information that will show on the recipient's bank statement.
 
           account_number: The destination account number.
+
+          debtor_address: The address of the transfer's sender. If not provided, no debtor address is sent
+              with the transfer.
 
           debtor_name: The name of the transfer's sender. If not provided, defaults to the name of the
               account's entity.
@@ -119,6 +123,7 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
                     "source_account_number_id": source_account_number_id,
                     "unstructured_remittance_information": unstructured_remittance_information,
                     "account_number": account_number,
+                    "debtor_address": debtor_address,
                     "debtor_name": debtor_name,
                     "external_account_id": external_account_id,
                     "inbound_real_time_payments_request_for_payment_id": inbound_real_time_payments_request_for_payment_id,
@@ -372,6 +377,7 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
         source_account_number_id: str,
         unstructured_remittance_information: str,
         account_number: str | Omit = omit,
+        debtor_address: real_time_payments_transfer_create_params.DebtorAddress | Omit = omit,
         debtor_name: str | Omit = omit,
         external_account_id: str | Omit = omit,
         inbound_real_time_payments_request_for_payment_id: str | Omit = omit,
@@ -401,6 +407,9 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
           unstructured_remittance_information: Unstructured information that will show on the recipient's bank statement.
 
           account_number: The destination account number.
+
+          debtor_address: The address of the transfer's sender. If not provided, no debtor address is sent
+              with the transfer.
 
           debtor_name: The name of the transfer's sender. If not provided, defaults to the name of the
               account's entity.
@@ -441,6 +450,7 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
                     "source_account_number_id": source_account_number_id,
                     "unstructured_remittance_information": unstructured_remittance_information,
                     "account_number": account_number,
+                    "debtor_address": debtor_address,
                     "debtor_name": debtor_name,
                     "external_account_id": external_account_id,
                     "inbound_real_time_payments_request_for_payment_id": inbound_real_time_payments_request_for_payment_id,
