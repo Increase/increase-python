@@ -109,6 +109,15 @@ class TestInboundWireTransfers:
         assert_matches_type(InboundWireTransfer, inbound_wire_transfer, path=["response"])
 
     @parametrize
+    def test_method_reverse_with_all_params(self, client: Increase) -> None:
+        inbound_wire_transfer = client.inbound_wire_transfers.reverse(
+            inbound_wire_transfer_id="inbound_wire_transfer_f228m6bmhtcxjco9pwp0",
+            reason="creditor_request",
+            amount=1,
+        )
+        assert_matches_type(InboundWireTransfer, inbound_wire_transfer, path=["response"])
+
+    @parametrize
     def test_raw_response_reverse(self, client: Increase) -> None:
 
         response = client.inbound_wire_transfers.with_raw_response.reverse(
@@ -235,6 +244,15 @@ class TestAsyncInboundWireTransfers:
         inbound_wire_transfer = await async_client.inbound_wire_transfers.reverse(
             inbound_wire_transfer_id="inbound_wire_transfer_f228m6bmhtcxjco9pwp0",
             reason="creditor_request",
+        )
+        assert_matches_type(InboundWireTransfer, inbound_wire_transfer, path=["response"])
+
+    @parametrize
+    async def test_method_reverse_with_all_params(self, async_client: AsyncIncrease) -> None:
+        inbound_wire_transfer = await async_client.inbound_wire_transfers.reverse(
+            inbound_wire_transfer_id="inbound_wire_transfer_f228m6bmhtcxjco9pwp0",
+            reason="creditor_request",
+            amount=1,
         )
         assert_matches_type(InboundWireTransfer, inbound_wire_transfer, path=["response"])
 
