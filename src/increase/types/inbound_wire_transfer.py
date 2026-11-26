@@ -27,13 +27,17 @@ class Acceptance(BaseModel):
 class Reversal(BaseModel):
     """If the transfer is reversed, this will contain details of the reversal."""
 
-    reason: Literal["duplicate", "creditor_request", "transaction_forbidden"]
+    amount: int
+    """The amount that was reversed in USD cents."""
+
+    reason: Literal["duplicate", "creditor_request", "transaction_forbidden", "fraud"]
     """The reason for the reversal.
 
     - `duplicate` - The inbound wire transfer was a duplicate.
     - `creditor_request` - The recipient of the wire transfer requested the funds be
       returned to the sender.
     - `transaction_forbidden` - The account cannot currently receive inbound wires.
+    - `fraud` - The inbound wire transfer was fraudulent.
     """
 
     reversed_at: datetime
