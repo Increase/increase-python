@@ -154,7 +154,8 @@ class InboundWireTransfersResource(SyncAPIResource):
         self,
         inbound_wire_transfer_id: str,
         *,
-        reason: Literal["duplicate", "creditor_request", "transaction_forbidden"],
+        reason: Literal["duplicate", "creditor_request", "transaction_forbidden", "fraud"],
+        amount: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -175,6 +176,11 @@ class InboundWireTransfersResource(SyncAPIResource):
               - `creditor_request` - The recipient of the wire transfer requested the funds be
                 returned to the sender.
               - `transaction_forbidden` - The account cannot currently receive inbound wires.
+              - `fraud` - The inbound wire transfer was fraudulent.
+
+          amount: The amount to return, in USD cents. Defaults to the full amount of the Inbound
+              Wire Transfer. A transfer can only be reversed once, so any amount you don't
+              return now stays with the recipient.
 
           extra_headers: Send extra headers
 
@@ -196,7 +202,11 @@ class InboundWireTransfersResource(SyncAPIResource):
                 inbound_wire_transfer_id=inbound_wire_transfer_id,
             ),
             body=maybe_transform(
-                {"reason": reason}, inbound_wire_transfer_reverse_params.InboundWireTransferReverseParams
+                {
+                    "reason": reason,
+                    "amount": amount,
+                },
+                inbound_wire_transfer_reverse_params.InboundWireTransferReverseParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -339,7 +349,8 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
         self,
         inbound_wire_transfer_id: str,
         *,
-        reason: Literal["duplicate", "creditor_request", "transaction_forbidden"],
+        reason: Literal["duplicate", "creditor_request", "transaction_forbidden", "fraud"],
+        amount: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -360,6 +371,11 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
               - `creditor_request` - The recipient of the wire transfer requested the funds be
                 returned to the sender.
               - `transaction_forbidden` - The account cannot currently receive inbound wires.
+              - `fraud` - The inbound wire transfer was fraudulent.
+
+          amount: The amount to return, in USD cents. Defaults to the full amount of the Inbound
+              Wire Transfer. A transfer can only be reversed once, so any amount you don't
+              return now stays with the recipient.
 
           extra_headers: Send extra headers
 
@@ -381,7 +397,11 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
                 inbound_wire_transfer_id=inbound_wire_transfer_id,
             ),
             body=await async_maybe_transform(
-                {"reason": reason}, inbound_wire_transfer_reverse_params.InboundWireTransferReverseParams
+                {
+                    "reason": reason,
+                    "amount": amount,
+                },
+                inbound_wire_transfer_reverse_params.InboundWireTransferReverseParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
