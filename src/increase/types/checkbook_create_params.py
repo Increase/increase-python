@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Iterable
-from typing_extensions import Required, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["CheckbookCreateParams", "MailingAddress", "Payer"]
 
@@ -23,6 +23,15 @@ class CheckbookCreateParams(TypedDict, total=False):
 
     This will be printed on the top-left corner of each check. This should be an
     array of up to 4 elements, each of which represents a line of the payer.
+    """
+
+    style: Required[Literal["top_tear_pad", "three_ring_binder"]]
+    """The physical format of the Checkbook.
+
+    - `top_tear_pad` - A 3x6 inch pad of 25 checks, each torn off along a
+      perforation at the top.
+    - `three_ring_binder` - A half-inch three-ring binder holding 75 pages of checks
+      with 3 checks per page.
     """
 
 

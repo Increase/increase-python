@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import Iterable
+from typing_extensions import Literal
 
 import httpx
 
@@ -50,6 +51,7 @@ class CheckbooksResource(SyncAPIResource):
         account_number_id: str,
         mailing_address: checkbook_create_params.MailingAddress,
         payer: Iterable[checkbook_create_params.Payer],
+        style: Literal["top_tear_pad", "three_ring_binder"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -71,6 +73,13 @@ class CheckbooksResource(SyncAPIResource):
               check. This should be an array of up to 4 elements, each of which represents a
               line of the payer.
 
+          style: The physical format of the Checkbook.
+
+              - `top_tear_pad` - A 3x6 inch pad of 25 checks, each torn off along a
+                perforation at the top.
+              - `three_ring_binder` - A half-inch three-ring binder holding 75 pages of checks
+                with 3 checks per page.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -88,6 +97,7 @@ class CheckbooksResource(SyncAPIResource):
                     "account_number_id": account_number_id,
                     "mailing_address": mailing_address,
                     "payer": payer,
+                    "style": style,
                 },
                 checkbook_create_params.CheckbookCreateParams,
             ),
@@ -270,6 +280,7 @@ class AsyncCheckbooksResource(AsyncAPIResource):
         account_number_id: str,
         mailing_address: checkbook_create_params.MailingAddress,
         payer: Iterable[checkbook_create_params.Payer],
+        style: Literal["top_tear_pad", "three_ring_binder"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -291,6 +302,13 @@ class AsyncCheckbooksResource(AsyncAPIResource):
               check. This should be an array of up to 4 elements, each of which represents a
               line of the payer.
 
+          style: The physical format of the Checkbook.
+
+              - `top_tear_pad` - A 3x6 inch pad of 25 checks, each torn off along a
+                perforation at the top.
+              - `three_ring_binder` - A half-inch three-ring binder holding 75 pages of checks
+                with 3 checks per page.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -308,6 +326,7 @@ class AsyncCheckbooksResource(AsyncAPIResource):
                     "account_number_id": account_number_id,
                     "mailing_address": mailing_address,
                     "payer": payer,
+                    "style": style,
                 },
                 checkbook_create_params.CheckbookCreateParams,
             ),

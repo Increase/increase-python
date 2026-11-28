@@ -139,9 +139,11 @@ class Checkbook(BaseModel):
       deposited.
     """
 
-    style: Literal["three_ring_binder", "folder"]
+    style: Literal["top_tear_pad", "three_ring_binder", "folder"]
     """The physical format of the Checkbook.
 
+    - `top_tear_pad` - A 3x6 inch pad of 25 checks, each torn off along a
+      perforation at the top.
     - `three_ring_binder` - A half-inch three-ring binder holding 75 pages of checks
       with 3 checks per page.
     - `folder` - A folder holding 15 pages of checks with 3 checks per page.

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["RealTimePaymentsTransferCreateParams"]
+__all__ = ["RealTimePaymentsTransferCreateParams", "DebtorAddress"]
 
 
 class RealTimePaymentsTransferCreateParams(TypedDict, total=False):
@@ -25,6 +25,12 @@ class RealTimePaymentsTransferCreateParams(TypedDict, total=False):
 
     account_number: str
     """The destination account number."""
+
+    debtor_address: DebtorAddress
+    """The address of the transfer's sender.
+
+    If not provided, no debtor address is sent with the transfer.
+    """
 
     debtor_name: str
     """The name of the transfer's sender.
@@ -67,3 +73,37 @@ class RealTimePaymentsTransferCreateParams(TypedDict, total=False):
     Set this if the funds are being sent on behalf of someone who is not the account
     holder at Increase.
     """
+
+
+class DebtorAddress(TypedDict, total=False):
+    """The address of the transfer's sender.
+
+    If not provided, no debtor address is sent with the transfer.
+    """
+
+    city: Required[str]
+    """The town or city."""
+
+    country: Required[str]
+    """The ISO 3166, Alpha-2 country code.
+
+    Defaults to `US`.
+    """
+
+    postal_code: Required[str]
+    """The postal code or zip."""
+
+    state: Required[str]
+    """The US state component of the address."""
+
+    street_name: Required[str]
+    """The street name without the street number."""
+
+    address_line2: str
+    """A second address line, such as an apartment or suite number.
+
+    The first address line is separated into `building_number` and `street_name`.
+    """
+
+    building_number: str
+    """The number identifying the position of the building on the street."""

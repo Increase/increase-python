@@ -26,6 +26,7 @@ __all__ = [
     "PrivateFeatureError",
     "APIMethodNotFoundError",
     "ObjectNotFoundError",
+    "RequestTimeoutError",
     "IdempotencyKeyAlreadyUsedError",
     "InvalidOperationError",
     "RateLimitedError",
@@ -330,6 +331,26 @@ class ObjectNotFoundError(NotFoundError):
         self.likely_environment = cast(
             Any, construct_type(type_=Optional[Literal["production", "sandbox"]], value=data.get("likely_environment"))
         )
+
+
+class RequestTimeoutError(APIStatusError):
+    detail: Optional[str] = None
+
+    status: Literal[408]
+
+    title: str
+
+    type: Literal["request_timeout_error"]
+
+    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
+        data = cast(Mapping[str, object], body if is_mapping(body) else {})
+        title = cast(Any, construct_type(type_=str, value=data.get("title")))
+        super().__init__(title or message, response=response, body=body)
+
+        self.title = title
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.status = cast(Any, construct_type(type_=Literal[408], value=data.get("status")))
+        self.type = cast(Any, construct_type(type_=Literal["request_timeout_error"], value=data.get("type")))
 
 
 class IdempotencyKeyAlreadyUsedError(ConflictError):

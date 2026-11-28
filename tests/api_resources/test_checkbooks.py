@@ -34,6 +34,7 @@ class TestCheckbooks:
                 {"contents": "33 Liberty Street"},
                 {"contents": "New York, NY 10045"},
             ],
+            style="three_ring_binder",
         )
         assert_matches_type(Checkbook, checkbook, path=["response"])
 
@@ -54,6 +55,7 @@ class TestCheckbooks:
                 {"contents": "33 Liberty Street"},
                 {"contents": "New York, NY 10045"},
             ],
+            style="three_ring_binder",
         )
         assert_matches_type(Checkbook, checkbook, path=["response"])
 
@@ -74,6 +76,7 @@ class TestCheckbooks:
                 {"contents": "33 Liberty Street"},
                 {"contents": "New York, NY 10045"},
             ],
+            style="three_ring_binder",
         )
 
         assert response.is_closed is True
@@ -96,6 +99,7 @@ class TestCheckbooks:
                 {"contents": "33 Liberty Street"},
                 {"contents": "New York, NY 10045"},
             ],
+            style="three_ring_binder",
         ) as response:
             assert not response.is_closed
 
@@ -235,6 +239,7 @@ class TestAsyncCheckbooks:
                 {"contents": "33 Liberty Street"},
                 {"contents": "New York, NY 10045"},
             ],
+            style="three_ring_binder",
         )
         assert_matches_type(Checkbook, checkbook, path=["response"])
 
@@ -255,6 +260,7 @@ class TestAsyncCheckbooks:
                 {"contents": "33 Liberty Street"},
                 {"contents": "New York, NY 10045"},
             ],
+            style="three_ring_binder",
         )
         assert_matches_type(Checkbook, checkbook, path=["response"])
 
@@ -275,6 +281,7 @@ class TestAsyncCheckbooks:
                 {"contents": "33 Liberty Street"},
                 {"contents": "New York, NY 10045"},
             ],
+            style="three_ring_binder",
         )
 
         assert response.is_closed is True
@@ -297,6 +304,7 @@ class TestAsyncCheckbooks:
                 {"contents": "33 Liberty Street"},
                 {"contents": "New York, NY 10045"},
             ],
+            style="three_ring_binder",
         ) as response:
             assert not response.is_closed
 
